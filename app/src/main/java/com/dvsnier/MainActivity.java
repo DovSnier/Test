@@ -1,0 +1,51 @@
+package com.dvsnier;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+
+import com.dvsnier.test.R;
+import com.dvsnier.test.TestCrashHandleActivity;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+/**
+ * the test main activity
+ *
+ * @author dvsnier
+ * @since JDK 1.8
+ */
+public class MainActivity extends AppCompatActivity {
+
+    @Bind(R.id.btn_exception)
+    Button btn_exception;
+
+    private View.OnClickListener onClickListener = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View view) {
+            Intent intent = null;
+            switch (view.getId()) {
+                case R.id.btn_exception:
+                    intent = new Intent(MainActivity.this, TestCrashHandleActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+                    break;
+                default:
+            }
+        }
+    };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+        btn_exception.setOnClickListener(onClickListener);
+    }
+
+
+}
