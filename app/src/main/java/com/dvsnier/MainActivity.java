@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.dvsnier.test.R;
 import com.dvsnier.test.TestCrashHandleActivity;
+import com.dvsnier.testAffinity.AffinityActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Bind(R.id.btn_exception)
     Button btn_exception;
+    @Bind(R.id.btn_affinity)
+    Button btn_affinity;
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
 
@@ -34,7 +37,13 @@ public class MainActivity extends AppCompatActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(intent);
                     break;
+                case R.id.btn_affinity:
+                    intent = new Intent(MainActivity.this, AffinityActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+                    break;
                 default:
+                    break;
             }
         }
     };
@@ -45,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         btn_exception.setOnClickListener(onClickListener);
+        btn_affinity.setOnClickListener(onClickListener);
     }
 
 

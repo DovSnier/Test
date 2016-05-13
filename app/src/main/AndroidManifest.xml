@@ -16,7 +16,17 @@
         </activity>
         <activity
             android:name=".TestCrashHandleActivity"
-            android:theme="@style/AppCustomTheme"/>
+            android:theme="@style/AppCustomTheme" />
+        <activity
+            android:name="com.dvsnier.testAffinity.AffinityActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name="com.dvsnier.testAffinity.AActivity"
+            android:taskAffinity="com.dvsnier.testAffinity" />
+        <activity
+            android:name="com.dvsnier.testAffinity.BActivity"
+            android:taskAffinity="com.dvsnier.testAffinity" />
+        <activity android:name="com.dvsnier.testAffinity.CActivity" />
     </application>
 
 </manifest>

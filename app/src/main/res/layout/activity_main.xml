@@ -10,4 +10,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="测试异常" />
+
+    <Button
+        android:id="@+id/btn_affinity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="测试 Affinity" />
 </LinearLayout>
