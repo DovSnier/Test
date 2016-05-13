@@ -19,14 +19,19 @@
             android:theme="@style/AppCustomTheme" />
         <activity
             android:name="com.dvsnier.testAffinity.AffinityActivity"
+            android:label="Affinity Activity"
             android:launchMode="singleTask" />
         <activity
             android:name="com.dvsnier.testAffinity.AActivity"
-            android:taskAffinity="com.dvsnier.testAffinity" />
+            android:taskAffinity="com.dvsnier.testAffinity"
+            android:theme="@style/AppCustomTheme" />
         <activity
             android:name="com.dvsnier.testAffinity.BActivity"
-            android:taskAffinity="com.dvsnier.testAffinity" />
-        <activity android:name="com.dvsnier.testAffinity.CActivity" />
+            android:taskAffinity="com.dvsnier.testAffinity"
+            android:theme="@style/AppCustomTheme" />
+        <activity
+            android:name="com.dvsnier.testAffinity.CActivity"
+            android:theme="@style/AppCustomTheme" />
     </application>
 
 </manifest>
