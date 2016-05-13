@@ -8,8 +8,8 @@ android {
         applicationId "com.dvsnier.test"
         minSdkVersion 10
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "0.0.1"
     }
     buildTypes {
         release {
@@ -17,6 +17,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                def fileName = "dvsnier_" + getVersionNameFromManifest() + "_demo" + ".apk"
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
+        }
+    }
+}
+
+
+def getVersionNameFromManifest() {
+//    def manifestParser = new com.android.builder.core.DefaultManifestParser()
+//    return manifestParser.getVersionName(android.sourceSets.main.manifest.srcFile)
+    return android.defaultConfig.versionName;
 }
 
 dependencies {

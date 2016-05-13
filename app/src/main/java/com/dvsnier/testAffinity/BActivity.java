@@ -32,6 +32,7 @@ public class BActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.btn_affinity_a:
                 intent = new Intent(this, AActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 break;
             case R.id.btn_c:

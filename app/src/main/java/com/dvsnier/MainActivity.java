@@ -32,12 +32,12 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View view) {
             Intent intent = null;
             switch (view.getId()) {
-                case R.id.btn_exception:
+                case R.id.btn_exception: // TODO test exception component
                     intent = new Intent(MainActivity.this, TestCrashHandleActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(intent);
                     break;
-                case R.id.btn_affinity:
+                case R.id.btn_affinity: // TODO test activity affinity component
                     intent = new Intent(MainActivity.this, AffinityActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(intent);
