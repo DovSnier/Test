@@ -6,9 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.dvsnier.test.R;
-import com.dvsnier.test.TestCrashHandleActivity;
 import com.dvsnier.testAffinity.AffinityActivity;
+import com.dvsnier.testCache.TestCacheActivity;
+import com.dvsnier.testCrash.TestCrashHandleActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     Button btn_exception;
     @Bind(R.id.btn_affinity)
     Button btn_affinity;
+    @Bind(R.id.btn_cache)
+    Button btn_cache;
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
 
@@ -42,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(intent);
                     break;
+                case R.id.btn_cache: // TODO test activity cache component
+                    intent = new Intent(MainActivity.this, TestCacheActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+                    break;
                 default:
                     break;
             }
@@ -55,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         btn_exception.setOnClickListener(onClickListener);
         btn_affinity.setOnClickListener(onClickListener);
+        btn_cache.setOnClickListener(onClickListener);
     }
 
 

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.dvsnier.test">
+          package="com.dvsnier">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -9,29 +12,32 @@
         android:theme="@style/AppTheme">
         <activity android:name="com.dvsnier.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
-            android:name=".TestCrashHandleActivity"
-            android:theme="@style/AppCustomTheme" />
+            android:name=".testCrash.TestCrashHandleActivity"
+            android:theme="@style/AppCustomTheme"/>
         <activity
             android:name="com.dvsnier.testAffinity.AffinityActivity"
             android:label="Affinity Activity"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"/>
         <activity
             android:name="com.dvsnier.testAffinity.AActivity"
             android:taskAffinity="com.dvsnier.testAffinity"
-            android:theme="@style/AppCustomTheme" />
+            android:theme="@style/AppCustomTheme"/>
         <activity
             android:name="com.dvsnier.testAffinity.BActivity"
             android:taskAffinity="com.dvsnier.testAffinity"
-            android:theme="@style/AppCustomTheme" />
+            android:theme="@style/AppCustomTheme"/>
         <activity
             android:name="com.dvsnier.testAffinity.CActivity"
-            android:theme="@style/AppCustomTheme" />
+            android:theme="@style/AppCustomTheme"/>
+        <activity
+            android:name="com.dvsnier.testCache.TestCacheActivity"
+            android:theme="@style/AppCustomTheme"/>
     </application>
 
 </manifest>

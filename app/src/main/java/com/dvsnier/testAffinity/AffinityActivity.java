@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.dvsnier.test.R;
+import com.dvsnier.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

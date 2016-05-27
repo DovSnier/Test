@@ -1,4 +1,4 @@
-package com.dvsnier.test;
+package com.dvsnier.testCrash;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.dvsnier.R;
 import com.dvsnier.crashmonitor.server.MoniterService;
 
 import butterknife.Bind;
