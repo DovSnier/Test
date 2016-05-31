@@ -1,12 +1,18 @@
 package com.dvsnier.utils;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 /**
- * Created by DovSnier on 2016/5/31.
+ * Created by DovSnier on 2016/5/20.
  */
 public class DBManager {
 
@@ -14,6 +20,7 @@ public class DBManager {
     private static DBManager instance;
     private DBHelper dbHelper;
     private SQLiteDatabase database;
+    private static boolean DEBUG = true;
 
     private DBManager() {
     }
@@ -33,6 +40,10 @@ public class DBManager {
             }
         }
         return instance;
+    }
+
+    public SQLiteDatabase getDatabase() {
+        return database;
     }
 
     public void createDatabase(DBHelper dbHelper) {
@@ -63,6 +74,67 @@ public class DBManager {
 //    update
 //    delete
 //    dropTable
+
+    public final void executeAssetsSQL(InputStream inputStream, SQLiteDatabase db) {
+        BufferedReader bufferedReader = null;
+        try {
+            bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            String buffer = "";
+            while ((line = bufferedReader.readLine()) != null) {
+                buffer += line;
+                if (null != line && !"".equals(line.trim()) && "--".equals(line.trim().substring(0, 2))) {
+                    buffer = "";
+                    continue;
+                }
+                if (line.trim().endsWith(";")) {
+                    String sql = buffer.replace(";", "");
+                    if (DEBUG) Log.d(TAG, "SQL Command: " + sql);
+                    db.execSQL(sql);
+                    buffer = "";
+                } else {
+                    if (null != buffer && !"".equals(buffer)) {
+                        if ("//".equals(buffer.substring(0, 2))) buffer = "";
+                        if ("/*".equals(buffer.substring(0, 2)) && "*/".equals(buffer.substring(buffer.length() - 2)))
+                            buffer = "";
+                    }
+                }
+            }
+            if (DEBUG) Log.i(TAG, "the all sql command executed successfully");
+        } catch (IOException e) {
+            Log.e("db-error", e.toString());
+        } finally {
+            try {
+                if (bufferedReader != null) bufferedReader.close();
+            } catch (IOException e) {
+                Log.e("db-error", e.toString());
+            }
+        }
+    }
+
+    public final boolean tableIsExist(String tableName, SQLiteDatabase db) {
+        boolean result = false;
+        if (tableName == null) {
+            return false;
+        }
+        Cursor cursor = null;
+        try {
+            String sql = "select count(*) as c from sqlite_master where type ='table' and name ='" + tableName.trim() + "' ";
+            cursor = db.rawQuery(sql, null);
+            if (cursor.moveToNext()) {
+                int count = cursor.getInt(0);
+                if (count > 0) {
+                    result = true;
+                }
+            }
+        } catch (Exception e) {
+            Log.e("db-error", e.toString());
+        } finally {
+            if (null != cursor) cursor.close();
+        }
+        return result;
+    }
+
 
     public synchronized final void closeDatabase() {
         if (null != this.dbHelper) {

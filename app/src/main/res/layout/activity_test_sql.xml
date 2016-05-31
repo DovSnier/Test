@@ -8,8 +8,16 @@
     tools:context="com.dvsnier.testSQL.TestSQLActivity">
 
     <Button
-        android:id="@+id/btn_sql"
+        android:id="@+id/btn_coordinate_sql"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="测试SQL"/>
+        android:text="测试Coordinate SQL"/>
+
+    <Button
+        android:id="@+id/btn_notes_sql"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_coordinate_sql"
+        android:layout_marginTop="50dp"
+        android:text="测试Notes SQL"/>
 </RelativeLayout>
