@@ -2,27 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:padding="25dp">
+              android:gravity="center"
+              android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_exception"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="测试异常"/>
-
-    <Button
-        android:id="@+id/btn_affinity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="测试 Affinity"/>
-
-    <Button
-        android:id="@+id/btn_cache"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="测试缓存"/>
+    <ListView
+        android:id="@+id/testContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="#99000000"
+        android:dividerHeight="1px"
+        android:fastScrollAlwaysVisible="false"
+        android:foregroundGravity="center"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:scrollbars="none"/>
 </LinearLayout>

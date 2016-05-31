@@ -10,7 +10,9 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-        <activity android:name="com.dvsnier.MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -19,25 +21,35 @@
         </activity>
         <activity
             android:name=".testCrash.TestCrashHandleActivity"
-            android:theme="@style/AppCustomTheme"/>
+            android:theme="@style/AppCustomTheme"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
         <activity
-            android:name="com.dvsnier.testAffinity.AffinityActivity"
+            android:name=".testAffinity.AffinityActivity"
             android:label="Affinity Activity"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
         <activity
-            android:name="com.dvsnier.testAffinity.AActivity"
+            android:name=".testAffinity.AActivity"
             android:taskAffinity="com.dvsnier.testAffinity"
-            android:theme="@style/AppCustomTheme"/>
+            android:theme="@style/AppCustomTheme"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
         <activity
-            android:name="com.dvsnier.testAffinity.BActivity"
+            android:name=".testAffinity.BActivity"
             android:taskAffinity="com.dvsnier.testAffinity"
-            android:theme="@style/AppCustomTheme"/>
+            android:theme="@style/AppCustomTheme"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
         <activity
-            android:name="com.dvsnier.testAffinity.CActivity"
-            android:theme="@style/AppCustomTheme"/>
+            android:name=".testAffinity.CActivity"
+            android:theme="@style/AppCustomTheme"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
         <activity
-            android:name="com.dvsnier.testCache.TestCacheActivity"
-            android:theme="@style/AppCustomTheme"/>
+            android:name=".testCache.TestCacheActivity"
+            android:theme="@style/AppCustomTheme"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+        <activity
+            android:name=".testSQL.TestSQLActivity"
+            android:theme="@style/AppCustomTheme"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
     </application>
 
 </manifest>
