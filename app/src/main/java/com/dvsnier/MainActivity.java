@@ -14,6 +14,8 @@ import com.dvsnier.testAffinity.AffinityActivity;
 import com.dvsnier.testCache.TestCacheActivity;
 import com.dvsnier.testCrash.TestCrashHandleActivity;
 import com.dvsnier.testSQL.TestSQLActivity;
+import com.dvsnier.testSurface.TestSurfaceActivity;
+import com.dvsnier.testTheme.TestThemeActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +71,16 @@ public class MainActivity extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         break;
+                    case 4: // TODO test activity theme component
+                        intent = new Intent(MainActivity.this, TestThemeActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                        break;
+                    case 5: // TODO test activity surface view component
+                        intent = new Intent(MainActivity.this, TestSurfaceActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                        break;
                 }
             }
         });
@@ -80,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
         dataset.add("测试 Affinity");
         dataset.add("测试 Cache");
         dataset.add("测试 SQL");
+        dataset.add("测试 Theme");
+        dataset.add("测试 SurfaceView");
     }
 
 }

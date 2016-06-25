@@ -50,6 +50,15 @@
             android:name=".testSQL.TestSQLActivity"
             android:theme="@style/AppCustomTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+        <!-- android:theme="@style/testAppCustomTheme" -->
+        <activity
+            android:name=".testTheme.TestThemeActivity"
+            android:theme="@style/AppCustomTheme"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+        <activity
+            android:name=".testSurface.TestSurfaceActivity"
+            android:theme="@style/AppCustomTheme"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
     </application>
 
 </manifest>
