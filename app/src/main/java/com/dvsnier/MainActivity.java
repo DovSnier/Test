@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.dvsnier.testAIDL.TestAIDLActivity;
 import com.dvsnier.testAffinity.AffinityActivity;
 import com.dvsnier.testCache.TestCacheActivity;
 import com.dvsnier.testCrash.TestCrashHandleActivity;
@@ -81,6 +82,11 @@ public class MainActivity extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         break;
+                    case 6: // TODO test activity aidl component
+                        intent = new Intent(MainActivity.this, TestAIDLActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                        break;
                 }
             }
         });
@@ -94,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
         dataset.add("测试 SQL");
         dataset.add("测试 Theme");
         dataset.add("测试 SurfaceView");
+        dataset.add("测试 AIDL");
     }
 
 }

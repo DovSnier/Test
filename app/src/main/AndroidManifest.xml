@@ -59,6 +59,15 @@
             android:name=".testSurface.TestSurfaceActivity"
             android:theme="@style/AppCustomTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+        <activity
+            android:name=".testAIDL.TestAIDLActivity"
+            android:theme="@style/AppCustomTheme"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+
+        <service
+            android:name=".service.MessageManagerService"
+            android:process=":remote">
+        </service>
     </application>
 
 </manifest>
