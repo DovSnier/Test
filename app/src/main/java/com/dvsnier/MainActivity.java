@@ -15,6 +15,7 @@ import com.dvsnier.testAffinity.AffinityActivity;
 import com.dvsnier.testCache.TestCacheActivity;
 import com.dvsnier.testCrash.TestCrashHandleActivity;
 import com.dvsnier.testSQL.TestSQLActivity;
+import com.dvsnier.testScroll.TestScrollActivity;
 import com.dvsnier.testSurface.TestSurfaceActivity;
 import com.dvsnier.testTheme.TestThemeActivity;
 
@@ -87,6 +88,11 @@ public class MainActivity extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         break;
+                    case 7: // TODO test activity scroll component
+                        intent = new Intent(MainActivity.this, TestScrollActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                        break;
                 }
             }
         });
@@ -101,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         dataset.add("测试 Theme");
         dataset.add("测试 SurfaceView");
         dataset.add("测试 AIDL");
+        dataset.add("测试 Scroll");
     }
 
 }

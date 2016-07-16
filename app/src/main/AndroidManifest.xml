@@ -68,6 +68,11 @@
             android:name=".service.MessageManagerService"
             android:process=":remote">
         </service>
+
+        <activity
+            android:name=".testScroll.TestScrollActivity"
+            android:theme="@style/AppCustomTheme"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
     </application>
 
 </manifest>
