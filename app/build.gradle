@@ -21,7 +21,8 @@ android {
         variant.outputs.each { output ->
             def outputFile = output.outputFile
             if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                def fileName = "dvsnier_" + getVersionNameFromManifest() + "_demo" + ".apk"
+                def fileName = "dvsnier_demo_" + android.defaultConfig.versionName + "_r" + android.defaultConfig.versionCode + ".apk"
+//                def fileName = "dvsnier_demo_" + android.defaultConfig.versionName + "_r" + android.defaultConfig.versionCode + buildTime() + gitHashCode() + ".apk"
                 output.outputFile = new File(outputFile.parent, fileName)
             }
         }
@@ -29,10 +30,12 @@ android {
 }
 
 
-def getVersionNameFromManifest() {
-//    def manifestParser = new com.android.builder.core.DefaultManifestParser()
-//    return manifestParser.getVersionName(android.sourceSets.main.manifest.srcFile)
-    return android.defaultConfig.versionName;
+def gitHashCode() { return 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim() }
+
+def buildTime() {
+    def date = new Date()
+    def formattedDate = date.format('MMddHHmm')
+    return formattedDate
 }
 
 dependencies {
