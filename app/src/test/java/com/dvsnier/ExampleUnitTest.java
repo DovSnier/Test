@@ -1,4 +1,4 @@
-package com.dvsnier.testCrash;
+package com.dvsnier;
 
 import org.junit.Test;
 

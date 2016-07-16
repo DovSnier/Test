@@ -1,4 +1,4 @@
-package com.dvsnier.testCrash;
+package com.dvsnier;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
