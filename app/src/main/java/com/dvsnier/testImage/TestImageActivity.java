@@ -26,6 +26,7 @@ public class TestImageActivity extends AppCompatActivity {
     TextView imageUrl;
     @Bind(R.id.image_local)
     TextView imageLocal;
+    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,6 @@ public class TestImageActivity extends AppCompatActivity {
 
     @OnClick({R.id.image_url, R.id.image_local, R.id.test_image})
     public void onClick(View view) {
-        String url = null;
         switch (view.getId()) {
             case R.id.image_url:
                 url = getString(R.string.image_url);
