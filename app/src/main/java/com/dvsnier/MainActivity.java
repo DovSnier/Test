@@ -14,6 +14,7 @@ import com.dvsnier.testAIDL.TestAIDLActivity;
 import com.dvsnier.testAffinity.AffinityActivity;
 import com.dvsnier.testCache.TestCacheActivity;
 import com.dvsnier.testCrash.TestCrashHandleActivity;
+import com.dvsnier.testImage.TestImageActivity;
 import com.dvsnier.testSQL.TestSQLActivity;
 import com.dvsnier.testScroll.TestScrollActivity;
 import com.dvsnier.testSurface.TestSurfaceActivity;
@@ -93,6 +94,11 @@ public class MainActivity extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         break;
+                    case 8: // TODO test glide component library
+                        intent = new Intent(MainActivity.this, TestImageActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                        break;
                 }
             }
         });
@@ -108,6 +114,6 @@ public class MainActivity extends AppCompatActivity {
         dataset.add("测试 SurfaceView");
         dataset.add("测试 AIDL");
         dataset.add("测试 Scroll");
+        dataset.add("测试 Glide");
     }
-
 }
