@@ -8,7 +8,7 @@ android {
         applicationId "com.dvsnier"
         minSdkVersion 10
         targetSdkVersion 23
-        versionCode 7
+        versionCode 8
         versionName "0.0.7"
     }
     buildTypes {
