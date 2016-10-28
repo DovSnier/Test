@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -15,7 +16,6 @@
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
@@ -73,6 +73,13 @@
             android:name=".testScroll.TestScrollActivity"
             android:theme="@style/AppCustomTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+        <activity
+            android:name=".testImage.TestImageActivity"
+            android:theme="@style/AppCustomTheme"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+        <activity
+            android:name=".testRecycleView.TestRecyclerActivity"
+            android:theme="@style/AppCustomTheme"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
     </application>
-
 </manifest>

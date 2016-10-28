@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="image_url">http://img-cdn.bigtiyu.com/gm/wsc/sport/273d8/s-1080-1073/4b65ff44f0c54dc892f642b24b826f70.jpeg_g_t1_w180_h179.jpeg</string>
+    <string name="image_error_tips_prefix">"the current exception url is "</string>
+</resources>
