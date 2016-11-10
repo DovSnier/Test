@@ -16,7 +16,7 @@
 
         <TextView
             android:id="@+id/test_scroll"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center"
             android:text="开始测试 Scroll"/>
@@ -36,12 +36,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="@android:color/background_light"
-                android:gravity="center"
+                android:gravity="center|left"
+                android:paddingLeft="10dp"
                 android:text="Head"
                 android:textColor="#ff99cc00"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold"/>
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>
