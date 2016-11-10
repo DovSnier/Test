@@ -1,5 +1,6 @@
 package com.dvsnier.testScroll;
 
+import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -45,7 +46,7 @@ public class TestScrollActivity extends AppCompatActivity {
                         ViewParent parent = v.getParent();
                         LinearLayout linearLayout = (LinearLayout) v;
                         final int childCount = linearLayout.getChildCount();
-                        View childAtLast = linearLayout.getChildAt(childCount - 1);
+                        final View childAtLast = linearLayout.getChildAt(childCount - 1);
                         if (childCount > 0 && null != childAtLast) {
                             int componentHight = childAtLast.getBottom() - childAtLast.getTop();
                             int componentWidth = childAtLast.getRight() - childAtLast.getLeft();
@@ -57,6 +58,12 @@ public class TestScrollActivity extends AppCompatActivity {
                                 Log.d(TAG, msg);
                                 String toast = "total scroll distance:" + distance + "\ncomponentWidth: " + componentWidth + "\n componentHight: " + componentHight;
                                 Toast.makeText(TestScrollActivity.this, toast, Toast.LENGTH_SHORT).show();
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        showInfo(childAtLast);
+                                    }
+                                });
                             }
                         }
                     }
@@ -70,6 +77,18 @@ public class TestScrollActivity extends AppCompatActivity {
 //                }
 //            });
         }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            ViewParent parent = scrollContainer.getParent();
+            if (parent instanceof ScrollView) {
+                ((ScrollView) parent).setOnScrollChangeListener(new View.OnScrollChangeListener() {
+                    @Override
+                    public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                        String msg = "onScrollChange:" + "\tscrollX: " + scrollX + " scrollY: " + scrollY + " \t oldScrollX: " + oldScrollX + " oldScrollY: " + oldScrollY;
+                        Log.d(TAG, msg);
+                    }
+                });
+            }
+        }
     }
 
     protected TextView obtainView() {
@@ -78,7 +97,9 @@ public class TestScrollActivity extends AppCompatActivity {
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dimension);
         textView.setLayoutParams(params);
         textView.setText("测试" + SystemClock.currentThreadTimeMillis());
-        textView.setGravity(Gravity.CENTER);
+        textView.setGravity(Gravity.CENTER | Gravity.LEFT);
+        textView.setPadding((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, getResources().getDisplayMetrics()), 0, 0, 0);
+        textView.setBackgroundResource(R.drawable.card_view);
         return textView;
     }
 
@@ -88,6 +109,25 @@ public class TestScrollActivity extends AppCompatActivity {
             case R.id.test_scroll:
                 scrollContainer.addView(obtainView());
                 break;
+        }
+    }
+
+    protected final void showInfo(View view) {
+        if (view instanceof TextView) {
+            StringBuilder sb = new StringBuilder();
+            int[] locationOnScreen = new int[2];
+            int[] locationInWindow = new int[2];
+            Rect localVisibleRect = new Rect();
+            Rect globalVisibleRect = new Rect();
+            view.getLocationOnScreen(locationOnScreen);
+            view.getLocationInWindow(locationInWindow);
+            view.getLocalVisibleRect(localVisibleRect);
+            view.getGlobalVisibleRect(globalVisibleRect);
+            sb.append("locationOnScreen(x,y):" + locationOnScreen[0] + ":" + locationOnScreen[1] + "\n");
+            sb.append("locationInWindow(x,y):" + locationInWindow[0] + ":" + locationInWindow[1] + "\n");
+            sb.append("localVisibleRect(l,t,r,b):" + localVisibleRect.left + "->" + localVisibleRect.top + "->" + localVisibleRect.right + "->" + localVisibleRect.bottom + "\n");
+            sb.append("globalVisibleRect(l,t,r,b):" + globalVisibleRect.left + "->" + globalVisibleRect.top + "->" + globalVisibleRect.right + "->" + globalVisibleRect.bottom);
+            ((TextView) view).setText(sb.toString());
         }
     }
 }
