@@ -8,8 +8,11 @@ android {
         applicationId "com.dvsnier"
         minSdkVersion 10
         targetSdkVersion 23
-        versionCode 10
-        versionName "0.0.9"
+        versionCode 11
+        versionName "0.0.10"
+        ndk {
+            abiFilters 'armeabi', 'armeabi-v7a'
+        }
     }
     buildTypes {
         release {
@@ -48,4 +51,7 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
     compile 'com.jakewharton:disklrucache:2.0.2'
     compile 'com.github.bumptech.glide:glide:3.7.0'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 }
