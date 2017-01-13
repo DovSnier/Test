@@ -6,10 +6,10 @@ android {
 
     defaultConfig {
         applicationId "com.dvsnier"
-        minSdkVersion 10
+        minSdkVersion 11
         targetSdkVersion 23
-        versionCode 11
-        versionName "0.0.10"
+        versionCode 12
+        versionName "0.0.11"
         ndk {
             abiFilters 'armeabi', 'armeabi-v7a'
         }
