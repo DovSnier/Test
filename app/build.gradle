@@ -6,10 +6,10 @@ android {
 
     defaultConfig {
         applicationId "com.dvsnier"
-        minSdkVersion 11
+        minSdkVersion 14
         targetSdkVersion 23
-        versionCode 12
-        versionName "0.0.11"
+        versionCode 13
+        versionName "0.0.12"
         ndk {
             abiFilters 'armeabi', 'armeabi-v7a'
         }
@@ -54,4 +54,5 @@ dependencies {
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    compile 'org.xutils:xutils:3.3.42'
 }

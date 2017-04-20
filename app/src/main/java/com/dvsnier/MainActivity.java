@@ -170,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
         dataset.add("测试 Scroll");
         dataset.add("测试 Glide");
         dataset.add("测试 RecyclerView");
+        dataset.add("测试 XUtils3");
     }
 
     private GestureDetector mGestureDetector;
