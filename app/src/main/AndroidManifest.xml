@@ -22,7 +22,7 @@
         </activity>
         <activity
             android:name=".testCrash.TestCrashHandleActivity"
-            android:theme="@style/AppCustomTheme"
+            android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
         <activity
             android:name=".testAffinity.AffinityActivity"
@@ -32,37 +32,37 @@
         <activity
             android:name=".testAffinity.AActivity"
             android:taskAffinity="com.dvsnier.testAffinity"
-            android:theme="@style/AppCustomTheme"
+            android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
         <activity
             android:name=".testAffinity.BActivity"
             android:taskAffinity="com.dvsnier.testAffinity"
-            android:theme="@style/AppCustomTheme"
+            android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
         <activity
             android:name=".testAffinity.CActivity"
-            android:theme="@style/AppCustomTheme"
+            android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
         <activity
             android:name=".testCache.TestCacheActivity"
-            android:theme="@style/AppCustomTheme"
+            android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
         <activity
             android:name=".testSQL.TestSQLActivity"
-            android:theme="@style/AppCustomTheme"
+            android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
         <!-- android:theme="@style/testAppCustomTheme" -->
         <activity
             android:name=".testTheme.TestThemeActivity"
-            android:theme="@style/AppCustomTheme"
+            android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
         <activity
             android:name=".testSurface.TestSurfaceActivity"
-            android:theme="@style/AppCustomTheme"
+            android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
         <activity
             android:name=".testAIDL.TestAIDLActivity"
-            android:theme="@style/AppCustomTheme"
+            android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
         
         <service
@@ -72,19 +72,19 @@
         
         <activity
             android:name=".testScroll.TestScrollActivity"
-            android:theme="@style/AppCustomTheme"
+            android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
         <activity
             android:name=".testImage.TestImageActivity"
-            android:theme="@style/AppCustomTheme"
+            android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
         <activity
             android:name=".testRecycleView.TestRecyclerActivity"
-            android:theme="@style/AppCustomTheme"
+            android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
         <activity
             android:name=".testXUtils.TestXUtilsActivity"
-            android:theme="@style/AppCustomTheme"
+            android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
     </application>
 </manifest>
