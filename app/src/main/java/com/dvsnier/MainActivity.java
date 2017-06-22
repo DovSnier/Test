@@ -19,6 +19,7 @@ import android.widget.ListView;
 
 import com.dvsnier.testAIDL.TestAIDLActivity;
 import com.dvsnier.testAffinity.AffinityActivity;
+import com.dvsnier.testAnimator.TestAnimator;
 import com.dvsnier.testCache.TestCacheActivity;
 import com.dvsnier.testCrash.TestCrashHandleActivity;
 import com.dvsnier.testImage.TestImageActivity;
@@ -27,6 +28,7 @@ import com.dvsnier.testSQL.TestSQLActivity;
 import com.dvsnier.testScroll.TestScrollActivity;
 import com.dvsnier.testSurface.TestSurfaceActivity;
 import com.dvsnier.testTheme.TestThemeActivity;
+import com.dvsnier.testXUtils.TestXUtilsActivity;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -46,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = MainActivity.class.getSimpleName();
     @Bind(R.id.testContainer)
     ListView container;
-    private List<String> dataset = new ArrayList<>();
+    protected boolean DEBUG;
+    private List<String> dataSet = new ArrayList<>();
     private ArrayAdapter adapter;
 
     protected void hideSystemUI() {
@@ -78,8 +81,9 @@ public class MainActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        DEBUG = getResources().getBoolean(R.bool.debug);
         initializeData();
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, dataset);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, dataSet);
         container.setAdapter(adapter);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             container.setAlpha(0.6f);
@@ -88,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = null;
+                if (DEBUG)
+                    Log.d(TAG, "the current position is " + position + " and id is " + id);
                 switch (position) {
                     case 0: // TODO test exception component
                         intent = new Intent(MainActivity.this, TestCrashHandleActivity.class);
@@ -139,6 +145,16 @@ public class MainActivity extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         break;
+                    case 10: // TODO test x utils view
+                        intent = new Intent(MainActivity.this, TestXUtilsActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                        break;
+                    case 11: // TODO test animator view
+                        intent = new Intent(MainActivity.this, TestAnimator.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                        break;
                 }
             }
         });
@@ -159,18 +175,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initializeData() {
-        dataset.clear();
-        dataset.add("测试 Exception");
-        dataset.add("测试 Affinity");
-        dataset.add("测试 Cache");
-        dataset.add("测试 SQL");
-        dataset.add("测试 Theme");
-        dataset.add("测试 SurfaceView");
-        dataset.add("测试 AIDL");
-        dataset.add("测试 Scroll");
-        dataset.add("测试 Glide");
-        dataset.add("测试 RecyclerView");
-        dataset.add("测试 XUtils3");
+        dataSet.clear();
+        dataSet.add("测试 Exception");
+        dataSet.add("测试 Affinity");
+        dataSet.add("测试 Cache");
+        dataSet.add("测试 SQL");
+        dataSet.add("测试 Theme");
+        dataSet.add("测试 SurfaceView");
+        dataSet.add("测试 AIDL");
+        dataSet.add("测试 Scroll");
+        dataSet.add("测试 Glide");
+        dataSet.add("测试 RecyclerView");
+        dataSet.add("测试 XUtils3");
+        dataSet.add("测试 Animator");
     }
 
     private GestureDetector mGestureDetector;
@@ -219,8 +236,8 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                     if (positionOfDrag != positionOfShadow && positionOfDrag >= 0 && positionOfShadow >= 0) {
-                        dataset.set(positionOfDrag, valueOfShadow);
-                        dataset.set(positionOfShadow, valueOfDrag);
+                        dataSet.set(positionOfDrag, valueOfShadow);
+                        dataSet.set(positionOfShadow, valueOfDrag);
                         adapter.notifyDataSetChanged();
                     }
                     break;

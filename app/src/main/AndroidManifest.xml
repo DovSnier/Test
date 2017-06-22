@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.dvsnier">
-    
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
-    
+
     <application
         android:name=".DvsnierApplication"
         android:allowBackup="true"
@@ -64,12 +64,12 @@
             android:name=".testAIDL.TestAIDLActivity"
             android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
-        
+
         <service
             android:name=".service.MessageManagerService"
             android:process=":remote">
         </service>
-        
+
         <activity
             android:name=".testScroll.TestScrollActivity"
             android:theme="@style/AppTheme.DefaultTheme"
@@ -84,6 +84,10 @@
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
         <activity
             android:name=".testXUtils.TestXUtilsActivity"
+            android:theme="@style/AppTheme.DefaultTheme"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+        <activity
+            android:name=".testAnimator.TestAnimator"
             android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
     </application>
