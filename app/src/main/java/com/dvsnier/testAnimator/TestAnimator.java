@@ -1,5 +1,7 @@
 package com.dvsnier.testAnimator;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
 import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -37,14 +39,21 @@ public class TestAnimator extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.test_1:
-                executeAnimator();
+                executeAnimator1();
                 break;
             case R.id.test_2:
+                executeAnimator2();
                 break;
         }
     }
 
-    protected void executeAnimator() {
+    protected void executeAnimator1() {
+        Animator animator = AnimatorInflater.loadAnimator(this, R.animator.animator_test);
+        animator.setTarget(test1);
+        animator.start();
+    }
+
+    protected void executeAnimator2() {
         ValueAnimator valueAnimator = ValueAnimator.ofFloat(0f, 5f, 3f, 10f);
         valueAnimator.setDuration(5000);
         valueAnimator.start();
