@@ -3,11 +3,13 @@ package com.dvsnier.testAnimator;
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.ValueAnimator;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewPropertyAnimator;
 import android.widget.Button;
 
 import com.dvsnier.R;
@@ -27,6 +29,10 @@ public class TestAnimator extends AppCompatActivity {
     Button test1;
     @Bind(R.id.test_2)
     Button test2;
+    @Bind(R.id.test_3)
+    Button test3;
+    @Bind(R.id.test_4)
+    Button test4;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,7 +41,7 @@ public class TestAnimator extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.test_1, R.id.test_2})
+    @OnClick({R.id.test_1, R.id.test_2, R.id.test_3, R.id.test_4})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.test_1:
@@ -43,6 +49,14 @@ public class TestAnimator extends AppCompatActivity {
                 break;
             case R.id.test_2:
                 executeAnimator2();
+                break;
+            case R.id.test_3:
+                executeAnimator3();
+                break;
+            case R.id.test_4:
+                executeAnimator4();
+                break;
+            default:
                 break;
         }
     }
@@ -65,4 +79,27 @@ public class TestAnimator extends AppCompatActivity {
             }
         });
     }
+
+    protected void executeAnimator3() {
+        ViewPropertyAnimator viewPropertyAnimator = test3.animate().rotation(180f).setDuration(2000);
+        addUpdateListener(viewPropertyAnimator);
+    }
+
+    protected void executeAnimator4() {
+        ViewPropertyAnimator viewPropertyAnimator = test4.animate().rotationBy(180f).setDuration(2000);
+        addUpdateListener(viewPropertyAnimator);
+    }
+
+    protected void addUpdateListener(ViewPropertyAnimator viewPropertyAnimator) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            viewPropertyAnimator.setUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    float currentValue = (float) animation.getAnimatedValue();
+                    Log.d(TAG, "the current value is " + currentValue);
+                }
+            });
+        }
+    }
+
 }
