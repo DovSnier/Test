@@ -33,6 +33,7 @@ proguard/
 *.iml
 *.ipr
 *.iws
+.DS_Store
 out
 
 # Eclipse project files

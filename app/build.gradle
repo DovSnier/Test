@@ -1,22 +1,27 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 25
+    buildToolsVersion '25.0.2'
 
     defaultConfig {
         applicationId "com.dvsnier"
-        minSdkVersion 10
-        targetSdkVersion 23
-        versionCode 10
-        versionName "0.0.9"
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode 14
+        versionName "0.0.12"
+        ndk {
+            abiFilters 'armeabi', 'armeabi-v7a'
+        }
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
             def outputFile = output.outputFile
@@ -48,4 +53,8 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
     compile 'com.jakewharton:disklrucache:2.0.2'
     compile 'com.github.bumptech.glide:glide:3.7.0'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    compile 'org.xutils:xutils:3.3.42'
 }
