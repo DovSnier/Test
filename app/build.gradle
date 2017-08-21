@@ -1,60 +1,70 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+  compileSdkVersion 25
+  buildToolsVersion '25.0.2'
 
-    defaultConfig {
-        applicationId "com.dvsnier"
-        minSdkVersion 14
-        targetSdkVersion 25
-        versionCode 14
-        versionName "0.0.12"
-        ndk {
-            abiFilters 'armeabi', 'armeabi-v7a'
-        }
+  defaultConfig {
+    applicationId "com.dvsnier"
+    minSdkVersion 14
+    targetSdkVersion 25
+    versionCode 18
+    versionName "0.0.13"
+    ndk {
+      abiFilters 'armeabi', 'armeabi-v7a'
     }
+  }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
+  }
 
-    applicationVariants.all { variant ->
-        variant.outputs.each { output ->
-            def outputFile = output.outputFile
-            if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                def fileName = "dvsnier_demo_" + android.defaultConfig.versionName + "_r" + android.defaultConfig.versionCode + ".apk"
-//                def fileName = "dvsnier_demo_" + android.defaultConfig.versionName + "_r" + android.defaultConfig.versionCode + buildTime() + gitHashCode() + ".apk"
-                output.outputFile = new File(outputFile.parent, fileName)
-            }
-        }
+  applicationVariants.all { variant ->
+    variant.outputs.each { output ->
+      def outputFile = output.outputFile
+      if (outputFile != null && outputFile.name.endsWith('.apk')) {
+        def fileName = "dvsnier_demo_" + android.defaultConfig.versionName +
+            "_r" +
+            android.defaultConfig.versionCode +
+            ".apk"
+        //                def fileName = "dvsnier_demo_" + android.defaultConfig.versionName + "_r" + android.defaultConfig.versionCode + buildTime() + gitHashCode() + ".apk"
+        output.outputFile = new File(outputFile.parent, fileName)
+      }
     }
+  }
 }
 
+greendao {
+  schemaVersion 1
+}
 
 def gitHashCode() { return 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim() }
 
 def buildTime() {
-    def date = new Date()
-    def formattedDate = date.format('MMddHHmm')
-    return formattedDate
+  def date = new Date()
+  def formattedDate = date.format('MMddHHmm')
+  return formattedDate
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.android.support:recyclerview-v7:23.2.1'
-    compile 'com.dvsnier.zw:crashmonitor:0.0.2'
-    compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'com.squareup.retrofit2:retrofit:2.0.2'
-    compile 'com.jakewharton:disklrucache:2.0.2'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-    compile 'org.xutils:xutils:3.3.42'
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  compile 'com.android.support:appcompat-v7:23.2.1'
+  compile 'com.android.support:recyclerview-v7:23.2.1'
+  compile 'com.dvsnier.zw:crashmonitor:0.0.2'
+  compile 'com.jakewharton:butterknife:7.0.1'
+  compile 'com.squareup.retrofit2:retrofit:2.0.2'
+  compile 'com.jakewharton:disklrucache:2.0.2'
+  compile 'com.github.bumptech.glide:glide:3.7.0'
+  compile 'org.xutils:xutils:3.3.42'
+  compile 'org.greenrobot:greendao:3.2.2'
+  compile 'com.android.support.constraint:constraint-layout:1.0.2'
+  testCompile 'junit:junit:4.12'
+  testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+  debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+  releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+  compile 'com.facebook.stetho:stetho:1.5.0'
 }

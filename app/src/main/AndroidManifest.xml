@@ -1,94 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.dvsnier">
+    package="com.dvsnier">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.INTERNET"/>
 
-    <application
-        android:name=".DvsnierApplication"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivity"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".testCrash.TestCrashHandleActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
-        <activity
-            android:name=".testAffinity.AffinityActivity"
-            android:label="Affinity Activity"
-            android:launchMode="singleTask"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
-        <activity
-            android:name=".testAffinity.AActivity"
-            android:taskAffinity="com.dvsnier.testAffinity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
-        <activity
-            android:name=".testAffinity.BActivity"
-            android:taskAffinity="com.dvsnier.testAffinity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
-        <activity
-            android:name=".testAffinity.CActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
-        <activity
-            android:name=".testCache.TestCacheActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
-        <activity
-            android:name=".testSQL.TestSQLActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
-        <!-- android:theme="@style/testAppCustomTheme" -->
-        <activity
-            android:name=".testTheme.TestThemeActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
-        <activity
-            android:name=".testSurface.TestSurfaceActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
-        <activity
-            android:name=".testAIDL.TestAIDLActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+  <application
+      android:allowBackup="true"
+      android:icon="@mipmap/ic_launcher"
+      android:label="@string/app_name"
+      android:name=".DvsnierApplication"
+      android:theme="@style/AppTheme">
+    <activity
+        android:name=".MainActivity"
+        android:windowSoftInputMode="adjustNothing|stateAlwaysHidden">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
 
-        <service
-            android:name=".service.MessageManagerService"
-            android:process=":remote">
-        </service>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity
+        android:name=".testCrash.TestCrashHandleActivity"
+        android:theme="@style/AppTheme.DefaultTheme"
+        android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+    <activity
+        android:label="Affinity Activity"
+        android:launchMode="singleTask"
+        android:name=".testAffinity.AffinityActivity"
+        android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+    <activity
+        android:name=".testAffinity.AActivity"
+        android:taskAffinity="com.dvsnier.testAffinity"
+        android:theme="@style/AppTheme.DefaultTheme"
+        android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+    <activity
+        android:name=".testAffinity.BActivity"
+        android:taskAffinity="com.dvsnier.testAffinity"
+        android:theme="@style/AppTheme.DefaultTheme"
+        android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+    <activity
+        android:name=".testAffinity.CActivity"
+        android:theme="@style/AppTheme.DefaultTheme"
+        android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+    <activity
+        android:name=".testCache.TestCacheActivity"
+        android:theme="@style/AppTheme.DefaultTheme"
+        android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+    <activity
+        android:name=".testSQL.TestSQLActivity"
+        android:theme="@style/AppTheme.DefaultTheme"
+        android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+    <!-- android:theme="@style/testAppCustomTheme" -->
+    <activity
+        android:name=".testTheme.TestThemeActivity"
+        android:theme="@style/AppTheme.DefaultTheme"
+        android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+    <activity
+        android:name=".testSurface.TestSurfaceActivity"
+        android:theme="@style/AppTheme.DefaultTheme"
+        android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+    <activity
+        android:name=".testAIDL.TestAIDLActivity"
+        android:theme="@style/AppTheme.DefaultTheme"
+        android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
 
-        <activity
-            android:name=".testScroll.TestScrollActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
-        <activity
-            android:name=".testImage.TestImageActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
-        <activity
-            android:name=".testRecycleView.TestRecyclerActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
-        <activity
-            android:name=".testXUtils.TestXUtilsActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
-        <activity
-            android:name=".testAnimator.TestAnimator"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
-    </application>
+    <service
+        android:name=".service.MessageManagerService"
+        android:process=":remote">
+    </service>
+
+    <activity
+        android:name=".testScroll.TestScrollActivity"
+        android:theme="@style/AppTheme.DefaultTheme"
+        android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+    <activity
+        android:name=".testImage.TestImageActivity"
+        android:theme="@style/AppTheme.DefaultTheme"
+        android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+    <activity
+        android:name=".testRecycleView.TestRecyclerActivity"
+        android:theme="@style/AppTheme.DefaultTheme"
+        android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+    <activity
+        android:name=".testXUtils.TestXUtilsActivity"
+        android:theme="@style/AppTheme.DefaultTheme"
+        android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+    <activity
+        android:name=".testAnimator.TestAnimator"
+        android:theme="@style/AppTheme.DefaultTheme"
+        android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+    <activity android:name=".testGreenDao.TestGreenDaoActivity"
+        android:theme="@style/AppTheme.DefaultTheme"
+        android:windowSoftInputMode="adjustNothing|stateAlwaysHidden">
+    </activity>
+  </application>
+
 </manifest>
