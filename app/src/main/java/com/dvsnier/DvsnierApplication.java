@@ -4,6 +4,7 @@ import android.app.Application;
 import android.widget.Toast;
 import com.dvsnier.bean.DaoMaster;
 import com.dvsnier.bean.DaoSession;
+import com.facebook.stetho.Stetho;
 import com.squareup.leakcanary.LeakCanary;
 
 /**
@@ -28,6 +29,7 @@ public class DvsnierApplication extends Application {
       return;
     }
     LeakCanary.install(this);
+    Stetho.initializeWithDefaults(this);
     obtainDataBase();
   }
 
