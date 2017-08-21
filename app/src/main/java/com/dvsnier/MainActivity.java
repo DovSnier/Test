@@ -16,6 +16,7 @@ import com.dvsnier.testAffinity.AffinityActivity;
 import com.dvsnier.testAnimator.TestAnimator;
 import com.dvsnier.testCache.TestCacheActivity;
 import com.dvsnier.testCrash.TestCrashHandleActivity;
+import com.dvsnier.testGreenDao.TestGreenDaoActivity;
 import com.dvsnier.testImage.TestImageActivity;
 import com.dvsnier.testRecycleView.TestRecyclerActivity;
 import com.dvsnier.testSQL.TestSQLActivity;
@@ -144,6 +145,11 @@ public class MainActivity extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         break;
+                    case 12: // TODO test animator view
+                        intent = new Intent(MainActivity.this, TestGreenDaoActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                        break;
                 }
             }
         });
@@ -163,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
         dataSet.add("测试 RecyclerView");
         dataSet.add("测试 XUtils3");
         dataSet.add("测试 Animator");
+        dataSet.add("测试 GreenDao");
     }
 
 
