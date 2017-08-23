@@ -5,12 +5,13 @@ import android.widget.Toast;
 import com.dvsnier.bean.DaoMaster;
 import com.dvsnier.bean.DaoSession;
 import com.facebook.stetho.Stetho;
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechUtility;
 import com.squareup.leakcanary.LeakCanary;
 
 /**
  * Created by Administrator on 2017/1/7.
  */
-
 public class DvsnierApplication extends Application {
 
   protected static DvsnierApplication instance;
@@ -21,6 +22,9 @@ public class DvsnierApplication extends Application {
   }
 
   @Override public void onCreate() {
+    // 将“12345678”替换成您申请的APPID，申请地址：http://www.xfyun.cn
+    // 请勿在“=”与appid之间添加任何空字符或者转义符
+    SpeechUtility.createUtility(this, SpeechConstant.APPID + "=599b97fa");
     super.onCreate();
     instance = this;
     if (LeakCanary.isInAnalyzerProcess(this)) {

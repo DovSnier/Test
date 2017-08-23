@@ -9,8 +9,8 @@ android {
     applicationId "com.dvsnier"
     minSdkVersion 14
     targetSdkVersion 25
-    versionCode 18
-    versionName "0.0.13"
+    versionCode 19
+    versionName "0.0.14"
     ndk {
       abiFilters 'armeabi', 'armeabi-v7a'
     }
@@ -31,9 +31,15 @@ android {
             "_r" +
             android.defaultConfig.versionCode +
             ".apk"
-        //                def fileName = "dvsnier_demo_" + android.defaultConfig.versionName + "_r" + android.defaultConfig.versionCode + buildTime() + gitHashCode() + ".apk"
+        // def fileName = "dvsnier_demo_" + android.defaultConfig.versionName + "_r" + android.defaultConfig.versionCode + buildTime() + gitHashCode() + ".apk"
         output.outputFile = new File(outputFile.parent, fileName)
       }
+    }
+  }
+
+  sourceSets {
+    main {
+      jniLibs.srcDirs = ['src/main/jniLibs']
     }
   }
 }
@@ -51,7 +57,9 @@ def buildTime() {
 }
 
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
+  compile fileTree(include: ['*.jar'], dir: 'libs')
+  compile files('libs/Msc.jar')
+  compile files('libs/Sunflower.jar')
   compile 'com.android.support:appcompat-v7:23.2.1'
   compile 'com.android.support:recyclerview-v7:23.2.1'
   compile 'com.dvsnier.zw:crashmonitor:0.0.2'
@@ -62,9 +70,9 @@ dependencies {
   compile 'org.xutils:xutils:3.3.42'
   compile 'org.greenrobot:greendao:3.2.2'
   compile 'com.android.support.constraint:constraint-layout:1.0.2'
+  compile 'com.facebook.stetho:stetho:1.5.0'
   testCompile 'junit:junit:4.12'
   testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
   debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
   releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-  compile 'com.facebook.stetho:stetho:1.5.0'
 }

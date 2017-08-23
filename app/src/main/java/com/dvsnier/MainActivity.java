@@ -21,6 +21,7 @@ import com.dvsnier.testImage.TestImageActivity;
 import com.dvsnier.testRecycleView.TestRecyclerActivity;
 import com.dvsnier.testSQL.TestSQLActivity;
 import com.dvsnier.testScroll.TestScrollActivity;
+import com.dvsnier.testSpeechRecognition.TestSpeechRecognitionActivity;
 import com.dvsnier.testSurface.TestSurfaceActivity;
 import com.dvsnier.testTheme.TestThemeActivity;
 import com.dvsnier.testXUtils.TestXUtilsActivity;
@@ -145,8 +146,13 @@ public class MainActivity extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         break;
-                    case 12: // TODO test animator view
+                    case 12: // TODO test green dao
                         intent = new Intent(MainActivity.this, TestGreenDaoActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                        break;
+                    case 13: // TODO test speech recognition
+                        intent = new Intent(MainActivity.this, TestSpeechRecognitionActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         break;
@@ -170,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
         dataSet.add("测试 XUtils3");
         dataSet.add("测试 Animator");
         dataSet.add("测试 GreenDao");
+        dataSet.add("测试 语音识别");
     }
 
 
