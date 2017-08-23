@@ -1,9 +1,11 @@
 package com.dvsnier;
 
 import android.app.Application;
+import android.content.Intent;
 import android.widget.Toast;
 import com.dvsnier.bean.DaoMaster;
 import com.dvsnier.bean.DaoSession;
+import com.dvsnier.crashmonitor.server.MoniterService;
 import com.facebook.stetho.Stetho;
 import com.squareup.leakcanary.LeakCanary;
 
@@ -23,6 +25,7 @@ public class DvsnierApplication extends Application {
   @Override public void onCreate() {
     super.onCreate();
     instance = this;
+    initializedServerConfig();
     if (LeakCanary.isInAnalyzerProcess(this)) {
       // This process is dedicated to LeakCanary for heap analysis.
       // You should not init your app in this process.
@@ -44,7 +47,32 @@ public class DvsnierApplication extends Application {
     Toast.makeText(this, "to Low Memory warning", Toast.LENGTH_SHORT).show();
   }
 
+  @Override public void onTerminate() {
+    super.onTerminate();
+    stopServer();
+  }
+
   public DaoSession getDaoSession() {
     return daoSession;
+  }
+
+  /**
+   * the initialized server config
+   *
+   * @version 0.0.2
+   */
+  protected void initializedServerConfig() {
+    Intent intent = new Intent(this, MoniterService.class);
+    startService(intent);
+  }
+
+  /**
+   * to closed server monitor
+   *
+   * @version 0.0.1
+   */
+  protected void stopServer() {
+    Intent intent = new Intent(this, MoniterService.class);
+    stopService(intent);
   }
 }
