@@ -15,6 +15,7 @@ import com.dvsnier.testAIDL.TestAIDLActivity;
 import com.dvsnier.testAffinity.AffinityActivity;
 import com.dvsnier.testAnimator.TestAnimator;
 import com.dvsnier.testCache.TestCacheActivity;
+import com.dvsnier.testCoordinatorLayout.TestCoordinatorLayoutActivity;
 import com.dvsnier.testCrash.TestCrashHandleActivity;
 import com.dvsnier.testGreenDao.TestGreenDaoActivity;
 import com.dvsnier.testImage.TestImageActivity;
@@ -156,6 +157,11 @@ public class MainActivity extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         break;
+                    case 14: // TODO test coordinator layout
+                        intent = new Intent(MainActivity.this, TestCoordinatorLayoutActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                        break;
                 }
             }
         });
@@ -177,6 +183,7 @@ public class MainActivity extends AppCompatActivity {
         dataSet.add("测试 Animator");
         dataSet.add("测试 GreenDao");
         dataSet.add("测试 语音识别");
+        dataSet.add("测试 CoordinatorLayout");
     }
 
 

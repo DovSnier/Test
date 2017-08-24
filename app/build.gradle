@@ -9,8 +9,8 @@ android {
     applicationId "com.dvsnier"
     minSdkVersion 14
     targetSdkVersion 25
-    versionCode 19
-    versionName "0.0.14"
+    versionCode 20
+    versionName "0.0.15"
     ndk {
       abiFilters 'armeabi', 'armeabi-v7a'
     }
@@ -71,6 +71,7 @@ dependencies {
   compile 'org.greenrobot:greendao:3.2.2'
   compile 'com.android.support.constraint:constraint-layout:1.0.2'
   compile 'com.facebook.stetho:stetho:1.5.0'
+  compile 'com.android.support:design:23.2.1'
   testCompile 'junit:junit:4.12'
   testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
   debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
