@@ -19,6 +19,7 @@ import com.dvsnier.testCoordinatorLayout.TestCoordinatorLayoutActivity;
 import com.dvsnier.testCrash.TestCrashHandleActivity;
 import com.dvsnier.testGreenDao.TestGreenDaoActivity;
 import com.dvsnier.testImage.TestImageActivity;
+import com.dvsnier.testOkhttp.TestOkhttpActivity;
 import com.dvsnier.testRecycleView.TestRecyclerActivity;
 import com.dvsnier.testSQL.TestSQLActivity;
 import com.dvsnier.testScroll.TestScrollActivity;
@@ -162,6 +163,11 @@ public class MainActivity extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         break;
+                    case 15: // TODO test okhttp
+                        intent = new Intent(MainActivity.this, TestOkhttpActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                        break;
                 }
             }
         });
@@ -184,6 +190,7 @@ public class MainActivity extends AppCompatActivity {
         dataSet.add("测试 GreenDao");
         dataSet.add("测试 语音识别");
         dataSet.add("测试 CoordinatorLayout");
+        dataSet.add("测试 Okhttp");
     }
 
 

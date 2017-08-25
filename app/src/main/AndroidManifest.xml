@@ -127,7 +127,14 @@
         android:theme="@style/AppTheme.DefaultTheme"
         android:windowSoftInputMode="adjustNothing|stateAlwaysHidden">
     </activity>
-    <activity android:name=".testCoordinatorLayout.TestCoordinatorLayoutActivity"
+    <activity
+        android:name=".testCoordinatorLayout.TestCoordinatorLayoutActivity"
+        android:theme="@style/AppTheme.DefaultTheme"
+        android:windowSoftInputMode="adjustNothing|stateAlwaysHidden">
+    </activity>
+    <activity
+        android:label="@string/title_activity_test_okhttp"
+        android:name=".testOkhttp.TestOkhttpActivity"
         android:theme="@style/AppTheme.DefaultTheme"
         android:windowSoftInputMode="adjustNothing|stateAlwaysHidden">
     </activity>

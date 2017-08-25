@@ -2,14 +2,18 @@ package com.dvsnier;
 
 import android.app.Application;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.Toast;
 import com.dvsnier.bean.DaoMaster;
 import com.dvsnier.bean.DaoSession;
 import com.dvsnier.crashmonitor.server.MoniterService;
 import com.facebook.stetho.Stetho;
+import com.facebook.stetho.common.LogRedirector;
+import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
 import com.squareup.leakcanary.LeakCanary;
+import okhttp3.OkHttpClient;
 
 /**
  * Created by Administrator on 2017/1/7.
@@ -18,6 +22,7 @@ public class DvsnierApplication extends Application {
 
   protected static DvsnierApplication instance;
   protected DaoSession daoSession;
+  protected OkHttpClient okHttpClient;
 
   public static DvsnierApplication getInstance() {
     return instance;
@@ -37,6 +42,15 @@ public class DvsnierApplication extends Application {
     }
     LeakCanary.install(this);
     Stetho.initializeWithDefaults(this);
+    LogRedirector.setLogger(new LogRedirector.Logger() {
+      @Override public boolean isLoggable(String tag, int priority) {
+        return true;
+      }
+
+      @Override public void log(int priority, String tag, String message) {
+        Log.println(priority, tag, message);
+      }
+    });
     obtainDataBase();
   }
 
@@ -78,5 +92,22 @@ public class DvsnierApplication extends Application {
   protected void stopServer() {
     Intent intent = new Intent(this, MoniterService.class);
     stopService(intent);
+  }
+
+  public static OkHttpClient getHttpClient() {
+    return getInstance().getOkHttpClient();
+  }
+
+  public OkHttpClient getOkHttpClient() {
+    if (null == okHttpClient) {
+      synchronized (OkHttpClient.class) {
+        if (null == okHttpClient) {
+          okHttpClient = new OkHttpClient().newBuilder()
+              .addNetworkInterceptor(new StethoInterceptor())
+              .build();
+        }
+      }
+    }
+    return okHttpClient;
   }
 }
