@@ -80,4 +80,5 @@ dependencies {
   debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
   releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
   compile 'com.squareup.okhttp3:okhttp:3.9.0'
+  compile 'com.orhanobut:logger:2.1.1'
 }

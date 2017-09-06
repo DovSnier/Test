@@ -12,6 +12,8 @@ import com.facebook.stetho.common.LogRedirector;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
 import okhttp3.OkHttpClient;
 
@@ -41,6 +43,11 @@ public class DvsnierApplication extends Application {
       return;
     }
     LeakCanary.install(this);
+    Logger.addLogAdapter(new AndroidLogAdapter() {
+      @Override public boolean isLoggable(int priority, String tag) {
+        return BuildConfig.DEBUG;
+      }
+    });
     Stetho.initializeWithDefaults(this);
     LogRedirector.setLogger(new LogRedirector.Logger() {
       @Override public boolean isLoggable(String tag, int priority) {
@@ -48,7 +55,23 @@ public class DvsnierApplication extends Application {
       }
 
       @Override public void log(int priority, String tag, String message) {
-        Log.println(priority, tag, message);
+        switch (priority) {
+          case Log.VERBOSE:
+            Logger.v("%1$s %2$s", tag, message);
+            break;
+          case Log.DEBUG:
+            Logger.d("%1$s %2$s", tag, message);
+            break;
+          case Log.INFO:
+            Logger.i("%1$s %2$s", tag, message);
+            break;
+          case Log.WARN:
+            Logger.w("%1$s %2$s", tag, message);
+            break;
+          case Log.ERROR:
+            Logger.e("%1$s %2$s", tag, message);
+            break;
+        }
       }
     });
     obtainDataBase();
