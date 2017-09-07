@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,6 +16,7 @@ import com.dvsnier.testAnimator.TestAnimator;
 import com.dvsnier.testCache.TestCacheActivity;
 import com.dvsnier.testCoordinatorLayout.TestCoordinatorLayoutActivity;
 import com.dvsnier.testCrash.TestCrashHandleActivity;
+import com.dvsnier.testEventBus.TestEventBusActivity;
 import com.dvsnier.testGreenDao.TestGreenDaoActivity;
 import com.dvsnier.testImage.TestImageActivity;
 import com.dvsnier.testOkhttp.TestOkhttpActivity;
@@ -27,6 +27,7 @@ import com.dvsnier.testSpeechRecognition.TestSpeechRecognitionActivity;
 import com.dvsnier.testSurface.TestSurfaceActivity;
 import com.dvsnier.testTheme.TestThemeActivity;
 import com.dvsnier.testXUtils.TestXUtilsActivity;
+import com.orhanobut.logger.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = null;
                 if (DEBUG)
-                    Log.d(TAG, "the current position is " + position + " and id is " + id);
+                    Logger.wtf(TAG, "the current position is " + position + " and id is " + id);
                 switch (position) {
                     case 0: // TODO test exception component
                         intent = new Intent(MainActivity.this, TestCrashHandleActivity.class);
@@ -168,6 +169,11 @@ public class MainActivity extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         break;
+                    case 16: // TODO test eventbus
+                        intent = new Intent(MainActivity.this, TestEventBusActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                        break;
                 }
             }
         });
@@ -191,6 +197,7 @@ public class MainActivity extends AppCompatActivity {
         dataSet.add("测试 语音识别");
         dataSet.add("测试 CoordinatorLayout");
         dataSet.add("测试 Okhttp");
+        dataSet.add("测试 EventBus");
     }
 
 

@@ -138,6 +138,10 @@
         android:theme="@style/AppTheme.DefaultTheme"
         android:windowSoftInputMode="adjustNothing|stateAlwaysHidden">
     </activity>
+    <activity
+        android:name=".testEventBus.TestEventBusActivity"
+        android:theme="@style/AppTheme.DefaultTheme"
+        android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
   </application>
 
 </manifest>

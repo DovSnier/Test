@@ -10,7 +10,7 @@ android {
     minSdkVersion 14
     targetSdkVersion 25
     versionCode 20
-    versionName "0.0.15"
+    versionName "0.0.18"
     ndk {
       abiFilters 'armeabi', 'armeabi-v7a'
     }
@@ -75,10 +75,11 @@ dependencies {
   compile 'com.facebook.stetho:stetho-urlconnection:1.5.0'
   compile 'com.facebook.stetho:stetho-js-rhino:1.5.0'
   compile 'com.android.support:design:23.2.1'
+  compile 'com.squareup.okhttp3:okhttp:3.9.0'
+  compile 'com.orhanobut:logger:2.1.1'
+  compile 'org.greenrobot:eventbus:3.0.0'
   testCompile 'junit:junit:4.12'
   testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
   debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
   releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-  compile 'com.squareup.okhttp3:okhttp:3.9.0'
-  compile 'com.orhanobut:logger:2.1.1'
 }
