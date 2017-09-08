@@ -10,7 +10,7 @@ android {
     minSdkVersion 14
     targetSdkVersion 25
     versionCode 20
-    versionName "0.0.18"
+    versionName "0.0.19"
     ndk {
       abiFilters 'armeabi', 'armeabi-v7a'
     }

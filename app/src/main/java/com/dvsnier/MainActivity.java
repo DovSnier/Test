@@ -20,6 +20,7 @@ import com.dvsnier.testEventBus.TestEventBusActivity;
 import com.dvsnier.testGreenDao.TestGreenDaoActivity;
 import com.dvsnier.testImage.TestImageActivity;
 import com.dvsnier.testOkhttp.TestOkhttpActivity;
+import com.dvsnier.testPermission.TestPermissionActivity;
 import com.dvsnier.testRecycleView.TestRecyclerActivity;
 import com.dvsnier.testSQL.TestSQLActivity;
 import com.dvsnier.testScroll.TestScrollActivity;
@@ -174,6 +175,11 @@ public class MainActivity extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         break;
+                    case 17: // TODO test permission
+                        intent = new Intent(MainActivity.this, TestPermissionActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                        break;
                 }
             }
         });
@@ -198,6 +204,7 @@ public class MainActivity extends AppCompatActivity {
         dataSet.add("测试 CoordinatorLayout");
         dataSet.add("测试 Okhttp");
         dataSet.add("测试 EventBus");
+        dataSet.add("测试 Permission");
     }
 
 
