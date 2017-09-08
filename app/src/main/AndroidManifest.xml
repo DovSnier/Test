@@ -5,6 +5,7 @@
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
   <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.CALL_PHONE"/>
 
   <!-- 连接网络权限，用于执行云端语音能力 -->
   <uses-permission android:name="android.permission.INTERNET"/>
@@ -140,6 +141,10 @@
     </activity>
     <activity
         android:name=".testEventBus.TestEventBusActivity"
+        android:theme="@style/AppTheme.DefaultTheme"
+        android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+    <activity
+        android:name=".testPermission.TestPermissionActivity"
         android:theme="@style/AppTheme.DefaultTheme"
         android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
   </application>
