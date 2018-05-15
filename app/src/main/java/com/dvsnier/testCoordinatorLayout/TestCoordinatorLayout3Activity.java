@@ -12,7 +12,7 @@ public class TestCoordinatorLayout3Activity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_coordinator_layout_3);
+        setContentView(R.layout.activity_test_coordinator_layout_4);
         ButterKnife.bind(this);
     }
 
