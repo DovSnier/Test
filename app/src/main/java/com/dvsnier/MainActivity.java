@@ -15,6 +15,7 @@ import com.dvsnier.testAffinity.AffinityActivity;
 import com.dvsnier.testAnimator.TestAnimator;
 import com.dvsnier.testCache.TestCacheActivity;
 import com.dvsnier.testCoordinatorLayout.TestCoordinatorLayout2Activity;
+import com.dvsnier.testCoordinatorLayout.TestCoordinatorLayout3Activity;
 import com.dvsnier.testCoordinatorLayout.TestCoordinatorLayoutActivity;
 import com.dvsnier.testCrash.TestCrashHandleActivity;
 import com.dvsnier.testEventBus.TestEventBusActivity;
@@ -200,6 +201,11 @@ public class MainActivity extends BaseActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         break;
+                    case 19: // TODO test CoordinatorLayout and AppBarLayout
+                        intent = new Intent(MainActivity.this, TestCoordinatorLayout3Activity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                        break;
                 }
             }
         });
@@ -227,6 +233,7 @@ public class MainActivity extends BaseActivity {
         dataSet.add("测试 EventBus");
         dataSet.add("测试 Permission");
         dataSet.add("测试 AppBarLayout");
+        dataSet.add("测试 CollapsingToolbarLayout");
     }
 
 

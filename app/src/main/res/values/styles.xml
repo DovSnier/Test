@@ -54,4 +54,8 @@
     </style>
 
     <!-- ******************************************************************************************** -->
+
+    <style name="AppTheme.AppBarOverlay" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="@style/ThemeOverlay.AppCompat.Light" />
 </resources>
