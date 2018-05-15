@@ -1,19 +1,20 @@
 package com.dvsnier;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
+
+import com.dvsnier.activity.BaseActivity;
 import com.dvsnier.testAIDL.TestAIDLActivity;
 import com.dvsnier.testAffinity.AffinityActivity;
 import com.dvsnier.testAnimator.TestAnimator;
 import com.dvsnier.testCache.TestCacheActivity;
+import com.dvsnier.testCoordinatorLayout.TestCoordinatorLayout2Activity;
 import com.dvsnier.testCoordinatorLayout.TestCoordinatorLayoutActivity;
 import com.dvsnier.testCrash.TestCrashHandleActivity;
 import com.dvsnier.testEventBus.TestEventBusActivity;
@@ -29,8 +30,12 @@ import com.dvsnier.testSurface.TestSurfaceActivity;
 import com.dvsnier.testTheme.TestThemeActivity;
 import com.dvsnier.testXUtils.TestXUtilsActivity;
 import com.orhanobut.logger.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * the test main activity
@@ -38,18 +43,24 @@ import java.util.List;
  * @author dvsnier
  * @since JDK 1.8
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
     @Bind(R.id.testContainer)
     ListView container;
     protected boolean DEBUG;
     private List<String> dataSet = new ArrayList<>();
+    @SuppressWarnings("FieldCanBeLocal")
     private ArrayAdapter adapter;
 
+    @SuppressLint("ObsoleteSdkInt")
     protected void hideSystemUI() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+            } else {
+                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+            }
         }
     }
 
@@ -60,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
             hideSystemUI();
     }
 
+    @SuppressLint("ObsoleteSdkInt")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         DEBUG = getResources().getBoolean(R.bool.debug);
         initializeData();
+        //noinspection Convert2Diamond
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, dataSet);
         container.setAdapter(adapter);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -86,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         container.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = null;
+                Intent intent;
                 if (DEBUG)
                     Logger.wtf(TAG, "the current position is " + position + " and id is " + id);
                 switch (position) {
@@ -165,11 +178,13 @@ public class MainActivity extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         break;
+                    //noinspection SpellCheckingInspection
                     case 15: // TODO test okhttp
                         intent = new Intent(MainActivity.this, TestOkhttpActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         break;
+                    //noinspection SpellCheckingInspection
                     case 16: // TODO test eventbus
                         intent = new Intent(MainActivity.this, TestEventBusActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -177,6 +192,11 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 17: // TODO test permission
                         intent = new Intent(MainActivity.this, TestPermissionActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                        break;
+                    case 18: // TODO test CoordinatorLayout and AppBarLayout
+                        intent = new Intent(MainActivity.this, TestCoordinatorLayout2Activity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         break;
@@ -202,9 +222,11 @@ public class MainActivity extends AppCompatActivity {
         dataSet.add("测试 GreenDao");
         dataSet.add("测试 语音识别");
         dataSet.add("测试 CoordinatorLayout");
+        //noinspection SpellCheckingInspection
         dataSet.add("测试 Okhttp");
         dataSet.add("测试 EventBus");
         dataSet.add("测试 Permission");
+        dataSet.add("测试 AppBarLayout");
     }
 
 
