@@ -13,7 +13,7 @@
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="315dp"
             android:background="@color/colorAccent"
             android:fitsSystemWindows="true"
             app:contentScrim="@color/colorPrimary"
@@ -52,42 +52,42 @@
                     android:visibility="gone" />
             </android.support.v7.widget.Toolbar>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_gravity="bottom"
-                android:orientation="horizontal"
-                app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="数据中心"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="小算问答"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="餐饮知识"
-                    android:textSize="24sp"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-
         </android.support.design.widget.CollapsingToolbarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="bottom"
+            android:background="@color/colorAccent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="数据中心"
+                android:textSize="24sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="小算问答"
+                android:textSize="24sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="餐饮知识"
+                android:textSize="24sp"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
 
     </android.support.design.widget.AppBarLayout>
 
