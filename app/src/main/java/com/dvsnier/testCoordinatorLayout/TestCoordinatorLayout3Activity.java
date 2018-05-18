@@ -4,16 +4,19 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.dvsnier.R;
 import com.dvsnier.activity.BaseActivity;
+import com.dvsnier.testRecycleView.RecyclerViewAdapter;
 import com.dvsnier.utils.AppBarStateChangeListener;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -24,7 +27,7 @@ public class TestCoordinatorLayout3Activity extends BaseActivity {
     @Bind(R.id.app_bar_layout)
     AppBarLayout appBarLayout;
     @Bind(R.id.listView)
-    ListView listView;
+    RecyclerView recyclerView;
     @Bind(R.id.refreshLayout)
     SmartRefreshLayout refreshLayout;
     private AppBarStateChangeListener.State currentState;
@@ -58,16 +61,16 @@ public class TestCoordinatorLayout3Activity extends BaseActivity {
                 currentState = state;
                 switch (state) {
                     case EXPANDED:
-                        Toast.makeText(TestCoordinatorLayout3Activity.this, "EXPANDED", Toast.LENGTH_SHORT).show();
-                        setDefaultViewState();
-                        break;
-                    case COLLAPSED:
-                        Toast.makeText(TestCoordinatorLayout3Activity.this, "COLLAPSED", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(TestCoordinatorLayout3Activity.this, "EXPANDED", Toast.LENGTH_SHORT).show();
                         refreshLayout.setEnableRefresh(true);
                         break;
-                    default:
+                    case COLLAPSED:
+//                        Toast.makeText(TestCoordinatorLayout3Activity.this, "COLLAPSED", Toast.LENGTH_SHORT).show();
                         setDefaultViewState();
-                        Toast.makeText(TestCoordinatorLayout3Activity.this, "IDLE", Toast.LENGTH_SHORT).show();
+                        break;
+                    default:
+//                        Toast.makeText(TestCoordinatorLayout3Activity.this, "IDLE", Toast.LENGTH_SHORT).show();
+                        setDefaultViewState();
                         break;
                 }
             }
@@ -100,8 +103,49 @@ public class TestCoordinatorLayout3Activity extends BaseActivity {
 //        });
 
         //noinspection unchecked
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_activated_1, android.R.id.text1, getResources().getStringArray(R.array.dataSet));
-        listView.setAdapter(arrayAdapter);
+//        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_activated_1, android.R.id.text1, getResources().getStringArray(R.array.dataSet));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(new RecyclerViewAdapter(this, initData()));
+    }
+
+    private List<String> initData() {
+        List<String> dataSet = new ArrayList<>();
+        dataSet.add("0");
+        dataSet.add("1");
+        dataSet.add("2");
+        dataSet.add("3");
+        dataSet.add("4");
+        dataSet.add("5");
+        dataSet.add("6");
+        dataSet.add("7");
+        dataSet.add("8");
+        dataSet.add("9");
+        dataSet.add("我");
+        dataSet.add("是");
+        dataSet.add("地");
+        dataSet.add("球");
+        dataSet.add("人");
+        dataSet.add(",");
+        dataSet.add("我");
+        dataSet.add("爱");
+        dataSet.add("这");
+        dataSet.add("个");
+        dataSet.add("国");
+        dataSet.add("家");
+        dataSet.add("0");
+        dataSet.add("1");
+        dataSet.add("2");
+        dataSet.add("3");
+        dataSet.add("4");
+        dataSet.add("5");
+        dataSet.add("6");
+        dataSet.add("7");
+        dataSet.add("8");
+        dataSet.add("9");
+        return dataSet;
     }
 
     private void setDefaultViewState() {
