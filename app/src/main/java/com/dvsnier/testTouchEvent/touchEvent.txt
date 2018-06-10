@@ -11,3 +11,13 @@
 06-11 02:19:37.543 D/MyTouchView: dispatchTouchEvent onTouchEvent
 06-11 02:19:37.543 D/MiddleLayout: onTouchEvent
 06-11 02:19:37.544 D/ParentLayout: onTouchEvent
+
+2. 顶层祖父控件消费dispatchTouchEvent（）
+06-11 02:27:01.954 D/ParentLayout: dispatchTouchEvent
+06-11 02:27:02.027 D/ParentLayout: dispatchTouchEvent
+
+06-11 02:27:04.620 D/ParentLayout: dispatchTouchEvent
+06-11 02:27:04.671 D/ParentLayout: dispatchTouchEvent
+
+06-11 02:27:06.820 D/ParentLayout: dispatchTouchEvent
+06-11 02:27:06.898 D/ParentLayout: dispatchTouchEvent
