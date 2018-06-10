@@ -1,0 +1,13 @@
+1. 默认情况（子消费事件）
+06-11 02:18:47.071 D/ParentLayout: dispatchTouchEvent
+06-11 02:18:47.072 D/ParentLayout: onInterceptTouchEvent onTouchEvent
+
+06-11 02:19:18.315 D/ParentLayout: dispatchTouchEvent onInterceptTouchEvent
+06-11 02:19:18.316 D/MiddleLayout: dispatchTouchEvent onInterceptTouchEvent onTouchEvent
+06-11 02:19:18.316 D/ParentLayout: onTouchEvent
+
+06-11 02:19:37.543 D/ParentLayout: dispatchTouchEvent onInterceptTouchEvent
+06-11 02:19:37.543 D/MiddleLayout: dispatchTouchEvent onInterceptTouchEvent
+06-11 02:19:37.543 D/MyTouchView: dispatchTouchEvent onTouchEvent
+06-11 02:19:37.543 D/MiddleLayout: onTouchEvent
+06-11 02:19:37.544 D/ParentLayout: onTouchEvent

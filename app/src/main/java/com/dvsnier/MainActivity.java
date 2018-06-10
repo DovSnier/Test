@@ -29,6 +29,7 @@ import com.dvsnier.testScroll.TestScrollActivity;
 import com.dvsnier.testSpeechRecognition.TestSpeechRecognitionActivity;
 import com.dvsnier.testSurface.TestSurfaceActivity;
 import com.dvsnier.testTheme.TestThemeActivity;
+import com.dvsnier.testTouchEvent.TestTouchEventActivity;
 import com.dvsnier.testXUtils.TestXUtilsActivity;
 import com.orhanobut.logger.Logger;
 
@@ -206,6 +207,11 @@ public class MainActivity extends BaseActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         break;
+                    case 20: // TODO test Touch Event
+                        intent = new Intent(MainActivity.this, TestTouchEventActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                        break;
                 }
             }
         });
@@ -234,6 +240,7 @@ public class MainActivity extends BaseActivity {
         dataSet.add("测试 Permission");
         dataSet.add("测试 AppBarLayout");
         dataSet.add("测试 CollapsingToolbarLayout");
+        dataSet.add("测试 TouchEvent");
     }
 
 
