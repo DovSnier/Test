@@ -21,3 +21,10 @@
 
 06-11 02:27:06.820 D/ParentLayout: dispatchTouchEvent
 06-11 02:27:06.898 D/ParentLayout: dispatchTouchEvent
+
+3. 顶层祖父控件消费onInterceptTouchEvent（）
+06-11 02:31:05.737 D/ParentLayout: dispatchTouchEvent onInterceptTouchEvent onTouchEvent
+
+06-11 02:31:09.848 D/ParentLayout: dispatchTouchEvent onInterceptTouchEvent onTouchEvent
+
+06-11 02:31:12.627 D/ParentLayout: dispatchTouchEvent onInterceptTouchEvent onTouchEvent

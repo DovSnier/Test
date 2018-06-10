@@ -33,14 +33,14 @@ public class ParentLayout extends RelativeLayout {
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         Log.d(TAG, "dispatchTouchEvent");
-//        return super.dispatchTouchEvent(event);
-        return true;
+        return super.dispatchTouchEvent(event);
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         Log.d(TAG, "onInterceptTouchEvent");
-        return super.onInterceptTouchEvent(ev);
+//        return super.onInterceptTouchEvent(ev);
+        return true;
     }
 
     @Override
