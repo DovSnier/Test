@@ -2,84 +2,120 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 
 android {
-  compileSdkVersion 25
-  buildToolsVersion '25.0.2'
 
-  defaultConfig {
-    applicationId "com.dvsnier"
-    minSdkVersion 14
-    targetSdkVersion 25
-    versionCode 20
-    versionName "0.0.19"
-    ndk {
-      abiFilters 'armeabi', 'armeabi-v7a'
-    }
-  }
+    compileSdkVersion rootProject.ext.compile_sdk_version
+    buildToolsVersion rootProject.ext.build_tools_version
 
-  buildTypes {
-    release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-    }
-  }
+    defaultConfig {
+        applicationId "com.dvsnier"
+        minSdkVersion rootProject.ext.min_sdk_version
+        targetSdkVersion rootProject.ext.target_sdk_version
+        versionCode rootProject.ext.version_code
+        versionName rootProject.ext.version_name
+        buildConfigField "boolean", "DEVELOPE", "true"
 
-  applicationVariants.all { variant ->
-    variant.outputs.each { output ->
-      def outputFile = output.outputFile
-      if (outputFile != null && outputFile.name.endsWith('.apk')) {
-        def fileName = "dvsnier_demo_" + android.defaultConfig.versionName +
-            "_r" +
-            android.defaultConfig.versionCode +
-            ".apk"
-        // def fileName = "dvsnier_demo_" + android.defaultConfig.versionName + "_r" + android.defaultConfig.versionCode + buildTime() + gitHashCode() + ".apk"
-        output.outputFile = new File(outputFile.parent, fileName)
-      }
-    }
-  }
+        ndk {
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+        }
 
-  sourceSets {
-    main {
-      jniLibs.srcDirs = ['src/main/jniLibs']
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
     }
-  }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "dvsnier_${gitHashCode()}_${defaultConfig.versionName}_r${defaultConfig.versionCode}.apk"
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['src/main/jniLibs']
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 greendao {
-  schemaVersion 1
+    schemaVersion rootProject.ext.greendao_schema_version
 }
 
 def gitHashCode() { return 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim() }
 
-def buildTime() {
-  def date = new Date()
-  def formattedDate = date.format('MMddHHmm')
-  return formattedDate
+static def buildTime(boolean isPrint) {
+    def date = new Date()
+    if (isPrint) {
+        return date.format('yyyy年MM月dd日 HH:mm:SS')
+    } else {
+        return date.format('MMddHHmm')
+    }
+}
+
+task exportAppInfo() {
+    doLast {
+        def time = buildTime(true)
+        def gitHashCode = gitHashCode()
+        def applicationId = android.defaultConfig.applicationId
+        def minSdkVersion = android.defaultConfig.minSdkVersion
+        def targetSdkVersion = android.defaultConfig.targetSdkVersion
+        def versionCode = android.defaultConfig.versionCode
+        def versionName = android.defaultConfig.versionName
+        File propertyFile = rootProject.file("property.txt")
+        if (!propertyFile.exists()) {
+            propertyFile.createNewFile()
+        }
+        propertyFile.withWriter('UTF-8') { writer ->
+            writer.write(time.toString(), 0, time.toString().length())
+            writer.newLine()
+            writer.append("hashCode = " + gitHashCode + "\n")
+            writer.append("applicationId = " + applicationId + "\n")
+            writer.append("minSdkVersion = " + minSdkVersion + "\n")
+            writer.append("targetSdkVersion = " + targetSdkVersion + "\n")
+            writer.append("versionCode = " + versionCode + "\n")
+            writer.append("versionName = " + versionName + "\n")
+            writer.flush()
+            writer.close()
+        }
+        println("exporting app information successfully.")
+    }
 }
 
 dependencies {
-  compile fileTree(include: ['*.jar'], dir: 'libs')
-  compile files('libs/Msc.jar')
-  compile files('libs/Sunflower.jar')
-  compile 'com.android.support:appcompat-v7:23.2.1'
-  compile 'com.android.support:recyclerview-v7:23.2.1'
-  compile 'com.dvsnier:crashmonitor:0.0.3'
-  compile 'com.jakewharton:butterknife:7.0.1'
-  compile 'com.squareup.retrofit2:retrofit:2.0.2'
-  compile 'com.jakewharton:disklrucache:2.0.2'
-  compile 'com.github.bumptech.glide:glide:3.7.0'
-  compile 'org.xutils:xutils:3.3.42'
-  compile 'org.greenrobot:greendao:3.2.2'
-  compile 'com.android.support.constraint:constraint-layout:1.0.2'
-  compile 'com.facebook.stetho:stetho:1.5.0'
-  compile 'com.facebook.stetho:stetho-okhttp3:1.5.0'
-  compile 'com.facebook.stetho:stetho-urlconnection:1.5.0'
-  compile 'com.facebook.stetho:stetho-js-rhino:1.5.0'
-  compile 'com.android.support:design:23.2.1'
-  compile 'com.squareup.okhttp3:okhttp:3.9.0'
-  compile 'com.orhanobut:logger:2.1.1'
-  compile 'org.greenrobot:eventbus:3.0.0'
-  testCompile 'junit:junit:4.12'
-  testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-  debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
-  releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation files('libs/Msc.jar')
+    implementation files('libs/Sunflower.jar')
+    implementation "com.android.support:appcompat-v7:$rootProject.support_appcompat_version"
+    implementation "com.android.support:recyclerview-v7:$rootProject.support_recyclerview_version"
+    implementation "com.dvsnier:crashmonitor:$rootProject.crash_monitor_version"
+    implementation "com.jakewharton:butterknife:$rootProject.butterknife_version"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit_version"
+    implementation "com.jakewharton:disklrucache:$rootProject.disklrucache_version"
+    implementation "com.github.bumptech.glide:glide:$rootProject.glide_version"
+    implementation "org.xutils:xutils:$rootProject.xutils_version"
+    implementation "org.greenrobot:greendao:$rootProject.greendao_version"
+    implementation "com.android.support.constraint:constraint-layout:$rootProject.support_constraint_layout_version"
+    implementation "com.facebook.stetho:stetho:$rootProject.stetho_version"
+    implementation "com.facebook.stetho:stetho-okhttp3:$rootProject.stetho_okhttp3_version"
+    implementation "com.facebook.stetho:stetho-js-rhino:$rootProject.stetho_js_rhino_version"
+    implementation "com.android.support:design:$rootProject.support_design_version"
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttp3_version"
+    implementation "com.orhanobut:logger:$rootProject.logger_version"
+    implementation "org.greenrobot:eventbus:$rootProject.eventbus_version"
+    testImplementation "junit:junit:$rootProject.junit_version"
+    testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanary_android_no_op_version"
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$rootProject.leakcanary_android"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanary_android_no_op_version"
 }
