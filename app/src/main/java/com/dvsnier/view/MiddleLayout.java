@@ -5,9 +5,10 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
+
+import com.dvsnier.utils.DebugUtil;
 
 public class MiddleLayout extends RelativeLayout {
 
@@ -32,19 +33,19 @@ public class MiddleLayout extends RelativeLayout {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
-        Log.d(TAG, "dispatchTouchEvent");
+        DebugUtil.d(TAG, "dispatchTouchEvent", event);
         return super.dispatchTouchEvent(event);
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        Log.d(TAG, "onInterceptTouchEvent");
+        DebugUtil.d(TAG, "onInterceptTouchEvent", ev);
         return super.onInterceptTouchEvent(ev);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.d(TAG, "onTouchEvent");
+        DebugUtil.d(TAG, "onTouchEvent", event);
         return super.onTouchEvent(event);
     }
 }

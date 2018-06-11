@@ -3,8 +3,9 @@ package com.dvsnier.view;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
+
+import com.dvsnier.utils.DebugUtil;
 
 public class MyTouchView extends android.support.v7.widget.AppCompatTextView {
 
@@ -24,13 +25,13 @@ public class MyTouchView extends android.support.v7.widget.AppCompatTextView {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
-        Log.d(TAG, "dispatchTouchEvent");
+        DebugUtil.d(TAG, "dispatchTouchEvent", event);
         return super.dispatchTouchEvent(event);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.d(TAG, "onTouchEvent");
+        DebugUtil.d(TAG, "onTouchEvent", event);
         return super.onTouchEvent(event);
     }
 }
