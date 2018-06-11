@@ -49,7 +49,7 @@ public abstract class BaseActivity extends AppCompatActivity {
   }
 
   public void onLog(String message) {
-    onLog(message, null);
+      onLog(message, new Object[]{});
   }
 
   public void onLog(@NonNull String message, Object... args) {

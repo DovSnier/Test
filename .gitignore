@@ -39,3 +39,6 @@ out
 # Eclipse project files
 .classpath
 .project
+
+# alias files
+property.txt

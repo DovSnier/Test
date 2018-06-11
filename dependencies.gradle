@@ -1,0 +1,39 @@
+ext {
+
+    //编译环境
+    build_gradle_version = '3.1.2'
+    compile_sdk_version = 27
+    build_tools_version = '27.0.3'
+
+    // 配置环境
+    min_sdk_version = 14
+    target_sdk_version = 27
+    version_code = 21
+    version_name = "0.0.20"
+
+    // support SDK 配置
+    support_appcompat_version = "23.2.1"
+    support_recyclerview_version = "23.2.1"
+    support_constraint_layout_version = "1.0.2"
+    support_design_version = "23.2.1"
+    junit_version = "4.12"
+
+    // SDK 配置
+    greendao_gradle_plugin_version = '3.2.2'
+    greendao_schema_version = 1
+    crash_monitor_version = "0.0.3"
+    butterknife_version = "7.0.1"
+    retrofit_version = "2.0.2"
+    disklrucache_version = "2.0.2"
+    glide_version = "3.7.0"
+    xutils_version = "3.3.42"
+    greendao_version = "3.2.2"
+    stetho_version = "1.5.0"
+    stetho_okhttp3_version = "1.5.0"
+    stetho_js_rhino_version = "1.5.0"
+    okhttp3_version = "3.9.0"
+    logger_version = "2.1.1"
+    eventbus_version = "3.0.0"
+    leakcanary_android_no_op_version = "1.5.4"
+    leakcanary_android = "1.5.4"
+}
