@@ -1,31 +1,31 @@
 package com.dvsnier.testRecycleView;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.dvsnier.R;
+import com.dvsnier.base.IBaseOnClickListener;
+import com.dvsnier.base.adapter.BaseRecyclerViewAdapter;
+import com.dvsnier.base.holder.BaseViewHolder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Administrator on 2016/10/28.
  */
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class RecyclerViewAdapter extends BaseRecyclerViewAdapter<String, RecyclerViewAdapter.ViewHolder> {
 
-    private Context context;
-    private List<String> dataSet = new ArrayList<>();
-
-    public RecyclerViewAdapter() {
+    public RecyclerViewAdapter(@NonNull Context context) {
+        super(context);
     }
 
-    public RecyclerViewAdapter(Context context, List<String> dataSet) {
-        this.context = context;
-        this.dataSet = dataSet;
+    public RecyclerViewAdapter(@NonNull Context context, List<String> data) {
+        super(context, data);
     }
 
     @Override
@@ -34,39 +34,42 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        String value = dataSet.get(position);
-        holder.content.setText(value);
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        super.onBindViewHolder(holder, position);
+        if (null != holder) {
+            ((ViewHolder) holder).setOnClickListener(getOnClickListener());
+            ((ViewHolder) holder).onBindViewHolder(context, position, getItem(position));
+        }
     }
 
-    @Override
-    public int getItemCount() {
-        return null != dataSet ? dataSet.size() : 0;
-    }
-
-    public List<String> getDataSet() {
-        return dataSet;
-    }
-
-    public void setDataSet(List<String> dataSet) {
-        this.dataSet = dataSet;
-    }
-
-    public Context getContext() {
-        return context;
-    }
-
-    public void setContext(Context context) {
-        this.context = context;
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends BaseViewHolder<String> {
 
         TextView content;
+        protected OnItemClickListener onItemClickListener;
 
         public ViewHolder(View itemView) {
             super(itemView);
             content = (TextView) itemView.findViewById(R.id.content);
+        }
+
+        @Override
+        public void onBindViewHolder(Context context, final int position, final String bean) {
+            super.onBindViewHolder(context, position, bean);
+            content.setText(bean);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (null != onItemClickListener) {
+                        onItemClickListener.onItemClick(v, position, bean);
+                    }
+                }
+            });
+        }
+
+        @Override
+        public void setOnClickListener(IBaseOnClickListener onClickListener) {
+            if (null != onClickListener && onClickListener instanceof OnItemClickListener)
+                this.onItemClickListener = (OnItemClickListener) onClickListener;
         }
     }
 }
