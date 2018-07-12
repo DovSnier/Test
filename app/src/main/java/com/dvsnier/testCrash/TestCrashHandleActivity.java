@@ -1,6 +1,5 @@
 package com.dvsnier.testCrash;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -10,7 +9,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.dvsnier.R;
-import com.dvsnier.crashmonitor.server.MoniterService;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -58,39 +56,12 @@ public class TestCrashHandleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_crash_handle);
-        initializedServerConfig();
         ButterKnife.bind(this);
         btnException.setOnClickListener(onClickListener);
-    }
-
-
-    /**
-     * the initialized server config
-     *
-     * @version 0.0.2
-     */
-    protected void initializedServerConfig() {
-        Intent intent = new Intent(this, MoniterService.class);
-        startService(intent);
-    }
-
-    /**
-     * to closed server moniter
-     *
-     * @version 0.0.1
-     */
-    protected void stopServer() {
-        Intent intent = new Intent(this, MoniterService.class);
-        stopService(intent);
     }
 
     private void testException() {
         Integer integer = new Integer("str123");
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        stopServer();
-    }
 }

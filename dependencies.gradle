@@ -12,16 +12,18 @@ ext {
     version_name = "0.0.20"
 
     // support SDK 配置
-    support_appcompat_version = "23.2.1"
-    support_recyclerview_version = "23.2.1"
+    support_annotations_version = "27.1.1"
+    support_appcompat_version = "27.1.1"
+    support_recyclerview_version = "27.1.1"
     support_constraint_layout_version = "1.0.2"
-    support_design_version = "23.2.1"
+    support_design_version = "27.1.1"
     junit_version = "4.12"
 
     // SDK 配置
     greendao_gradle_plugin_version = '3.2.2'
     greendao_schema_version = 1
-    crash_monitor_version = "0.0.3"
+    base_version = "0.0.1"
+    crash_monitor_version = "0.0.4"
     butterknife_version = "7.0.1"
     retrofit_version = "2.0.2"
     disklrucache_version = "2.0.2"

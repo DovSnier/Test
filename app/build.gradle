@@ -97,9 +97,13 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation files('libs/Msc.jar')
     implementation files('libs/Sunflower.jar')
+    //noinspection GradleCompatible
     implementation "com.android.support:appcompat-v7:$rootProject.support_appcompat_version"
+    implementation "com.android.support:support-annotations:$rootProject.support_annotations_version"
     implementation "com.android.support:recyclerview-v7:$rootProject.support_recyclerview_version"
-    implementation "com.dvsnier:crashmonitor:$rootProject.crash_monitor_version"
+    implementation "com.dvsnier:base:$rootProject.base_version"
+    debugImplementation "com.dvsnier:crash:$rootProject.crash_monitor_version"
+    releaseImplementation "com.dvsnier:crash-no:$rootProject.crash_monitor_version"
     implementation "com.jakewharton:butterknife:$rootProject.butterknife_version"
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit_version"
     implementation "com.jakewharton:disklrucache:$rootProject.disklrucache_version"
