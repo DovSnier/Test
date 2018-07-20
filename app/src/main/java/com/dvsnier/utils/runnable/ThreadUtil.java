@@ -27,7 +27,7 @@ public class ThreadUtil {
 
     public static void execute(Runnable runnable) {
         if (null == executorService) {
-            synchronized (com.dvsnier.utils.deprecated.ThreadUtil.class) {
+            synchronized (ThreadUtil.class) {
                 newInstance();
             }
         }
