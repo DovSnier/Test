@@ -4,7 +4,7 @@ import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
 
-import com.dvsnier.common.presenter.BasePresenter;
+import com.dvsnier.common.presenter.BaseCompatPresenter;
 import com.dvsnier.common.view.BaseCompatActivity;
 import com.orhanobut.logger.Logger;
 
@@ -12,7 +12,7 @@ import com.orhanobut.logger.Logger;
  * Created by lzw on 2017/9/7.
  */
 
-public abstract class BaseActivity<T extends BasePresenter> extends BaseCompatActivity<T> {
+public abstract class BaseActivity<T extends BaseCompatPresenter> extends BaseCompatActivity<T> {
 
     protected ProgressDialog mProgressDialog;
 

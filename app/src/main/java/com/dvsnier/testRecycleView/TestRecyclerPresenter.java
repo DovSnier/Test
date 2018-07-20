@@ -1,6 +1,6 @@
 package com.dvsnier.testRecycleView;
 
-import com.dvsnier.common.presenter.BasePresenter;
+import com.dvsnier.common.presenter.BaseCompatPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
  * TestRecyclerPresenter
  * Created by dovsnier on 2018/7/12.
  */
-public class TestRecyclerPresenter extends BasePresenter<TestRecyclerActivity> {
+public class TestRecyclerPresenter extends BaseCompatPresenter<TestRecyclerActivity> {
 
     public List<String> request() {
         List<String> dataSet = new ArrayList<>();

@@ -11,6 +11,7 @@ import com.dvsnier.R;
 import com.dvsnier.base.IBaseOnClickListener;
 import com.dvsnier.base.adapter.BaseRecyclerViewAdapter;
 import com.dvsnier.base.holder.BaseViewHolder;
+import com.dvsnier.common.listener.IOnItemClickListener;
 
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class RecyclerViewAdapter extends BaseRecyclerViewAdapter<String, Recycle
     public static class ViewHolder extends BaseViewHolder<String> {
 
         TextView content;
-        protected OnItemClickListener onItemClickListener;
+        protected IOnItemClickListener onItemClickListener;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -68,8 +69,8 @@ public class RecyclerViewAdapter extends BaseRecyclerViewAdapter<String, Recycle
 
         @Override
         public void setOnClickListener(IBaseOnClickListener onClickListener) {
-            if (null != onClickListener && onClickListener instanceof OnItemClickListener)
-                this.onItemClickListener = (OnItemClickListener) onClickListener;
+            if (null != onClickListener && onClickListener instanceof IOnItemClickListener)
+                this.onItemClickListener = (IOnItemClickListener) onClickListener;
         }
     }
 }
