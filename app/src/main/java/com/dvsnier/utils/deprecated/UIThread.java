@@ -1,4 +1,4 @@
-package com.dvsnier.utils;
+package com.dvsnier.utils.deprecated;
 
 import android.support.annotation.NonNull;
 

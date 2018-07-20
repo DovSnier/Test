@@ -1,4 +1,4 @@
-package com.dvsnier.utils;
+package com.dvsnier.utils.deprecated;
 
 import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
@@ -6,10 +6,10 @@ import android.support.annotation.NonNull;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static com.dvsnier.utils.ExecuteUtil.ExecuteType.CACHED;
-import static com.dvsnier.utils.ExecuteUtil.ExecuteType.FIXED;
-import static com.dvsnier.utils.ExecuteUtil.ExecuteType.SCHEDULED;
-import static com.dvsnier.utils.ExecuteUtil.ExecuteType.SINGLE;
+import static com.dvsnier.utils.deprecated.ExecuteUtil.ExecuteType.CACHED;
+import static com.dvsnier.utils.deprecated.ExecuteUtil.ExecuteType.FIXED;
+import static com.dvsnier.utils.deprecated.ExecuteUtil.ExecuteType.SCHEDULED;
+import static com.dvsnier.utils.deprecated.ExecuteUtil.ExecuteType.SINGLE;
 
 /**
  * 线程池工具类

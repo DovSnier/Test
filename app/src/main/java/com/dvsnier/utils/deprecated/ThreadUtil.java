@@ -1,4 +1,4 @@
-package com.dvsnier.utils;
+package com.dvsnier.utils.deprecated;
 
 import android.os.Handler;
 import android.os.Looper;
