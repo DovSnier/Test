@@ -10,10 +10,10 @@ buildscript {
     ext.greendao_gradle_plugin_version = '3.2.2'
 
     repositories {
-        jcenter()
         mavenCentral()
         mavenLocal()
         google()
+        jcenter()
     }
 
     dependencies {
@@ -27,10 +27,10 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
         mavenCentral()
         mavenLocal()
         google()
+        jcenter()
     }
 }
 
