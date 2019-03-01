@@ -102,7 +102,7 @@ dependencies {
     implementation "com.android.support:appcompat-v7:$rootProject.support_appcompat_version"
     implementation "com.android.support:support-annotations:$rootProject.support_annotations_version"
     implementation "com.android.support:recyclerview-v7:$rootProject.support_recyclerview_version"
-    implementation "com.dvsnier:base:$rootProject.base_version"
+//    implementation "com.dvsnier:base:$rootProject.base_version"
     implementation "com.dvsnier:common:$rootProject.common_version"
     debugImplementation "com.dvsnier:crash:$rootProject.crash_monitor_version"
     releaseImplementation "com.dvsnier:crash-no:$rootProject.crash_monitor_version"

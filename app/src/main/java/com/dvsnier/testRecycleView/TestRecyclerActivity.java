@@ -9,7 +9,7 @@ import android.widget.Toast;
 import com.dvsnier.R;
 import com.dvsnier.activity.BaseActivity;
 import com.dvsnier.base.task.UIRunnable;
-import com.dvsnier.base.view.ICompatV1BaseView;
+import com.dvsnier.common.compat.ICompatBaseView;
 import com.dvsnier.common.listener.IOnItemClickListener;
 import com.dvsnier.utils.runnable.ThreadUtil;
 
@@ -19,7 +19,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class TestRecyclerActivity extends BaseActivity<TestRecyclerPresenter> implements IOnItemClickListener<String>, ICompatV1BaseView {
+public class TestRecyclerActivity extends BaseActivity<TestRecyclerPresenter> implements IOnItemClickListener<String>, ICompatBaseView {
 
     @Bind(R.id.recycler)
     RecyclerView recyclerView;

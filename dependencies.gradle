@@ -22,8 +22,8 @@ ext {
     // SDK 配置
     greendao_gradle_plugin_version = '3.2.2'
     greendao_schema_version = 1
-    base_version = "0.0.2"
-    common_version = "0.0.2@aar"
+    base_version = "0.0.3"
+    common_version = "0.0.3"
     crash_monitor_version = "0.0.4"
     butterknife_version = "7.0.1"
     retrofit_version = "2.0.2"
