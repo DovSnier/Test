@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'org.greenrobot.greendao'
 
 android {
 
@@ -50,10 +49,6 @@ android {
     }
 }
 
-greendao {
-    schemaVersion rootProject.ext.greendao_schema_version
-}
-
 def gitHashCode() { return 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim() }
 
 static def buildTime(boolean isPrint) {
@@ -98,13 +93,15 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation files('libs/Msc.jar')
     implementation files('libs/Sunflower.jar')
-
     implementation project(':base')
+    implementation project(':bean')
 
     //noinspection GradleDependency
     implementation "com.android.support:recyclerview-v7:$rootProject.support_recyclerview_version"
+
     //noinspection GradleDependency
     implementation "com.android.support.constraint:constraint-layout:$rootProject.support_constraint_layout_version"
+
     //noinspection GradleDependency
     implementation "com.android.support:design:$rootProject.support_design_version"
 
@@ -113,20 +110,14 @@ dependencies {
     implementation "com.jakewharton:disklrucache:$rootProject.disklrucache_version"
     implementation "com.github.bumptech.glide:glide:$rootProject.glide_version"
     implementation "org.xutils:xutils:$rootProject.xutils_version"
-    implementation "org.greenrobot:greendao:$rootProject.greendao_version"
-
 
     implementation "com.facebook.stetho:stetho:$rootProject.stetho_version"
     implementation "com.facebook.stetho:stetho-okhttp3:$rootProject.stetho_okhttp3_version"
     implementation "com.facebook.stetho:stetho-js-rhino:$rootProject.stetho_js_rhino_version"
-
-
     implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttp3_version"
     implementation "com.orhanobut:logger:$rootProject.logger_version"
     implementation "org.greenrobot:eventbus:$rootProject.eventbus_version"
-
     testImplementation "junit:junit:$rootProject.junit_version"
-
     testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanary_android_no_op_version"
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$rootProject.leakcanary_android"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanary_android_no_op_version"

@@ -1,15 +1,14 @@
 apply plugin: 'com.android.library'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion rootProject.ext.compile_sdk_version
-    buildToolsVersion rootProject.ext.build_tools_version
 
     defaultConfig {
         minSdkVersion rootProject.ext.min_sdk_version
         targetSdkVersion rootProject.ext.target_sdk_version
         versionCode rootProject.ext.version_bean_code
         versionName rootProject.ext.version_bean_name
-        buildConfigField "boolean", "DEVELOPE", "true"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -22,6 +21,10 @@ android {
         }
     }
 
+}
+
+greendao {
+    schemaVersion rootProject.ext.greendao_schema_version
 }
 
 dependencies {

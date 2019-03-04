@@ -2,7 +2,6 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion rootProject.ext.compile_sdk_version
-    buildToolsVersion rootProject.ext.build_tools_version
 
     defaultConfig {
 
@@ -10,11 +9,6 @@ android {
         targetSdkVersion rootProject.ext.target_sdk_version
         versionCode rootProject.ext.version_base_code
         versionName rootProject.ext.version_base_name
-        buildConfigField "boolean", "DEVELOPE", "true"
-
-        ndk {
-            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
-        }
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -35,8 +29,8 @@ dependencies {
 //    implementation "com.dvsnier:base:$rootProject.base_version"
     api "com.dvsnier:common:$rootProject.common_version"
 
-    debugImplementation "com.dvsnier:crash:$rootProject.crash_monitor_version"
-    releaseImplementation "com.dvsnier:crash-no:$rootProject.crash_monitor_version"
+    debugApi "com.dvsnier:crash:$rootProject.crash_monitor_version"
+    releaseApi "com.dvsnier:crash-no:$rootProject.crash_monitor_version"
 
     //noinspection GradleDependency,GradleCompatible
     api "com.android.support:appcompat-v7:$rootProject.support_appcompat_version"
