@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.dvsnier.R;
-import com.dvsnier.activity.BaseActivity;
+import com.dvsnier.base.activity.BaseActivity;
 import com.dvsnier.base.task.UIRunnable;
 import com.dvsnier.common.compat.ICompatBaseView;
 import com.dvsnier.common.listener.IOnItemClickListener;

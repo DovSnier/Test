@@ -9,7 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.dvsnier.activity.BaseActivity;
+import com.dvsnier.base.activity.BaseActivity;
 import com.dvsnier.testAIDL.TestAIDLActivity;
 import com.dvsnier.testAffinity.AffinityActivity;
 import com.dvsnier.testAnimator.TestAnimator;
