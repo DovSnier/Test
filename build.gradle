@@ -6,17 +6,18 @@ apply from: 'dependencies.gradle'
 
 buildscript {
 
-    ext.build_gradle_version = '3.0.1'
+    ext.build_gradle_version = '3.1.4'
     ext.greendao_gradle_plugin_version = '3.2.2'
 
     repositories {
-        jcenter()
         mavenCentral()
+        mavenLocal()
         google()
+        jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.2'
+        classpath "com.android.tools.build:gradle:$build_gradle_version"
         classpath "org.greenrobot:greendao-gradle-plugin:$greendao_gradle_plugin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -26,9 +27,10 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
         mavenCentral()
+        mavenLocal()
         google()
+        jcenter()
     }
 }
 

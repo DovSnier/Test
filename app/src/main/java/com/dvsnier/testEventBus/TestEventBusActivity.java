@@ -9,7 +9,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.dvsnier.R;
-import com.dvsnier.activity.BaseActivity;
+import com.dvsnier.base.activity.BaseActivity;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
