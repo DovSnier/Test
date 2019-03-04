@@ -8,8 +8,12 @@ ext {
     // 配置环境
     min_sdk_version = 14
     target_sdk_version = 27
-    version_code = 21
-    version_name = "0.0.20"
+    version_code = 22
+    version_name = "0.0.22"
+    version_app_code = 22
+    version_app_name = "0.0.22"
+    version_base_code = 1
+    version_base_name = "0.0.1"
 
     // support SDK 配置
     support_annotations_version = "27.1.1"
@@ -18,6 +22,8 @@ ext {
     support_constraint_layout_version = "1.0.2"
     support_design_version = "27.1.1"
     junit_version = "4.12"
+    runner_version = "1.0.2"
+    espresso_core_version = "3.0.2"
 
     // SDK 配置
     greendao_gradle_plugin_version = '3.2.2'
