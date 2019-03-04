@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.dvsnier.R;
-import com.dvsnier.activity.BaseActivity;
+import com.dvsnier.base.activity.BaseActivity;
 
 public class TestTouchEventActivity extends BaseActivity {
 

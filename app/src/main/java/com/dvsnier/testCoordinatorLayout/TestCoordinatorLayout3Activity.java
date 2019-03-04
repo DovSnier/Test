@@ -3,7 +3,7 @@ package com.dvsnier.testCoordinatorLayout;
 import android.os.Bundle;
 
 import com.dvsnier.R;
-import com.dvsnier.activity.BaseActivity;
+import com.dvsnier.base.activity.BaseActivity;
 
 import butterknife.ButterKnife;
 
