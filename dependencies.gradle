@@ -16,6 +16,8 @@ ext {
     version_base_name = "0.0.1"
     version_bean_code = 1
     version_bean_name = "0.0.1"
+    version_doc_code = 1
+    version_doc_name = "0.0.1"
 
     // support SDK 配置
     support_annotations_version = "27.1.1"
