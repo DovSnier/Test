@@ -117,7 +117,7 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttp3_version"
     implementation "com.orhanobut:logger:$rootProject.logger_version"
     implementation "org.greenrobot:eventbus:$rootProject.eventbus_version"
-    testImplementation "junit:junit:$rootProject.junit_version"
+    implementation "junit:junit:$rootProject.junit_version"
     testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanary_android_no_op_version"
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$rootProject.leakcanary_android"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanary_android_no_op_version"
