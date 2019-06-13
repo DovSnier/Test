@@ -1,1 +1,7 @@
-include ':app', ':base', ':bean', ':doc', ':utils'
+include ':app', ':base', ':bean', ':doc', ':utils',
+        ':research:widget',
+        ':research:view',
+        ':research:service',
+        ':research:provider',
+        ':research:common',
+        ':research:tpl'

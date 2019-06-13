@@ -21,6 +21,20 @@ ext {
     version_doc_code = 1
     version_doc_name = "0.0.1"
 
+    // modules 配置
+    version_widget_code = 1
+    version_widget_name = "0.0.1"
+    version_view_code = 1
+    version_view_name = "0.0.1"
+    version_common_code = 1
+    version_common_name = "0.0.1"
+    version_service_code = 1
+    version_service_name = "0.0.1"
+    version_provider_code = 1
+    version_provider_name = "0.0.1"
+    version_tpl_code = 1
+    version_tpl_name = "0.0.1"
+
     // support SDK 配置
     support_annotations_version = "28.0.0"
     support_appcompat_version = "28.0.0"
