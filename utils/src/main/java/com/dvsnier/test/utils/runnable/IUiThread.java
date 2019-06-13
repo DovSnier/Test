@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 /**
  * ui thread interface
  * Created by lizw on 2016/7/25.
+ * @deprecated
  */
 public interface IUiThread {
 

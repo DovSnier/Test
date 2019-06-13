@@ -96,6 +96,7 @@ dependencies {
     implementation project(':base')
     implementation project(':bean')
     implementation project(':utils')
+    implementation project(':research:interceptor')
 
     implementation "com.android.support:recyclerview-v7:$rootProject.support_recyclerview_version"
     implementation "com.android.support:appcompat-v7:$rootProject.support_appcompat_version"

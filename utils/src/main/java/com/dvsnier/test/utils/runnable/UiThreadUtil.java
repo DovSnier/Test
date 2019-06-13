@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 /**
  * ui thread tool class
  * Created by lizw on 2016/7/25.
+ *
+ * @deprecated
  */
 public class UiThreadUtil implements IUiThread {
 

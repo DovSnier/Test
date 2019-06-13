@@ -30,6 +30,7 @@ greendao {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation "com.dvsnier:base:$rootProject.base_version"
     api "org.greenrobot:greendao:$rootProject.greendao_version"
 
     testImplementation "junit:junit:$rootProject.junit_version"

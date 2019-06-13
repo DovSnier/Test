@@ -7,6 +7,7 @@ import org.json.JSONTokener;
 /**
  * Json结果解析类
  */
+@Deprecated
 public class JsonParser {
 
     public static String parseIatResult(String json) {

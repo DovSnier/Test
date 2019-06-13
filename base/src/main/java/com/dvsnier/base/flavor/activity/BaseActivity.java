@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.dvsnier.common.compat.ICompatBaseView;
 import com.dvsnier.common.presenter.BaseCompatPresenter;
 import com.dvsnier.common.view.BaseCompatActivity;
 
@@ -12,7 +13,7 @@ import com.dvsnier.common.view.BaseCompatActivity;
  * Created by lzw on 2017/9/7.
  */
 
-public abstract class BaseActivity<T extends BaseCompatPresenter> extends BaseCompatActivity<T> {
+public abstract class BaseActivity<T extends BaseCompatPresenter> extends BaseCompatActivity<T> implements ICompatBaseView {
 
     protected ProgressDialog mProgressDialog;
 
@@ -20,6 +21,16 @@ public abstract class BaseActivity<T extends BaseCompatPresenter> extends BaseCo
     protected void onDestroy() {
         super.onDestroy();
         onDismissProgress();
+    }
+
+    @Override
+    public void initView() {
+
+    }
+
+    @Override
+    public void initData() {
+
     }
 
     public void onShowProgress() {

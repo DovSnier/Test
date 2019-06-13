@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * general thread tool class(don't consider thread execution with return values)
  * Created by lizw on 2016/9/12.
+ * @deprecated
  */
 public class ThreadUtil {
 
