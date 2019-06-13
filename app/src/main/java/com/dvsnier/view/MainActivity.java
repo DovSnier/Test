@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.dvsnier.R;
-import com.dvsnier.base.activity.BaseActivity;
+import com.dvsnier.base.flavor.activity.BaseActivity;
 import com.dvsnier.base.task.ITask;
 import com.dvsnier.common.compat.ICompatBaseView;
 import com.dvsnier.presenter.MainPresenter;

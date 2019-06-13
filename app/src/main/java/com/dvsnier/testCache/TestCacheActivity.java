@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.dvsnier.R;
-import com.dvsnier.utils.MD5;
-import com.dvsnier.utils.U;
+import com.dvsnier.test.utils.MD5;
+import com.dvsnier.test.utils.U;
 import com.jakewharton.disklrucache.DiskLruCache;
 
 import junit.framework.Assert;

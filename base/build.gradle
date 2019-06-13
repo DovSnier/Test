@@ -27,14 +27,17 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
 //    implementation "com.dvsnier:base:$rootProject.base_version"
-    api "com.dvsnier:common:$rootProject.common_version"
+    api("com.dvsnier:common:$rootProject.common_version") {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
 
     debugApi "com.dvsnier:crash:$rootProject.crash_monitor_version"
     releaseApi "com.dvsnier:crash-no:$rootProject.crash_monitor_version"
 
-    //noinspection GradleDependency,GradleCompatible
-    api "com.android.support:appcompat-v7:$rootProject.support_appcompat_version"
-    api "com.android.support:support-annotations:$rootProject.support_annotations_version"
+    implementation "com.android.support:appcompat-v7:$rootProject.support_appcompat_version"
+    implementation "com.android.support:support-annotations:$rootProject.support_annotations_version"
 
     testImplementation "junit:junit:$rootProject.junit_version"
 

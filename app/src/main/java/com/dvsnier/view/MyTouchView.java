@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-import com.dvsnier.utils.DebugUtil;
+import com.dvsnier.test.utils.DebugUtil;
 
 public class MyTouchView extends android.support.v7.widget.AppCompatTextView {
 

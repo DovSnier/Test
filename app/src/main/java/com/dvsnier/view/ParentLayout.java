@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 
-import com.dvsnier.utils.DebugUtil;
+import com.dvsnier.test.utils.DebugUtil;
 
 public class ParentLayout extends RelativeLayout {
 

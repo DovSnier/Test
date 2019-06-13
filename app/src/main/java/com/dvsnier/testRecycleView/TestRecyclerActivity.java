@@ -7,11 +7,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.dvsnier.R;
-import com.dvsnier.base.activity.BaseActivity;
+import com.dvsnier.base.flavor.activity.BaseActivity;
 import com.dvsnier.base.task.UIRunnable;
 import com.dvsnier.common.compat.ICompatBaseView;
 import com.dvsnier.common.listener.IOnItemClickListener;
-import com.dvsnier.utils.runnable.ThreadUtil;
+import com.dvsnier.test.utils.runnable.ThreadUtil;
 
 import java.util.ArrayList;
 import java.util.List;

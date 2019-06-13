@@ -17,7 +17,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.dvsnier.R;
-import com.dvsnier.base.activity.BaseActivity;
+import com.dvsnier.base.flavor.activity.BaseActivity;
 
 public class TestPermissionActivity extends BaseActivity
     implements ActivityCompat.OnRequestPermissionsResultCallback {

@@ -1,4 +1,4 @@
-package com.dvsnier.base.activity;
+package com.dvsnier.base.flavor.activity;
 
 import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
