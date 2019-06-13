@@ -9,7 +9,6 @@ import android.widget.Toast;
 import com.dvsnier.R;
 import com.dvsnier.base.flavor.activity.BaseActivity;
 import com.dvsnier.base.task.UIRunnable;
-import com.dvsnier.common.compat.ICompatBaseView;
 import com.dvsnier.common.listener.IOnItemClickListener;
 import com.dvsnier.test.utils.runnable.ThreadUtil;
 
@@ -19,7 +18,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class TestRecyclerActivity extends BaseActivity<TestRecyclerPresenter> implements IOnItemClickListener<String>, ICompatBaseView {
+public class TestRecyclerActivity extends BaseActivity<TestRecyclerPresenter> implements IOnItemClickListener<String> {
 
     @Bind(R.id.recycler)
     RecyclerView recyclerView;
@@ -36,6 +35,7 @@ public class TestRecyclerActivity extends BaseActivity<TestRecyclerPresenter> im
 
     @Override
     public void initView() {
+        super.initView();
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
@@ -48,6 +48,7 @@ public class TestRecyclerActivity extends BaseActivity<TestRecyclerPresenter> im
 
     @Override
     public void initData() {
+        super.initData();
         final List<String> dataSet = new ArrayList<>();
         ThreadUtil.execute(new Runnable() {
             @Override
