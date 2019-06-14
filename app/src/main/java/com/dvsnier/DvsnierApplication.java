@@ -10,8 +10,6 @@ import com.dvsnier.crash.Crash;
 import com.facebook.stetho.Stetho;
 import com.facebook.stetho.common.LogRedirector;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
-import com.iflytek.cloud.SpeechConstant;
-import com.iflytek.cloud.SpeechUtility;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
@@ -35,7 +33,7 @@ public class DvsnierApplication extends Application {
     public void onCreate() {
         // 将“12345678”替换成您申请的APPID，申请地址：http://www.xfyun.cn
         // 请勿在“=”与appid之间添加任何空字符或者转义符
-        SpeechUtility.createUtility(this, SpeechConstant.APPID + "=599b97fa");
+//        SpeechUtility.createUtility(this, SpeechConstant.APPID + "=599b97fa");
         super.onCreate();
         instance = this;
         Crash.initialize(this);
