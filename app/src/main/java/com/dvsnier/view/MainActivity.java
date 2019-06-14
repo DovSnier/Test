@@ -19,7 +19,7 @@ import com.dvsnier.wrapper.TransferStationWrapper;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -31,7 +31,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity<MainPresenter> implements ITask,
         OnItemClickListener<CategoryBean, ComponentBean> {
 
-    @Bind(R.id.testContainer)
+    @BindView(R.id.testContainer)
     ExpandableListView listView;
     protected List<CategoryBean> dataSet = new ArrayList<>();
     protected MainAdapter adapter;

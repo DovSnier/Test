@@ -8,7 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import butterknife.Bind;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.dvsnier.R;
@@ -33,10 +34,10 @@ public class TestSpeechRecognitionActivity extends AppCompatActivity
 
   protected static final String TAG = TestSpeechRecognitionActivity.class.getSimpleName();
 
-  @Bind(R.id.start) Button start;
-  @Bind(R.id.stop) Button stop;
-  @Bind(R.id.cancel) Button cancel;
-  @Bind(R.id.content) EditText content;
+  @BindView(R.id.start) Button start;
+  @BindView(R.id.stop) Button stop;
+  @BindView(R.id.cancel) Button cancel;
+  @BindView(R.id.content) EditText content;
   // 语音听写对象
   private SpeechRecognizer mIat;
   // 语音听写UI

@@ -14,17 +14,17 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.dvsnier.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class TestImageActivity extends AppCompatActivity {
 
-    @Bind(R.id.test_image)
+    @BindView(R.id.test_image)
     ImageView testImage;
-    @Bind(R.id.image_url)
+    @BindView(R.id.image_url)
     TextView imageUrl;
-    @Bind(R.id.image_local)
+    @BindView(R.id.image_local)
     TextView imageLocal;
     private String url;
 

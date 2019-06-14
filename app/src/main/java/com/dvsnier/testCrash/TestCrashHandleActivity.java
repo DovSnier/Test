@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.dvsnier.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class TestCrashHandleActivity extends AppCompatActivity {
@@ -18,7 +18,7 @@ public class TestCrashHandleActivity extends AppCompatActivity {
     public static final int MESSAGE_TEST_EXCEPTION = 100;
     public static final int MESSAGE_TEST_OTHER = 1000;
 
-    @Bind(R.id.btn_exception)
+    @BindView(R.id.btn_exception)
     Button btnException;
     private Handler handler = new Handler() {
 

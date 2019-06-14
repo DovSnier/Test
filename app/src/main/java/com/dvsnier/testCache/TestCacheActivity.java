@@ -23,17 +23,17 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class TestCacheActivity extends AppCompatActivity {
 
-    @Bind(R.id.btn_cache_start)
+    @BindView(R.id.btn_cache_start)
     Button btnCacheStart;
-    @Bind(R.id.btn_cache_close)
+    @BindView(R.id.btn_cache_close)
     Button btnCacheClose;
-    @Bind(R.id.content)
+    @BindView(R.id.content)
     TextView content;
 
     protected final String TAG = this.getClass().getSimpleName();

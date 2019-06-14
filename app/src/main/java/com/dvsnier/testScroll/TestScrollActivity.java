@@ -18,16 +18,16 @@ import android.widget.Toast;
 
 import com.dvsnier.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class TestScrollActivity extends AppCompatActivity {
 
     protected static final String TAG = TestScrollActivity.class.getSimpleName();
-    @Bind(R.id.scroll_container)
+    @BindView(R.id.scroll_container)
     LinearLayout scrollContainer;
-    @Bind(R.id.test_scroll)
+    @BindView(R.id.test_scroll)
     TextView testScroll;
 
     @Override

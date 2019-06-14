@@ -13,7 +13,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
-import butterknife.Bind;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.dvsnier.R;
@@ -23,9 +24,9 @@ public class TestPermissionActivity extends BaseActivity
     implements ActivityCompat.OnRequestPermissionsResultCallback {
 
   public static final int REQUEST_CALL_PHONE_CODE = 10;
-  @Bind(R.id.start) Button start;
-  @Bind(R.id.stop) Button stop;
-  @Bind(R.id.cancel) Button cancel;
+  @BindView(R.id.start) Button start;
+  @BindView(R.id.stop) Button stop;
+  @BindView(R.id.cancel) Button cancel;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);

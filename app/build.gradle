@@ -47,6 +47,11 @@ android {
         abortOnError false
         checkReleaseBuilds false
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 def gitHashCode() { return 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim() }
@@ -104,7 +109,9 @@ dependencies {
     implementation "com.android.support:design:$rootProject.support_design_version"
     implementation "com.android.support.constraint:constraint-layout:$rootProject.support_constraint_layout_version"
 
+    //noinspection GradleDependency
     implementation "com.jakewharton:butterknife:$rootProject.butterknife_version"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknife_compiler_version"
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit_version"
     implementation "com.jakewharton:disklrucache:$rootProject.disklrucache_version"
     implementation "com.github.bumptech.glide:glide:$rootProject.glide_version"

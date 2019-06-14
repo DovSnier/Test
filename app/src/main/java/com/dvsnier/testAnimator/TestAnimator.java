@@ -14,7 +14,7 @@ import android.widget.Button;
 
 import com.dvsnier.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -25,13 +25,13 @@ import butterknife.OnClick;
 public class TestAnimator extends AppCompatActivity {
 
     public final String TAG = this.getClass().getSimpleName();
-    @Bind(R.id.test_1)
+    @BindView(R.id.test_1)
     Button test1;
-    @Bind(R.id.test_2)
+    @BindView(R.id.test_2)
     Button test2;
-    @Bind(R.id.test_3)
+    @BindView(R.id.test_3)
     Button test3;
-    @Bind(R.id.test_4)
+    @BindView(R.id.test_4)
     Button test4;
 
     @Override

@@ -6,14 +6,15 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
-import butterknife.Bind;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.dvsnier.R;
 
 public class TestCoordinatorLayoutActivity extends AppCompatActivity {
 
-  @Bind(R.id.floating_action_button) FloatingActionButton floatingActionButton;
+  @BindView(R.id.floating_action_button) FloatingActionButton floatingActionButton;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);

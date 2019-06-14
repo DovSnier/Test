@@ -12,15 +12,15 @@ import com.dvsnier.test.utils.DBManager;
 import java.io.IOException;
 import java.io.InputStream;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class TestSQLActivity extends AppCompatActivity {
 
-    @Bind(R.id.btn_coordinate_sql)
+    @BindView(R.id.btn_coordinate_sql)
     Button btnCoordinateSql;
-    @Bind(R.id.btn_notes_sql)
+    @BindView(R.id.btn_notes_sql)
     Button btnNotesSql;
 
     @Override

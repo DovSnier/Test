@@ -5,7 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import butterknife.Bind;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.dvsnier.R;
@@ -17,10 +18,10 @@ import org.greenrobot.eventbus.ThreadMode;
 
 public class TestEventBusActivity extends BaseActivity {
 
-  @Bind(R.id.start) Button start;
-  @Bind(R.id.stop) Button stop;
-  @Bind(R.id.cancel) Button cancel;
-  @Bind(R.id.content) TextView content;
+  @BindView(R.id.start) Button start;
+  @BindView(R.id.stop) Button stop;
+  @BindView(R.id.cancel) Button cancel;
+  @BindView(R.id.content) TextView content;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);

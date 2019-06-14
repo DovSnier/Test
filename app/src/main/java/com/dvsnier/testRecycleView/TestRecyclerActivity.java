@@ -15,12 +15,12 @@ import com.dvsnier.test.utils.runnable.ThreadUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class TestRecyclerActivity extends BaseActivity<TestRecyclerPresenter> implements IOnItemClickListener<String> {
 
-    @Bind(R.id.recycler)
+    @BindView(R.id.recycler)
     RecyclerView recyclerView;
     RecyclerViewAdapter adapter;
 

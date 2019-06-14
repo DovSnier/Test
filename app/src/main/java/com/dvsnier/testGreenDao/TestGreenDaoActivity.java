@@ -4,17 +4,19 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.Toast;
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+
 import com.dvsnier.DvsnierApplication;
 import com.dvsnier.R;
 import com.dvsnier.bean.DaoSession;
 import com.dvsnier.bean.Student;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class TestGreenDaoActivity extends AppCompatActivity {
 
-  @Bind(R.id.add) Button add;
+  @BindView(R.id.add) Button add;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
