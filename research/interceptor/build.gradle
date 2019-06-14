@@ -26,6 +26,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    api project(':research:view')
+
     testImplementation "junit:junit:$rootProject.junit_version"
 
     androidTestImplementation "com.android.support.test:runner:$rootProject.runner_version"
