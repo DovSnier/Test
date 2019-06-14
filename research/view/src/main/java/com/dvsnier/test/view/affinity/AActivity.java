@@ -2,10 +2,10 @@ package com.dvsnier.test.view.affinity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.dvsnier.base.flavor.activity.BaseActivity;
 import com.dvsnier.test.view.R;
 import com.dvsnier.test.view.R2;
 
@@ -13,7 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AActivity extends AppCompatActivity {
+public class AActivity extends BaseActivity {
 
     @BindView(R2.id.btn_affinity_b)
     Button btnAffinityB;
