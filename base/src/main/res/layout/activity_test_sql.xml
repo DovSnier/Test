@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="25dp"
-    tools:context="com.dvsnier.testSQL.TestSQLActivity">
+    tools:context="com.dvsnier.base.flavor.sql.TestSQLActivity">
 
     <Button
         android:id="@+id/btn_coordinate_sql"

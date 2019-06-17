@@ -50,10 +50,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".testSQL.TestSQLActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
         <!-- android:theme="@style/testAppCustomTheme" -->
         <activity
             android:name=".testTheme.TestThemeActivity"

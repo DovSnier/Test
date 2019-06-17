@@ -12,5 +12,9 @@
             android:name=".cache.TestCacheActivity"
             android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
+        <activity
+            android:name=".sql.TestSQLActivity"
+            android:theme="@style/AppTheme.DefaultTheme"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
     </application>
 </manifest>

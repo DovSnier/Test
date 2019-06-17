@@ -22,7 +22,7 @@ import com.dvsnier.testImage.TestImageActivity;
 import com.dvsnier.testOkhttp.TestOkhttpActivity;
 import com.dvsnier.testPermission.TestPermissionActivity;
 import com.dvsnier.testRecycleView.TestRecyclerActivity;
-import com.dvsnier.testSQL.TestSQLActivity;
+import com.dvsnier.base.flavor.sql.TestSQLActivity;
 import com.dvsnier.testScroll.TestScrollActivity;
 import com.dvsnier.testSpeechRecognition.TestSpeechRecognitionActivity;
 import com.dvsnier.testSurface.TestSurfaceActivity;
