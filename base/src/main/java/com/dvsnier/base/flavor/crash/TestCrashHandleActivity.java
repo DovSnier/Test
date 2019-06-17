@@ -1,24 +1,25 @@
-package com.dvsnier.testCrash;
+package com.dvsnier.base.flavor.crash;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.dvsnier.R;
+import com.dvsnier.base.flavor.R;
+import com.dvsnier.base.flavor.R2;
+import com.dvsnier.base.flavor.activity.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TestCrashHandleActivity extends AppCompatActivity {
+public class TestCrashHandleActivity extends BaseActivity {
 
     public static final int MESSAGE_TEST_EXCEPTION = 100;
     public static final int MESSAGE_TEST_OTHER = 1000;
 
-    @BindView(R.id.btn_exception)
+    @BindView(R2.id.btn_exception)
     Button btnException;
     private Handler handler = new Handler() {
 
@@ -42,12 +43,12 @@ public class TestCrashHandleActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View view) {
-            switch (view.getId()) {
-                case R.id.btn_exception:
-                    Toast.makeText(TestCrashHandleActivity.this, "2s 后开始测试", Toast.LENGTH_SHORT).show();
-                    handler.sendMessageDelayed(handler.obtainMessage(MESSAGE_TEST_EXCEPTION), 3 * 1000);
-                    break;
-                default:
+            int viewId = view.getId();
+            if (viewId == R.id.btn_exception) {
+                Toast.makeText(TestCrashHandleActivity.this, "2s 后开始测试", Toast.LENGTH_SHORT).show();
+                handler.sendMessageDelayed(handler.obtainMessage(MESSAGE_TEST_EXCEPTION), 3 * 1000);
+            } else {
+                // nothing to do
             }
         }
     };
@@ -57,6 +58,12 @@ public class TestCrashHandleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_crash_handle);
         ButterKnife.bind(this);
+        performScheduledInternal();
+    }
+
+    @Override
+    public void initView() {
+        super.initView();
         btnException.setOnClickListener(onClickListener);
     }
 

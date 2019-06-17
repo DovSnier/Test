@@ -51,10 +51,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".testCrash.TestCrashHandleActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
-        <activity
             android:name=".testCache.TestCacheActivity"
             android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />

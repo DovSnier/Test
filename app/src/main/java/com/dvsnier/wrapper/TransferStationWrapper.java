@@ -15,7 +15,7 @@ import com.dvsnier.testCache.TestCacheActivity;
 import com.dvsnier.testCoordinatorLayout.TestCoordinatorLayout2Activity;
 import com.dvsnier.testCoordinatorLayout.TestCoordinatorLayout3Activity;
 import com.dvsnier.testCoordinatorLayout.TestCoordinatorLayoutActivity;
-import com.dvsnier.testCrash.TestCrashHandleActivity;
+import com.dvsnier.base.flavor.crash.TestCrashHandleActivity;
 import com.dvsnier.testEventBus.TestEventBusActivity;
 import com.dvsnier.testGreenDao.TestGreenDaoActivity;
 import com.dvsnier.testImage.TestImageActivity;

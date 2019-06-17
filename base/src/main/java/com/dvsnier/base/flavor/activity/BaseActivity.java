@@ -33,6 +33,11 @@ public abstract class BaseActivity<T extends BaseCompatPresenter> extends BaseCo
 
     }
 
+    protected final void performScheduledInternal() {
+        initView();
+        initData();
+    }
+
     public void onShowProgress() {
         onShowProgress(null);
     }
