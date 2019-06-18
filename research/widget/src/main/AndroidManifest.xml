@@ -9,5 +9,9 @@
             android:name=".theme.TestThemeActivity"
             android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
+        <activity
+            android:name=".scroll.TestScrollActivity"
+            android:theme="@style/AppTheme.DefaultTheme"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
     </application>
 </manifest>

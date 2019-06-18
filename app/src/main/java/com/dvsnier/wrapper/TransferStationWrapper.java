@@ -24,7 +24,7 @@ import com.dvsnier.testImage.TestImageActivity;
 import com.dvsnier.testOkhttp.TestOkhttpActivity;
 import com.dvsnier.testPermission.TestPermissionActivity;
 import com.dvsnier.testRecycleView.TestRecyclerActivity;
-import com.dvsnier.testScroll.TestScrollActivity;
+import com.dvsnier.test.widget.scroll.TestScrollActivity;
 import com.dvsnier.testSpeechRecognition.TestSpeechRecognitionActivity;
 import com.dvsnier.testSurface.TestSurfaceActivity;
 import com.dvsnier.testTouchEvent.TestTouchEventActivity;

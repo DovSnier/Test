@@ -1,10 +1,10 @@
-package com.dvsnier.testScroll;
+package com.dvsnier.test.widget.scroll;
 
+import android.annotation.SuppressLint;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -16,20 +16,23 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dvsnier.R;
+import com.dvsnier.base.flavor.activity.BaseActivity;
+import com.dvsnier.test.widget.R;
+import com.dvsnier.test.widget.R2;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class TestScrollActivity extends AppCompatActivity {
+public class TestScrollActivity extends BaseActivity {
 
     protected static final String TAG = TestScrollActivity.class.getSimpleName();
-    @BindView(R.id.scroll_container)
+    @BindView(R2.id.scroll_container)
     LinearLayout scrollContainer;
-    @BindView(R.id.test_scroll)
+    @BindView(R2.id.test_scroll)
     TextView testScroll;
 
+    @SuppressLint("ObsoleteSdkInt")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,12 +106,11 @@ public class TestScrollActivity extends AppCompatActivity {
         return textView;
     }
 
-    @OnClick(R.id.test_scroll)
+    @OnClick(R2.id.test_scroll)
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.test_scroll:
-                scrollContainer.addView(obtainView());
-                break;
+        int viewId = view.getId();
+        if (viewId == R.id.test_scroll) {
+            scrollContainer.addView(obtainView());
         }
     }
 
