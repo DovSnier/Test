@@ -1,13 +1,13 @@
-package com.dvsnier.testTheme;
+package com.dvsnier.test.widget.theme;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.dvsnier.R;
+import com.dvsnier.base.flavor.activity.BaseActivity;
+import com.dvsnier.test.widget.R;
 
-public class TestThemeActivity extends AppCompatActivity {
+public class TestThemeActivity extends BaseActivity {
 
     private Toolbar toolbar;
 
@@ -25,7 +25,7 @@ public class TestThemeActivity extends AppCompatActivity {
         // getSupportActionBar().setSubtitle("副标题");
         // getSupportActionBar().setLogo(R.mipmap.ic_launcher);
 
-		/* 菜单的监听可以在toolbar里设置，也可以像ActionBar那样，通过Activity的onOptionsItemSelected回调方法来处理 */
+        /* 菜单的监听可以在toolbar里设置，也可以像ActionBar那样，通过Activity的onOptionsItemSelected回调方法来处理 */
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {

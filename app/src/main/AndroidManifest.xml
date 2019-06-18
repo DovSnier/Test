@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.dvsnier">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -50,11 +49,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- android:theme="@style/testAppCustomTheme" -->
-        <activity
-            android:name=".testTheme.TestThemeActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
         <activity
             android:name=".testSurface.TestSurfaceActivity"
             android:theme="@style/AppTheme.DefaultTheme"

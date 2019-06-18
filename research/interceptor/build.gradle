@@ -27,6 +27,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     api project(':research:view')
+    api project(':research:widget')
 
     testImplementation "junit:junit:$rootProject.junit_version"
 
