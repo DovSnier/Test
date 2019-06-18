@@ -13,5 +13,9 @@
             android:name=".scroll.TestScrollActivity"
             android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
+        <activity
+            android:name=".recycleview.TestRecyclerActivity"
+            android:theme="@style/AppTheme.DefaultTheme"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
     </application>
 </manifest>

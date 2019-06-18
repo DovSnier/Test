@@ -66,10 +66,6 @@
             android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
         <activity
-            android:name=".testRecycleView.TestRecyclerActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
-        <activity
             android:name=".testXUtils.TestXUtilsActivity"
             android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />

@@ -26,7 +26,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(':common:utils')
+    api project(':common:utils')
     api project(':framework:style')
 
 //    implementation "com.dvsnier:base:$rootProject.base_version"

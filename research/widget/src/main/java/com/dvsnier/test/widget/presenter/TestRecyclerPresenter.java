@@ -1,6 +1,7 @@
-package com.dvsnier.testRecycleView;
+package com.dvsnier.test.widget.presenter;
 
 import com.dvsnier.common.presenter.BaseCompatPresenter;
+import com.dvsnier.test.widget.recycleview.TestRecyclerActivity;
 
 import java.util.ArrayList;
 import java.util.List;

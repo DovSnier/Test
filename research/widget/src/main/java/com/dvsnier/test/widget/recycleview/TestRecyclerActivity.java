@@ -1,4 +1,4 @@
-package com.dvsnier.testRecycleView;
+package com.dvsnier.test.widget.recycleview;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -6,11 +6,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
-import com.dvsnier.R;
+import com.dvsnier.base.adapter.IAdapter;
 import com.dvsnier.base.flavor.activity.BaseActivity;
 import com.dvsnier.base.task.UIRunnable;
+import com.dvsnier.base.view.IRecyclerView;
 import com.dvsnier.common.listener.IOnItemClickListener;
-import com.dvsnier.test.utils.runnable.ThreadUtil;
+import com.dvsnier.test.widget.R;
+import com.dvsnier.test.widget.R2;
+import com.dvsnier.test.widget.adapter.RecyclerViewAdapter;
+import com.dvsnier.test.widget.presenter.TestRecyclerPresenter;
+import com.dvsnier.utils.ThreadUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,19 +23,19 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TestRecyclerActivity extends BaseActivity<TestRecyclerPresenter> implements IOnItemClickListener<String> {
+public class TestRecyclerActivity extends BaseActivity<TestRecyclerPresenter> implements IRecyclerView, IAdapter,
+        IOnItemClickListener<String> {
 
-    @BindView(R.id.recycler)
+    @BindView(R2.id.recycler)
     RecyclerView recyclerView;
-    RecyclerViewAdapter adapter;
+    protected RecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_recycler);
         ButterKnife.bind(this);
-        initView();
-        initData();
+        performScheduledInternal();
     }
 
     @Override
@@ -50,6 +55,7 @@ public class TestRecyclerActivity extends BaseActivity<TestRecyclerPresenter> im
     public void initData() {
         super.initData();
         final List<String> dataSet = new ArrayList<>();
+        // TODO: 2019/6/18 the handle to optimization
         ThreadUtil.execute(new Runnable() {
             @Override
             public void run() {
@@ -65,6 +71,16 @@ public class TestRecyclerActivity extends BaseActivity<TestRecyclerPresenter> im
                 }
             }
         });
+    }
+
+    @Override
+    public RecyclerView.Adapter getAdapter() {
+        return adapter;
+    }
+
+    @Override
+    public RecyclerView getRecyclerView() {
+        return recyclerView;
     }
 
     @Override
