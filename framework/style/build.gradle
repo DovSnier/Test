@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion rootProject.ext.compile_sdk_version
@@ -8,8 +7,8 @@ android {
 
         minSdkVersion rootProject.ext.min_sdk_version
         targetSdkVersion rootProject.ext.target_sdk_version
-        versionCode rootProject.ext.version_widget_code
-        versionName rootProject.ext.version_widget_name
+        versionCode rootProject.ext.version_style_code
+        versionName rootProject.ext.version_style_name
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -26,13 +25,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    //noinspection GradleDependency
-    implementation "com.jakewharton:butterknife:$rootProject.butterknife_version"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknife_compiler_version"
-
-    implementation "com.android.support:appcompat-v7:$rootProject.support_appcompat_version"
-    implementation "com.android.support:support-annotations:$rootProject.support_annotations_version"
 
     testImplementation "junit:junit:$rootProject.junit_version"
 

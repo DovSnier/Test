@@ -22,6 +22,8 @@ ext {
     version_doc_name = "0.0.1"
     version_interceptor_code = 1
     version_interceptor_name = "0.0.1"
+    version_style_code = 1
+    version_style_name = "0.0.1"
 
     // modules 配置
     version_widget_code = 1

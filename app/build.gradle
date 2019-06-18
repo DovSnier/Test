@@ -98,9 +98,9 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation files('libs/Msc.jar')
     implementation files('libs/Sunflower.jar')
-    implementation project(':base')
-    implementation project(':bean')
-    implementation project(':utils')
+    implementation project(':framework:base')
+    implementation project(':common:bean')
+    implementation project(':common:utils')
     implementation project(':research:interceptor')
 
     implementation "com.android.support:recyclerview-v7:$rootProject.support_recyclerview_version"

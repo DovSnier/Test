@@ -1,5 +1,13 @@
-include ':app', ':base', ':bean', ':doc', ':utils',
-        ':research:interceptor',
+include ':app'
+
+include ':common:bean',
+        ':common:utils'
+
+include ':framework:doc',
+        ':framework:base',
+        ':framework:style'
+
+include ':research:interceptor',
         ':research:widget',
         ':research:view',
         ':research:service',

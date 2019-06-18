@@ -26,7 +26,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(':base')
+    implementation project(':framework:base')
 
     //noinspection GradleDependency
     implementation "com.jakewharton:butterknife:$rootProject.butterknife_version"
