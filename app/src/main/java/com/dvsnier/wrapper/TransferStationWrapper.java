@@ -14,7 +14,7 @@ import com.dvsnier.constant.IAdapterType;
 import com.dvsnier.test.view.affinity.AffinityActivity;
 import com.dvsnier.test.widget.theme.TestThemeActivity;
 import com.dvsnier.testAIDL.TestAIDLActivity;
-import com.dvsnier.testAnimator.TestAnimator;
+import com.dvsnier.test.widget.animator.TestAnimator;
 import com.dvsnier.testCoordinatorLayout.TestCoordinatorLayout2Activity;
 import com.dvsnier.testCoordinatorLayout.TestCoordinatorLayout3Activity;
 import com.dvsnier.testCoordinatorLayout.TestCoordinatorLayoutActivity;

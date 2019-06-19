@@ -1,4 +1,4 @@
-package com.dvsnier.testAnimator;
+package com.dvsnier.test.widget.animator;
 
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
@@ -12,7 +12,8 @@ import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.widget.Button;
 
-import com.dvsnier.R;
+import com.dvsnier.test.widget.R;
+import com.dvsnier.test.widget.R2;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,13 +26,13 @@ import butterknife.OnClick;
 public class TestAnimator extends AppCompatActivity {
 
     public final String TAG = this.getClass().getSimpleName();
-    @BindView(R.id.test_1)
+    @BindView(R2.id.test_1)
     Button test1;
-    @BindView(R.id.test_2)
+    @BindView(R2.id.test_2)
     Button test2;
-    @BindView(R.id.test_3)
+    @BindView(R2.id.test_3)
     Button test3;
-    @BindView(R.id.test_4)
+    @BindView(R2.id.test_4)
     Button test4;
 
     @Override
@@ -41,23 +42,19 @@ public class TestAnimator extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.test_1, R.id.test_2, R.id.test_3, R.id.test_4})
+    @OnClick({R2.id.test_1, R2.id.test_2, R2.id.test_3, R2.id.test_4})
     public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.test_1:
-                executeAnimator1();
-                break;
-            case R.id.test_2:
-                executeAnimator2();
-                break;
-            case R.id.test_3:
-                executeAnimator3();
-                break;
-            case R.id.test_4:
-                executeAnimator4();
-                break;
-            default:
-                break;
+        int viewId = view.getId();
+        if (viewId == R.id.test_1) {
+            executeAnimator1();
+        } else if (viewId == R.id.test_2) {
+            executeAnimator2();
+        } else if (viewId == R.id.test_3) {
+            executeAnimator3();
+        } else if (viewId == R.id.test_4) {
+            executeAnimator4();
+        } else {
+            // nothing to do
         }
     }
 
@@ -101,5 +98,4 @@ public class TestAnimator extends AppCompatActivity {
             });
         }
     }
-
 }
