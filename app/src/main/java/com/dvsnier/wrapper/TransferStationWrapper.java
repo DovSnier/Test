@@ -26,7 +26,7 @@ import com.dvsnier.testPermission.TestPermissionActivity;
 import com.dvsnier.test.widget.recycleview.TestRecyclerActivity;
 import com.dvsnier.test.widget.scroll.TestScrollActivity;
 import com.dvsnier.testSpeechRecognition.TestSpeechRecognitionActivity;
-import com.dvsnier.testSurface.TestSurfaceActivity;
+import com.dvsnier.test.widget.surfaceview.TestSurfaceActivity;
 import com.dvsnier.testTouchEvent.TestTouchEventActivity;
 import com.dvsnier.testXUtils.TestXUtilsActivity;
 import com.orhanobut.logger.Logger;

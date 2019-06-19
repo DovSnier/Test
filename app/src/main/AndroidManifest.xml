@@ -50,10 +50,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".testSurface.TestSurfaceActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
-        <activity
             android:name=".testAIDL.TestAIDLActivity"
             android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />

@@ -1,11 +1,14 @@
-package com.dvsnier.testSurface;
+package com.dvsnier.test.widget.surfaceview;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
-import com.dvsnier.view.MySurfaceView;
+import com.dvsnier.base.flavor.activity.BaseActivity;
+import com.dvsnier.test.widget.MySurfaceView;
 
-public class TestSurfaceActivity extends AppCompatActivity {
+/**
+ * TestSurfaceActivity
+ */
+public class TestSurfaceActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,4 +1,4 @@
-package com.dvsnier.view;
+package com.dvsnier.test.widget;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,8 +10,6 @@ import android.graphics.Rect;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-
-import com.dvsnier.R;
 
 /**
  * Created by DovSnier on 2016/6/25.
