@@ -64,7 +64,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="数据中心"
+                    android:text="数据"
                     android:textSize="24sp"
                     tools:ignore="HardcodedText" />
 
@@ -73,7 +73,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="小算问答"
+                    android:text="问答"
                     android:textSize="24sp"
                     tools:ignore="HardcodedText" />
 
@@ -82,7 +82,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="餐饮知识"
+                    android:text="知识"
                     android:textSize="24sp"
                     tools:ignore="HardcodedText" />
             </LinearLayout>

@@ -76,10 +76,6 @@
             android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
         <activity
-            android:name=".testCoordinatorLayout.TestCoordinatorLayoutActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
-        <activity
             android:name=".testOkhttp.TestOkhttpActivity"
             android:label="@string/title_activity_test_okhttp"
             android:theme="@style/AppTheme.DefaultTheme"
@@ -90,14 +86,6 @@
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
         <activity
             android:name=".testPermission.TestPermissionActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
-        <activity
-            android:name=".testCoordinatorLayout.TestCoordinatorLayout2Activity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
-        <activity
-            android:name=".testCoordinatorLayout.TestCoordinatorLayout3Activity"
             android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
         <activity

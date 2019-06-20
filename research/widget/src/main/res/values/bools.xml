@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <bool name="debug">true</bool>
-    <bool name="debug_permission">true</bool>
+    <bool name="title_enabled">false</bool>
 </resources>

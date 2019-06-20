@@ -1,6 +1,5 @@
 <resources>
   <string name="app_name">dvsnier</string>
   <string name="title_activity_test_okhttp">TestOkhttpActivity</string>
-    <string name="title_tool_bar">Toolbar Title</string>
-  <string name="title_collapsing_tool_bar">屏芯方案三</string>
+
 </resources>
