@@ -1,4 +1,4 @@
-package com.dvsnier.view;
+package com.dvsnier.test.common;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -10,24 +10,24 @@ import android.widget.RelativeLayout;
 
 import com.dvsnier.test.utils.DebugUtil;
 
-public class MiddleLayout extends RelativeLayout {
+public class ParentLayout extends RelativeLayout {
 
-    protected final String TAG = MiddleLayout.this.getClass().getSimpleName();
+    protected final String TAG = ParentLayout.this.getClass().getSimpleName();
 
-    public MiddleLayout(Context context) {
+    public ParentLayout(Context context) {
         super(context);
     }
 
-    public MiddleLayout(Context context, @Nullable AttributeSet attrs) {
+    public ParentLayout(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public MiddleLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public ParentLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public MiddleLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public ParentLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 

@@ -27,7 +27,7 @@ import com.dvsnier.testGreenDao.TestGreenDaoActivity;
 import com.dvsnier.testImage.TestImageActivity;
 import com.dvsnier.testOkhttp.TestOkhttpActivity;
 import com.dvsnier.testSpeechRecognition.TestSpeechRecognitionActivity;
-import com.dvsnier.testTouchEvent.TestTouchEventActivity;
+import com.dvsnier.test.common.touch.TestTouchEventActivity;
 import com.dvsnier.testXUtils.TestXUtilsActivity;
 import com.orhanobut.logger.Logger;
 

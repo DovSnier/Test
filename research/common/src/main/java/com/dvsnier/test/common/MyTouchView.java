@@ -1,4 +1,4 @@
-package com.dvsnier.view;
+package com.dvsnier.test.common;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

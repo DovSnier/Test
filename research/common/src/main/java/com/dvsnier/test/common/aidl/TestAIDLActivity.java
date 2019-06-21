@@ -7,14 +7,14 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.dvsnier.base.flavor.activity.BaseActivity;
 import com.dvsnier.test.common.R;
 import com.dvsnier.test.common.service.MessageManagerService;
 
-public class TestAIDLActivity extends AppCompatActivity {
+public class TestAIDLActivity extends BaseActivity {
 
     protected static final String TAG = TestAIDLActivity.class.getSimpleName();
     protected ServiceConnection serviceConnection = new ServiceConnection() {
@@ -36,7 +36,7 @@ public class TestAIDLActivity extends AppCompatActivity {
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
-
+            Log.d(TAG, "the current(ComponentName:" + name.getShortClassName() + ") is disconnected");
         }
     };
 
