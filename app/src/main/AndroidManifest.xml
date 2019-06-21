@@ -52,14 +52,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".testAIDL.TestAIDLActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
-
-        <service
-            android:name=".service.MessageManagerService"
-            android:process=":remote"/>
-        <activity
             android:name=".testImage.TestImageActivity"
             android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />

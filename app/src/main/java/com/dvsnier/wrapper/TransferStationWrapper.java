@@ -21,7 +21,7 @@ import com.dvsnier.test.widget.recycleview.TestRecyclerActivity;
 import com.dvsnier.test.widget.scroll.TestScrollActivity;
 import com.dvsnier.test.widget.surfaceview.TestSurfaceActivity;
 import com.dvsnier.test.widget.theme.TestThemeActivity;
-import com.dvsnier.testAIDL.TestAIDLActivity;
+import com.dvsnier.test.common.aidl.TestAIDLActivity;
 import com.dvsnier.testEventBus.TestEventBusActivity;
 import com.dvsnier.testGreenDao.TestGreenDaoActivity;
 import com.dvsnier.testImage.TestImageActivity;

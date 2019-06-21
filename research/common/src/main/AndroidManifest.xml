@@ -8,5 +8,13 @@
             android:name=".permission.TestPermissionActivity"
             android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
+        <activity
+            android:name=".aidl.TestAIDLActivity"
+            android:theme="@style/AppTheme.DefaultTheme"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
+
+        <service
+            android:name=".service.MessageManagerService"
+            android:process=":remote" />
     </application>
 </manifest>

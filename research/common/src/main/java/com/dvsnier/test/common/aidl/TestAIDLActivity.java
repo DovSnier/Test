@@ -1,4 +1,4 @@
-package com.dvsnier.testAIDL;
+package com.dvsnier.test.common.aidl;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -11,9 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.dvsnier.R;
-import com.dvsnier.aidl.IMessageManager;
-import com.dvsnier.service.MessageManagerService;
+import com.dvsnier.test.common.R;
+import com.dvsnier.test.common.service.MessageManagerService;
 
 public class TestAIDLActivity extends AppCompatActivity {
 

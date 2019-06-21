@@ -1,5 +1,5 @@
 // IMessageManager.aidl
-package com.dvsnier.aidl;
+package com.dvsnier.test.common.aidl;
 
 interface IMessageManager {
 
