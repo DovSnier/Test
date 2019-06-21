@@ -33,7 +33,8 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "dvsnier_${gitHashCode()}_${defaultConfig.versionName}_r${defaultConfig.versionCode}.apk"
+//            outputFileName = "dvsnier${variant.productFlavors[0].name}_${defaultConfig.versionName}_r${defaultConfig.versionCode}_${gitHashCode()}.apk"
+            outputFileName = "dvsnier${variant.productFlavors[0].name}_${defaultConfig.versionName}_${gitHashCode()}.apk"
         }
     }
 
@@ -52,6 +53,26 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    flavorDimensions "color"
+
+    productFlavors {
+        _debug {
+            applicationId 'com.dvsnier.debug'
+            resValue "string", "app_name", "dvsnier.debug"
+            dimension "color"
+        }
+        _test {
+            applicationId 'com.dvsnier.test'
+            resValue "string", "app_name", "dvsnier.test"
+            dimension "color"
+        }
+        _release {
+            applicationId 'com.dvsnier'
+            resValue "string", "app_name", "dvsnier"
+            dimension "color"
+        }
+    }
 }
 
 def gitHashCode() { return 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim() }
@@ -61,7 +82,7 @@ static def buildTime(boolean isPrint) {
     if (isPrint) {
         return date.format('yyyy年MM月dd日 HH:mm:SS')
     } else {
-        return date.format('MMddHHmm')
+        return date.format('yyyyMMddHHmm')
     }
 }
 
