@@ -9,5 +9,9 @@
             android:name=".image.TestImageActivity"
             android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
+        <activity
+            android:name=".xutils.TestXUtilsActivity"
+            android:theme="@style/AppTheme.DefaultTheme"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
     </application>
 </manifest>

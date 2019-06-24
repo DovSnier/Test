@@ -1,11 +1,12 @@
-package com.dvsnier.testXUtils;
+package com.dvsnier.test.tpl.xutils;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.dvsnier.R;
+import com.dvsnier.base.flavor.activity.BaseActivity;
+import com.dvsnier.test.tpl.R;
 
-public class TestXUtilsActivity extends AppCompatActivity {
+
+public class TestXUtilsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

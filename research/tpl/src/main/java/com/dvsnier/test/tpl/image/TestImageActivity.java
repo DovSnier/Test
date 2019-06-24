@@ -1,7 +1,6 @@
 package com.dvsnier.test.tpl.image;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,6 +11,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.dvsnier.base.flavor.activity.BaseActivity;
 import com.dvsnier.test.tpl.R;
 import com.dvsnier.test.tpl.R2;
 
@@ -19,7 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class TestImageActivity extends AppCompatActivity {
+public class TestImageActivity extends BaseActivity {
 
     @BindView(R2.id.test_image)
     ImageView testImage;

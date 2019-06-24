@@ -52,10 +52,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".testXUtils.TestXUtilsActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
-        <activity
             android:name=".testGreenDao.TestGreenDaoActivity"
             android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />

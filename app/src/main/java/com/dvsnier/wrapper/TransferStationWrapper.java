@@ -15,6 +15,7 @@ import com.dvsnier.test.common.aidl.TestAIDLActivity;
 import com.dvsnier.test.common.permission.TestPermissionActivity;
 import com.dvsnier.test.common.touch.TestTouchEventActivity;
 import com.dvsnier.test.tpl.image.TestImageActivity;
+import com.dvsnier.test.tpl.xutils.TestXUtilsActivity;
 import com.dvsnier.test.view.affinity.AffinityActivity;
 import com.dvsnier.test.widget.animator.TestAnimator;
 import com.dvsnier.test.widget.coordinator.TestCoordinatorLayout2Activity;
@@ -28,7 +29,6 @@ import com.dvsnier.testEventBus.TestEventBusActivity;
 import com.dvsnier.testGreenDao.TestGreenDaoActivity;
 import com.dvsnier.testOkhttp.TestOkhttpActivity;
 import com.dvsnier.testSpeechRecognition.TestSpeechRecognitionActivity;
-import com.dvsnier.testXUtils.TestXUtilsActivity;
 import com.orhanobut.logger.Logger;
 
 /**
