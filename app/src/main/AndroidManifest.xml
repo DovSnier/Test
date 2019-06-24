@@ -52,10 +52,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".testImage.TestImageActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
-        <activity
             android:name=".testXUtils.TestXUtilsActivity"
             android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />

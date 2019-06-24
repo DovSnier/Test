@@ -130,7 +130,6 @@ dependencies {
     implementation "com.jakewharton:butterknife:$rootProject.butterknife_version"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknife_compiler_version"
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit_version"
-    implementation "com.github.bumptech.glide:glide:$rootProject.glide_version"
 
     implementation "com.facebook.stetho:stetho:$rootProject.stetho_version"
     implementation "com.facebook.stetho:stetho-okhttp3:$rootProject.stetho_okhttp3_version"
