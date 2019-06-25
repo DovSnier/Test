@@ -1,11 +1,8 @@
 package com.dvsnier;
 
-import android.app.Application;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.dvsnier.bean.DaoMaster;
-import com.dvsnier.bean.DaoSession;
 import com.dvsnier.crash.Crash;
 import com.facebook.stetho.Stetho;
 import com.facebook.stetho.common.LogRedirector;
@@ -19,10 +16,9 @@ import okhttp3.OkHttpClient;
 /**
  * Created by Administrator on 2017/1/7.
  */
-public class DvsnierApplication extends Application {
+public class DvsnierApplication extends BaseApplication {
 
     protected static DvsnierApplication instance;
-    protected DaoSession daoSession;
     protected OkHttpClient okHttpClient;
 
     public static DvsnierApplication getInstance() {
@@ -77,13 +73,6 @@ public class DvsnierApplication extends Application {
                 }
             }
         });
-        obtainDataBase();
-    }
-
-    protected void obtainDataBase() {
-        DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(this, "test.db");
-        DaoMaster daoMaster = new DaoMaster(devOpenHelper.getWritableDb());
-        daoSession = daoMaster.newSession();
     }
 
     @Override
@@ -97,9 +86,6 @@ public class DvsnierApplication extends Application {
         super.onTerminate();
     }
 
-    public DaoSession getDaoSession() {
-        return daoSession;
-    }
 
     public static OkHttpClient getHttpClient() {
         return getInstance().getOkHttpClient();

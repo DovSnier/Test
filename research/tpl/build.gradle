@@ -28,12 +28,14 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(':framework:base')
+    implementation project(':common:bean')
 
     //noinspection GradleDependency
     implementation "com.jakewharton:butterknife:$rootProject.butterknife_version"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknife_compiler_version"
     implementation "com.github.bumptech.glide:glide:$rootProject.glide_version"
     implementation "org.xutils:xutils:${rootProject.xutils_version}"
+//    implementation "org.greenrobot:greendao:$rootProject.greendao_version"
 
     implementation "com.android.support:appcompat-v7:$rootProject.support_appcompat_version"
     implementation "com.android.support:support-annotations:$rootProject.support_annotations_version"

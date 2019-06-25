@@ -26,7 +26,7 @@ import com.dvsnier.test.widget.scroll.TestScrollActivity;
 import com.dvsnier.test.widget.surfaceview.TestSurfaceActivity;
 import com.dvsnier.test.widget.theme.TestThemeActivity;
 import com.dvsnier.testEventBus.TestEventBusActivity;
-import com.dvsnier.testGreenDao.TestGreenDaoActivity;
+import com.dvsnier.test.tpl.green.TestGreenDaoActivity;
 import com.dvsnier.testOkhttp.TestOkhttpActivity;
 import com.dvsnier.testSpeechRecognition.TestSpeechRecognitionActivity;
 import com.orhanobut.logger.Logger;

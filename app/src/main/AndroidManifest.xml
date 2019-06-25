@@ -52,10 +52,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".testGreenDao.TestGreenDaoActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
-        <activity
             android:name=".testSpeechRecognition.TestSpeechRecognitionActivity"
             android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
