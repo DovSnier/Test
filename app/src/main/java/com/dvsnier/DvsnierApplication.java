@@ -6,12 +6,9 @@ import android.widget.Toast;
 import com.dvsnier.crash.Crash;
 import com.facebook.stetho.Stetho;
 import com.facebook.stetho.common.LogRedirector;
-import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
-
-import okhttp3.OkHttpClient;
 
 /**
  * Created by Administrator on 2017/1/7.
@@ -19,7 +16,6 @@ import okhttp3.OkHttpClient;
 public class DvsnierApplication extends BaseApplication {
 
     protected static DvsnierApplication instance;
-    protected OkHttpClient okHttpClient;
 
     public static DvsnierApplication getInstance() {
         return instance;
@@ -84,23 +80,5 @@ public class DvsnierApplication extends BaseApplication {
     @Override
     public void onTerminate() {
         super.onTerminate();
-    }
-
-
-    public static OkHttpClient getHttpClient() {
-        return getInstance().getOkHttpClient();
-    }
-
-    public OkHttpClient getOkHttpClient() {
-        if (null == okHttpClient) {
-            synchronized (OkHttpClient.class) {
-                if (null == okHttpClient) {
-                    okHttpClient = new OkHttpClient().newBuilder()
-                            .addNetworkInterceptor(new StethoInterceptor())
-                            .build();
-                }
-            }
-        }
-        return okHttpClient;
     }
 }

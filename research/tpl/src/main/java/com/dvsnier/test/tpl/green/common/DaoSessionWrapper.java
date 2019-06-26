@@ -3,6 +3,7 @@ package com.dvsnier.test.tpl.green.common;
 import android.content.Context;
 
 import com.dvsnier.IWith;
+import com.dvsnier.base.task.ICycle;
 import com.dvsnier.bean.DaoMaster;
 import com.dvsnier.bean.DaoSession;
 import com.dvsnier.db.IDaoSession;
@@ -11,7 +12,7 @@ import com.dvsnier.db.IDaoSession;
  * DaoSessionWrapper
  * Created by dovsnier on 2019/6/25.
  */
-public class DaoSessionWrapper implements IDaoSession, IWith<DaoSessionWrapper> {
+public class DaoSessionWrapper implements IDaoSession, IWith<DaoSessionWrapper>, ICycle {
 
     private static final DaoSessionWrapper INSTANCE = new DaoSessionWrapper();
     protected DaoSession daoSession;
@@ -40,10 +41,20 @@ public class DaoSessionWrapper implements IDaoSession, IWith<DaoSessionWrapper> 
         if (null == getContext()) {
             setContext(context);
         }
-        if (null == daoSession) {
+        if (null == getDaoSession()) {
             obtainDataBase();
         }
         return this;
+    }
+
+    @Override
+    public void onDestroy() {
+        if (null != getContext()) {
+            setContext(null);
+        }
+        if (null != getDaoSession()) {
+            getDaoSession().clear();
+        }
     }
 
     public Context getContext() {

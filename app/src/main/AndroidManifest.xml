@@ -57,11 +57,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".testOkhttp.TestOkhttpActivity"
-            android:label="@string/title_activity_test_okhttp"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
-        <activity
             android:name=".testEventBus.TestEventBusActivity"
             android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
