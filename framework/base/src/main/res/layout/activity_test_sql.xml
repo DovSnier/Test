@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="25dp"
+    tools:context="com.dvsnier.base.flavor.sql.TestSQLActivity">
+
+    <Button
+        android:id="@+id/btn_coordinate_sql"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="测试Coordinate SQL"/>
+
+    <Button
+        android:id="@+id/btn_notes_sql"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_coordinate_sql"
+        android:layout_marginTop="50dp"
+        android:text="测试Notes SQL"/>
+</RelativeLayout>

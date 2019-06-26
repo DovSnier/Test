@@ -1,0 +1,11 @@
+# 说明
+   1. 每次新建modules 包名格式定义：
+            com.dvsnier.test.XXX
+      包名称即为XXX；
+   2. 参考${rootProject}/doc/com.dvsnier.doc/build-templete.gradle 文件做为统一构建模板;
+
+
+
+
+
+

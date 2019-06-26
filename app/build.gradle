@@ -10,17 +10,26 @@ android {
         minSdkVersion rootProject.ext.min_sdk_version
         targetSdkVersion rootProject.ext.target_sdk_version
         versionCode rootProject.ext.version_app_code
-        versionName rootProject.ext.version_app_name
+        versionName "${rootProject.ext.version_app_name}.${gitHashCode()}"
         buildConfigField "boolean", "DEVELOPE", "true"
 
         ndk {
             abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
         }
 
+        manifestPlaceholders = [
+                DVSNIER_VALUE: applicationId
+        ]
+
         javaCompileOptions {
             annotationProcessorOptions {
                 includeCompileClasspath = true
             }
+        }
+
+        packagingOptions {
+            exclude "LICENSE-junit.txt"
+            exclude "junit/runner/*"
         }
     }
 
@@ -33,7 +42,7 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "dvsnier_${gitHashCode()}_${defaultConfig.versionName}_r${defaultConfig.versionCode}.apk"
+            outputFileName = "dvsnier_${"${variant.productFlavors[0].name}".substring(6, "${variant.productFlavors[0].name}".length()).toLowerCase(Locale.getDefault(Locale.Category.FORMAT))}_${defaultConfig.versionName}.apk"
         }
     }
 
@@ -47,6 +56,40 @@ android {
         abortOnError false
         checkReleaseBuilds false
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    flavorDimensions "color"
+
+    productFlavors {
+        flavorDebug {
+            applicationId 'com.dvsnier.debug'
+            resValue "string", "app_name", "dvsnier debug"
+            manifestPlaceholders = [
+                    DVSNIER_VALUE: applicationId
+            ]
+            dimension "color"
+        }
+        flavorTest {
+            applicationId 'com.dvsnier.test'
+            resValue "string", "app_name", "dvsnier test"
+            manifestPlaceholders = [
+                    DVSNIER_VALUE: applicationId
+            ]
+            dimension "color"
+        }
+        flavorRelease {
+            applicationId 'com.dvsnier'
+            resValue "string", "app_name", "dvsnier"
+            manifestPlaceholders = [
+                    DVSNIER_VALUE: applicationId
+            ]
+            dimension "color"
+        }
+    }
 }
 
 def gitHashCode() { return 'git rev-parse --short HEAD'.execute([], project.rootDir).text.trim() }
@@ -56,7 +99,7 @@ static def buildTime(boolean isPrint) {
     if (isPrint) {
         return date.format('yyyy年MM月dd日 HH:mm:SS')
     } else {
-        return date.format('MMddHHmm')
+        return date.format('yyyyMMddHHmm')
     }
 }
 
@@ -91,33 +134,23 @@ task exportAppInfo() {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation files('libs/Msc.jar')
-    implementation files('libs/Sunflower.jar')
-    implementation project(':base')
-    implementation project(':bean')
+    implementation project(':framework:base')
+    implementation project(':common:bean')
+    implementation project(':research:interceptor')
+
+    implementation "com.android.support:appcompat-v7:$rootProject.support_appcompat_version"
+    implementation "com.android.support:support-annotations:$rootProject.support_annotations_version"
 
     //noinspection GradleDependency
-    implementation "com.android.support:recyclerview-v7:$rootProject.support_recyclerview_version"
-
-    //noinspection GradleDependency
-    implementation "com.android.support.constraint:constraint-layout:$rootProject.support_constraint_layout_version"
-
-    //noinspection GradleDependency
-    implementation "com.android.support:design:$rootProject.support_design_version"
-
     implementation "com.jakewharton:butterknife:$rootProject.butterknife_version"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknife_compiler_version"
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit_version"
-    implementation "com.jakewharton:disklrucache:$rootProject.disklrucache_version"
-    implementation "com.github.bumptech.glide:glide:$rootProject.glide_version"
-    implementation "org.xutils:xutils:$rootProject.xutils_version"
 
     implementation "com.facebook.stetho:stetho:$rootProject.stetho_version"
     implementation "com.facebook.stetho:stetho-okhttp3:$rootProject.stetho_okhttp3_version"
     implementation "com.facebook.stetho:stetho-js-rhino:$rootProject.stetho_js_rhino_version"
-    implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttp3_version"
     implementation "com.orhanobut:logger:$rootProject.logger_version"
-    implementation "org.greenrobot:eventbus:$rootProject.eventbus_version"
-    testImplementation "junit:junit:$rootProject.junit_version"
+    implementation "junit:junit:$rootProject.junit_version"
     testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanary_android_no_op_version"
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$rootProject.leakcanary_android"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanary_android_no_op_version"
