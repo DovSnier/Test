@@ -1,0 +1,61 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.Base">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+    </style>
+
+    <style name="AppTheme.NoTitle">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="android:windowActionBar">false</item>
+    </style>
+
+    <style name="AppTheme.DefaultTheme">
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorPrimaryDark
+        </item>
+    </style>
+    <!-- ******************************************************************************************** -->
+
+    <style name="AppTheme.ThemeZero" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary" tools:targetApi="ice_cream_sandwich">
+            @android:color/holo_green_light
+        </item>
+    </style>
+
+    <style name="AppTheme.ThemeOne" parent="@style/Theme.AppCompat.Light.NoActionBar" />
+
+    <!-- ******************************************************************************************** -->
+
+    <style name="AppTheme.ThemeOne.Test1">
+        <item name="android:textColorPrimary">@android:color/holo_blue_bright</item>
+        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.ThemeZero.Test1">
+        <item name="android:textColorPrimary" tools:targetApi="ice_cream_sandwich">
+            @android:color/holo_green_light
+        </item>
+        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorPrimaryDark
+        </item>
+    </style>
+
+    <!-- ******************************************************************************************** -->
+
+    <style name="AppTheme.AppBarOverlay" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="@style/ThemeOverlay.AppCompat.Light" />
+</resources>

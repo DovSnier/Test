@@ -1,43 +1,33 @@
 package com.dvsnier;
 
-import android.app.Application;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.dvsnier.bean.DaoMaster;
-import com.dvsnier.bean.DaoSession;
 import com.dvsnier.crash.Crash;
 import com.facebook.stetho.Stetho;
 import com.facebook.stetho.common.LogRedirector;
-import com.facebook.stetho.okhttp3.StethoInterceptor;
-import com.iflytek.cloud.SpeechConstant;
-import com.iflytek.cloud.SpeechUtility;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
 
-import okhttp3.OkHttpClient;
-
 /**
  * Created by Administrator on 2017/1/7.
  */
-public class DvsnierApplication extends Application {
+public class DvsnierApplication extends BaseApplication<DvsnierApplication> {
 
-    protected static DvsnierApplication instance;
-    protected DaoSession daoSession;
-    protected OkHttpClient okHttpClient;
+    protected static DvsnierApplication INSTANCE;
 
     public static DvsnierApplication getInstance() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
     public void onCreate() {
         // 将“12345678”替换成您申请的APPID，申请地址：http://www.xfyun.cn
         // 请勿在“=”与appid之间添加任何空字符或者转义符
-        SpeechUtility.createUtility(this, SpeechConstant.APPID + "=599b97fa");
+//        SpeechUtility.createUtility(this, SpeechConstant.APPID + "=599b97fa");
         super.onCreate();
-        instance = this;
+        INSTANCE = this;
         Crash.initialize(this);
         if (LeakCanary.isInAnalyzerProcess(this)) {
             // This process is dedicated to LeakCanary for heap analysis.
@@ -79,13 +69,6 @@ public class DvsnierApplication extends Application {
                 }
             }
         });
-        obtainDataBase();
-    }
-
-    protected void obtainDataBase() {
-        DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(this, "test.db");
-        DaoMaster daoMaster = new DaoMaster(devOpenHelper.getWritableDb());
-        daoSession = daoMaster.newSession();
     }
 
     @Override
@@ -99,24 +82,8 @@ public class DvsnierApplication extends Application {
         super.onTerminate();
     }
 
-    public DaoSession getDaoSession() {
-        return daoSession;
-    }
-
-    public static OkHttpClient getHttpClient() {
-        return getInstance().getOkHttpClient();
-    }
-
-    public OkHttpClient getOkHttpClient() {
-        if (null == okHttpClient) {
-            synchronized (OkHttpClient.class) {
-                if (null == okHttpClient) {
-                    okHttpClient = new OkHttpClient().newBuilder()
-                            .addNetworkInterceptor(new StethoInterceptor())
-                            .build();
-                }
-            }
-        }
-        return okHttpClient;
+    @Override
+    public DvsnierApplication getApplication() {
+        return this;
     }
 }
