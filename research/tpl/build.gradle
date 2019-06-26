@@ -39,6 +39,7 @@ dependencies {
 //    implementation "org.greenrobot:greendao:$rootProject.greendao_version"
     implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttp3_version"
     implementation "com.facebook.stetho:stetho-okhttp3:$rootProject.stetho_okhttp3_version"
+    implementation "org.greenrobot:eventbus:$rootProject.eventbus_version"
 
     implementation "com.android.support:appcompat-v7:$rootProject.support_appcompat_version"
     implementation "com.android.support:support-annotations:$rootProject.support_annotations_version"

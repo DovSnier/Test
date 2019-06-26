@@ -1,4 +1,4 @@
-package com.dvsnier.testEventBus;
+package com.dvsnier.bean;
 
 import android.support.annotation.NonNull;
 import org.greenrobot.eventbus.EventBus;

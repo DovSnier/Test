@@ -13,12 +13,12 @@ import com.squareup.leakcanary.LeakCanary;
 /**
  * Created by Administrator on 2017/1/7.
  */
-public class DvsnierApplication extends BaseApplication {
+public class DvsnierApplication extends BaseApplication<DvsnierApplication> {
 
-    protected static DvsnierApplication instance;
+    protected static DvsnierApplication INSTANCE;
 
     public static DvsnierApplication getInstance() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
@@ -27,7 +27,7 @@ public class DvsnierApplication extends BaseApplication {
         // 请勿在“=”与appid之间添加任何空字符或者转义符
 //        SpeechUtility.createUtility(this, SpeechConstant.APPID + "=599b97fa");
         super.onCreate();
-        instance = this;
+        INSTANCE = this;
         Crash.initialize(this);
         if (LeakCanary.isInAnalyzerProcess(this)) {
             // This process is dedicated to LeakCanary for heap analysis.
@@ -80,5 +80,10 @@ public class DvsnierApplication extends BaseApplication {
     @Override
     public void onTerminate() {
         super.onTerminate();
+    }
+
+    @Override
+    public DvsnierApplication getApplication() {
+        return this;
     }
 }
