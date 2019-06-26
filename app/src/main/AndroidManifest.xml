@@ -42,6 +42,11 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+
+        <meta-data
+            android:name="DVSNIER_KEY"
+            android:value="${DVSNIER_VALUE}" />
+
         <activity
             android:name=".view.MainActivity"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden">
@@ -51,10 +56,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".testSpeechRecognition.TestSpeechRecognitionActivity"
-            android:theme="@style/AppTheme.DefaultTheme"
-            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
         <activity
             android:name=".testOkhttp.TestOkhttpActivity"
             android:label="@string/title_activity_test_okhttp"

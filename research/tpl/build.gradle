@@ -26,7 +26,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation files('libs/Msc.jar')
+    implementation files('libs/Sunflower.jar')
     implementation project(':framework:base')
     implementation project(':common:bean')
 

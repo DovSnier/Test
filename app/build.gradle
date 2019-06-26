@@ -10,17 +10,26 @@ android {
         minSdkVersion rootProject.ext.min_sdk_version
         targetSdkVersion rootProject.ext.target_sdk_version
         versionCode rootProject.ext.version_app_code
-        versionName rootProject.ext.version_app_name
+        versionName "${rootProject.ext.version_app_name}.${gitHashCode()}"
         buildConfigField "boolean", "DEVELOPE", "true"
 
         ndk {
             abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
         }
 
+        manifestPlaceholders = [
+                DVSNIER_VALUE: applicationId
+        ]
+
         javaCompileOptions {
             annotationProcessorOptions {
                 includeCompileClasspath = true
             }
+        }
+
+        packagingOptions {
+            exclude "LICENSE-junit.txt"
+            exclude "junit/runner/*"
         }
     }
 
@@ -33,7 +42,7 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "dvsnier_${"${variant.productFlavors[0].name}".substring(6, "${variant.productFlavors[0].name}".length()).toLowerCase(Locale.getDefault(Locale.Category.FORMAT))}_${defaultConfig.versionName}_${gitHashCode()}.apk"
+            outputFileName = "dvsnier_${"${variant.productFlavors[0].name}".substring(6, "${variant.productFlavors[0].name}".length()).toLowerCase(Locale.getDefault(Locale.Category.FORMAT))}_${defaultConfig.versionName}.apk"
         }
     }
 
@@ -59,16 +68,25 @@ android {
         flavorDebug {
             applicationId 'com.dvsnier.debug'
             resValue "string", "app_name", "dvsnier debug"
+            manifestPlaceholders = [
+                    DVSNIER_VALUE: applicationId
+            ]
             dimension "color"
         }
         flavorTest {
             applicationId 'com.dvsnier.test'
             resValue "string", "app_name", "dvsnier test"
+            manifestPlaceholders = [
+                    DVSNIER_VALUE: applicationId
+            ]
             dimension "color"
         }
         flavorRelease {
             applicationId 'com.dvsnier'
             resValue "string", "app_name", "dvsnier"
+            manifestPlaceholders = [
+                    DVSNIER_VALUE: applicationId
+            ]
             dimension "color"
         }
     }
@@ -116,8 +134,6 @@ task exportAppInfo() {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation files('libs/Msc.jar')
-    implementation files('libs/Sunflower.jar')
     implementation project(':framework:base')
     implementation project(':common:bean')
     implementation project(':research:interceptor')
