@@ -8,36 +8,36 @@ ext {
     // 配置环境
     min_sdk_version = 14
     target_sdk_version = 28
-    version_code = 22
-    version_name = "0.0.22"
-    version_app_code = 22
-    version_app_name = "0.0.22"
-    version_base_code = 1
-    version_base_name = "0.0.1"
-    version_bean_code = 1
-    version_bean_name = "0.0.1"
-    version_utils_code = 1
-    version_utils_name = "0.0.1"
-    version_doc_code = 1
-    version_doc_name = "0.0.1"
-    version_interceptor_code = 1
-    version_interceptor_name = "0.0.1"
-    version_style_code = 1
-    version_style_name = "0.0.1"
+    version_code = 23
+    version_name = "0.1.0"
+    version_app_code = 23
+    version_app_name = "0.1.0"
+    version_base_code = 3
+    version_base_name = "0.0.3"
+    version_bean_code = 4
+    version_bean_name = "0.0.4"
+    version_utils_code = 5
+    version_utils_name = "0.0.5"
+    version_doc_code = 5
+    version_doc_name = "0.0.5"
+    version_interceptor_code = 4
+    version_interceptor_name = "0.0.4"
+    version_style_code = 3
+    version_style_name = "0.0.3"
 
     // modules 配置
-    version_widget_code = 1
-    version_widget_name = "0.0.1"
+    version_widget_code = 8
+    version_widget_name = "0.0.8"
     version_view_code = 1
     version_view_name = "0.0.1"
-    version_common_code = 1
-    version_common_name = "0.0.1"
+    version_common_code = 3
+    version_common_name = "0.0.3"
     version_service_code = 1
     version_service_name = "0.0.1"
     version_provider_code = 1
     version_provider_name = "0.0.1"
-    version_tpl_code = 1
-    version_tpl_name = "0.0.1"
+    version_tpl_code = 6
+    version_tpl_name = "0.0.6"
 
     // support SDK 配置
     support_annotations_version = "28.0.0"

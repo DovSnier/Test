@@ -1,3 +1,4 @@
+<!--suppress AndroidDomInspection -->
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="AppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
