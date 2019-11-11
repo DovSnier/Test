@@ -90,6 +90,14 @@
         "parentType": 200,
         "itemType": 2000,
         "flag": 0
+      },
+      {
+        "id": 2001,
+        "position": 0,
+        "name": "测试 Fragment",
+        "parentType": 200,
+        "itemType": 2000,
+        "flag": 0
       }
     ]
   },

@@ -30,6 +30,7 @@ public interface IAdapterType {
 
     interface ViewType extends IType {
         int TYPE_VIEW_AFFINITY = 0;
+        int TYPE_VIEW_FRAGMENT = 1;
     }
 
     interface ServiceType extends IType {
