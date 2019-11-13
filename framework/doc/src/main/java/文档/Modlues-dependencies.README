@@ -1,0 +1,51 @@
+
+## 项目依赖图
+
+```
+
++--- app
+|    \--- project :framework:base
+|         \--- project :common:utils
+|         \--- project :framework:style
+|    \--- project :common:bean
+|    \--- project :research:interceptor
+|         \--- project :research:view
+|              +--- project :framework:base
+|         \--- project :research:widget
+|              +--- project :framework:base
+|         \--- project :research:common
+|              +--- project :framework:base
+|         \--- project :research:tpl
+|              +--- project :framework:base
+|              \--- project :common:bean
+|
++--- project :doc
++--- project :research:service (*)
++--- project :research:provider (*)
++--- project :research:common (*)
+
+```
+
+
+## 项目目录图
+
+```
+
++--- project :app
+|    +--- dir :common
+|         \--- project :common:bean
+|         \--- project :common:utils
+|    +--- dir :framework
+|         \--- project :framework:base
+|         \--- project :framework:doc
+|         \--- project :framework:style
+|    +--- dir :research
+|         \--- project :research:common
+|         \--- project :research:interceptor
+|         \--- project :research:provider
+|         \--- project :research:service
+|         \--- project :research:tpl
+|         \--- project :research:view
+|         \--- project :research:widget
+
+```
