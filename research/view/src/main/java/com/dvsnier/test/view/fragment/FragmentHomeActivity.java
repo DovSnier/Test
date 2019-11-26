@@ -1,5 +1,6 @@
 package com.dvsnier.test.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -55,6 +56,7 @@ public class FragmentHomeActivity extends BaseActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        onLog("onCreate()");
         fragmentManager = getSupportFragmentManager();
         if (null != savedInstanceState) {
             removeByTag("A");
@@ -82,6 +84,84 @@ public class FragmentHomeActivity extends BaseActivity {
                 setTabAndFragmentStatus(currentPosition);
             }
         });
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        onLog("onRestart()");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        onLog("onStart()");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        onLog("onResume()");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        onLog("onPause()");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        onLog("onStop()");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        onLog("onDestroy()");
+    }
+
+    @Override
+    public void onAttachFragment(Fragment fragment) {
+        super.onAttachFragment(fragment);
+        onLog("onAttachFragment()");
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        onLog("onNewIntent()");
+    }
+
+    @Override
+    protected void onResumeFragments() {
+        super.onResumeFragments();
+        onLog("onResumeFragments()");
+    }
+
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        onLog("onAttachedToWindow()");
+    }
+
+    @Override
+    public void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        onLog("onDetachedFromWindow()");
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        onLog("onRestoreInstanceState()");
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        onLog("onSaveInstanceState()");
     }
 
     @Override
@@ -142,6 +222,9 @@ public class FragmentHomeActivity extends BaseActivity {
             fragmentManager.beginTransaction().show(bFragment).commit();
         } else if (2 == currentPosition) { // tv_3 or tv_4
             if (isChecked()) {
+                if (!cFragment.isAdded()) {
+                    fragmentManager.beginTransaction().add(R.id.fl_fragment, cFragment, "C").hide(cFragment).commit();
+                }
                 fragmentManager.beginTransaction().show(cFragment).commit();
             } else {
                 fragmentManager.beginTransaction().show(dFragment).commit();
@@ -217,4 +300,5 @@ public class FragmentHomeActivity extends BaseActivity {
 
         setTabAndFragmentStatus(currentPosition);
     }
+
 }
