@@ -11,6 +11,7 @@ import com.dvsnier.cache.config.ICacheConfig;
 import com.dvsnier.cache.config.IType;
 import com.dvsnier.cache.infrastructure.AbstractStorage;
 import com.dvsnier.cache.infrastructure.CacheStorage;
+import com.dvsnier.cache.infrastructure.LogStorage;
 import com.dvsnier.crash.Crash;
 
 /**
@@ -65,6 +66,7 @@ public abstract class BaseApplication<T> extends AbstractBaseApplication<T> {
     }
 
     protected void initializedCrash() {
+        LogStorage.INSTANCE().log(this);
         Crash.initialize(this);
     }
 }
