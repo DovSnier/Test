@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 import com.dvsnier.R;
 import com.dvsnier.adapter.MainAdapter;
@@ -31,6 +32,8 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity<MainPresenter> implements ITask,
         OnItemClickListener<CategoryBean, ComponentBean> {
 
+    @BindView(R.id.menu_content)
+    TextView menuContent;
     @BindView(R.id.testContainer)
     ExpandableListView listView;
     protected List<CategoryBean> dataSet = new ArrayList<>();
@@ -80,6 +83,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements ITask,
     @Override
     public void initView() {
         super.initView();
+        menuContent.setText(String.format("%s %s", getString(R.string.app_name), "测试清单"));
         transferStationWrapper = new TransferStationWrapper(this);
 //        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, dataSet);
         adapter = new MainAdapter(this, getDataSet());
