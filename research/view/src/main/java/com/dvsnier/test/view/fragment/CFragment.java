@@ -29,6 +29,13 @@ import butterknife.Unbinder;
  */
 public class CFragment extends BaseCompatFragment implements ICompatBaseView {
 
+    public static BaseCompatFragment newInstance() {
+        BaseCompatFragment fragment = new CFragment();
+        Bundle bundle = new Bundle();
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
     @BindView(R2.id.tv_click)
     TextView tvClick;
     Unbinder unbinder;

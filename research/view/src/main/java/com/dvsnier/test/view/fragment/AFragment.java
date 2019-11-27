@@ -21,6 +21,13 @@ import com.dvsnier.test.view.R;
  */
 public class AFragment extends BaseCompatFragment implements ICompatBaseView {
 
+    public static BaseCompatFragment newInstance() {
+        BaseCompatFragment fragment = new AFragment();
+        Bundle bundle = new Bundle();
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
