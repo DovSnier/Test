@@ -102,9 +102,17 @@
       {
         "id": 2002,
         "position": 2,
-        "name": "测试 Fragment And FragmentPagerAdapter",
+        "name": "测试 Fragment And FragmentPagerNoStateAdapter",
         "parentType": 200,
         "itemType": 2002,
+        "flag": 0
+      },
+      {
+        "id": 2003,
+        "position": 3,
+        "name": "测试 Fragment And FragmentPagerStateAdapter",
+        "parentType": 200,
+        "itemType": 2003,
         "flag": 0
       }
     ]

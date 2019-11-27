@@ -17,7 +17,7 @@ import com.dvsnier.base.flavor.activity.BaseActivity;
 import com.dvsnier.common.view.BaseCompatFragment;
 import com.dvsnier.test.view.R;
 import com.dvsnier.test.view.R2;
-import com.dvsnier.test.view.fragment.adapter.FragmentPagerNoStateAdapter;
+import com.dvsnier.test.view.fragment.adapter.FragmentPagerStateAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,10 +27,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * FragmentHomeNoStateActivity
+ * FragmentHomeStateActivity
  * Created by dovsnier on 2019-11-26.
  */
-public class FragmentHomeNoStateActivity extends BaseActivity {
+public class FragmentHomeStateActivity extends BaseActivity {
 
     @BindView(R2.id.view_pager)
     ViewPager viewPager;
@@ -58,7 +58,7 @@ public class FragmentHomeNoStateActivity extends BaseActivity {
     private FragmentManager fragmentManager;
     private boolean isChecked; // true 开启 false 关闭
     private List<BaseCompatFragment> dataSet = new ArrayList<>(4);
-    private FragmentPagerNoStateAdapter adapter;
+    private FragmentPagerStateAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,7 +71,7 @@ public class FragmentHomeNoStateActivity extends BaseActivity {
 //            removeByTag("D");
 //        }
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fragment_home_no_state);
+        setContentView(R.layout.activity_fragment_home_state);
         ButterKnife.bind(this);
         currentPosition = 0; // 默认不保存,默认重建为0索引位置fragment
         performScheduledInternal();
@@ -190,7 +190,7 @@ public class FragmentHomeNoStateActivity extends BaseActivity {
         if (!dataSet.contains(dFragment))
             dataSet.add(dFragment);
 
-        adapter = new FragmentPagerNoStateAdapter(fragmentManager, this, dataSet);
+        adapter = new FragmentPagerStateAdapter(fragmentManager, this, dataSet);
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(1);
         viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
