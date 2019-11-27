@@ -10,9 +10,9 @@ ext {
     target_sdk_version = 28
     version_code = 23   // deprecated
     version_name = "0.1.0"  // deprecated
-    version_app_code = 24
-    version_app_name = "0.1.0" // deprecated
-    version_base_code = 3
+    version_app_code = 25
+    version_app_name = "0.1.1"
+    version_base_code = 4
     version_base_name = "0.0.3"
     version_bean_code = 4
     version_bean_name = "0.0.4"
@@ -28,8 +28,8 @@ ext {
     // modules 配置
     version_widget_code = 8
     version_widget_name = "0.0.8"
-    version_view_code = 1
-    version_view_name = "0.0.1"
+    version_view_code = 4
+    version_view_name = "0.0.4"
     version_common_code = 3
     version_common_name = "0.0.3"
     version_service_code = 1
