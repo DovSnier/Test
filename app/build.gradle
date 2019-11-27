@@ -33,6 +33,22 @@ android {
         }
     }
 
+    signingConfigs {
+        debug {
+            storePassword "dvsnier"
+            keyAlias "dvsnier"
+            keyPassword "dvsnier"
+            storeFile file("${rootProject.getProjectDir()}/common/dvsnier.jks")
+        }
+
+        release {
+            storePassword "dvsnier"
+            keyAlias "dvsnier"
+            keyPassword "dvsnier"
+            storeFile file("${rootProject.getProjectDir()}/common/dvsnier.jks")
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false

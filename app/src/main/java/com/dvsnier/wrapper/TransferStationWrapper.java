@@ -17,6 +17,9 @@ import com.dvsnier.test.common.touch.TestTouchEventActivity;
 import com.dvsnier.test.tpl.image.TestImageActivity;
 import com.dvsnier.test.tpl.xutils.TestXUtilsActivity;
 import com.dvsnier.test.view.affinity.AffinityActivity;
+import com.dvsnier.test.view.fragment.FragmentHomeActivity;
+import com.dvsnier.test.view.fragment.FragmentHomeNoStateActivity;
+import com.dvsnier.test.view.fragment.FragmentHomeStateActivity;
 import com.dvsnier.test.widget.animator.TestAnimator;
 import com.dvsnier.test.widget.coordinator.TestCoordinatorLayout2Activity;
 import com.dvsnier.test.widget.coordinator.TestCoordinatorLayout3Activity;
@@ -130,6 +133,21 @@ public class TransferStationWrapper implements IAdapterType {
             case ViewType.TYPE_VIEW_AFFINITY:
                 intent = new Intent(getContext(), AffinityActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                break;
+            case ViewType.TYPE_VIEW_FRAGMENT:
+                intent = new Intent(getContext(), FragmentHomeActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                break;
+            case ViewType.TYPE_VIEW_FRAGMENT_AND_FRAGMENT_PAGER_NO_STATE_ADAPTER:
+                intent = new Intent(getContext(), FragmentHomeNoStateActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                break;
+            case ViewType.TYPE_VIEW_FRAGMENT_AND_FRAGMENT_PAGER_STATE_ADAPTER:
+                intent = new Intent(getContext(), FragmentHomeStateActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
                 break;
         }
