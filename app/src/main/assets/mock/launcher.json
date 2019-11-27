@@ -93,10 +93,18 @@
       },
       {
         "id": 2001,
-        "position": 0,
+        "position": 1,
         "name": "测试 Fragment",
         "parentType": 200,
-        "itemType": 2000,
+        "itemType": 2001,
+        "flag": 0
+      },
+      {
+        "id": 2002,
+        "position": 2,
+        "name": "测试 Fragment And FragmentPagerAdapter",
+        "parentType": 200,
+        "itemType": 2002,
         "flag": 0
       }
     ]

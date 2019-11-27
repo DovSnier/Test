@@ -31,6 +31,7 @@ public interface IAdapterType {
     interface ViewType extends IType {
         int TYPE_VIEW_AFFINITY = 0;
         int TYPE_VIEW_FRAGMENT = 1;
+        int TYPE_VIEW_FRAGMENT_AND_FRAGMENT_PAGER_ADAPTER = 2;
     }
 
     interface ServiceType extends IType {
