@@ -26,6 +26,7 @@ public interface IAdapterType {
         int TYPE_WIDGET_COORDINATOR_LAYOUT = 5;
         int TYPE_WIDGET_COLLAPSING_TOOLBAR_LAYOUT = 6;
         int TYPE_WIDGET_APPBAR_LAYOUT = 7;
+        int TYPE_WIDGET_SCREEN_INFO = 8;
     }
 
     interface ViewType extends IType {

@@ -25,6 +25,7 @@ import com.dvsnier.test.widget.coordinator.TestCoordinatorLayout2Activity;
 import com.dvsnier.test.widget.coordinator.TestCoordinatorLayout3Activity;
 import com.dvsnier.test.widget.coordinator.TestCoordinatorLayoutActivity;
 import com.dvsnier.test.widget.recycleview.TestRecyclerActivity;
+import com.dvsnier.test.widget.screen.TestScreenInfoActivity;
 import com.dvsnier.test.widget.scroll.TestScrollActivity;
 import com.dvsnier.test.widget.surfaceview.TestSurfaceActivity;
 import com.dvsnier.test.widget.theme.TestThemeActivity;
@@ -121,6 +122,10 @@ public class TransferStationWrapper implements IAdapterType {
                 break;
             case WidgetType.TYPE_WIDGET_APPBAR_LAYOUT:
                 intent = new Intent(getContext(), TestCoordinatorLayout3Activity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+            case WidgetType.TYPE_WIDGET_SCREEN_INFO:
+                intent = new Intent(getContext(), TestScreenInfoActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
                 break;

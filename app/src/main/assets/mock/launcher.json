@@ -71,6 +71,14 @@
         "parentType": 100,
         "itemType": 1007,
         "flag": 0
+      },
+      {
+        "id": 1008,
+        "position": 8,
+        "name": "测试 Screen Info",
+        "parentType": 100,
+        "itemType": 1008,
+        "flag": 0
       }
     ]
   },

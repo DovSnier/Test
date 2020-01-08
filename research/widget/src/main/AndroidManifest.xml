@@ -37,5 +37,10 @@
             android:name=".coordinator.TestCoordinatorLayout3Activity"
             android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
+        <activity
+            android:name=".screen.TestScreenInfoActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.DefaultTheme"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
     </application>
 </manifest>
