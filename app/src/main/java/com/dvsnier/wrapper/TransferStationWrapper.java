@@ -33,6 +33,7 @@ import com.dvsnier.test.tpl.eventbus.TestEventBusActivity;
 import com.dvsnier.test.tpl.green.TestGreenDaoActivity;
 import com.dvsnier.test.tpl.okhttp.TestOkhttpActivity;
 import com.dvsnier.test.tpl.speech.TestSpeechRecognitionActivity;
+import com.dvsnier.test.widget.view.TestViewSizeActivity;
 import com.orhanobut.logger.Logger;
 
 /**
@@ -126,6 +127,11 @@ public class TransferStationWrapper implements IAdapterType {
                 startActivity(intent);
             case WidgetType.TYPE_WIDGET_SCREEN_INFO:
                 intent = new Intent(getContext(), TestScreenInfoActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                break;
+            case WidgetType.TYPE_WIDGET_TEXT_VIEW_SIZE:
+                intent = new Intent(getContext(), TestViewSizeActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
                 break;

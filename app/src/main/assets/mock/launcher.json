@@ -79,6 +79,14 @@
         "parentType": 100,
         "itemType": 1008,
         "flag": 0
+      },
+      {
+        "id": 1009,
+        "position": 9,
+        "name": "测试 Text View Size",
+        "parentType": 100,
+        "itemType": 1009,
+        "flag": 0
       }
     ]
   },
