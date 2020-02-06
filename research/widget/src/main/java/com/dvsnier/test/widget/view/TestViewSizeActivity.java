@@ -1,11 +1,15 @@
 package com.dvsnier.test.widget.view;
 
+import android.annotation.SuppressLint;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.view.MotionEvent;
+import android.view.VelocityTracker;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,12 +26,15 @@ import butterknife.ButterKnife;
  */
 public class TestViewSizeActivity extends BaseActivity {
 
+    @BindView(R2.id.container)
+    LinearLayout container;
     @BindView(R2.id.content)
     TextView content;
     @BindView(R2.id.tv_one)
     TextView tvOne;
     @BindView(R2.id.tv_two)
     TextView tvTwo;
+    protected VelocityTracker velocityTracker;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +48,7 @@ public class TestViewSizeActivity extends BaseActivity {
     @Override
     public void initView() {
         super.initView();
+        addOnTouch();
         tvOne.setText("职能赋能里正式");
         tvTwo.setText("管理员");
     }
@@ -60,6 +68,44 @@ public class TestViewSizeActivity extends BaseActivity {
                 + "widthTwo: " + widthTwo + "\n";
         content.setText(msg);
         onTips("the test view size.");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (null != velocityTracker) {
+            velocityTracker.recycle();
+            velocityTracker = null;
+        }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    protected void addOnTouch() {
+        container.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (null == velocityTracker) {
+                    velocityTracker = VelocityTracker.obtain();
+                }
+                velocityTracker.addMovement(event);
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        onLog("ACTION_DOWN");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        onLog("ACTION_MOVE");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        onLog("ACTION_UP");
+//                        velocityTracker.computeCurrentVelocity(1000);
+                        velocityTracker.computeCurrentVelocity(100);
+                        onLog("XVelocity: " + velocityTracker.getXVelocity());
+                        onLog("YVelocity: " + velocityTracker.getYVelocity());
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     public void onTips(@NonNull String msg) {
