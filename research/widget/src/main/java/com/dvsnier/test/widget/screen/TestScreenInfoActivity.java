@@ -1,6 +1,8 @@
 package com.dvsnier.test.widget.screen;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
@@ -8,6 +10,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.dvsnier.base.flavor.activity.BaseActivity;
+import com.dvsnier.base.task.ITask;
 import com.dvsnier.test.widget.R;
 import com.dvsnier.test.widget.R2;
 import com.dvsnier.test.widget.presenter.TestScreenInfoPresenter;
@@ -21,7 +24,7 @@ import butterknife.ButterKnife;
  * TestScreenInfoActivity
  * Created by dovsnier on 2020-01-08.
  */
-public class TestScreenInfoActivity extends BaseActivity<TestScreenInfoPresenter> {
+public class TestScreenInfoActivity extends BaseActivity<TestScreenInfoPresenter> implements ITask {
 
     @BindView(R2.id.content)
     TextView content;
@@ -34,6 +37,29 @@ public class TestScreenInfoActivity extends BaseActivity<TestScreenInfoPresenter
         performScheduledInternal();
     }
 
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        onLog(String.format("onConfigurationChanged(%s)", newConfig.orientation));
+        execute();
+//        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//            execute();
+//        } else {
+//            execute();
+//        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        onLog("onNewIntent()");
+    }
+
+    @Override
+    public void execute() {
+        initData();
+    }
 
     @SuppressLint("LongLogTag")
     @Override
