@@ -58,7 +58,7 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "dvsnier_${"${variant.productFlavors[0].name}".substring(6, "${variant.productFlavors[0].name}".length()).toLowerCase(Locale.getDefault(Locale.Category.FORMAT))}_${defaultConfig.versionName}.apk"
+            outputFileName = "dvsnier_${"${variant.productFlavors[0].name}".toLowerCase(Locale.getDefault(Locale.Category.FORMAT))}_${defaultConfig.versionName}.apk"
         }
     }
 
@@ -81,7 +81,7 @@ android {
     flavorDimensions "color"
 
     productFlavors {
-        flavorDebug {
+        alpha {
             applicationId 'com.dvsnier.debug'
             resValue "string", "app_name", "dvsnier debug"
             manifestPlaceholders = [
@@ -89,7 +89,7 @@ android {
             ]
             dimension "color"
         }
-        flavorTest {
+        beta {
             applicationId 'com.dvsnier.test'
             resValue "string", "app_name", "dvsnier test"
             manifestPlaceholders = [
@@ -97,7 +97,7 @@ android {
             ]
             dimension "color"
         }
-        flavorRelease {
+        product {
             applicationId 'com.dvsnier'
             resValue "string", "app_name", "dvsnier"
             manifestPlaceholders = [
