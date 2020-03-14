@@ -44,31 +44,32 @@ public class MainActivity extends BaseActivity<MainPresenter> implements ITask,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            hideSystemUI();
-            getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
-                @Override
-                public void onSystemUiVisibilityChange(int visibility) {
-                    if (visibility == View.VISIBLE) {
-                        hideSystemUI();
-                    }
-                }
-            });
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+//            hideSystemUI();
+//            getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
+//                @Override
+//                public void onSystemUiVisibilityChange(int visibility) {
+//                    // Note that system bars will only be "visible" if none of the
+//                    // LOW_PROFILE, HIDE_NAVIGATION, or FULLSCREEN flags are set.
+//                    if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
+//                        hideSystemUI();
+//                    }
+//                }
+//            });
+//        }
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initView();
         initData();
     }
 
-    @SuppressLint("ObsoleteSdkInt")
     protected void hideSystemUI() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-            } else {
-                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-            }
+        View decorView = getWindow().getDecorView();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            // 非后置式
+            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
     }
 
