@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dvsnier.R;
@@ -15,6 +16,7 @@ import com.dvsnier.base.task.ITask;
 import com.dvsnier.bean.CategoryBean;
 import com.dvsnier.bean.ComponentBean;
 import com.dvsnier.presenter.MainPresenter;
+import com.dvsnier.test.utils.WindowUtil;
 import com.dvsnier.viewholder.OnItemClickListener;
 import com.dvsnier.wrapper.TransferStationWrapper;
 
@@ -33,6 +35,8 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity<MainPresenter> implements ITask,
         OnItemClickListener<CategoryBean, ComponentBean> {
 
+    @BindView(R.id.ll_container)
+    LinearLayout llContainer;
     @BindView(R.id.menu_content)
     TextView menuContent;
     @BindView(R.id.testContainer)
@@ -79,7 +83,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements ITask,
 //            }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 getWindow().setStatusBarColor(Color.TRANSPARENT);
-//                getWindow().setStatusBarColor(Color.RED);
             }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -98,6 +101,16 @@ public class MainActivity extends BaseActivity<MainPresenter> implements ITask,
                 decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            }
+            int statusBarHeight = WindowUtil.getStatusBarHeight(this);
+            llContainer.setPadding(0, statusBarHeight, 0, 0);
+            onLog(String.format("the current status bar height is %s px.", statusBarHeight));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                if (Math.random() * 100 > 50) {
+                    getWindow().setStatusBarColor(Color.RED);
+                } else {
+                    getWindow().setStatusBarColor(Color.TRANSPARENT);
+                }
             }
         }
     }
