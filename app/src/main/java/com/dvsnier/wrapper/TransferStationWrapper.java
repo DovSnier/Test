@@ -24,6 +24,7 @@ import com.dvsnier.test.widget.animator.TestAnimator;
 import com.dvsnier.test.widget.coordinator.TestCoordinatorLayout2Activity;
 import com.dvsnier.test.widget.coordinator.TestCoordinatorLayout3Activity;
 import com.dvsnier.test.widget.coordinator.TestCoordinatorLayoutActivity;
+import com.dvsnier.test.widget.nested.TestNestedScrollingParentActivity;
 import com.dvsnier.test.widget.recycleview.TestRecyclerActivity;
 import com.dvsnier.test.widget.screen.TestScreenInfoActivity;
 import com.dvsnier.test.widget.scroll.TestScrollActivity;
@@ -125,6 +126,7 @@ public class TransferStationWrapper implements IAdapterType {
                 intent = new Intent(getContext(), TestCoordinatorLayout3Activity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
+                break;
             case WidgetType.TYPE_WIDGET_SCREEN_INFO:
                 intent = new Intent(getContext(), TestScreenInfoActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -132,6 +134,11 @@ public class TransferStationWrapper implements IAdapterType {
                 break;
             case WidgetType.TYPE_WIDGET_TEXT_VIEW_SIZE:
                 intent = new Intent(getContext(), TestViewSizeActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                break;
+            case WidgetType.TYPE_WIDGET_NESTED_SCROLLING_PARENT:
+                intent = new Intent(getContext(), TestNestedScrollingParentActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
                 break;
