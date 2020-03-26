@@ -1,8 +1,10 @@
 package com.dvsnier.test.widget.recycleview;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -49,6 +51,26 @@ public class TestRecyclerActivity extends BaseActivity<TestRecyclerPresenter> im
         adapter = new RecyclerViewAdapter(this);
         adapter.setOnClickListener(this);
         recyclerView.setAdapter(adapter);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                /**
+                 * 1. dx, dy 针对的是View , 不是操作(手势触摸)
+                 * 2. canScrollHorizontally/canScrollVertically(direction) 针对的是操作(手势触摸), 不是View
+                 */
+                if (dy > 0) { // 手指上滑(direction: 1)，View 向下滚动，加载
+                    Log.w(TAG, String.format("手指上滑，View 向下滚动 -> %s", dy));
+                } else { // 手指下滑(direction: -1)，View 向上滚动，下拉
+                    Log.w(TAG, String.format("手指下滑，View 向上滚动 -> %s", dy));
+                }
+            }
+        });
     }
 
     @Override
