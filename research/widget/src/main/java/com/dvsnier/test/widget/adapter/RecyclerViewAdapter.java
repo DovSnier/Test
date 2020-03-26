@@ -3,7 +3,6 @@ package com.dvsnier.test.widget.adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.dvsnier.base.adapter.BaseRecyclerViewAdapter;
@@ -29,8 +28,8 @@ public class RecyclerViewAdapter extends BaseRecyclerViewAdapter<String, BaseVie
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new RecycleViewHolder(View.inflate(context, R.layout.layout_recycler_view_item, null));
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new RecycleViewHolder(context, R.layout.layout_recycler_view_item, parent);
     }
 
     @Override
