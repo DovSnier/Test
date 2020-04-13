@@ -1,9 +1,11 @@
 package com.dvsnier.test.widget.viewholder;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dvsnier.base.holder.BaseViewHolder;
@@ -19,6 +21,8 @@ import butterknife.ButterKnife;
  */
 public class RecycleViewHolder extends BaseViewHolder<String> {
 
+    @BindView(R2.id.ll_container)
+    LinearLayout llContainer;
     @BindView(R2.id.content)
     TextView content;
 
@@ -36,6 +40,11 @@ public class RecycleViewHolder extends BaseViewHolder<String> {
     @Override
     public void onBindViewHolder(Context context, final int position, final String bean) {
         super.onBindViewHolder(context, position, bean);
+        if (position % 2 == 0) {
+            llContainer.setBackgroundColor(Color.parseColor("#4cb4e7"));
+        } else {
+            llContainer.setBackgroundColor(Color.parseColor("#9dd3fa"));
+        }
         content.setText(bean);
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

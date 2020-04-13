@@ -24,7 +24,9 @@ import com.dvsnier.test.widget.animator.TestAnimator;
 import com.dvsnier.test.widget.coordinator.TestCoordinatorLayout2Activity;
 import com.dvsnier.test.widget.coordinator.TestCoordinatorLayout3Activity;
 import com.dvsnier.test.widget.coordinator.TestCoordinatorLayoutActivity;
+import com.dvsnier.test.widget.nested.TestNestedScrollingParentActivity;
 import com.dvsnier.test.widget.recycleview.TestRecyclerActivity;
+import com.dvsnier.test.widget.screen.TestScreenInfoActivity;
 import com.dvsnier.test.widget.scroll.TestScrollActivity;
 import com.dvsnier.test.widget.surfaceview.TestSurfaceActivity;
 import com.dvsnier.test.widget.theme.TestThemeActivity;
@@ -32,6 +34,7 @@ import com.dvsnier.test.tpl.eventbus.TestEventBusActivity;
 import com.dvsnier.test.tpl.green.TestGreenDaoActivity;
 import com.dvsnier.test.tpl.okhttp.TestOkhttpActivity;
 import com.dvsnier.test.tpl.speech.TestSpeechRecognitionActivity;
+import com.dvsnier.test.widget.view.TestViewSizeActivity;
 import com.orhanobut.logger.Logger;
 
 /**
@@ -121,6 +124,21 @@ public class TransferStationWrapper implements IAdapterType {
                 break;
             case WidgetType.TYPE_WIDGET_APPBAR_LAYOUT:
                 intent = new Intent(getContext(), TestCoordinatorLayout3Activity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                break;
+            case WidgetType.TYPE_WIDGET_SCREEN_INFO:
+                intent = new Intent(getContext(), TestScreenInfoActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                break;
+            case WidgetType.TYPE_WIDGET_TEXT_VIEW_SIZE:
+                intent = new Intent(getContext(), TestViewSizeActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                break;
+            case WidgetType.TYPE_WIDGET_NESTED_SCROLLING_PARENT:
+                intent = new Intent(getContext(), TestNestedScrollingParentActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
                 break;

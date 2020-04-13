@@ -42,3 +42,8 @@ out
 
 # alias files
 property.txt
+
+# the build environment
+alpha/
+beta/
+product/
