@@ -36,6 +36,7 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:$rootProject.support_recyclerview_version"
     implementation "com.android.support:appcompat-v7:$rootProject.support_appcompat_version"
     implementation "com.android.support:support-annotations:$rootProject.support_annotations_version"
+    implementation "com.android.support:support-compat:$rootProject.support_compat_version"
     implementation "com.android.support:design:$rootProject.support_design_version"
     implementation "com.android.support.constraint:constraint-layout:$rootProject.support_constraint_layout_version"
 

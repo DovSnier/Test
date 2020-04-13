@@ -1,10 +1,12 @@
 package com.dvsnier.view;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dvsnier.R;
@@ -14,6 +16,7 @@ import com.dvsnier.base.task.ITask;
 import com.dvsnier.bean.CategoryBean;
 import com.dvsnier.bean.ComponentBean;
 import com.dvsnier.presenter.MainPresenter;
+import com.dvsnier.test.utils.WindowUtil;
 import com.dvsnier.viewholder.OnItemClickListener;
 import com.dvsnier.wrapper.TransferStationWrapper;
 
@@ -32,6 +35,8 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity<MainPresenter> implements ITask,
         OnItemClickListener<CategoryBean, ComponentBean> {
 
+    @BindView(R.id.ll_container)
+    LinearLayout llContainer;
     @BindView(R.id.menu_content)
     TextView menuContent;
     @BindView(R.id.testContainer)
@@ -44,30 +49,68 @@ public class MainActivity extends BaseActivity<MainPresenter> implements ITask,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            hideSystemUI();
-            getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
-                @Override
-                public void onSystemUiVisibilityChange(int visibility) {
-                    if (visibility == View.VISIBLE) {
-                        hideSystemUI();
-                    }
-                }
-            });
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+//            hideSystemUI();
+//            getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
+//                @Override
+//                public void onSystemUiVisibilityChange(int visibility) {
+//                    // Note that system bars will only be "visible" if none of the
+//                    // LOW_PROFILE, HIDE_NAVIGATION, or FULLSCREEN flags are set.
+//                    if ((visibility & View.SYSTEM_UI_FLAG_FULLSCREEN) == 0) {
+//                        hideSystemUI();
+//                    }
+//                }
+//            });
+//        }
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initView();
         initData();
     }
 
-    @SuppressLint("ObsoleteSdkInt")
     protected void hideSystemUI() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        View decorView = getWindow().getDecorView();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            // 非后置式
+//            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//                    | View.SYSTEM_UI_FLAG_FULLSCREEN
+//                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+            // 后置全屏式，状态栏透明，搭配 View.SYSTEM_UI_FLAG_LAYOUT_STABLE & fitsSystemWindows=false
+            //noinspection ConstantConditions
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//                getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+//                        WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                getWindow().setStatusBarColor(Color.TRANSPARENT);
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                            | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR
+                            | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+                } else {
+                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+                            | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+                }
             } else {
-                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+                decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            }
+            int statusBarHeight = WindowUtil.getStatusBarHeight(this);
+            llContainer.setPadding(0, statusBarHeight, 0, 0);
+            onLog(String.format("the current status bar height is %s px.", statusBarHeight));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                if (Math.random() * 100 > 50) {
+                    getWindow().setStatusBarColor(Color.RED);
+                } else {
+                    getWindow().setStatusBarColor(Color.TRANSPARENT);
+                }
             }
         }
     }

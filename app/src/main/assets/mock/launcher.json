@@ -71,6 +71,30 @@
         "parentType": 100,
         "itemType": 1007,
         "flag": 0
+      },
+      {
+        "id": 1008,
+        "position": 8,
+        "name": "测试 Screen Info",
+        "parentType": 100,
+        "itemType": 1008,
+        "flag": 0
+      },
+      {
+        "id": 1009,
+        "position": 9,
+        "name": "测试 Text View Size",
+        "parentType": 100,
+        "itemType": 1009,
+        "flag": 0
+      },
+      {
+        "id": 1010,
+        "position": 10,
+        "name": "测试 Nest Scrolling Parent",
+        "parentType": 100,
+        "itemType": 1010,
+        "flag": 0
       }
     ]
   },
