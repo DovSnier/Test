@@ -12,5 +12,7 @@
         <attr name="heightLightColor" format="color|reference" />
         <attr name="maxLines" format="integer|reference" />
         <attr name="ellipseSuffix" format="string|reference" />
+        <attr name="content" format="string|reference" />
+        <attr name="richTextClickable" format="boolean|reference" />
     </declare-styleable>
 </resources>
