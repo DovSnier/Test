@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CompactTextView">
+        <attr name="maxWidth" format="dimension|reference" />
+        <attr name="maxHeight" format="dimension|reference" />
+        <attr name="textSize" format="dimension|reference" />
+        <attr name="textColor" format="color|reference" />
+        <attr name="ellipsize" format="enum">
+            <enum name="middle" value="0" />
+            <enum name="end" value="1" />
+        </attr>
+        <attr name="heightLightColor" format="color|reference" />
+        <attr name="maxLines" format="integer|reference" />
+        <attr name="ellipseSuffix" format="string|reference" />
+    </declare-styleable>
+</resources>

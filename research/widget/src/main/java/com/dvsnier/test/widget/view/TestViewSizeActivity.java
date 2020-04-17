@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.dvsnier.base.flavor.activity.BaseActivity;
 import com.dvsnier.test.widget.R;
 import com.dvsnier.test.widget.R2;
+import com.dvsnier.test.widget.presenter.TestViewSizePresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,7 +26,7 @@ import butterknife.ButterKnife;
  * TestViewSizeActivity
  * Created by machine code on 2020/2/5.
  */
-public class TestViewSizeActivity extends BaseActivity {
+public class TestViewSizeActivity extends BaseActivity<TestViewSizePresenter> {
 
     @BindView(R2.id.container)
     LinearLayout container;
