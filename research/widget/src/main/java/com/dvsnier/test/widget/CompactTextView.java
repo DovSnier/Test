@@ -3,13 +3,20 @@ package com.dvsnier.test.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.text.Spannable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.View;
 
 import com.dvsnier.base.view.IView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * CompactTextView
@@ -27,6 +34,11 @@ public class CompactTextView extends View implements IView {
     protected String ellipseSuffix;
     protected CharSequence content;
     protected boolean richTextClickable;
+    protected Paint paint;
+    private List<String> source;
+    private Spannable spannable;
+    private DisplayMetrics displayMetrics;
+    private int maxItemWidth;
 
     public CompactTextView(Context context) {
         super(context);
@@ -71,12 +83,42 @@ public class CompactTextView extends View implements IView {
     }
 
     public void initView() {
-
+        maxItemWidth = 0;
+        source = new ArrayList<>();
+        displayMetrics = getResources().getDisplayMetrics();
+        paint = new Paint();
+        paint.setTextSize(getTextSize());
+        paint.setColor(getTextColor());
+        paint.setAntiAlias(true);
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        if (TextUtils.isEmpty(getContent())) {
+            super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        } else {
+            int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+            int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+            int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+            int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+            if (widthMode == MeasureSpec.EXACTLY) {
+
+            } else {
+                // the compute text
+                String[] strings = getContent().toString().split("\n");
+                //noinspection ConstantConditions
+                if (null != strings) {
+                    if (strings.length > 0) {
+                        for (int i = 0; i < strings.length; i++) {
+                            //noinspection UseBulkOperation
+                            source.add(strings[i]);
+                        }
+                        computeItemMax(widthSize);
+                    }
+                }
+            }
+            setMeasuredDimension(widthSize, heightSize);
+        }
     }
 
     @Override
@@ -92,6 +134,44 @@ public class CompactTextView extends View implements IView {
     @Override
     public void onDestroy() {
 
+    }
+
+    private void computeItemMax(int widthSize) {
+        for (int j = 0; j < source.size(); j++) {
+            String item = source.get(j);
+            float measureItemText = paint.measureText(item); // to measure of the current line text
+            if (getMaxWidth() > 0) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    if (getMaxWidth() > getMinimumWidth()) {
+                        if (measureItemText > getMaxWidth()) {
+                            float[] measuredWidth = {};
+                            int textLength = paint.breakText(item, true, getMaxWidth(), measuredWidth);
+                            String firstItem = item.substring(0, textLength);
+                            String lastItem = item.substring(textLength, item.length());
+                            item = firstItem;
+                            source.set(j, item); // the reset value
+                            if ((j + 1) < source.size()) {
+                                String nextItem = source.get(j + 1);
+                                if (TextUtils.isEmpty(nextItem)) {
+                                    source.add(lastItem);
+                                } else {
+                                    source.set(j + 1, String.valueOf(lastItem + nextItem));
+                                }
+                            } else {
+                                source.add(lastItem);
+                            }
+                            maxWidth = Math.max(maxWidth, Float.valueOf(paint.measureText(item)).intValue());
+                        }
+                    } else {
+                        // nothing to do
+                    }
+                } else {
+                    // not support less than 4.1 version
+                }
+            } else {
+                setMaxWidth(widthSize);
+            }
+        }
     }
 
     public int getMaxWidth() {

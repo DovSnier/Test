@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <attr name="content" format="string|reference" />
+
     <declare-styleable name="CompactTextView">
         <attr name="maxWidth" format="dimension|reference" />
         <attr name="maxHeight" format="dimension|reference" />
@@ -12,7 +15,7 @@
         <attr name="heightLightColor" format="color|reference" />
         <attr name="maxLines" format="integer|reference" />
         <attr name="ellipseSuffix" format="string|reference" />
-        <attr name="content" format="string|reference" />
+        <attr name="content" />
         <attr name="richTextClickable" format="boolean|reference" />
     </declare-styleable>
 </resources>
