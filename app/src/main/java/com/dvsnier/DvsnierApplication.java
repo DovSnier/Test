@@ -5,6 +5,8 @@ import android.widget.Toast;
 
 import com.dvsnier.cache.CacheManager;
 import com.dvsnier.cache.base.TimeUnit;
+import com.dvsnier.common.AppCommonWorkObject;
+import com.dvsnier.common.impl.BaseImpl;
 import com.dvsnier.test.utils.MD5;
 import com.facebook.stetho.Stetho;
 import com.facebook.stetho.common.LogRedirector;
@@ -30,6 +32,9 @@ public class DvsnierApplication extends BaseApplication<DvsnierApplication> {
 //        SpeechUtility.createUtility(this, SpeechConstant.APPID + "=599b97fa");
         super.onCreate();
         INSTANCE = this;
+
+        AppCommonWorkObject.getInstance().setBaseCallback(new BaseImpl());
+
         StringBuilder stringBuilder = new StringBuilder(String.format("the current system time: %s%s", System.currentTimeMillis(), "\n"));
 
         initializedCrash();
