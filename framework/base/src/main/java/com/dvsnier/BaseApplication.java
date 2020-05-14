@@ -8,7 +8,6 @@ import com.dvsnier.base.flavor.constant.IDvsType;
 import com.dvsnier.cache.CacheManager;
 import com.dvsnier.cache.base.CacheGenre;
 import com.dvsnier.cache.config.ICacheConfig;
-import com.dvsnier.cache.config.IType;
 import com.dvsnier.cache.infrastructure.AbstractStorage;
 import com.dvsnier.cache.infrastructure.CacheStorage;
 import com.dvsnier.cache.infrastructure.LogStorage;
@@ -46,7 +45,7 @@ public abstract class BaseApplication<T> extends AbstractBaseApplication<T> {
     }
 
     protected void initializedCache() {
-        //      自定义磁盘512M 缓存空间
+//        自定义磁盘512M 缓存空间
         int cacheMaxSizeOfDisk = Double.valueOf(CacheStorage.INSTANCE().getFormatted(512, AbstractStorage.SCU.M)).intValue(); // 1G < Integer.MAX_VALUE ~ 2G
         CacheManager.getInstance().initialize(new ICacheConfig.Builder(this)
                 .setContext(this)
@@ -56,11 +55,23 @@ public abstract class BaseApplication<T> extends AbstractBaseApplication<T> {
                 .setCacheGenre(new CacheGenre.SCHEDULED())  // the Scheduled Mode, otherwise is default
                 .create());
 
-        CacheManager.getInstance().initialize(IType.TYPE_DOWNLOADS, new ICacheConfig.Builder(this)
+        CacheManager.getInstance().initialize(ICacheType.TYPE_DOWNLOADS, new ICacheConfig.Builder(this)
                 .setContext(this)
                 .setAppVersion(getAppVersionCode(this))
                 .setCacheMaxSizeOfDisk(cacheMaxSizeOfDisk)
-                .setUniqueName(IType.TYPE_DOWNLOADS)
+                .setUniqueName(ICacheType.TYPE_DOWNLOADS)
+                .setCacheGenre(new CacheGenre.SCHEDULED())  // the Scheduled Mode, otherwise is default
+                .create());
+    }
+
+    protected void initializedServerCache() {
+//        自定义磁盘512M 缓存空间
+        int cacheMaxSizeOfDisk = Double.valueOf(CacheStorage.INSTANCE().getFormatted(512, AbstractStorage.SCU.M)).intValue(); // 1G < Integer.MAX_VALUE ~ 2G
+        CacheManager.getInstance().initialize(ICacheType.TYPE_LOG_SERVICE, new ICacheConfig.Builder(this)
+                .setContext(this)
+                .setAppVersion(getAppVersionCode(this))
+                .setCacheMaxSizeOfDisk(cacheMaxSizeOfDisk)
+                .setUniqueName(ICacheType.TYPE_LOG_SERVICE)
                 .setCacheGenre(new CacheGenre.SCHEDULED())  // the Scheduled Mode, otherwise is default
                 .create());
     }

@@ -1,2 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.dvsnier.test.service" />
+    package="com.dvsnier.test.service">
+
+    <application>
+        <activity
+            android:name="com.dvsnier.test.view.TestLogServiceActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.DefaultTheme"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
+        <service
+            android:name=".LogService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":log" />
+    </application>
+
+</manifest>

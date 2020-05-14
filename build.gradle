@@ -1,6 +1,7 @@
 import java.nio.file.Paths
 
 apply from: 'dependencies.gradle'
+apply plugin: "ua.eshepelyuk.ManifestClasspath"
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
@@ -13,6 +14,7 @@ buildscript {
     repositories {
 //        maven { url "https://jitpack.io" }
         maven { url "https://maven.aliyun.com/repository/public" }
+        maven { url "https://plugins.gradle.org/m2/" }
         mavenCentral()
         mavenLocal()
         google()
@@ -23,6 +25,7 @@ buildscript {
         classpath "com.android.tools.build:gradle:$build_gradle_version"
         classpath "org.greenrobot:greendao-gradle-plugin:$greendao_gradle_plugin_version"
         classpath "com.jakewharton:butterknife-gradle-plugin:$butterknife_gradle_plugin_version"
+        classpath "gradle.plugin.ua.eshepelyuk:ManifestClasspath:1.0.0"
 //        classpath 'com.github.TWiStErRob.butterknife:butterknife-gradle-plugin:fix1431-SNAPSHOT'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -32,6 +35,7 @@ buildscript {
 allprojects {
     repositories {
         maven { url "https://maven.aliyun.com/repository/public" }
+        maven { url "https://plugins.gradle.org/m2/" }
         mavenCentral()
         mavenLocal()
         google()
