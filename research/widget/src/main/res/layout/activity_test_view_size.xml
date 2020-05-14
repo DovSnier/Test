@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -60,7 +61,7 @@
 
             <TextView
                 android:id="@+id/tv_three"
-                android:layout_width="160dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginLeft="15dp"
@@ -68,6 +69,8 @@
                 android:layout_marginRight="15dp"
                 android:background="@android:color/holo_red_dark"
                 android:ellipsize="end"
+                android:gravity="center"
+                android:maxWidth="160dp"
                 android:maxLines="2"
                 android:padding="2dp"
                 android:textSize="14sp"
@@ -93,6 +96,39 @@
                 android:padding="2dp"
                 android:text="我来自于earth,我是地球人，我喜欢china.中国崛起，天佑中华"
                 android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@android:color/holo_orange_light"
+            android:orientation="vertical">
+
+            <com.dvsnier.test.widget.CompactTextView
+                android:id="@+id/ctv_content"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                app:content="@string/mock_of_content"
+                app:ellipseSuffix="..."
+                app:ellipsize="end"
+                app:maxWidth="200dp"
+                app:richTextClickable="true"
+                app:textColor="@android:color/black"
+                app:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@android:color/holo_green_light"
+            android:orientation="vertical">
+
+
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

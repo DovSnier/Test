@@ -30,6 +30,7 @@ dependencies {
     api project(':research:widget')
     api project(':research:common')
     api project(':research:tpl')
+    api project(':research:service')
 
     testImplementation "junit:junit:$rootProject.junit_version"
 

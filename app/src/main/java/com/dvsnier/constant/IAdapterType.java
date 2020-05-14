@@ -39,7 +39,7 @@ public interface IAdapterType {
     }
 
     interface ServiceType extends IType {
-        int TYPE_SERVICE_NONE = 0;
+        int TYPE_SERVICE_MESSENGER = 0;
     }
 
     interface ProviderType extends IType {

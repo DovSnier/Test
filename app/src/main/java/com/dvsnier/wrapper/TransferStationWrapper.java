@@ -16,6 +16,7 @@ import com.dvsnier.test.common.permission.TestPermissionActivity;
 import com.dvsnier.test.common.touch.TestTouchEventActivity;
 import com.dvsnier.test.tpl.image.TestImageActivity;
 import com.dvsnier.test.tpl.xutils.TestXUtilsActivity;
+import com.dvsnier.test.view.TestLogServiceActivity;
 import com.dvsnier.test.view.affinity.AffinityActivity;
 import com.dvsnier.test.view.fragment.FragmentHomeActivity;
 import com.dvsnier.test.view.fragment.FragmentHomeNoStateActivity;
@@ -174,7 +175,10 @@ public class TransferStationWrapper implements IAdapterType {
     public void onItemServiceClick(AdapterView<?> parent, View view, int groupPosition, int childPosition, ComponentBean bean) {
         Intent intent;
         switch (childPosition) {
-            case ServiceType.TYPE_SERVICE_NONE:
+            case ServiceType.TYPE_SERVICE_MESSENGER:
+                intent = new Intent(getContext(), TestLogServiceActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
                 break;
         }
     }
