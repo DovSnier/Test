@@ -22,6 +22,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:background="@android:color/holo_orange_dark"
-            android:text="文字二" />
+            android:text="文字二,地球人" />
     </com.dvsnier.test.widget.TestViewGroup>
 </FrameLayout>

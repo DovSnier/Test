@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 
 import com.dvsnier.common.compat.ICompatView;
 
@@ -64,6 +63,11 @@ public class TestViewGroup extends ViewGroup implements ICompatView {
     }
 
     @Override
+    protected LayoutParams generateDefaultLayoutParams() {
+        return new MarginLayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+    }
+
+    @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
@@ -75,11 +79,14 @@ public class TestViewGroup extends ViewGroup implements ICompatView {
         for (int i = 0; i < childCount; i++) {
             View childAt = getChildAt(i);
             if (null != childAt) {
-                MarginLayoutParams layoutParams = (MarginLayoutParams) childAt.getLayoutParams();
+//                MarginLayoutParams layoutParams = (MarginLayoutParams) childAt.getLayoutParams();
+                LayoutParams layoutParams = childAt.getLayoutParams();
                 measureChild(childAt, widthMeasureSpec, heightMeasureSpec);
-                childWidth = Math.max(childWidth, childAt.getWidth() + layoutParams.leftMargin + layoutParams.rightMargin);
+//                childWidth = Math.max(childWidth, childAt.getWidth() + layoutParams.leftMargin + layoutParams.rightMargin);
+                childWidth = Math.max(childWidth, childAt.getMeasuredWidth());
                 Log.d(TAG, String.format("childWidth(%s): %s", i, childWidth));
-                childHeight = Math.max(childHeight, childAt.getHeight() + layoutParams.topMargin + layoutParams.bottomMargin);
+//                childHeight = Math.max(childHeight, childAt.getHeight() + layoutParams.topMargin + layoutParams.bottomMargin);
+                childHeight = Math.max(childHeight, childAt.getMeasuredHeight());
                 Log.d(TAG, String.format("childHeight(%s): %s", i, childHeight));
             }
         }
@@ -110,7 +117,7 @@ public class TestViewGroup extends ViewGroup implements ICompatView {
         for (int i = 0; i < count; i++) {
             final View child = getChildAt(i);
             if (child.getVisibility() != GONE) {
-                final FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) child.getLayoutParams();
+                LayoutParams lp = child.getLayoutParams();
 
                 final int width = child.getMeasuredWidth();
                 final int height = child.getMeasuredHeight();
@@ -118,7 +125,7 @@ public class TestViewGroup extends ViewGroup implements ICompatView {
                 int childLeft;
                 int childTop;
 
-                int gravity = lp.gravity;
+                int gravity = 0;
                 if (gravity == -1) {
                     gravity = DEFAULT_CHILD_GRAVITY;
                 }
@@ -132,32 +139,31 @@ public class TestViewGroup extends ViewGroup implements ICompatView {
 
                 switch (absoluteGravity & Gravity.HORIZONTAL_GRAVITY_MASK) {
                     case Gravity.CENTER_HORIZONTAL:
-                        childLeft = parentLeft + (parentRight - parentLeft - width) / 2 +
-                                lp.leftMargin - lp.rightMargin;
+                        childLeft = parentLeft + (parentRight - parentLeft - width) / 2;
+
                         break;
                     case Gravity.RIGHT:
                         if (!forceLeftGravity) {
-                            childLeft = parentRight - width - lp.rightMargin;
+                            childLeft = parentRight - width;
                             break;
                         }
                     case Gravity.LEFT:
                     default:
-                        childLeft = parentLeft + lp.leftMargin;
+                        childLeft = parentLeft;
                 }
 
                 switch (verticalGravity) {
                     case Gravity.TOP:
-                        childTop = parentTop + lp.topMargin;
+                        childTop = parentTop;
                         break;
                     case Gravity.CENTER_VERTICAL:
-                        childTop = parentTop + (parentBottom - parentTop - height) / 2 +
-                                lp.topMargin - lp.bottomMargin;
+                        childTop = parentTop + (parentBottom - parentTop - height) / 2;
                         break;
                     case Gravity.BOTTOM:
-                        childTop = parentBottom - height - lp.bottomMargin;
+                        childTop = parentBottom - height;
                         break;
                     default:
-                        childTop = parentTop + lp.topMargin;
+                        childTop = parentTop;
                 }
 
                 child.layout(childLeft, childTop, childLeft + width, childTop + height);
