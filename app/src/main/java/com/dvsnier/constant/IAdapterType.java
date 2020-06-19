@@ -29,6 +29,7 @@ public interface IAdapterType {
         int TYPE_WIDGET_SCREEN_INFO = 8;
         int TYPE_WIDGET_TEXT_VIEW_SIZE = 9;
         int TYPE_WIDGET_NESTED_SCROLLING_PARENT = 10;
+        int TYPE_WIDGET_VIEW_GROUP = 11;
     }
 
     interface ViewType extends IType {

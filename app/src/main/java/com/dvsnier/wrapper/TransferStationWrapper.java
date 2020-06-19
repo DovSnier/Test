@@ -35,6 +35,7 @@ import com.dvsnier.test.tpl.eventbus.TestEventBusActivity;
 import com.dvsnier.test.tpl.green.TestGreenDaoActivity;
 import com.dvsnier.test.tpl.okhttp.TestOkhttpActivity;
 import com.dvsnier.test.tpl.speech.TestSpeechRecognitionActivity;
+import com.dvsnier.test.widget.view.TestViewGroupActivity;
 import com.dvsnier.test.widget.view.TestViewSizeActivity;
 import com.orhanobut.logger.Logger;
 
@@ -140,6 +141,11 @@ public class TransferStationWrapper implements IAdapterType {
                 break;
             case WidgetType.TYPE_WIDGET_NESTED_SCROLLING_PARENT:
                 intent = new Intent(getContext(), TestNestedScrollingParentActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                break;
+            case WidgetType.TYPE_WIDGET_VIEW_GROUP:
+                intent = new Intent(getContext(), TestViewGroupActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
                 break;
