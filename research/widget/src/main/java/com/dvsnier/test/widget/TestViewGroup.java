@@ -63,8 +63,8 @@ public class TestViewGroup extends ViewGroup implements ICompatView {
     }
 
     @Override
-    protected LayoutParams generateDefaultLayoutParams() {
-        return new MarginLayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+    protected MarginLayoutParams generateDefaultLayoutParams() {
+        return new MarginLayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
     }
 
     @Override
@@ -76,6 +76,7 @@ public class TestViewGroup extends ViewGroup implements ICompatView {
         int height = MeasureSpec.getSize(heightMeasureSpec);
         int childWidth = 0, childHeight = 0;
         int childCount = getChildCount();
+//        measureChildren(widthMeasureSpec, heightMeasureSpec);
         for (int i = 0; i < childCount; i++) {
             View childAt = getChildAt(i);
             if (null != childAt) {
