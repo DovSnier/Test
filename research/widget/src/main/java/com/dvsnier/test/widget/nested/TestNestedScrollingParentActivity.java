@@ -15,7 +15,7 @@ import com.dvsnier.base.view.IRecyclerView;
 import com.dvsnier.common.listener.IOnItemClickListener;
 import com.dvsnier.test.widget.R;
 import com.dvsnier.test.widget.R2;
-import com.dvsnier.test.widget.adapter.RecyclerViewAdapter;
+import com.dvsnier.test.widget.adapter.ArrayViewAdapter;
 import com.dvsnier.test.widget.presenter.TestNestedScrollingParentPresenter;
 import com.dvsnier.utils.ThreadUtil;
 
@@ -36,7 +36,7 @@ public class TestNestedScrollingParentActivity extends BaseActivity<TestNestedSc
     TextView tvContent;
     @BindView(R2.id.recycler_view)
     RecyclerView recyclerView;
-    protected RecyclerViewAdapter adapter;
+    protected ArrayViewAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,8 +53,8 @@ public class TestNestedScrollingParentActivity extends BaseActivity<TestNestedSc
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        //noinspection ConstantConditions
-        adapter = new RecyclerViewAdapter(this);
+        //noinspection
+        adapter = new ArrayViewAdapter(this);
         adapter.setOnClickListener(this);
         recyclerView.setAdapter(adapter);
     }
