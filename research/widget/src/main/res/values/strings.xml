@@ -2,4 +2,47 @@
     <string name="app_name">widget</string>
     <string name="title_tool_bar">Toolbar Title</string>
     <string name="title_collapsing_tool_bar">我科姿势江山美如画</string>
+    <string-array name="data_set_with_recycle">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>我</item>
+        <item>是</item>
+        <item>地</item>
+        <item>球</item>
+        <item>人</item>
+        <item>,</item>
+        <item>我</item>
+        <item>爱</item>
+        <item>这</item>
+        <item>个</item>
+        <item>国</item>
+        <item>家</item>
+        <item>0</item>
+        <item>为</item>
+        <item>1</item>
+        <item>中</item>
+        <item>2</item>
+        <item>华</item>
+        <item>3</item>
+        <item>崛</item>
+        <item>4</item>
+        <item>起</item>
+        <item>5</item>
+        <item>而</item>
+        <item>6</item>
+        <item>读</item>
+        <item>7</item>
+        <item>书</item>
+        <item>8</item>
+        <item>。</item>
+        <item>9</item>
+    </string-array>
 </resources>

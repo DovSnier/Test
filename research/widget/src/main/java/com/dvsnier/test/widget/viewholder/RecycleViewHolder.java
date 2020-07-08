@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.dvsnier.base.holder.BaseViewHolder;
 import com.dvsnier.common.listener.IOnItemClickListener;
 import com.dvsnier.test.widget.R2;
+import com.dvsnier.test.widget.bean.BaseRecycleBean;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,7 +20,7 @@ import butterknife.ButterKnife;
  * RecycleViewHolder
  * Created by machine code on 2019/6/18.
  */
-public class RecycleViewHolder extends BaseViewHolder<String> {
+public class RecycleViewHolder extends BaseViewHolder<BaseRecycleBean> {
 
     @BindView(R2.id.ll_container)
     LinearLayout llContainer;
@@ -38,14 +39,14 @@ public class RecycleViewHolder extends BaseViewHolder<String> {
     }
 
     @Override
-    public void onBindViewHolder(Context context, final int position, final String bean) {
+    public void onBindViewHolder(Context context, final int position, final BaseRecycleBean bean) {
         super.onBindViewHolder(context, position, bean);
         if (position % 2 == 0) {
             llContainer.setBackgroundColor(Color.parseColor("#4cb4e7"));
         } else {
             llContainer.setBackgroundColor(Color.parseColor("#9dd3fa"));
         }
-        content.setText(bean);
+        content.setText(bean.getContent());
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
