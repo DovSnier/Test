@@ -3,6 +3,7 @@ package com.dvsnier.test.widget.viewholder;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.text.Layout;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,17 +51,28 @@ public class LayoutMultiViewHolder extends BaseViewHolder<BaseRecycleBean> {
     public void onBindViewHolder(Context context, int position, BaseRecycleBean bean) {
         super.onBindViewHolder(context, position, bean);
         tvHome2NewsTitle.setText(String.format("%s-[%s],%s", position, bean.getContent(), System.currentTimeMillis()));
+        Layout layout = tvHome2NewsTitle.getLayout();
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) llBottomContainer.getLayoutParams();
-        double value = Math.random() * 100;
-        if (value > 60) {
-            layoutParams.topMargin = getValue(45);
-            tvContent.setBackgroundColor(Color.RED);
-        } else if (value > 30) {
-            layoutParams.topMargin = getValue(15);
-            tvContent.setBackgroundColor(Color.BLUE);
-        } else {
-            layoutParams.topMargin = getValue(7);
-            tvContent.setBackgroundColor(Color.WHITE);
+//        double value = Math.random() * 100;
+//        if (value > 60) {
+//            layoutParams.topMargin = getValue(45);
+//            tvContent.setBackgroundColor(Color.RED);
+//        } else if (value > 30) {
+//            layoutParams.topMargin = getValue(15);
+//            tvContent.setBackgroundColor(Color.BLUE);
+//        } else {
+//            layoutParams.topMargin = getValue(7);
+//            tvContent.setBackgroundColor(Color.WHITE);
+//        }
+        if (null != layout) {
+            int lineCount = layout.getLineCount();
+            if (lineCount > 1) {
+                layoutParams.topMargin = getValue(15);
+                tvContent.setBackgroundColor(Color.RED);
+            } else {
+                layoutParams.topMargin = getValue(45);
+                tvContent.setBackgroundColor(Color.BLUE);
+            }
         }
         llBottomContainer.setLayoutParams(layoutParams);
     }
