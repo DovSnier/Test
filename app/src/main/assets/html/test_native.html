@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <style type="text/css">
+        button {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            background: grey;
+        }
+
+        .default_center_class {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #id_div {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    <script type="text/javascript">
+        function onClick(msg) {
+            alert(msg);
+        }
+    </script>
+    <title>sic: Android Scheme 与JavaScript 交互测试页面</title>
+</head>
+
+<body>
+
+    <div style="display:flex; align-items:center; justify-content:center;">
+        <button name="btn" onclick="onClick('div click')">btn 点击事件</button>
+    </div>
+
+    <div id="id_div">
+        <a href="dvsnier://dovsnier.io:8080/index?type=1&time=20200710">dvsnier scheme 超链点击</a>
+    </div>
+
+
+    <div id="id_div">
+        <a href="dvsnier://dovsnier.io/launcher">dvsnier launcher</a>
+    </div>
+
+
+</body>
+</html>
