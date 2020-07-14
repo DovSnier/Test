@@ -51,4 +51,26 @@
         android:text="检测通知"
         android:textSize="18sp"
         tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tv_4"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bg_common_item"
+        android:gravity="center"
+        android:text="设置chat 渠道通知"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tv_5"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bg_common_item"
+        android:gravity="center"
+        android:text="设置exception 渠道通知"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText" />
 </LinearLayout>

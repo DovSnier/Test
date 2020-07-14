@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.view.View;
@@ -37,6 +38,10 @@ public class TestNotificationActivity extends BaseActivity {
     TextView tv2;
     @BindView(R2.id.tv_3)
     TextView tv3;
+    @BindView(R2.id.tv_4)
+    TextView tv4;
+    @BindView(R2.id.tv_5)
+    TextView tv5;
     protected Unbinder unbinder;
     protected int identifier;
 
@@ -53,7 +58,7 @@ public class TestNotificationActivity extends BaseActivity {
     }
 
 
-    @OnClick({R2.id.tv_1, R2.id.tv_2, R2.id.tv_3})
+    @OnClick({R2.id.tv_1, R2.id.tv_2, R2.id.tv_3, R2.id.tv_4, R2.id.tv_5})
     public void onViewClicked(View view) {
         int id = view.getId();
         if (id == R.id.tv_1) {
@@ -62,6 +67,10 @@ public class TestNotificationActivity extends BaseActivity {
             buildExceptionNotification();
         } else if (id == R.id.tv_3) {
             inspectNotification();
+        } else if (id == R.id.tv_4) {
+            inspectChatChannelNotification();
+        } else if (id == R.id.tv_5) {
+            inspectExceptionChannelNotification();
         }
     }
 
@@ -185,6 +194,32 @@ public class TestNotificationActivity extends BaseActivity {
                     onLog(String.format("%s 群组通知,渠道(%s)检查正常.", getString(R.string.channel_exception_group_name), getString(R.string.channel_exception_name)));
                 }
             }
+        }
+    }
+
+    public void inspectChatChannelNotification() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+            intent.putExtra(Settings.EXTRA_CHANNEL_ID, getString(R.string.channel_chat_id));
+            intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+            startActivity(intent);
+        } else {
+            String msg = getString(R.string.channel_notification_no_support_tips);
+            onToast(msg);
+            onLog(msg);
+        }
+    }
+
+    public void inspectExceptionChannelNotification() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+            intent.putExtra(Settings.EXTRA_CHANNEL_ID, getString(R.string.channel_exception_id));
+            intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+            startActivity(intent);
+        } else {
+            String msg = getString(R.string.channel_notification_no_support_tips);
+            onToast(msg);
+            onLog(msg);
         }
     }
 
