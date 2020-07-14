@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">common</string>
+    <string name="channel_chat_id">channel_chat</string>
+    <string name="channel_chat_name">channel_chat</string>
+    <string name="channel_chat_group_id">channel_chat_group</string>
+    <string name="channel_chat_group_name">聊天群组</string>
+    <string name="channel_chat_describe">this is a chat channel</string>
+    <string name="chat_title">聊天</string>
+    <string name="chat_content">资深好男人发来一条聊天信息</string>
+    <string name="channel_exception_id">channel_exception</string>
+    <string name="channel_exception_name">channel_exception</string>
+    <string name="channel_exception_group_id">channel_exception_group</string>
+    <string name="channel_exception_group_name">异常群组</string>
+    <string name="channel_exception_describe">this is a exception channel</string>
+    <string name="exception_title">异常</string>
+    <string name="exception_content">资深好男人发来一条异常信息</string>
 </resources>
