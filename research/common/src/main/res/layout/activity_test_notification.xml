@@ -8,6 +8,18 @@
     android:padding="15dp">
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/bg_common_describe"
+        android:lineSpacingMultiplier="1.2"
+        android:padding="8dp"
+        android:text="@string/notification_channel_importance"
+        android:textColor="#333333"
+        android:textSize="14sp" />
+
+    <TextView
         android:id="@+id/tv_1"
         android:layout_width="match_parent"
         android:layout_height="45dp"
