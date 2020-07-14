@@ -16,6 +16,7 @@ import com.dvsnier.common.listener.IOnItemClickListener;
 import com.dvsnier.test.widget.R;
 import com.dvsnier.test.widget.R2;
 import com.dvsnier.test.widget.adapter.RecyclerViewAdapter;
+import com.dvsnier.test.widget.bean.BaseRecycleBean;
 import com.dvsnier.test.widget.presenter.TestRecyclerPresenter;
 import com.dvsnier.utils.ThreadUtil;
 
@@ -76,7 +77,7 @@ public class TestRecyclerActivity extends BaseActivity<TestRecyclerPresenter> im
     @Override
     public void initData() {
         super.initData();
-        final List<String> dataSet = new ArrayList<>();
+        final List<BaseRecycleBean> dataSet = new ArrayList<>();
         // TODO: 2019/6/18 the handle to optimization
         ThreadUtil.execute(new Runnable() {
             @Override

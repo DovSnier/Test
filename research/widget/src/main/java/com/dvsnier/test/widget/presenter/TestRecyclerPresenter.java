@@ -1,10 +1,15 @@
 package com.dvsnier.test.widget.presenter;
 
 import com.dvsnier.common.presenter.BaseCompatPresenter;
+import com.dvsnier.test.widget.R;
+import com.dvsnier.test.widget.bean.BaseRecycleBean;
+import com.dvsnier.test.widget.recycleview.IRecycleType;
 import com.dvsnier.test.widget.recycleview.TestRecyclerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * TestRecyclerPresenter
@@ -12,40 +17,30 @@ import java.util.List;
  */
 public class TestRecyclerPresenter extends BaseCompatPresenter<TestRecyclerActivity> {
 
-    public List<String> request() {
-        List<String> dataSet = new ArrayList<>();
-        dataSet.add("0");
-        dataSet.add("1");
-        dataSet.add("2");
-        dataSet.add("3");
-        dataSet.add("4");
-        dataSet.add("5");
-        dataSet.add("6");
-        dataSet.add("7");
-        dataSet.add("8");
-        dataSet.add("9");
-        dataSet.add("我");
-        dataSet.add("是");
-        dataSet.add("地");
-        dataSet.add("球");
-        dataSet.add("人");
-        dataSet.add(",");
-        dataSet.add("我");
-        dataSet.add("爱");
-        dataSet.add("这");
-        dataSet.add("个");
-        dataSet.add("国");
-        dataSet.add("家");
-        dataSet.add("0");
-        dataSet.add("1");
-        dataSet.add("2");
-        dataSet.add("3");
-        dataSet.add("4");
-        dataSet.add("5");
-        dataSet.add("6");
-        dataSet.add("7");
-        dataSet.add("8");
-        dataSet.add("9");
+    public List<BaseRecycleBean> request() {
+        List<BaseRecycleBean> dataSet = new ArrayList<>();
+        if (null != getContext()) {
+            String[] value = getContext().getResources().getStringArray(R.array.data_set_with_recycle);
+            //noinspection ConstantConditions
+            if (null != value && value.length > 0) {
+                for (String item : value) {
+                    BaseRecycleBean baseRecycleBean = new BaseRecycleBean();
+                    if (isDigit(item)) {
+                        baseRecycleBean.setItemType(IRecycleType.TYPE_DEFAULT);
+                    } else {
+                        baseRecycleBean.setItemType(IRecycleType.TYPE_LEFT_CONTENT_RIGHT_PICTURE);
+                    }
+                    baseRecycleBean.setContent(item);
+                    dataSet.add(baseRecycleBean);
+                }
+            }
+        }
         return dataSet;
+    }
+
+    public static boolean isDigit(String value) {
+        Pattern pattern = Pattern.compile("[0-9]*");
+        Matcher matcher = pattern.matcher(value);
+        return matcher.matches();
     }
 }

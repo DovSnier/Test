@@ -47,6 +47,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
 
+    api "com.android.support:multidex:$rootProject.support_multidex_version"
     implementation "com.android.support:appcompat-v7:$rootProject.support_appcompat_version"
     implementation "com.android.support:support-annotations:$rootProject.support_annotations_version"
     //noinspection GradleDependency

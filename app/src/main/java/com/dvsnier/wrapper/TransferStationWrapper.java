@@ -12,6 +12,7 @@ import com.dvsnier.base.flavor.sql.TestSQLActivity;
 import com.dvsnier.bean.ComponentBean;
 import com.dvsnier.constant.IAdapterType;
 import com.dvsnier.test.common.aidl.TestAIDLActivity;
+import com.dvsnier.test.common.notification.TestNotificationActivity;
 import com.dvsnier.test.common.permission.TestPermissionActivity;
 import com.dvsnier.test.common.touch.TestTouchEventActivity;
 import com.dvsnier.test.tpl.image.TestImageActivity;
@@ -35,6 +36,7 @@ import com.dvsnier.test.tpl.eventbus.TestEventBusActivity;
 import com.dvsnier.test.tpl.green.TestGreenDaoActivity;
 import com.dvsnier.test.tpl.okhttp.TestOkhttpActivity;
 import com.dvsnier.test.tpl.speech.TestSpeechRecognitionActivity;
+import com.dvsnier.test.widget.view.TestViewGroupActivity;
 import com.dvsnier.test.widget.view.TestViewSizeActivity;
 import com.orhanobut.logger.Logger;
 
@@ -143,6 +145,11 @@ public class TransferStationWrapper implements IAdapterType {
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
                 break;
+            case WidgetType.TYPE_WIDGET_VIEW_GROUP:
+                intent = new Intent(getContext(), TestViewGroupActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                break;
         }
     }
 
@@ -227,6 +234,11 @@ public class TransferStationWrapper implements IAdapterType {
                 break;
             case CommonType.TYPE_COMMON_TOUCH_EVENT:
                 intent = new Intent(getContext(), TestTouchEventActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                break;
+            case CommonType.TYPE_COMMON_NOTIFICATION:
+                intent = new Intent(getContext(), TestNotificationActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
                 break;

@@ -16,6 +16,29 @@
             android:name=".sql.TestSQLActivity"
             android:theme="@style/AppTheme.DefaultTheme"
             android:windowSoftInputMode="adjustNothing|stateAlwaysHidden" />
+        <activity
+            android:name="com.dvsnier.view.PixelActivity"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme.Base.Transparent">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="dovsnier.io"
+                    android:path="/index"
+                    android:port="8080"
+                    android:scheme="dvsnier" />
+
+                <data
+                    android:host="dovsnier.io"
+                    android:path="/index"
+                    android:port="8080"
+                    android:scheme="http" />
+            </intent-filter>
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
