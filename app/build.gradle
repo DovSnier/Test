@@ -30,7 +30,14 @@ android {
         packagingOptions {
             exclude "LICENSE-junit.txt"
             exclude "junit/runner/*"
+//            exclude 'META-INF/DEPENDENCIES'
+//            exclude 'META-INF/NOTICE'
+//            exclude 'META-INF/LICENSE'
+//            exclude 'META-INF/NOTICE.txt'
+//            exclude 'META-INF/LICENSE.txt'
         }
+
+        multiDexEnabled true
     }
 
     signingConfigs {
@@ -150,7 +157,7 @@ task exportAppInfo() {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation project(':framework:base')
+    api project(':framework:base')
     implementation project(':common:bean')
     implementation project(':research:interceptor')
 
@@ -170,4 +177,6 @@ dependencies {
     testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanary_android_no_op_version"
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$rootProject.leakcanary_android"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanary_android_no_op_version"
+
+//    implementation "com.android.tools.build:gradle:$build_gradle_version"
 }
