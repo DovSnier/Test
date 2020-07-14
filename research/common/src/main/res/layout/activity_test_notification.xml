@@ -26,7 +26,7 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/bg_common_item"
         android:gravity="center"
-        android:text="聊天推送"
+        android:text="聊天通知"
         android:textSize="18sp"
         tools:ignore="HardcodedText" />
 
@@ -37,7 +37,18 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/bg_common_item"
         android:gravity="center"
-        android:text="异常推送"
+        android:text="异常通知"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tv_3"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/bg_common_item"
+        android:gravity="center"
+        android:text="检测通知"
         android:textSize="18sp"
         tools:ignore="HardcodedText" />
 </LinearLayout>

@@ -35,6 +35,8 @@ public class TestNotificationActivity extends BaseActivity {
     TextView tv1;
     @BindView(R2.id.tv_2)
     TextView tv2;
+    @BindView(R2.id.tv_3)
+    TextView tv3;
     protected Unbinder unbinder;
     protected int identifier;
 
@@ -51,13 +53,15 @@ public class TestNotificationActivity extends BaseActivity {
     }
 
 
-    @OnClick({R2.id.tv_1, R2.id.tv_2})
+    @OnClick({R2.id.tv_1, R2.id.tv_2, R2.id.tv_3})
     public void onViewClicked(View view) {
         int id = view.getId();
         if (id == R.id.tv_1) {
             buildChatNotification();
         } else if (id == R.id.tv_2) {
             buildExceptionNotification();
+        } else if (id == R.id.tv_3) {
+            inspectNotification();
         }
     }
 
@@ -152,6 +156,35 @@ public class TestNotificationActivity extends BaseActivity {
                 .build();
         if (null != notificationManager) {
             notificationManager.notify(identifier++, notification);
+        }
+    }
+
+    /**
+     * 检查群组权限和检查群组渠道权限是不一样的
+     */
+    public void inspectNotification() {
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            if (null != notificationManager) {
+                NotificationChannel notificationChannelWithChat = notificationManager.getNotificationChannel(getString(R.string.channel_chat_id));
+                // chat
+                if (notificationChannelWithChat.getImportance() == NotificationManager.IMPORTANCE_NONE) {
+                    onToast(String.format("%s 群组通知检查不正常,请打开渠道(%s)通知权限.", getString(R.string.channel_chat_group_name), getString(R.string.channel_chat_id)));
+                    onLog(String.format("%s 群组通知检查不正常,请打开渠道(%s)通知权限.", getString(R.string.channel_chat_group_name), getString(R.string.channel_chat_id)));
+                } else {
+                    onToast(String.format("%s 群组通知,渠道(%s)检查正常.", getString(R.string.channel_chat_group_name), getString(R.string.channel_chat_name)));
+                    onLog(String.format("%s 群组通知,渠道(%s)检查正常.", getString(R.string.channel_chat_group_name), getString(R.string.channel_chat_name)));
+                }
+                // exception
+                NotificationChannel notificationChannelWithException = notificationManager.getNotificationChannel(getString(R.string.channel_exception_id));
+                if (notificationChannelWithException.getImportance() == NotificationManager.IMPORTANCE_NONE) {
+                    onToast(String.format("%s 群组通知检查不正常,请打开渠道(%s)通知权限.", getString(R.string.channel_exception_group_name), getString(R.string.channel_exception_id)));
+                    onLog(String.format("%s 群组通知检查不正常,请打开渠道(%s)通知权限.", getString(R.string.channel_exception_group_name), getString(R.string.channel_exception_id)));
+                } else {
+                    onToast(String.format("%s 群组通知,渠道(%s)检查正常.", getString(R.string.channel_exception_group_name), getString(R.string.channel_exception_name)));
+                    onLog(String.format("%s 群组通知,渠道(%s)检查正常.", getString(R.string.channel_exception_group_name), getString(R.string.channel_exception_name)));
+                }
+            }
         }
     }
 
