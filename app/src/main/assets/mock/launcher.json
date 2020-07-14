@@ -254,6 +254,14 @@
         "parentType": 600,
         "itemType": 6002,
         "flag": 0
+      },
+      {
+        "id": 6003,
+        "position": 3,
+        "name": "测试 Notification",
+        "parentType": 600,
+        "itemType": 6003,
+        "flag": 0
       }
     ]
   },

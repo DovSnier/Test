@@ -57,6 +57,7 @@ public interface IAdapterType {
         int TYPE_COMMON_PERMISSION = 0;
         int TYPE_COMMON_AIDL = 1;
         int TYPE_COMMON_TOUCH_EVENT = 2;
+        int TYPE_COMMON_NOTIFICATION = 3;
     }
 
     interface TplType extends IType {
