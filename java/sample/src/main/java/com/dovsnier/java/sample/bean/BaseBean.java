@@ -30,6 +30,10 @@ public class BaseBean {
         this.type = type;
     }
 
+    public static BaseBean newInstance() {
+        return new BaseBean();
+    }
+
     public String getName() {
         return name;
     }
