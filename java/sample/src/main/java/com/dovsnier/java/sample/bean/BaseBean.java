@@ -1,16 +1,21 @@
 package com.dovsnier.java.sample.bean;
 
+import com.dovsnier.java.sample.annotation.Bean;
+import com.dovsnier.java.sample.annotation.Type;
+
 /**
  * BaseBean
  * Created by dovsnier on 2020/7/23.
  */
+
+@Bean
 public class BaseBean {
 
     protected String name;
     protected int what;
     protected int arg1;
     protected int arg2;
-    protected Object object;
+    @Type(name = "type")
     private int type;
 
     public BaseBean() {
@@ -57,19 +62,13 @@ public class BaseBean {
         this.arg2 = arg2;
     }
 
-    public Object getObject() {
-        return object;
-    }
-
-    public void setObject(Object object) {
-        this.object = object;
-    }
-
-    public int getType() {
+    @Type
+    public @Bean int getType() {
         return type;
     }
 
-    public void setType(int type) {
+    @Bean
+    public void setType(@Type int type) {
         this.type = type;
     }
 
@@ -80,7 +79,6 @@ public class BaseBean {
                 ", what=" + what +
                 ", arg1=" + arg1 +
                 ", arg2=" + arg2 +
-                ", object=" + object +
                 ", type=" + type +
                 '}';
     }
