@@ -14,6 +14,17 @@ public class ValueBean<@Type T> extends @Bean BaseBean {
     @Bean
     protected Object object;
 
+    public ValueBean() {
+    }
+
+    public ValueBean(int type) {
+        super(type);
+    }
+
+    public ValueBean(int what, int type) {
+        super(what, type);
+    }
+
     public @Type T getValue() {
         return value;
     }

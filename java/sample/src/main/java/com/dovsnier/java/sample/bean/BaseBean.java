@@ -86,4 +86,11 @@ public class BaseBean {
                 ", type=" + type +
                 '}';
     }
+
+    public class ExtInnerBase extends BaseBean {
+
+    }
+
+    public static class CommonInnerBase extends BaseBean {
+    }
 }
