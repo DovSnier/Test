@@ -26,6 +26,10 @@ public class Main {
         test_class_field();
     }
 
+    public static void print(String msg) {
+        System.out.println(String.format("%s", msg));
+    }
+
     public static void print(String arg1, String arg2) {
         System.out.println(String.format("\n-> %s. 测试%s:", arg1, arg2));
     }
