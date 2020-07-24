@@ -11,12 +11,14 @@ import com.dovsnier.java.sample.annotation.Type;
 @Bean
 public class BaseBean {
 
+    public String author;
     protected String name;
     protected int what;
     protected int arg1;
     protected int arg2;
     @Type(name = "type")
     private int type;
+    int anonym;
 
     public BaseBean() {
     }
@@ -32,6 +34,14 @@ public class BaseBean {
 
     public static BaseBean newInstance() {
         return new BaseBean();
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public String getName() {
@@ -76,14 +86,24 @@ public class BaseBean {
         this.type = type;
     }
 
+    public int getAnonym() {
+        return anonym;
+    }
+
+    public void setAnonym(int anonym) {
+        this.anonym = anonym;
+    }
+
     @Override
     public String toString() {
         return "BaseBean{" +
-                "name='" + name + '\'' +
+                "author='" + author + '\'' +
+                ", name='" + name + '\'' +
                 ", what=" + what +
                 ", arg1=" + arg1 +
                 ", arg2=" + arg2 +
                 ", type=" + type +
+                ", anonym=" + anonym +
                 '}';
     }
 

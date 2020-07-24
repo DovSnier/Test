@@ -21,7 +21,17 @@ public class Main {
         // 类
 //        test_class();
         // 构造器
-        test_class_constructor();
+//        test_class_constructor();
+        // 成员属性
+        test_class_field();
+    }
+
+    public static void print(String arg1, String arg2) {
+        System.out.println(String.format("\n-> %s. 测试%s:", arg1, arg2));
+    }
+
+    public static void printHolder() {
+        System.out.println(String.format("%s", "---"));
     }
 
     protected static void test_class() {
@@ -44,11 +54,15 @@ public class Main {
         reflectCase.reflect_case_class_constructor(ExtBean.class);
     }
 
-    public static void print(String arg1, String arg2) {
-        System.out.println(String.format("\n-> %s. 测试%s:", arg1, arg2));
-    }
-
-    public static void printHolder() {
-        System.out.println(String.format("%s", "---"));
+    protected static void test_class_field() {
+        print("三", "获取成员属性信息");
+//        reflectCase.reflect_case_class_field(BaseBean.class, "author");
+        reflectCase.reflect_case_class_field(BaseBean.class, "name");
+//        reflectCase.reflect_case_class_field(BaseBean.class, "type");
+//        reflectCase.reflect_case_class_field(BaseBean.class, "anonym");
+//        printHolder();
+//        reflectCase.reflect_case_class_field(ValueBean.class, "name");
+//        printHolder();
+//        reflectCase.reflect_case_class_field(ExtBean.class, "name");
     }
 }

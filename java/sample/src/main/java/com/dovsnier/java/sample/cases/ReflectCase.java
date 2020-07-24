@@ -3,6 +3,8 @@ package com.dovsnier.java.sample.cases;
 import com.dovsnier.java.sample.bean.BaseBean;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 
 /**
  * ReflectCase
@@ -18,6 +20,10 @@ public class ReflectCase {
     }
 
     private ReflectCase(int what) {
+    }
+
+    public static void print(String msg) {
+        System.out.println(String.format("%s", msg));
     }
 
     /**
@@ -62,14 +68,15 @@ public class ReflectCase {
         try {
             // suggestFirstVariableName("Object")
             // 1. 无参构造器
+            //noinspection unchecked
             Constructor<?> constructor = clazz.getConstructor(null);
             if (null != constructor) {
                 String constructorName = constructor.getName();
                 String toGenericString = constructor.toGenericString();
-                System.out.println(String.format("getConstructor(no param) -> \nconstructorName: %s\ntoGenericString: %s"
-                        , constructorName, toGenericString));
+                System.out.println(String.format("%s(no param) -> \nconstructorName: %s\ntoGenericString: %s"
+                        , "getConstructor", constructorName, toGenericString));
             } else {
-                print("getConstructor() is null.");
+                print("getConstructor(no param) is null.");
             }
             print("");
             // 2. 获取构造器集合
@@ -94,10 +101,10 @@ public class ReflectCase {
             if (null != declaredConstructor) {
                 String declaredConstructorName = declaredConstructor.getName();
                 String toGenericString = declaredConstructor.toGenericString();
-                System.out.println(String.format("getDeclaredConstructor(no param) -> \ndeclaredConstructorName: %s\ntoGenericString: %s"
-                        , declaredConstructorName, toGenericString));
+                System.out.println(String.format("%s(no param) -> \ndeclaredConstructorName: %s\ntoGenericString: %s"
+                        , "getDeclaredConstructor", declaredConstructorName, toGenericString));
             } else {
-                print("getDeclaredConstructor() is null.");
+                print("getDeclaredConstructor(no param) is null.");
             }
             print("");
             // 4. getDeclaredConstructors()
@@ -131,7 +138,83 @@ public class ReflectCase {
         }
     }
 
-    public static void print(String msg) {
-        System.out.println(String.format("%s", msg));
+    public void reflect_case_class_field(Class clazz, String field_name) {
+        try {
+            // 1. getField()
+            Field field = clazz.getField(field_name);
+            if (null != field) {
+                String fieldName = field.getName();
+                String toGenericString = field.toGenericString();
+                System.out.println(String.format("%s(%s %s %s) -> \nfieldName: %s\ntoGenericString: %s"
+                        , "getField", Modifier.toString(field.getModifiers()),
+                        field.getType().getSimpleName(), field_name, fieldName,
+                        toGenericString));
+            } else {
+                print(String.format("getField(%s) is null.", field_name));
+            }
+        } catch (NoSuchFieldException | NullPointerException e) {
+            e.printStackTrace();
+        }
+        print("");
+        try {
+            // 2. getFields()
+            Field[] fields = clazz.getFields();
+            //noinspection ConstantConditions
+            if (null != fields) {
+                int length = fields.length;
+                print(String.format("ths current getFields() is not empty that is %s length.", length));
+                for (int i = 0; i < length; i++) {
+                    String fieldName = fields[i].getName();
+                    String toGenericString = fields[i].toGenericString();
+                    System.out.println(String.format("index: %s\nfieldName: %s %s %s\ntoGenericString: %s"
+                            , i, Modifier.toString(fields[i].getModifiers()),
+                            fields[i].getType().getSimpleName(), fieldName, toGenericString));
+                }
+            } else {
+                print("getFields() is null.");
+            }
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
+        print("");
+        try {
+            // 3. getDeclaredField()
+            Field declaredField = clazz.getDeclaredField(field_name);
+            if (null != declaredField) {
+                String fieldName = declaredField.getName();
+                String toGenericString = declaredField.toGenericString();
+                System.out.println(String.format("%s(%s %s %s) -> \nfieldName: %s\ntoGenericString: %s"
+                        , "declaredField", Modifier.toString(declaredField.getModifiers()),
+                        declaredField.getType().getSimpleName(), field_name, fieldName,
+                        toGenericString));
+            } else {
+                print(String.format("getDeclaredField(%s) is null.", field_name));
+            }
+        } catch (NoSuchFieldException | NullPointerException e) {
+            e.printStackTrace();
+        }
+        print("");
+        try {
+            // 4. getDeclaredFields()
+            Field[] declaredFields = clazz.getDeclaredFields();
+            //noinspection ConstantConditions
+            if (null != declaredFields) {
+                int length = declaredFields.length;
+                print(String.format("ths current declaredFields() is not empty that is %s length.", length));
+                for (int i = 0; i < length; i++) {
+                    String fieldName = declaredFields[i].getName();
+                    String toGenericString = declaredFields[i].toGenericString();
+                    System.out.println(String.format("index: %s\nfieldName: %s %s %s\ntoGenericString: %s"
+                            , i, Modifier.toString(declaredFields[i].getModifiers()),
+                            declaredFields[i].getType().getSimpleName(), fieldName,
+                            toGenericString));
+                }
+            } else {
+                print("declaredFields() is null.");
+            }
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
     }
+
 }
