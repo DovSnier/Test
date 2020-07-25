@@ -41,10 +41,12 @@ public class ReflectCase {
         String className = "";
         // 1. x.class
         className = BaseBean.class.getSimpleName();
-        System.out.println(String.format("className: %s", className));
+        System.out.println(String.format("className:\n%s", className));
+        print("");
         // 2. x.getClass()
         className = BaseBean.newInstance().getClass().getSimpleName();
-        System.out.println(String.format("className: %s", className));
+        System.out.println(String.format("className:\n%s", className));
+        print("");
         // 3. Class.forName()
         try {
             Class<?> clazz = Class.forName("com.dovsnier.java.sample.bean.BaseBean");
@@ -54,22 +56,43 @@ public class ReflectCase {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        System.out.println(String.format("className: %s", className));
+        System.out.println(String.format("className:\n%s", className));
     }
 
     public void reflect_case_class2(Class clazz) {
         // 1. 获取类的父类型
         Class<?> clazz_clazz = clazz.getSuperclass();
-        if (null != clazz_clazz)
-            System.out.println(String.format("super className: %s", clazz_clazz.getSimpleName()));
+        if (null != clazz_clazz) {
+            String simpleName = clazz_clazz.getSimpleName();
+            print(String.format("%s.%s()\n%s", clazz.getSimpleName(), "getSuperclass",
+                    simpleName));
+        } else {
+            print(String.format("%s.%s() is null.", clazz.getSimpleName(),
+                    "getSuperclass"));
+        }
+        print("");
         // 2. getDeclaringClass()
         Class<?> declaringClass = clazz.getDeclaringClass();
-        if (null != declaringClass)
-            System.out.println(String.format("declaring className: %s", declaringClass.getSimpleName()));
+        if (null != declaringClass) {
+            String simpleName = declaringClass.getSimpleName();
+            print(String.format("%s.%s()\n%s", clazz.getSimpleName(), "getDeclaringClass",
+                    simpleName));
+        } else {
+            print(String.format("%s.%s() is null.", clazz.getSimpleName(),
+                    "getDeclaringClass"));
+        }
+        print("");
         // 3. getEnclosingClass()
         Class<?> enclosingClass = clazz.getEnclosingClass();
-        if (null != enclosingClass)
-            System.out.println(String.format("enclosing className: %s", enclosingClass.getSimpleName()));
+        if (null != enclosingClass) {
+            String simpleName = enclosingClass.getSimpleName();
+            print(String.format("%s.%s()\n%s", clazz.getSimpleName(), "getEnclosingClass",
+                    simpleName));
+        } else {
+            print(String.format("%s.%s() is null.", clazz.getSimpleName(),
+                    "getEnclosingClass"));
+        }
+        print("");
     }
 
     public void reflect_case_class_constructor(Class clazz, Class... parameterTypes) {

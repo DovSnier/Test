@@ -21,7 +21,7 @@ public class Main {
                 .format(Calendar.getInstance().getTime()));
 
         // 类
-//        test_class();
+        test_class();
         // 构造器
 //        test_class_constructor();
         // 成员属性
@@ -29,7 +29,7 @@ public class Main {
         // 成员方法
 //        test_class_method();
         // 注解
-        test_class_annotation();
+//        test_class_annotation();
     }
 
     public static void print(String msg) {
