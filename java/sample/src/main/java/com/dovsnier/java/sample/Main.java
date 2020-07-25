@@ -23,7 +23,9 @@ public class Main {
         // 构造器
 //        test_class_constructor();
         // 成员属性
-        test_class_field();
+//        test_class_field();
+        // 成员方法
+        test_class_method();
     }
 
     public static void print(String msg) {
@@ -60,13 +62,31 @@ public class Main {
 
     protected static void test_class_field() {
         print("三", "获取成员属性信息");
-//        reflectCase.reflect_case_class_field(BaseBean.class, "author");
+        reflectCase.reflect_case_class_field(BaseBean.class, "author");
         reflectCase.reflect_case_class_field(BaseBean.class, "name");
-//        reflectCase.reflect_case_class_field(BaseBean.class, "type");
-//        reflectCase.reflect_case_class_field(BaseBean.class, "anonym");
-//        printHolder();
-//        reflectCase.reflect_case_class_field(ValueBean.class, "name");
-//        printHolder();
-//        reflectCase.reflect_case_class_field(ExtBean.class, "name");
+        reflectCase.reflect_case_class_field(BaseBean.class, "type");
+        reflectCase.reflect_case_class_field(BaseBean.class, "anonym");
+        printHolder();
+        reflectCase.reflect_case_class_field(ValueBean.class, "name");
+        printHolder();
+        reflectCase.reflect_case_class_field(ExtBean.class, "name");
+    }
+
+    protected static void test_class_method() {
+        print("四", "获取成员方法信息");
+        reflectCase.reflect_case_class_method(BaseBean.class, "getName",
+                null);
+        reflectCase.reflect_case_class_method(BaseBean.class, "setName",
+                String.class);
+        reflectCase.reflect_case_class_method(BaseBean.class, "setType()",
+                int.class);
+        reflectCase.reflect_case_class_method(BaseBean.class, "setAnonym()",
+                int.class);
+        printHolder();
+        reflectCase.reflect_case_class_method(ValueBean.class, "getName()",
+                null);
+        printHolder();
+        reflectCase.reflect_case_class_method(ExtBean.class, "getName()",
+                null);
     }
 }
