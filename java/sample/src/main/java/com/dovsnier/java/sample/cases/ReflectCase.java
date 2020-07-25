@@ -9,6 +9,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * ReflectCase
@@ -81,12 +82,63 @@ public class ReflectCase {
                 generic_key, generic_value));
     }
 
+    public static void printThenMethodParamDescribeWithTwoValue(String clazz, String clazz_method,
+                                                                String modifier,
+                                                                String type,
+                                                                String method_name,
+                                                                String name_key, String name_value,
+                                                                String generic_key, String generic_value,
+                                                                Class... parameterType) {
+        if (null != parameterType && parameterType.length > 0) {
+            List<Class> classes = Arrays.asList(parameterType);
+            StringBuilder stringBuilder = new StringBuilder();
+            int size = classes.size();
+            for (int i = 0; i < size; i++) {
+                Class item = classes.get(i);
+                stringBuilder.append(item.getSimpleName());
+                if (i > 0 && i == size - 1) {
+                    stringBuilder.append(",");
+                }
+            }
+            print(String.format("%s.%s(%s %s %s(%s)):\n%s: %s\n%s: %s", clazz, clazz_method,
+                    modifier, type, method_name, stringBuilder.toString(),
+                    name_key, name_value,
+                    generic_key, generic_value));
+        } else {
+            print(String.format("%s.%s(%s %s %s()):\n%s: %s\n%s: %s", clazz, clazz_method,
+                    modifier, type, method_name,
+                    name_key, name_value,
+                    generic_key, generic_value));
+        }
+    }
+
     public static void printThenIsNull(String clazz, String clazz_method) {
         print(String.format("%s.%s() is null.", clazz, clazz_method));
     }
 
     public static void printThenParamIsNull(String clazz, String clazz_method, String parameter) {
         print(String.format("%s.%s(%s) is null.", clazz, clazz_method, parameter));
+    }
+
+    public static void printThenMethodParamIsNull(String clazz, String clazz_method,
+                                                  String method_name,
+                                                  Class... methodParameterType) {
+        if (null != methodParameterType && methodParameterType.length > 0) {
+            List<Class> classes = Arrays.asList(methodParameterType);
+            StringBuilder stringBuilder = new StringBuilder();
+            int size = classes.size();
+            for (int i = 0; i < size; i++) {
+                Class item = classes.get(i);
+                stringBuilder.append(item.getSimpleName());
+                if (i > 0 && i == size - 1) {
+                    stringBuilder.append(",");
+                }
+            }
+            print(String.format("%s.%s(%s(%s)) is null.", clazz, clazz_method, method_name,
+                    stringBuilder.toString()));
+        } else {
+            print(String.format("%s.%s(%s()) is null.", clazz, clazz_method, method_name));
+        }
     }
 
     public static void printThenElementDeclare(String clazz, String clazz_method, int length) {
@@ -336,12 +388,17 @@ public class ReflectCase {
             if (null != method) {
                 String methodName = method.getName();
                 String toGenericString = method.toGenericString();
-                System.out.println(String.format("%s(%s %s %s) -> \nmethodName: %s\ntoGenericString: %s"
-                        , "getMethod", Modifier.toString(method.getModifiers()),
-                        method.getReturnType().getSimpleName(), method_name, methodName,
-                        toGenericString));
+                printThenMethodParamDescribeWithTwoValue(clazz.getSimpleName(), "getMethod",
+                        Modifier.toString(method.getModifiers()),
+                        method.getReturnType().getSimpleName(),
+                        method_name,
+                        "methodName", methodName,
+                        "toGenericString", toGenericString,
+                        parameterTypes
+                );
             } else {
-                print(String.format("getMethod(%s) is null.", method_name));
+                printThenMethodParamIsNull(clazz.getSimpleName(), "getMethod",
+                        method_name, parameterTypes);
             }
         } catch (NullPointerException | NoSuchMethodException e) {
             e.printStackTrace();
@@ -353,16 +410,21 @@ public class ReflectCase {
             //noinspection ConstantConditions
             if (null != methods) {
                 int length = methods.length;
-                print(String.format("ths current getMethods() is not empty that is %s length.", length));
+                printThenElementDeclare(clazz.getSimpleName(), "getMethods", length);
                 for (int i = 0; i < length; i++) {
                     String methodName = methods[i].getName();
                     String toGenericString = methods[i].toGenericString();
-                    System.out.println(String.format("index: %s\nmethodName: %s %s %s\ntoGenericString: %s"
-                            , i, Modifier.toString(methods[i].getModifiers()),
-                            methods[i].getReturnType().getSimpleName(), methodName, toGenericString));
+                    printThenElementWithThreeAndOneValue(i,
+                            "methodName",
+                            Modifier.toString(methods[i].getModifiers()),
+                            methods[i].getReturnType().getSimpleName(),
+                            methodName,
+                            "toGenericString",
+                            toGenericString
+                    );
                 }
             } else {
-                print("getMethods() is null.");
+                printThenIsNull(clazz.getSimpleName(), "getMethods");
             }
         } catch (SecurityException e) {
             e.printStackTrace();
@@ -373,14 +435,19 @@ public class ReflectCase {
             //noinspection unchecked
             Method declaredMethod = clazz.getDeclaredMethod(method_name, parameterTypes);
             if (null != declaredMethod) {
-                String methodName = declaredMethod.getName();
+                String declaredMethodName = declaredMethod.getName();
                 String toGenericString = declaredMethod.toGenericString();
-                System.out.println(String.format("%s(%s %s %s) -> \nmethodName: %s\ntoGenericString: %s"
-                        , "declaredMethod", Modifier.toString(declaredMethod.getModifiers()),
-                        declaredMethod.getReturnType().getSimpleName(), method_name, methodName,
-                        toGenericString));
+                printThenMethodParamDescribeWithTwoValue(clazz.getSimpleName(),
+                        "getDeclaredMethod",
+                        Modifier.toString(declaredMethod.getModifiers()),
+                        declaredMethod.getReturnType().getSimpleName(),
+                        method_name,
+                        "declaredMethodName", declaredMethodName,
+                        "toGenericString", toGenericString,
+                        parameterTypes);
             } else {
-                print(String.format("getDeclaredMethod(%s) is null.", method_name));
+                printThenMethodParamIsNull(clazz.getSimpleName(),
+                        "getDeclaredMethod", method_name, parameterTypes);
             }
         } catch (NullPointerException | NoSuchMethodException e) {
             e.printStackTrace();
@@ -392,17 +459,20 @@ public class ReflectCase {
             //noinspection ConstantConditions
             if (null != declaredMethods) {
                 int length = declaredMethods.length;
-                print(String.format("ths current declaredMethods() is not empty that is %s length.", length));
+                printThenElementDeclare(clazz.getSimpleName(), "getDeclaredMethods",
+                        length);
                 for (int i = 0; i < length; i++) {
-                    String methodName = declaredMethods[i].getName();
+                    String declaredMethodName = declaredMethods[i].getName();
                     String toGenericString = declaredMethods[i].toGenericString();
-                    System.out.println(String.format("index: %s\nmethodName: %s %s %s\ntoGenericString: %s"
-                            , i, Modifier.toString(declaredMethods[i].getModifiers()),
-                            declaredMethods[i].getReturnType().getSimpleName(), methodName,
-                            toGenericString));
+                    printThenElementWithThreeAndOneValue(i,
+                            "declaredMethodName",
+                            Modifier.toString(declaredMethods[i].getModifiers()),
+                            declaredMethods[i].getReturnType().getSimpleName(),
+                            declaredMethodName,
+                            "toGenericString", toGenericString);
                 }
             } else {
-                print("declaredMethods() is null.");
+                printThenIsNull(clazz.getSimpleName(), "getDeclaredMethods");
             }
         } catch (SecurityException e) {
             e.printStackTrace();

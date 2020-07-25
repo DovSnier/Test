@@ -25,9 +25,9 @@ public class Main {
         // 构造器
 //        test_class_constructor();
         // 成员属性
-        test_class_field();
+//        test_class_field();
         // 成员方法
-//        test_class_method();
+        test_class_method();
         // 注解
 //        test_class_annotation();
     }
@@ -88,9 +88,9 @@ public class Main {
                 int.class);
         reflectCase.reflect_case_class_method(BaseBean.class, "setAnonym()",
                 int.class);
-        printHolder();
+//        printHolder();
         reflectCase.reflect_case_class_method(ValueBean.class, "getName()");
-        printHolder();
+//        printHolder();
         reflectCase.reflect_case_class_method(ExtBean.class, "getName()");
     }
 
