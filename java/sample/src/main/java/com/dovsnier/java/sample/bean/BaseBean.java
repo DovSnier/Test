@@ -8,7 +8,7 @@ import com.dovsnier.java.sample.annotation.Type;
  * Created by dovsnier on 2020/7/23.
  */
 
-@Bean
+@Bean(name = "BaseBean")
 public class BaseBean {
 
     public String author;

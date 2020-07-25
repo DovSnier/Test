@@ -2,10 +2,13 @@ package com.dovsnier.java.sample.cases;
 
 import com.dovsnier.java.sample.bean.BaseBean;
 
+import java.lang.annotation.Annotation;
+import java.lang.reflect.AnnotatedType;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.Arrays;
 
 /**
  * ReflectCase
@@ -25,6 +28,10 @@ public class ReflectCase {
 
     public static void print(String msg) {
         System.out.println(String.format("%s", msg));
+    }
+
+    public static void print(String arg1, String arg2) {
+        System.out.println(String.format(arg1, arg2));
     }
 
     /**
@@ -65,77 +72,87 @@ public class ReflectCase {
             System.out.println(String.format("enclosing className: %s", enclosingClass.getSimpleName()));
     }
 
-    public void reflect_case_class_constructor(Class clazz) {
+    public void reflect_case_class_constructor(Class clazz, Class... parameterTypes) {
         try {
             // suggestFirstVariableName("Object")
-            // 1. 无参构造器
+            // 1. getConstructor()
             //noinspection unchecked
-            Constructor<?> constructor = clazz.getConstructor(null);
+            Constructor<?> constructor = clazz.getConstructor(parameterTypes);
             if (null != constructor) {
                 String constructorName = constructor.getName();
                 String toGenericString = constructor.toGenericString();
-                System.out.println(String.format("%s(no param) -> \nconstructorName: %s\ntoGenericString: %s"
-                        , "getConstructor", constructorName, toGenericString));
+                System.out.println(String.format("%s(%s) -> \nconstructorName: %s\ntoGenericString: %s"
+                        , "getConstructor", null != parameterTypes ?
+                                parameterTypes.getClass().getName() : "no param", constructorName,
+                        toGenericString));
             } else {
-                print("getConstructor(no param) is null.");
+                print("getConstructor(%s) is null.", null != parameterTypes ?
+                        parameterTypes.getClass().getName() : "no param");
             }
-            print("");
-            // 2. 获取构造器集合
-            Constructor<?>[] constructors = clazz.getConstructors();
-            //noinspection ConstantConditions
-            if (null != constructors) {
-                int length = constructors.length;
-                print(String.format("ths current getConstructors() is not empty that is %s length.", length));
-                for (int i = 0; i < length; i++) {
-                    String constructorName = constructors[i].getName();
-                    String toGenericString = constructors[i].toGenericString();
-                    System.out.println(String.format("index: %s\nconstructorName: %s\ntoGenericString: %s"
-                            , i, constructorName, toGenericString));
-                }
-            } else {
-                print("getConstructors() is null.");
+        } catch (NullPointerException | NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+        print("");
+        // 2. 获取构造器集合
+        Constructor<?>[] constructors = clazz.getConstructors();
+        //noinspection ConstantConditions
+        if (null != constructors) {
+            int length = constructors.length;
+            print(String.format("ths current getConstructors() is not empty that is %s length.", length));
+            for (int i = 0; i < length; i++) {
+                String constructorName = constructors[i].getName();
+                String toGenericString = constructors[i].toGenericString();
+                System.out.println(String.format("index: %s\nconstructorName: %s\ntoGenericString: %s"
+                        , i, constructorName, toGenericString));
             }
-            print("");
+        } else {
+            print("getConstructors() is null.");
+        }
+        print("");
+        try {
             // 3. getDeclaredConstructor()
-            //noinspection unchecked,ConfusingArgumentToVarargsMethod
-            Constructor<?> declaredConstructor = clazz.getDeclaredConstructor(null);
+            //noinspection unchecked
+            Constructor<?> declaredConstructor = clazz.getDeclaredConstructor(parameterTypes);
             if (null != declaredConstructor) {
                 String declaredConstructorName = declaredConstructor.getName();
                 String toGenericString = declaredConstructor.toGenericString();
-                System.out.println(String.format("%s(no param) -> \ndeclaredConstructorName: %s\ntoGenericString: %s"
-                        , "getDeclaredConstructor", declaredConstructorName, toGenericString));
+                System.out.println(String.format("%s(%s) -> \ndeclaredConstructorName: %s\ntoGenericString: %s"
+                        , "getDeclaredConstructor", null != parameterTypes ?
+                                parameterTypes.getClass().getName() : "no param", declaredConstructorName,
+                        toGenericString));
             } else {
-                print("getDeclaredConstructor(no param) is null.");
-            }
-            print("");
-            // 4. getDeclaredConstructors()
-            Constructor<?>[] declaredConstructors = clazz.getDeclaredConstructors();
-            //noinspection ConstantConditions
-            if (null != declaredConstructors) {
-                int length = declaredConstructors.length;
-                print(String.format("ths current getDeclaredConstructors() is not empty that is %s length.", length));
-                for (int i = 0; i < length; i++) {
-                    String constructorName = declaredConstructors[i].getName();
-                    String toGenericString = declaredConstructors[i].toGenericString();
-                    System.out.println(String.format("index: %s\nconstructorName: %s\ntoGenericString: %s"
-                            , i, constructorName, toGenericString));
-                }
-            } else {
-                print("getDeclaredConstructors() is null.");
-            }
-            print("");
-            // 5. getEnclosingConstructor()
-            Constructor<?> enclosingConstructor = clazz.getEnclosingConstructor();
-            if (null != enclosingConstructor) {
-                String declaredConstructorName = enclosingConstructor.getName();
-                String toGenericString = enclosingConstructor.toGenericString();
-                System.out.println(String.format("getEnclosingConstructor() -> \nenclosingConstructor: %s\ntoGenericString: %s"
-                        , declaredConstructorName, toGenericString));
-            } else {
-                print("getEnclosingConstructor() is null.");
+                print("getDeclaredConstructor(%s) is null.", null != parameterTypes ?
+                        parameterTypes.getClass().getName() : "no param");
             }
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
+        }
+        print("");
+        // 4. getDeclaredConstructors()
+        Constructor<?>[] declaredConstructors = clazz.getDeclaredConstructors();
+        //noinspection ConstantConditions
+        if (null != declaredConstructors) {
+            int length = declaredConstructors.length;
+            print(String.format("ths current getDeclaredConstructors() is not empty that is %s length.", length));
+            for (int i = 0; i < length; i++) {
+                String constructorName = declaredConstructors[i].getName();
+                String toGenericString = declaredConstructors[i].toGenericString();
+                System.out.println(String.format("index: %s\nconstructorName: %s\ntoGenericString: %s"
+                        , i, constructorName, toGenericString));
+            }
+        } else {
+            print("getDeclaredConstructors() is null.");
+        }
+        print("");
+        // 5. getEnclosingConstructor()
+        Constructor<?> enclosingConstructor = clazz.getEnclosingConstructor();
+        if (null != enclosingConstructor) {
+            String declaredConstructorName = enclosingConstructor.getName();
+            String toGenericString = enclosingConstructor.toGenericString();
+            System.out.println(String.format("getEnclosingConstructor() -> \nenclosingConstructor: %s\ntoGenericString: %s"
+                    , declaredConstructorName, toGenericString));
+        } else {
+            print("getEnclosingConstructor() is null.");
         }
     }
 
@@ -218,7 +235,6 @@ public class ReflectCase {
         }
     }
 
-
     public void reflect_case_class_method(Class clazz, String method_name, Class... parameterTypes) {
         try {
             // 1. getMethod()
@@ -300,4 +316,83 @@ public class ReflectCase {
         }
     }
 
+    public void reflect_case_class_annotation(Class clazz, Class annotationClass) {
+        try {
+            // 1. getAnnotation()
+            Annotation annotation = clazz.getAnnotation(annotationClass);
+            if (null != annotation) {
+                String name = annotation.annotationType().getName();
+                //noinspection ConstantConditions
+                System.out.println(String.format("%s.%s(%s) -> \n%s", clazz.getSimpleName(),
+                        "getAnnotation", null != annotationClass ? annotationClass.getSimpleName() :
+                                "no param", name));
+            } else {
+                //noinspection ConstantConditions
+                print(String.format("%s.getAnnotation(%s) is null.", clazz.getSimpleName(),
+                        null != annotationClass ? annotationClass.getSimpleName() : "no param"));
+            }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+        print("");
+        // 2. getAnnotations()
+        Annotation[] annotations = clazz.getAnnotations();
+        if (null != annotations) {
+            int length = annotations.length;
+            print(String.format("ths current getAnnotations() is not empty that is %s length.", length));
+            for (int i = 0; i < length; i++) {
+                String name = annotations[i].annotationType().getName();
+                System.out.println(String.format("%s %s.%s() -> \n%s", i,
+                        clazz.getSimpleName(), "getAnnotations", name));
+            }
+        } else {
+            print(String.format("%s.getAnnotations() is null.", clazz.getSimpleName()));
+        }
+        print("");
+        // 3. getAnnotationsByType()
+        Annotation[] annotationsByType = clazz.getAnnotationsByType(annotationClass);
+        //noinspection ConstantConditions
+        print(String.format("%s.getAnnotationsByType(%s)\n%s", clazz.getSimpleName(),
+                null != annotationClass ? annotationClass.getSimpleName() : "no param",
+                annotationClass.toString()));
+        print("");
+        // 4. getAnnotatedInterfaces()
+        AnnotatedType[] annotatedInterfaces = clazz.getAnnotatedInterfaces();
+        print(String.format("%s.getAnnotatedInterfaces()\n%s", clazz.getSimpleName(),
+                Arrays.toString(annotatedInterfaces)));
+        print("");
+        // 5. getAnnotatedSuperclass()
+        AnnotatedType annotatedSuperclass = clazz.getAnnotatedSuperclass();
+        print(String.format("%s.getAnnotatedSuperclass()\n%s", clazz.getSimpleName(),
+                annotatedSuperclass));
+        print("");
+        // 6. getDeclaredAnnotation()
+        Annotation declaredAnnotation = clazz.getDeclaredAnnotation(annotationClass);
+        //noinspection ConstantConditions
+        print(String.format("%s.getDeclaredAnnotation(%s)\n%s", clazz.getSimpleName(),
+                null != annotationClass ? annotationClass.getSimpleName() : "no param",
+                declaredAnnotation));
+        print("");
+        // 7. getDeclaredAnnotations()
+        Annotation[] declaredAnnotations = clazz.getDeclaredAnnotations();
+        if (null != declaredAnnotations) {
+            int length = declaredAnnotations.length;
+            print(String.format("ths current getDeclaredAnnotations() is not empty that is %s length.", length));
+            for (int i = 0; i < length; i++) {
+                String name = declaredAnnotations[i].annotationType().getName();
+                System.out.println(String.format("%s %s.%s() -> \n%s", i,
+                        clazz.getSimpleName(), "getDeclaredAnnotations", name));
+            }
+        } else {
+            print(String.format("%s.getDeclaredAnnotations() is null.", clazz.getSimpleName()));
+        }
+        print("");
+        // 8. getDeclaredAnnotationsByType()
+        Annotation[] declaredAnnotationsByType = clazz.getDeclaredAnnotationsByType(annotationClass);
+        //noinspection ConstantConditions
+        print(String.format("%s.getDeclaredAnnotationsByType(%s)\n%s", clazz.getSimpleName(),
+                null != annotationClass ? annotationClass.getSimpleName() : "no param",
+                Arrays.toString(declaredAnnotationsByType)));
+        print("");
+    }
 }

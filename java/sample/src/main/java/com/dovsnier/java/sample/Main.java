@@ -1,5 +1,7 @@
 package com.dovsnier.java.sample;
 
+import com.dovsnier.java.sample.annotation.Bean;
+import com.dovsnier.java.sample.annotation.Type;
 import com.dovsnier.java.sample.bean.BaseBean;
 import com.dovsnier.java.sample.bean.ExtBean;
 import com.dovsnier.java.sample.bean.ValueBean;
@@ -25,7 +27,9 @@ public class Main {
         // 成员属性
 //        test_class_field();
         // 成员方法
-        test_class_method();
+//        test_class_method();
+        // 注解
+        test_class_annotation();
     }
 
     public static void print(String msg) {
@@ -52,12 +56,15 @@ public class Main {
     protected static void test_class_constructor() {
         print("二", "获取构造器信息");
 //        reflectCase.reflect_case_constructor(ReflectCase.class);
-//        printHolder();
-        reflectCase.reflect_case_class_constructor(BaseBean.class);
         printHolder();
-        reflectCase.reflect_case_class_constructor(ValueBean.class);
+        reflectCase.reflect_case_class_constructor(BaseBean.class, null);
+        reflectCase.reflect_case_class_constructor(BaseBean.class, int.class);
         printHolder();
-        reflectCase.reflect_case_class_constructor(ExtBean.class);
+        reflectCase.reflect_case_class_constructor(ValueBean.class, null);
+        reflectCase.reflect_case_class_constructor(ValueBean.class, int.class);
+        printHolder();
+        reflectCase.reflect_case_class_constructor(ExtBean.class, null);
+        reflectCase.reflect_case_class_constructor(ExtBean.class, int.class);
     }
 
     protected static void test_class_field() {
@@ -88,5 +95,13 @@ public class Main {
         printHolder();
         reflectCase.reflect_case_class_method(ExtBean.class, "getName()",
                 null);
+    }
+
+    protected static void test_class_annotation() {
+        print("五", "获取注解信息");
+        reflectCase.reflect_case_class_annotation(BaseBean.class, Bean.class);
+        reflectCase.reflect_case_class_annotation(ValueBean.class, Bean.class);
+        reflectCase.reflect_case_class_annotation(ValueBean.class, Type.class);
+        reflectCase.reflect_case_class_annotation(ExtBean.class, Bean.class);
     }
 }

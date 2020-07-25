@@ -7,7 +7,8 @@ import com.dovsnier.java.sample.annotation.Type;
  * ValueBean
  * Created by dovsnier on 2020/7/23.
  */
-@Bean
+@Bean(name = "ValueBean")
+@Type(name = "ValueBean")
 public class ValueBean<@Type T> extends @Bean BaseBean {
 
     protected @Type T value;
