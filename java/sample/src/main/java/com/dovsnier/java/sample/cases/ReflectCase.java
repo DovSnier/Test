@@ -60,6 +60,27 @@ public class ReflectCase {
                 generic_key, generic_value));
     }
 
+    public static void printThenElementWithThreeAndOneValue(int index, String name_key,
+                                                            String modifier, String type,
+                                                            String name_value,
+                                                            String generic_key,
+                                                            String generic_value) {
+        print(String.format("index: %s\n%s: %s %s %s\n%s: %s", index,
+                name_key, modifier, type, name_value,
+                generic_key, generic_value));
+    }
+
+    public static void printThenParamDescribeWithTwoValue(String clazz, String clazz_method,
+                                                          String modifier, String type,
+                                                          String parameter,
+                                                          String name_key, String name_value,
+                                                          String generic_key, String generic_value) {
+        print(String.format("%s.%s(%s %s %s):\n%s: %s\n%s: %s", clazz, clazz_method,
+                modifier, type, parameter,
+                name_key, name_value,
+                generic_key, generic_value));
+    }
+
     public static void printThenIsNull(String clazz, String clazz_method) {
         print(String.format("%s.%s() is null.", clazz, clazz_method));
     }
@@ -193,9 +214,10 @@ public class ReflectCase {
             int length = declaredConstructors.length;
             printThenElementDeclare(clazz.getSimpleName(), "getDeclaredConstructors", length);
             for (int i = 0; i < length; i++) {
-                String constructorName = declaredConstructors[i].getName();
+                String declaredConstructorName = declaredConstructors[i].getName();
                 String toGenericString = declaredConstructors[i].toGenericString();
-                printThenElementWithTwoValue(i, "constructorName", constructorName,
+                printThenElementWithTwoValue(i,
+                        "declaredConstructorName", declaredConstructorName,
                         "toGenericString", toGenericString);
             }
         } else {
@@ -224,12 +246,14 @@ public class ReflectCase {
             if (null != field) {
                 String fieldName = field.getName();
                 String toGenericString = field.toGenericString();
-                System.out.println(String.format("%s(%s %s %s) -> \nfieldName: %s\ntoGenericString: %s"
-                        , "getField", Modifier.toString(field.getModifiers()),
-                        field.getType().getSimpleName(), field_name, fieldName,
-                        toGenericString));
+                printThenParamDescribeWithTwoValue(clazz.getSimpleName(), "getField",
+                        Modifier.toString(field.getModifiers()),
+                        field.getType().getSimpleName(),
+                        field_name,
+                        "fieldName", fieldName,
+                        "toGenericString", toGenericString);
             } else {
-                print(String.format("getField(%s) is null.", field_name));
+                printThenParamIsNull(clazz.getSimpleName(), "getField", field_name);
             }
         } catch (NoSuchFieldException | NullPointerException e) {
             e.printStackTrace();
@@ -241,16 +265,19 @@ public class ReflectCase {
             //noinspection ConstantConditions
             if (null != fields) {
                 int length = fields.length;
-                print(String.format("ths current getFields() is not empty that is %s length.", length));
+                printThenElementDeclare(clazz.getSimpleName(), "getFields", length);
                 for (int i = 0; i < length; i++) {
                     String fieldName = fields[i].getName();
                     String toGenericString = fields[i].toGenericString();
-                    System.out.println(String.format("index: %s\nfieldName: %s %s %s\ntoGenericString: %s"
-                            , i, Modifier.toString(fields[i].getModifiers()),
-                            fields[i].getType().getSimpleName(), fieldName, toGenericString));
+                    printThenElementWithThreeAndOneValue(i,
+                            "fieldName",
+                            Modifier.toString(fields[i].getModifiers()),
+                            fields[i].getType().getSimpleName(),
+                            fieldName,
+                            "toGenericString", toGenericString);
                 }
             } else {
-                print("getFields() is null.");
+                printThenIsNull(clazz.getSimpleName(), "getFields");
             }
         } catch (SecurityException e) {
             e.printStackTrace();
@@ -260,14 +287,16 @@ public class ReflectCase {
             // 3. getDeclaredField()
             Field declaredField = clazz.getDeclaredField(field_name);
             if (null != declaredField) {
-                String fieldName = declaredField.getName();
+                String declaredFieldName = declaredField.getName();
                 String toGenericString = declaredField.toGenericString();
-                System.out.println(String.format("%s(%s %s %s) -> \nfieldName: %s\ntoGenericString: %s"
-                        , "declaredField", Modifier.toString(declaredField.getModifiers()),
-                        declaredField.getType().getSimpleName(), field_name, fieldName,
-                        toGenericString));
+                printThenParamDescribeWithTwoValue(clazz.getSimpleName(), "getDeclaredField",
+                        Modifier.toString(declaredField.getModifiers()),
+                        declaredField.getType().getSimpleName(),
+                        field_name,
+                        "declaredFieldName", declaredFieldName,
+                        "toGenericString", toGenericString);
             } else {
-                print(String.format("getDeclaredField(%s) is null.", field_name));
+                printThenParamIsNull(clazz.getSimpleName(), "getDeclaredField", field_name);
             }
         } catch (NoSuchFieldException | NullPointerException e) {
             e.printStackTrace();
@@ -279,21 +308,24 @@ public class ReflectCase {
             //noinspection ConstantConditions
             if (null != declaredFields) {
                 int length = declaredFields.length;
-                print(String.format("ths current declaredFields() is not empty that is %s length.", length));
+                printThenElementDeclare(clazz.getSimpleName(), "getDeclaredFields", length);
                 for (int i = 0; i < length; i++) {
-                    String fieldName = declaredFields[i].getName();
+                    String declaredFieldName = declaredFields[i].getName();
                     String toGenericString = declaredFields[i].toGenericString();
-                    System.out.println(String.format("index: %s\nfieldName: %s %s %s\ntoGenericString: %s"
-                            , i, Modifier.toString(declaredFields[i].getModifiers()),
-                            declaredFields[i].getType().getSimpleName(), fieldName,
-                            toGenericString));
+                    printThenElementWithThreeAndOneValue(i,
+                            "declaredFieldName",
+                            Modifier.toString(declaredFields[i].getModifiers()),
+                            declaredFields[i].getType().getSimpleName(),
+                            declaredFieldName,
+                            "toGenericString", toGenericString);
                 }
             } else {
-                print("declaredFields() is null.");
+                printThenIsNull(clazz.getSimpleName(), "getDeclaredFields");
             }
         } catch (SecurityException e) {
             e.printStackTrace();
         }
+        print("");
     }
 
     public void reflect_case_class_method(Class clazz, String method_name, Class... parameterTypes) {
