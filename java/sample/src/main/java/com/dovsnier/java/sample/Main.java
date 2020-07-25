@@ -21,9 +21,9 @@ public class Main {
                 .format(Calendar.getInstance().getTime()));
 
         // 类
-        test_class();
+//        test_class();
         // 构造器
-//        test_class_constructor();
+        test_class_constructor();
         // 成员属性
 //        test_class_field();
         // 成员方法
@@ -56,14 +56,14 @@ public class Main {
     protected static void test_class_constructor() {
         print("二", "获取构造器信息");
 //        reflectCase.reflect_case_constructor(ReflectCase.class);
-        printHolder();
-        reflectCase.reflect_case_class_constructor(BaseBean.class, null);
+//        printHolder();
+        reflectCase.reflect_case_class_constructor(BaseBean.class);
         reflectCase.reflect_case_class_constructor(BaseBean.class, int.class);
-        printHolder();
-        reflectCase.reflect_case_class_constructor(ValueBean.class, null);
+//        printHolder();
+        reflectCase.reflect_case_class_constructor(ValueBean.class);
         reflectCase.reflect_case_class_constructor(ValueBean.class, int.class);
-        printHolder();
-        reflectCase.reflect_case_class_constructor(ExtBean.class, null);
+//        printHolder();
+        reflectCase.reflect_case_class_constructor(ExtBean.class);
         reflectCase.reflect_case_class_constructor(ExtBean.class, int.class);
     }
 
@@ -81,8 +81,7 @@ public class Main {
 
     protected static void test_class_method() {
         print("四", "获取成员方法信息");
-        reflectCase.reflect_case_class_method(BaseBean.class, "getName",
-                null);
+        reflectCase.reflect_case_class_method(BaseBean.class, "getName");
         reflectCase.reflect_case_class_method(BaseBean.class, "setName",
                 String.class);
         reflectCase.reflect_case_class_method(BaseBean.class, "setType()",
@@ -90,11 +89,9 @@ public class Main {
         reflectCase.reflect_case_class_method(BaseBean.class, "setAnonym()",
                 int.class);
         printHolder();
-        reflectCase.reflect_case_class_method(ValueBean.class, "getName()",
-                null);
+        reflectCase.reflect_case_class_method(ValueBean.class, "getName()");
         printHolder();
-        reflectCase.reflect_case_class_method(ExtBean.class, "getName()",
-                null);
+        reflectCase.reflect_case_class_method(ExtBean.class, "getName()");
     }
 
     protected static void test_class_annotation() {

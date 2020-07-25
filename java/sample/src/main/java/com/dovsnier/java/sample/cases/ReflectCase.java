@@ -34,6 +34,45 @@ public class ReflectCase {
         System.out.println(String.format(arg1, arg2));
     }
 
+    public static void printThenSimple(String clazz, String clazz_method, String value) {
+        print(String.format("%s.%s():\n%s", clazz, clazz_method, value));
+    }
+
+    public static void printThenNoParamWithTwoValue(String clazz, String clazz_method,
+                                                    String name_key, String name_value,
+                                                    String generic_key, String generic_value) {
+        print(String.format("%s.%s():\n%s: %s\n%s: %s", clazz, clazz_method,
+                name_key, name_value, generic_key, generic_value));
+    }
+
+    public static void printThenParamWithTwoValue(String clazz, String clazz_method,
+                                                  String parameter, String name_key,
+                                                  String name_value, String generic_key,
+                                                  String generic_value) {
+        print(String.format("%s.%s(%s):\n%s: %s\n%s: %s", clazz, clazz_method, parameter,
+                name_key, name_value, generic_key, generic_value));
+    }
+
+    public static void printThenElementWithTwoValue(int index, String name_key,
+                                                    String name_value, String generic_key,
+                                                    String generic_value) {
+        print(String.format("index: %s\n%s: %s\n%s: %s", index, name_key, name_value,
+                generic_key, generic_value));
+    }
+
+    public static void printThenIsNull(String clazz, String clazz_method) {
+        print(String.format("%s.%s() is null.", clazz, clazz_method));
+    }
+
+    public static void printThenParamIsNull(String clazz, String clazz_method, String parameter) {
+        print(String.format("%s.%s(%s) is null.", clazz, clazz_method, parameter));
+    }
+
+    public static void printThenElementDeclare(String clazz, String clazz_method, int length) {
+        print(String.format("ths current %s.%s() is not empty that is %s length.", clazz,
+                clazz_method, length));
+    }
+
     /**
      * 获取类类型有三种方式
      */
@@ -41,11 +80,11 @@ public class ReflectCase {
         String className = "";
         // 1. x.class
         className = BaseBean.class.getSimpleName();
-        System.out.println(String.format("className:\n%s", className));
+        print(String.format("className:\n%s", className));
         print("");
         // 2. x.getClass()
         className = BaseBean.newInstance().getClass().getSimpleName();
-        System.out.println(String.format("className:\n%s", className));
+        print(String.format("className:\n%s", className));
         print("");
         // 3. Class.forName()
         try {
@@ -56,7 +95,7 @@ public class ReflectCase {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        System.out.println(String.format("className:\n%s", className));
+        print(String.format("className:\n%s", className));
     }
 
     public void reflect_case_class2(Class clazz) {
@@ -64,33 +103,27 @@ public class ReflectCase {
         Class<?> clazz_clazz = clazz.getSuperclass();
         if (null != clazz_clazz) {
             String simpleName = clazz_clazz.getSimpleName();
-            print(String.format("%s.%s()\n%s", clazz.getSimpleName(), "getSuperclass",
-                    simpleName));
+            printThenSimple(clazz.getSimpleName(), "getSuperclass", simpleName);
         } else {
-            print(String.format("%s.%s() is null.", clazz.getSimpleName(),
-                    "getSuperclass"));
+            printThenIsNull(clazz.getSimpleName(), "getSuperclass");
         }
         print("");
         // 2. getDeclaringClass()
         Class<?> declaringClass = clazz.getDeclaringClass();
         if (null != declaringClass) {
             String simpleName = declaringClass.getSimpleName();
-            print(String.format("%s.%s()\n%s", clazz.getSimpleName(), "getDeclaringClass",
-                    simpleName));
+            printThenSimple(clazz.getSimpleName(), "getDeclaringClass", simpleName);
         } else {
-            print(String.format("%s.%s() is null.", clazz.getSimpleName(),
-                    "getDeclaringClass"));
+            printThenIsNull(clazz.getSimpleName(), "getDeclaringClass");
         }
         print("");
         // 3. getEnclosingClass()
         Class<?> enclosingClass = clazz.getEnclosingClass();
         if (null != enclosingClass) {
             String simpleName = enclosingClass.getSimpleName();
-            print(String.format("%s.%s()\n%s", clazz.getSimpleName(), "getEnclosingClass",
-                    simpleName));
+            printThenSimple(clazz.getSimpleName(), "getEnclosingClass", simpleName);
         } else {
-            print(String.format("%s.%s() is null.", clazz.getSimpleName(),
-                    "getEnclosingClass"));
+            printThenIsNull(clazz.getSimpleName(), "getEnclosingClass");
         }
         print("");
     }
@@ -104,13 +137,15 @@ public class ReflectCase {
             if (null != constructor) {
                 String constructorName = constructor.getName();
                 String toGenericString = constructor.toGenericString();
-                System.out.println(String.format("%s(%s) -> \nconstructorName: %s\ntoGenericString: %s"
-                        , "getConstructor", null != parameterTypes ?
-                                parameterTypes.getClass().getName() : "no param", constructorName,
-                        toGenericString));
+
+                printThenParamWithTwoValue(clazz.getSimpleName(), "getConstructor",
+                        null != parameterTypes ? parameterTypes.getClass().getName() : "no param",
+                        "constructorName", constructorName,
+                        "toGenericString", toGenericString);
             } else {
-                print("getConstructor(%s) is null.", null != parameterTypes ?
-                        parameterTypes.getClass().getName() : "no param");
+                printThenParamIsNull(clazz.getSimpleName(), "getConstructor",
+                        null != parameterTypes ? parameterTypes.getClass().getName()
+                                : "no param");
             }
         } catch (NullPointerException | NoSuchMethodException e) {
             e.printStackTrace();
@@ -121,15 +156,15 @@ public class ReflectCase {
         //noinspection ConstantConditions
         if (null != constructors) {
             int length = constructors.length;
-            print(String.format("ths current getConstructors() is not empty that is %s length.", length));
+            printThenElementDeclare(clazz.getSimpleName(), "getConstructors", length);
             for (int i = 0; i < length; i++) {
                 String constructorName = constructors[i].getName();
                 String toGenericString = constructors[i].toGenericString();
-                System.out.println(String.format("index: %s\nconstructorName: %s\ntoGenericString: %s"
-                        , i, constructorName, toGenericString));
+                printThenElementWithTwoValue(i, "constructorName", constructorName,
+                        "toGenericString", toGenericString);
             }
         } else {
-            print("getConstructors() is null.");
+            printThenIsNull(clazz.getSimpleName(), "getConstructors");
         }
         print("");
         try {
@@ -139,13 +174,13 @@ public class ReflectCase {
             if (null != declaredConstructor) {
                 String declaredConstructorName = declaredConstructor.getName();
                 String toGenericString = declaredConstructor.toGenericString();
-                System.out.println(String.format("%s(%s) -> \ndeclaredConstructorName: %s\ntoGenericString: %s"
-                        , "getDeclaredConstructor", null != parameterTypes ?
-                                parameterTypes.getClass().getName() : "no param", declaredConstructorName,
-                        toGenericString));
+                printThenParamWithTwoValue(clazz.getSimpleName(), "getDeclaredConstructor",
+                        null != parameterTypes ? parameterTypes.getClass().getName() : "no param",
+                        "declaredConstructorName", declaredConstructorName,
+                        "toGenericString", toGenericString);
             } else {
-                print("getDeclaredConstructor(%s) is null.", null != parameterTypes ?
-                        parameterTypes.getClass().getName() : "no param");
+                printThenParamIsNull(clazz.getSimpleName(), "getDeclaredConstructor",
+                        null != parameterTypes ? parameterTypes.getClass().getName() : "no param");
             }
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
@@ -156,27 +191,30 @@ public class ReflectCase {
         //noinspection ConstantConditions
         if (null != declaredConstructors) {
             int length = declaredConstructors.length;
-            print(String.format("ths current getDeclaredConstructors() is not empty that is %s length.", length));
+            printThenElementDeclare(clazz.getSimpleName(), "getDeclaredConstructors", length);
             for (int i = 0; i < length; i++) {
                 String constructorName = declaredConstructors[i].getName();
                 String toGenericString = declaredConstructors[i].toGenericString();
-                System.out.println(String.format("index: %s\nconstructorName: %s\ntoGenericString: %s"
-                        , i, constructorName, toGenericString));
+                printThenElementWithTwoValue(i, "constructorName", constructorName,
+                        "toGenericString", toGenericString);
             }
         } else {
-            print("getDeclaredConstructors() is null.");
+            printThenIsNull(clazz.getSimpleName(), "getDeclaredConstructors");
         }
         print("");
         // 5. getEnclosingConstructor()
         Constructor<?> enclosingConstructor = clazz.getEnclosingConstructor();
         if (null != enclosingConstructor) {
-            String declaredConstructorName = enclosingConstructor.getName();
+            String enclosingConstructorName = enclosingConstructor.getName();
             String toGenericString = enclosingConstructor.toGenericString();
-            System.out.println(String.format("getEnclosingConstructor() -> \nenclosingConstructor: %s\ntoGenericString: %s"
-                    , declaredConstructorName, toGenericString));
+            printThenNoParamWithTwoValue(clazz.getSimpleName(),
+                    "getEnclosingConstructor",
+                    "enclosingConstructorName", enclosingConstructorName,
+                    "toGenericString", toGenericString);
         } else {
-            print("getEnclosingConstructor() is null.");
+            printThenIsNull(clazz.getSimpleName(), "getEnclosingConstructor");
         }
+        print("");
     }
 
     public void reflect_case_class_field(Class clazz, String field_name) {
