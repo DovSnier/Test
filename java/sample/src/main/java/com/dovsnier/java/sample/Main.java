@@ -21,7 +21,7 @@ public class Main {
                 .format(Calendar.getInstance().getTime()));
 
         // 类
-//        test_class();
+        test_class();
         // 构造器
 //        test_class_constructor();
         // 成员属性
@@ -29,7 +29,7 @@ public class Main {
         // 成员方法
 //        test_class_method();
         // 注解
-        test_class_annotation();
+//        test_class_annotation();
     }
 
     public static void print(String msg) {
@@ -51,6 +51,10 @@ public class Main {
         reflectCase.reflect_case_class2(ReflectCase.class);
         reflectCase.reflect_case_class2(ValueBean.class);
         reflectCase.reflect_case_class2(ExtBean.class);
+        print("1.2", "类");
+        reflectCase.reflect_case_class3(ReflectCase.class);
+        reflectCase.reflect_case_class3(ValueBean.class);
+        reflectCase.reflect_case_class3(ExtBean.class);
     }
 
     protected static void test_class_constructor() {

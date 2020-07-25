@@ -6,8 +6,11 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedType;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.GenericDeclaration;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
 import java.util.Arrays;
 import java.util.List;
 
@@ -215,6 +218,72 @@ public class ReflectCase {
             printThenSimple(clazz.getSimpleName(), "getEnclosingClass", simpleName);
         } else {
             printThenIsNull(clazz.getSimpleName(), "getEnclosingClass");
+        }
+        print("");
+    }
+
+    public void reflect_case_class3(Class clazz) {
+        // 1. getComponentType()
+        Class componentType = clazz.getComponentType();
+        if (null != componentType) {
+            printThenSimple(clazz.getSimpleName(), "getComponentType",
+                    componentType.getName());
+        } else {
+            printThenIsNull(clazz.getSimpleName(), "getComponentType");
+        }
+        print("");
+        // 2. getGenericInterfaces()
+        Type[] genericInterfaces = clazz.getGenericInterfaces();
+        if (null != genericInterfaces) {
+            int length = genericInterfaces.length;
+            printThenElementDeclare(clazz.getSimpleName(), "getGenericInterfaces"
+                    , length);
+            for (int i = 0; i < length; i++) {
+                String typeName = genericInterfaces[i].getTypeName();
+                printThenElementWithOneValue(i, "typeName", typeName);
+            }
+        } else {
+            printThenIsNull(clazz.getSimpleName(), "getGenericInterfaces");
+        }
+        print("");
+        // 3. getGenericSuperclass()
+        Type genericSuperclass = clazz.getGenericSuperclass();
+        if (null != genericSuperclass) {
+            printThenSimple(clazz.getSimpleName(), "getGenericSuperclass",
+                    genericSuperclass.getTypeName());
+        } else {
+            printThenIsNull(clazz.getSimpleName(), "getGenericSuperclass");
+        }
+        print("");
+        // 4. getTypeName()
+        String typeName = clazz.getTypeName();
+        if (null != typeName) {
+            printThenSimple(clazz.getSimpleName(), "getTypeName",
+                    typeName);
+        } else {
+            printThenIsNull(clazz.getSimpleName(), "getTypeName");
+        }
+        print("");
+        // 5. getTypeParameters()
+        TypeVariable[] typeParameters = clazz.getTypeParameters();
+        if (null != typeParameters) {
+            int length = typeParameters.length;
+            printThenElementDeclare(clazz.getSimpleName(), "getTypeParameters"
+                    , length);
+            for (int i = 0; i < length; i++) {
+                String name = typeParameters[i].getName();
+                String typeParametersTypeName = typeParameters[i].getTypeName();
+                GenericDeclaration genericDeclaration = typeParameters[i]
+                        .getGenericDeclaration();
+                AnnotatedType[] annotatedBounds = typeParameters[i].getAnnotatedBounds();
+                Annotation[] annotations = typeParameters[i].getAnnotations();
+                Type[] bounds = typeParameters[i].getBounds();
+                Annotation[] declaredAnnotations = typeParameters[i].getDeclaredAnnotations();
+                printThenElementWithTwoValue(i, "name", name,
+                        "typeParametersTypeName", typeParametersTypeName);
+            }
+        } else {
+            printThenIsNull(clazz.getSimpleName(), "getTypeParameters");
         }
         print("");
     }
