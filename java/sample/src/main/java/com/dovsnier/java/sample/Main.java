@@ -27,9 +27,9 @@ public class Main {
         // 成员属性
 //        test_class_field();
         // 成员方法
-        test_class_method();
+//        test_class_method();
         // 注解
-//        test_class_annotation();
+        test_class_annotation();
     }
 
     public static void print(String msg) {

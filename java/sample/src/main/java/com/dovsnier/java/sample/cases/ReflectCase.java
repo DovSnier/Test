@@ -46,6 +46,12 @@ public class ReflectCase {
                 name_key, name_value, generic_key, generic_value));
     }
 
+    public static void printThenNoParamWithOneValue(String clazz, String clazz_method,
+                                                    String name_key, String name_value) {
+        print(String.format("%s.%s():\n%s: %s", clazz, clazz_method,
+                name_key, name_value));
+    }
+
     public static void printThenParamWithTwoValue(String clazz, String clazz_method,
                                                   String parameter, String name_key,
                                                   String name_value, String generic_key,
@@ -54,11 +60,23 @@ public class ReflectCase {
                 name_key, name_value, generic_key, generic_value));
     }
 
+    public static void printThenParamWithOneValue(String clazz, String clazz_method,
+                                                  String parameter, String name_key,
+                                                  String name_value) {
+        print(String.format("%s.%s(%s):\n%s: %s", clazz, clazz_method, parameter,
+                name_key, name_value));
+    }
+
     public static void printThenElementWithTwoValue(int index, String name_key,
                                                     String name_value, String generic_key,
                                                     String generic_value) {
         print(String.format("index: %s\n%s: %s\n%s: %s", index, name_key, name_value,
                 generic_key, generic_value));
+    }
+
+    public static void printThenElementWithOneValue(int index, String name_key,
+                                                    String name_value) {
+        print(String.format("index: %s\n%s: %s", index, name_key, name_value));
     }
 
     public static void printThenElementWithThreeAndOneValue(int index, String name_key,
@@ -484,15 +502,16 @@ public class ReflectCase {
             // 1. getAnnotation()
             Annotation annotation = clazz.getAnnotation(annotationClass);
             if (null != annotation) {
-                String name = annotation.annotationType().getName();
+                String annotationName = annotation.annotationType().getName();
                 //noinspection ConstantConditions
-                System.out.println(String.format("%s.%s(%s) -> \n%s", clazz.getSimpleName(),
-                        "getAnnotation", null != annotationClass ? annotationClass.getSimpleName() :
-                                "no param", name));
+                printThenParamWithOneValue(clazz.getSimpleName(),
+                        "getAnnotation", null != annotationClass ?
+                                annotationClass.getSimpleName() : "no param",
+                        "annotationName", annotationName);
             } else {
                 //noinspection ConstantConditions
-                print(String.format("%s.getAnnotation(%s) is null.", clazz.getSimpleName(),
-                        null != annotationClass ? annotationClass.getSimpleName() : "no param"));
+                printThenParamIsNull(clazz.getSimpleName(), "getAnnotation",
+                        null != annotationClass ? annotationClass.getSimpleName() : "no param");
             }
         } catch (NullPointerException e) {
             e.printStackTrace();
@@ -502,60 +521,121 @@ public class ReflectCase {
         Annotation[] annotations = clazz.getAnnotations();
         if (null != annotations) {
             int length = annotations.length;
-            print(String.format("ths current getAnnotations() is not empty that is %s length.", length));
+            printThenElementDeclare(clazz.getSimpleName(), "getAnnotations", length);
             for (int i = 0; i < length; i++) {
-                String name = annotations[i].annotationType().getName();
-                System.out.println(String.format("%s %s.%s() -> \n%s", i,
-                        clazz.getSimpleName(), "getAnnotations", name));
+                String annotationName = annotations[i].annotationType().getName();
+                printThenElementWithOneValue(i, "annotationName", annotationName);
             }
         } else {
-            print(String.format("%s.getAnnotations() is null.", clazz.getSimpleName()));
+            printThenIsNull(clazz.getSimpleName(), "getAnnotations");
         }
         print("");
         // 3. getAnnotationsByType()
         Annotation[] annotationsByType = clazz.getAnnotationsByType(annotationClass);
-        //noinspection ConstantConditions
-        print(String.format("%s.getAnnotationsByType(%s)\n%s", clazz.getSimpleName(),
-                null != annotationClass ? annotationClass.getSimpleName() : "no param",
-                annotationClass.toString()));
+        if (null != annotationsByType) {
+            int length = annotationsByType.length;
+            printThenElementDeclare(clazz.getSimpleName(), "getAnnotationsByType",
+                    length);
+            for (int i = 0; i < length; i++) {
+                String annotationsByTypeName = annotationsByType[i].annotationType().getName();
+                //noinspection ConstantConditions
+                printThenParamWithOneValue(clazz.getSimpleName(),
+                        "getAnnotationsByType",
+                        null != annotationClass ? annotationClass.getSimpleName() : "no param",
+                        "annotationsByTypeName", annotationsByTypeName);
+            }
+
+        } else {
+            //noinspection ConstantConditions
+            printThenParamIsNull(clazz.getSimpleName(), "getAnnotationsByType",
+                    null != annotationClass ? annotationClass.getSimpleName() : "no param");
+        }
         print("");
         // 4. getAnnotatedInterfaces()
         AnnotatedType[] annotatedInterfaces = clazz.getAnnotatedInterfaces();
-        print(String.format("%s.getAnnotatedInterfaces()\n%s", clazz.getSimpleName(),
-                Arrays.toString(annotatedInterfaces)));
+        if (null != annotatedInterfaces) {
+            int length = annotatedInterfaces.length;
+            printThenElementDeclare(clazz.getSimpleName(), "getAnnotatedInterfaces",
+                    length);
+            for (int i = 0; i < length; i++) {
+                String typeName = annotatedInterfaces[i].getType().getTypeName();
+                //noinspection unchecked
+                boolean annotationPresent = annotatedInterfaces[i]
+                        .isAnnotationPresent(annotationClass);
+                //noinspection unchecked
+                Annotation annotatedInterfacesAnnotation = annotatedInterfaces[i]
+                        .getAnnotation(annotationClass);
+                Annotation[] annotatedInterfacesAnnotations = annotatedInterfaces[i]
+                        .getAnnotations();
+                //noinspection ConstantConditions
+                printThenParamWithOneValue(clazz.getSimpleName(),
+                        "getAnnotationsByType",
+                        null != annotationClass ? annotationClass.getSimpleName() : "no param",
+                        "typeName", typeName);
+            }
+
+        } else {
+            //noinspection ConstantConditions
+            printThenParamIsNull(clazz.getSimpleName(), "getAnnotationsByType",
+                    null != annotationClass ? annotationClass.getSimpleName() : "no param");
+        }
         print("");
         // 5. getAnnotatedSuperclass()
         AnnotatedType annotatedSuperclass = clazz.getAnnotatedSuperclass();
-        print(String.format("%s.getAnnotatedSuperclass()\n%s", clazz.getSimpleName(),
-                annotatedSuperclass));
+        String typeName = annotatedSuperclass.getType().getTypeName();
+        printThenNoParamWithOneValue(clazz.getSimpleName(),
+                "getAnnotatedSuperclass",
+                "annotatedSuperclass", typeName);
         print("");
         // 6. getDeclaredAnnotation()
-        Annotation declaredAnnotation = clazz.getDeclaredAnnotation(annotationClass);
-        //noinspection ConstantConditions
-        print(String.format("%s.getDeclaredAnnotation(%s)\n%s", clazz.getSimpleName(),
-                null != annotationClass ? annotationClass.getSimpleName() : "no param",
-                declaredAnnotation));
+        try {
+            Annotation declaredAnnotation = clazz.getDeclaredAnnotation(annotationClass);
+            String simpleName = declaredAnnotation.annotationType().getSimpleName();
+            //noinspection ConstantConditions
+            printThenParamWithOneValue(clazz.getSimpleName(), "getDeclaredAnnotation",
+                    null != annotationClass ? annotationClass.getSimpleName() : "no param",
+                    "declaredAnnotation", simpleName);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
         print("");
         // 7. getDeclaredAnnotations()
         Annotation[] declaredAnnotations = clazz.getDeclaredAnnotations();
         if (null != declaredAnnotations) {
             int length = declaredAnnotations.length;
-            print(String.format("ths current getDeclaredAnnotations() is not empty that is %s length.", length));
+            printThenElementDeclare(clazz.getSimpleName(), "getDeclaredAnnotations",
+                    length);
             for (int i = 0; i < length; i++) {
                 String name = declaredAnnotations[i].annotationType().getName();
-                System.out.println(String.format("%s %s.%s() -> \n%s", i,
-                        clazz.getSimpleName(), "getDeclaredAnnotations", name));
+                printThenElementWithOneValue(i, "getDeclaredAnnotations", name);
             }
         } else {
-            print(String.format("%s.getDeclaredAnnotations() is null.", clazz.getSimpleName()));
+            printThenIsNull(clazz.getSimpleName(), "getDeclaredAnnotations");
         }
         print("");
         // 8. getDeclaredAnnotationsByType()
-        Annotation[] declaredAnnotationsByType = clazz.getDeclaredAnnotationsByType(annotationClass);
-        //noinspection ConstantConditions
-        print(String.format("%s.getDeclaredAnnotationsByType(%s)\n%s", clazz.getSimpleName(),
-                null != annotationClass ? annotationClass.getSimpleName() : "no param",
-                Arrays.toString(declaredAnnotationsByType)));
+        Annotation[] declaredAnnotationsByType = clazz
+                .getDeclaredAnnotationsByType(annotationClass);
+        if (null != declaredAnnotationsByType) {
+            int length = declaredAnnotationsByType.length;
+            printThenElementDeclare(clazz.getSimpleName(),
+                    "getDeclaredAnnotationsByType", length);
+            for (int i = 0; i < length; i++) {
+                String annotationsByTypeName = declaredAnnotationsByType[i]
+                        .annotationType().getName();
+                //noinspection ConstantConditions
+                printThenParamWithOneValue(clazz.getSimpleName(),
+                        "getDeclaredAnnotationsByType",
+                        null != annotationClass ? annotationClass.getSimpleName() : "no param",
+                        "annotationsByTypeName", annotationsByTypeName);
+            }
+
+        } else {
+            //noinspection ConstantConditions
+            printThenParamIsNull(clazz.getSimpleName(),
+                    "getDeclaredAnnotationsByType",
+                    null != annotationClass ? annotationClass.getSimpleName() : "no param");
+        }
         print("");
     }
 }
