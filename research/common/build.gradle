@@ -35,6 +35,7 @@ dependencies {
     implementation "com.android.support:appcompat-v7:$rootProject.support_appcompat_version"
     implementation "com.android.support:support-annotations:$rootProject.support_annotations_version"
     implementation "com.android.support:support-v4:$rootProject.support_v4_version"
+    implementation "com.android.support:recyclerview-v7:$rootProject.support_recyclerview_version"
 
     testImplementation "junit:junit:$rootProject.junit_version"
 

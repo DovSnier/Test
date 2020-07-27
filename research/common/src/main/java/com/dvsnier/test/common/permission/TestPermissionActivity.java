@@ -3,6 +3,8 @@ package com.dvsnier.test.common.permission;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,18 +13,30 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
 import com.dvsnier.base.flavor.activity.BaseActivity;
 import com.dvsnier.test.common.R;
 import com.dvsnier.test.common.R2;
+import com.dvsnier.test.common.permission.adapter.PermissionAdapter;
+import com.dvsnier.test.common.permission.bean.PermissionBean;
+import com.dvsnier.test.common.permission.holder.IOnItemClickListener;
+import com.dvsnier.test.common.permission.holder.IType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class TestPermissionActivity extends BaseActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
+public class TestPermissionActivity extends BaseActivity implements
+        ActivityCompat.OnRequestPermissionsResultCallback,
+        IOnItemClickListener<PermissionBean> {
 
     public static final int REQUEST_CALL_PHONE_CODE = 10;
     @BindView(R2.id.start)
@@ -31,14 +45,62 @@ public class TestPermissionActivity extends BaseActivity implements ActivityComp
     Button stop;
     @BindView(R2.id.cancel)
     Button cancel;
+    @BindView(R2.id.recycler_view)
+    RecyclerView recyclerView;
+    protected PermissionAdapter adapter;
+    protected List<PermissionBean> dataSets = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_permission);
         ButterKnife.bind(this);
+        performScheduledInternal();
+    }
+
+    @Override
+    public void initView() {
+        super.initView();
         stop.setText("P-Rationale");
         cancel.setText("Settings");
+        adapter = new PermissionAdapter(this);
+        adapter.setOnClickListener(this);
+        recyclerView.setAdapter(adapter);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(this, RecyclerView.VERTICAL);
+        //noinspection ConstantConditions
+        itemDecoration.setDrawable(ContextCompat.getDrawable(this, R.drawable.bg_common_item_line));
+        recyclerView.addItemDecoration(itemDecoration);
+    }
+
+    @Override
+    public void initData() {
+        super.initData();
+        PackageManager packageManager = getPackageManager();
+        List<PackageInfo> packageInfoList = packageManager.getInstalledPackages(0);
+        int size = packageInfoList.size();
+        dataSets.clear();
+        for (int i = 0; i < size; i++) {
+            PackageInfo packageInfo = packageInfoList.get(i);
+            PermissionBean item = new PermissionBean();
+            item.setItemType(IType.TYPE_ITEM_DEFAULT);
+            item.setPackageName(packageInfo.packageName);
+            item.setFlag(packageInfo.applicationInfo.flags);
+            if ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
+                item.setMsg("第三方应用");
+            } else {
+                item.setMsg("系统应用");
+            }
+            dataSets.add(item);
+        }
+        PermissionBean END = new PermissionBean();
+        END.setItemType(IType.TYPE_ITEM_DEFAULT);
+        END.setPackageName("...End...");
+        END.setFlag(0);
+        dataSets.add(END);
+        adapter.setData(dataSets);
+        adapter.notifyDataSetChanged();
     }
 
     @OnClick({R2.id.start, R2.id.stop, R2.id.cancel})
@@ -49,8 +111,29 @@ public class TestPermissionActivity extends BaseActivity implements ActivityComp
         } else if (viewId == R.id.stop) {
             testShouldShowRequestPermissionRationale();
         } else if (viewId == R.id.cancel) {
-            requestSettingDetail();
+            requestSettingDetail(getPackageName());
         }
+    }
+
+    @Override
+    public void onItemClick(View view, int position, PermissionBean bean) {
+        if (null != bean) {
+            int itemType = bean.getItemType();
+            String packageName = bean.getPackageName();
+            if (itemType == IType.TYPE_ITEM_DEFAULT) {
+                if (adapter.getItemCount() - 1 != position) {
+                    requestSettingDetail(packageName);
+                }
+            } else {
+                // nothing to do
+            }
+        }
+    }
+
+    protected void requestSettingDetail(String packageName) {
+        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        intent.setData(Uri.parse("package:" + packageName)); // 根据包名打开对应的设置界面
+        startActivity(intent);
     }
 
     protected void checkPermission() {
@@ -78,7 +161,7 @@ public class TestPermissionActivity extends BaseActivity implements ActivityComp
             builder.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    requestSettingDetail();
+                    requestSettingDetail(getPackageName());
                 }
             });
             builder.create().show();
@@ -104,7 +187,7 @@ public class TestPermissionActivity extends BaseActivity implements ActivityComp
             builder.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    requestSettingDetail();
+                    requestSettingDetail(getPackageName());
                 }
             });
             builder.create().show();
@@ -116,12 +199,6 @@ public class TestPermissionActivity extends BaseActivity implements ActivityComp
 
     protected void requestPhonePermission() {
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL_PHONE_CODE);
-    }
-
-    protected void requestSettingDetail() {
-        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-        intent.setData(Uri.parse("package:" + getPackageName())); // 根据包名打开对应的设置界面
-        startActivity(intent);
     }
 
     @Override
