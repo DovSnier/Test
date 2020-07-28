@@ -31,9 +31,11 @@
     // windows
     gradlew -q :app:dependencies --configuration debugCompileClasspath > debugCompileClasspath.txt
     gradlew -q :app:dependencies --configuration debugRuntimeClasspath > debugRuntimeClasspath.txt
+    gradlew -q :app:dependencies --configuration alphaDebugCompileClasspath > alphaDebugCompileClasspath.txt
 
     // mac
     ./gradlew -q :framework:base:dependencies --configuration debugCompileClasspath > debugCompileClasspath.txt
+    ./gradlew -q :app:dependencies --configuration alphaDebugCompileClasspath > alphaDebugCompileClasspath.txt
     ```
 
     ### 3.2 Modules 实例
