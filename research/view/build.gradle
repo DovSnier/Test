@@ -28,15 +28,29 @@ dependencies {
 
     implementation project(':framework:base')
 
-    //noinspection GradleDependency
-    implementation "com.jakewharton:butterknife:$rootProject.butterknife_version"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknife_compiler_version"
+    implementation("com.jakewharton:butterknife:$rootProject.butterknife_version") {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-compat'
+    }
+    annotationProcessor("com.jakewharton:butterknife-compiler:$rootProject.butterknife_compiler_version") {
+        transitive = false
+    }
 
-    implementation "com.android.support:appcompat-v7:$rootProject.support_appcompat_version"
+    implementation("com.android.support:appcompat-v7:$rootProject.support_appcompat_version") {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-core-utils'
+        exclude group: 'com.android.support', module: 'support-fragment'
+        exclude group: 'com.android.support', module: 'support-vector-drawable'
+        exclude group: 'com.android.support', module: 'animated-vector-drawable'
+    }
     implementation "com.android.support:support-annotations:$rootProject.support_annotations_version"
 
     testImplementation "junit:junit:$rootProject.junit_version"
 
-    androidTestImplementation "com.android.support.test:runner:$rootProject.runner_version"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espresso_core_version"
+    androidTestImplementation("com.android.support.test:runner:$rootProject.runner_version") {
+        transitive = false
+    }
+    androidTestImplementation("com.android.support.test.espresso:espresso-core:$rootProject.espresso_core_version") {
+        transitive = false
+    }
 }

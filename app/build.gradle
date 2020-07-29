@@ -179,4 +179,10 @@ dependencies {
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanary_android_no_op_version"
 
 //    implementation "com.android.tools.build:gradle:$build_gradle_version"
+
+    configurations {
+//        force = true
+//        transitive = false
+        all*.exclude group: 'com.android.support'
+    }
 }
