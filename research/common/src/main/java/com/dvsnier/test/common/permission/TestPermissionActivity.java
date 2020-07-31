@@ -18,8 +18,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.dvsnier.base.flavor.activity.BaseActivity;
+import com.dvsnier.base.task.ITask;
 import com.dvsnier.test.common.R;
 import com.dvsnier.test.common.R2;
 import com.dvsnier.test.common.permission.adapter.PermissionAdapter;
@@ -36,7 +38,7 @@ import butterknife.OnClick;
 
 public class TestPermissionActivity extends BaseActivity implements
         ActivityCompat.OnRequestPermissionsResultCallback,
-        IOnItemClickListener<PermissionBean> {
+        IOnItemClickListener<PermissionBean>, ITask {
 
     public static final int REQUEST_CALL_PHONE_CODE = 10;
     @BindView(R2.id.start)
@@ -47,15 +49,19 @@ public class TestPermissionActivity extends BaseActivity implements
     Button cancel;
     @BindView(R2.id.recycler_view)
     RecyclerView recyclerView;
+    @BindView(R2.id.tv_menu_toggle)
+    TextView tvMenuToggle;
     protected PermissionAdapter adapter;
     protected List<PermissionBean> dataSets = new ArrayList<>();
+    protected boolean isToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_permission);
         ButterKnife.bind(this);
-        performScheduledInternal();
+        initView();
+        execute();
     }
 
     @Override
@@ -89,10 +95,15 @@ public class TestPermissionActivity extends BaseActivity implements
             item.setFlag(packageInfo.applicationInfo.flags);
             if ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
                 item.setMsg("第三方应用");
+                dataSets.add(item);
             } else {
-                item.setMsg("系统应用");
+                if (isToggle) {
+                    item.setMsg("系统应用");
+                    dataSets.add(item);
+                } else {
+                    // nothing to do
+                }
             }
-            dataSets.add(item);
         }
         PermissionBean END = new PermissionBean();
         END.setItemType(IType.TYPE_ITEM_DEFAULT);
@@ -103,7 +114,13 @@ public class TestPermissionActivity extends BaseActivity implements
         adapter.notifyDataSetChanged();
     }
 
-    @OnClick({R2.id.start, R2.id.stop, R2.id.cancel})
+    @Override
+    public void execute() {
+        toggle();
+        initData();
+    }
+
+    @OnClick({R2.id.start, R2.id.stop, R2.id.cancel, R2.id.tv_menu_toggle})
     public void onViewClicked(View view) {
         int viewId = view.getId();
         if (viewId == R.id.start) {
@@ -112,6 +129,11 @@ public class TestPermissionActivity extends BaseActivity implements
             testShouldShowRequestPermissionRationale();
         } else if (viewId == R.id.cancel) {
             requestSettingDetail(getPackageName());
+        } else if (viewId == R.id.tv_menu_toggle) {
+            isToggle = !isToggle;
+            execute();
+        } else {
+            // nothing to do
         }
     }
 
@@ -127,6 +149,14 @@ public class TestPermissionActivity extends BaseActivity implements
             } else {
                 // nothing to do
             }
+        }
+    }
+
+    protected void toggle() {
+        if (isToggle) {
+            tvMenuToggle.setText(getString(R.string.menu_system_and_user_app));
+        } else {
+            tvMenuToggle.setText(getString(R.string.menu_user_app));
         }
     }
 
