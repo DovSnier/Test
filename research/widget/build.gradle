@@ -34,7 +34,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-compat'
     }
     annotationProcessor("com.jakewharton:butterknife-compiler:$rootProject.butterknife_compiler_version") {
-        transitive = false
+//        transitive = false
     }
 
     implementation("com.android.support:recyclerview-v7:$rootProject.support_recyclerview_version") {
@@ -57,10 +57,10 @@ dependencies {
         exclude group: 'android.arch.lifecycle', module: 'runtime'
     }
     implementation("com.android.support:design:$rootProject.support_design_version") {
-        transitive = false
+//        transitive = false
     }
     implementation("com.android.support.constraint:constraint-layout:$rootProject.support_constraint_layout_version") {
-        exclude group: 'com.android.support.constraint', module: 'constraint-layout-solver'
+//        exclude group: 'com.android.support.constraint', module: 'constraint-layout-solver'
     }
 
     testImplementation "junit:junit:$rootProject.junit_version"

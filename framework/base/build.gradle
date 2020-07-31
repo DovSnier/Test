@@ -49,21 +49,14 @@ dependencies {
     }
 
     api "com.android.support:multidex:$rootProject.support_multidex_version"
-    implementation("com.android.support:appcompat-v7:$rootProject.support_appcompat_version") {
-        exclude group: 'com.android.support', module: 'support-annotations'
-        exclude group: 'com.android.support', module: 'support-core-utils'
-        exclude group: 'com.android.support', module: 'support-fragment'
-        exclude group: 'com.android.support', module: 'support-vector-drawable'
-        exclude group: 'com.android.support', module: 'animated-vector-drawable'
-    }
-    implementation "com.android.support:support-annotations:$rootProject.support_annotations_version"
+
     implementation "com.jakewharton:disklrucache:$rootProject.disklrucache_version"
     implementation("com.jakewharton:butterknife:$rootProject.butterknife_version") {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.android.support', module: 'support-compat'
     }
     annotationProcessor("com.jakewharton:butterknife-compiler:$rootProject.butterknife_compiler_version") {
-        transitive = false
+//        transitive = false
     }
 
     implementation "junit:junit:$rootProject.junit_version"

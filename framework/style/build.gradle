@@ -26,6 +26,15 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    api "com.android.support:support-annotations:$rootProject.support_annotations_version"
+    api("com.android.support:appcompat-v7:$rootProject.support_appcompat_version") {
+//        exclude group: 'com.android.support', module: 'support-annotations'
+//        exclude group: 'com.android.support', module: 'support-core-utils'
+//        exclude group: 'com.android.support', module: 'support-fragment'
+//        exclude group: 'com.android.support', module: 'support-vector-drawable'
+//        exclude group: 'com.android.support', module: 'animated-vector-drawable'
+    }
+
     testImplementation "junit:junit:$rootProject.junit_version"
 
     androidTestImplementation("com.android.support.test:runner:$rootProject.runner_version") {
