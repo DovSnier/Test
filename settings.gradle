@@ -14,3 +14,5 @@ include ':research:interceptor',
         ':research:provider',
         ':research:common',
         ':research:tpl'
+
+include ':java:sample'

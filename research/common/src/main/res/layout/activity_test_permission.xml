@@ -1,9 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <include layout="@layout/layout_common_button" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:paddingStart="5dp"
+        android:paddingLeft="5dp"
+        android:paddingEnd="5dp"
+        android:paddingRight="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:gravity="left|center_vertical"
+            android:text="Android App Package List:"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+
+
+        <TextView
+            android:id="@+id/tv_menu_toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/bg_common_item"
+            android:gravity="right|center_vertical"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="8dp"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText,RtlHardcoded"
+            tools:text="系统和用户 APP" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" />
 
 </LinearLayout>

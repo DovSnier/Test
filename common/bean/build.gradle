@@ -30,11 +30,18 @@ greendao {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation "com.dvsnier:base:$rootProject.base_version"
+    implementation("com.dvsnier:base:$rootProject.base_version") {
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
     api "org.greenrobot:greendao:$rootProject.greendao_version"
 
     testImplementation "junit:junit:$rootProject.junit_version"
 
-    androidTestImplementation "com.android.support.test:runner:$rootProject.runner_version"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espresso_core_version"
+    androidTestImplementation("com.android.support.test:runner:$rootProject.runner_version") {
+        transitive = false
+    }
+    androidTestImplementation("com.android.support.test.espresso:espresso-core:$rootProject.espresso_core_version") {
+        transitive = false
+    }
 }
