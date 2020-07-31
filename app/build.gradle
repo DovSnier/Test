@@ -157,16 +157,20 @@ task exportAppInfo() {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    api project(':framework:base')
+    implementation project(':framework:base')
     implementation project(':common:bean')
     implementation project(':research:interceptor')
 
     implementation "com.android.support:appcompat-v7:$rootProject.support_appcompat_version"
     implementation "com.android.support:support-annotations:$rootProject.support_annotations_version"
 
-    //noinspection GradleDependency
-    implementation "com.jakewharton:butterknife:$rootProject.butterknife_version"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknife_compiler_version"
+    implementation("com.jakewharton:butterknife:$rootProject.butterknife_version") {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-compat'
+    }
+    annotationProcessor("com.jakewharton:butterknife-compiler:$rootProject.butterknife_compiler_version") {
+//        transitive = false
+    }
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit_version"
 
     implementation "com.facebook.stetho:stetho:$rootProject.stetho_version"
@@ -179,4 +183,10 @@ dependencies {
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanary_android_no_op_version"
 
 //    implementation "com.android.tools.build:gradle:$build_gradle_version"
+
+    configurations {
+//        force = true
+//        transitive = false
+//        all*.exclude group: 'com.android.support'
+    }
 }

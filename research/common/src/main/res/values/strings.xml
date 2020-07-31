@@ -15,4 +15,7 @@
     <string name="exception_title">异常</string>
     <string name="exception_content">资深好男人发来一条异常信息</string>
     <string name="notification_channel_importance">NotificationChannel Importance: \n\n- IMPORTANCE_NONE: 关闭通知\n- IMPORTANCE_MIN: 开启通知，不会弹出，但没有提示音，状态栏中无显示\n- IMPORTANCE_LOW: 开启通知，不会弹出，不发出提示音，状态栏中显示\n- IMPORTANCE_DEFAULT: 开启通知，不会弹出，发出提示音，状态栏中显示\n- IMPORTANCE_HIGH: 开启通知，会弹出，发出提示音，状态栏中显示</string>
+    <string name="channel_notification_no_support_tips">当前SDK 版本小于 Android O, API 26, 不支持设置渠道通知.</string>
+    <string name="menu_system_and_user_app">系统和用户 APP</string>
+    <string name="menu_user_app">用户 APP</string>
 </resources>

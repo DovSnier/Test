@@ -4,23 +4,54 @@
     ### 1.1 单节点
 
         ```
-        gradlew -q :app:dependencies --configuration implementation
+        ./gradlew -q :app:dependencies --configuration implementation > dependencies.txt
         ```
 
     ### 1.2 完整性节点
 
-        ```
-        gradlew -q :app:dependencies --configuration debugCompileClasspath
-        gradlew -q :app:dependencies --configuration debugRuntimeClasspath
-        gradlew -q :app:dependencies --configuration releaseCompileClasspath
-        gradlew -q :app:dependencies --configuration releaseRuntimeClasspath
+		```
+		:app
+		:common:bean
+		:common:utils
+		:framework:doc
+		:framework:base
+		:framework:style
+		:research:interceptor
+		:research:widget
+		:research:view
+		:research:service
+		:research:provider
+		:research:common
+		:research:tpl
+		:java:sample
+
+		./gradlew :app:dependencies
+        ./gradlew :common:bean:dependencies
+        ./gradlew :common:utils:dependencies
+        ./gradlew :framework:doc:dependencies
+        ./gradlew :framework:base:dependencies
+        ./gradlew :framework:style:dependencies
+        ./gradlew :research:interceptor:dependencies
+        ./gradlew :research:widget:dependencies
+        ./gradlew :research:view:dependencies
+        ./gradlew :research:service:dependencies
+        ./gradlew :research:provider:dependencies
+        ./gradlew :research:common:dependencies
+        ./gradlew :research:tpl:dependencies
+
+        ./gradlew -q --debug :app:dependencies --configuration alphaDebugCompileClasspath > dependencies.txt
+        ./gradlew -q --info :app:dependencies --configuration alphaDebugCompileClasspath > dependencies.txt
+        ./gradlew -q :app:dependencies --configuration alphaDebugCompileClasspath > dependencies.txt
+        ./gradlew -q :app:dependencies --configuration debugRuntimeClasspath > dependencies.txt
+        ./gradlew -q :app:dependencies --configuration releaseCompileClasspath > dependencies.txt
+        ./gradlew -q :app:dependencies --configuration releaseRuntimeClasspath > dependencies.txt
         ```
 
 ## 2. 解析库依赖
 
     ```
-    gradlew -q :app:dependencyInsight --configuration debugCompileClasspath --dependency design
-    gradlew -q :app:dependencyInsight --configuration debugRuntimeClasspath --dependency design
+    ./gradlew -q :app:dependencyInsight --configuration alphaDebugCompileClasspath --dependency design > dependencies.txt
+    ./gradlew -q :app:dependencyInsight --configuration debugRuntimeClasspath --dependency design > dependencies.txt
     ```
 
 ## 3. 举例
@@ -29,11 +60,39 @@
 
     ```
     // windows
-    gradlew -q :app:dependencies --configuration debugCompileClasspath > debugCompileClasspath.txt
+    gradlew -q :app:dependencies --configuration alphaDebugCompileClasspath > alphaDebugCompileClasspath.txt
     gradlew -q :app:dependencies --configuration debugRuntimeClasspath > debugRuntimeClasspath.txt
+    gradlew -q :app:dependencies --configuration alphaDebugCompileClasspath > alphaDebugCompileClasspath.txt
 
     // mac
-    ./gradlew -q :framework:base:dependencies --configuration debugCompileClasspath > debugCompileClasspath.txt
+    ./gradlew -q :framework:base:dependencies --configuration alphaDebugCompileClasspath > alphaDebugCompileClasspath.txt
+    ./gradlew -q :app:dependencies --configuration alphaDebugCompileClasspath > alphaDebugCompileClasspath.txt
+
+    // windows and mac dependencies
+    ./gradlew :app:dependencies --configuration alphaDebugCompileClasspath > dependencies.txt
+    ./gradlew :common:bean:dependencies :common:utils:dependencies :framework:doc:dependencies :framework:base:dependencies :framework:style:dependencies :research:interceptor:dependencies :research:widget:dependencies :research:view:dependencies :research:service:dependencies :research:provider:dependencies :research:common:dependencies :research:tpl:dependencies  --configuration debugCompileClasspath > dependencies2.txt
+
+    // refresh dependencies
+    ./gradlew --refresh-dependencies --info > dependencies.txt
+
+    // windows and mac dependencies
+    ./gradlew :app:dependencies :common:bean:dependencies :common:utils:dependencies :framework:doc:dependencies :framework:base:dependencies :framework:style:dependencies :research:interceptor:dependencies :research:widget:dependencies :research:view:dependencies :research:service:dependencies :research:provider:dependencies :research:common:dependencies :research:tpl:dependencies > dependencies.txt
+
+    ./gradlew :app:dependencies > dependencies.txt
+    ./gradlew :common:bean:dependencies > dependencies.txt
+    ./gradlew :common:utils:dependencies > dependencies.txt
+    ./gradlew :framework:doc:dependencies > dependencies.txt
+    ./gradlew :framework:base:dependencies > dependencies.txt
+    ./gradlew :framework:style:dependencies > dependencies.txt
+    ./gradlew :research:interceptor:dependencies > dependencies.txt
+    ./gradlew :research:widget:dependencies > dependencies.txt
+    ./gradlew :research:view:dependencies > dependencies.txt
+    ./gradlew :research:service:dependencies > dependencies.txt
+    ./gradlew :research:provider:dependencies > dependencies.txt
+    ./gradlew :research:common:dependencies > dependencies.txt
+    ./gradlew :research:tpl:dependencies > dependencies.txt
+
+
     ```
 
     ### 3.2 Modules 实例
