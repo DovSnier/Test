@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -10,22 +10,41 @@
         android:id="@+id/btn_cache_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="开启测试Cache"/>
+        android:text="开启测试Cache"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/btn_cache_close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_cache_start"
         android:layout_marginTop="25dp"
-        android:text="关闭Cache测试"/>
+        android:text="关闭Cache测试"
+        tools:ignore="HardcodedText" />
+
+
+    <Button
+        android:id="@+id/btn_persistence_cache"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="持久化测试 Cache" />
+
+
+    <Button
+        android:id="@+id/btn_persistence_cache_get"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="获取持久化测试 Cache" />
+
 
     <TextView
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginTop="45dp"
         android:gravity="center"
         android:textColor="#00ddff"
-        android:textSize="14sp"/>
-</RelativeLayout>
+        android:textSize="14sp" />
+</LinearLayout>

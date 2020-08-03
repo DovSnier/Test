@@ -10,8 +10,11 @@ import com.dvsnier.cache.base.CacheGenre;
 import com.dvsnier.cache.config.ICacheConfig;
 import com.dvsnier.cache.infrastructure.AbstractStorage;
 import com.dvsnier.cache.infrastructure.CacheStorage;
+import com.dvsnier.cache.infrastructure.FileStorage;
 import com.dvsnier.cache.infrastructure.LogStorage;
 import com.dvsnier.crash.Crash;
+
+import java.io.File;
 
 /**
  * BaseApplication
@@ -19,6 +22,16 @@ import com.dvsnier.crash.Crash;
  */
 public abstract class BaseApplication<T> extends AbstractBaseApplication<T> {
 
+    protected int cacheMaxSizeOfDisk;
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+//        自定义磁盘512M 缓存空间
+//        1 G<Integer.MAX_VALUE ~2 G
+        cacheMaxSizeOfDisk = Double.valueOf(CacheStorage.INSTANCE()
+                .getFormatted(512, AbstractStorage.SCU.M)).intValue();
+    }
 
     public static int getAppVersionCode(Context context) {
         int versionCode = 1;
@@ -45,8 +58,13 @@ public abstract class BaseApplication<T> extends AbstractBaseApplication<T> {
     }
 
     protected void initializedCache() {
-//        自定义磁盘512M 缓存空间
-        int cacheMaxSizeOfDisk = Double.valueOf(CacheStorage.INSTANCE().getFormatted(512, AbstractStorage.SCU.M)).intValue(); // 1G < Integer.MAX_VALUE ~ 2G
+        initializedDefaultCache();
+        initializedDownloadCache();
+
+        initializedPersistenceCache();
+    }
+
+    protected void initializedDefaultCache() {
         CacheManager.getInstance().initialize(new ICacheConfig.Builder(this)
                 .setContext(this)
                 .setAppVersion(getAppVersionCode(this))
@@ -54,7 +72,9 @@ public abstract class BaseApplication<T> extends AbstractBaseApplication<T> {
                 .setUniqueName(IDvsType.TYPE_DVS)
                 .setCacheGenre(new CacheGenre.SCHEDULED())  // the Scheduled Mode, otherwise is default
                 .create());
+    }
 
+    protected void initializedDownloadCache() {
         CacheManager.getInstance().initialize(ICacheType.TYPE_DOWNLOADS, new ICacheConfig.Builder(this)
                 .setContext(this)
                 .setAppVersion(getAppVersionCode(this))
@@ -65,8 +85,6 @@ public abstract class BaseApplication<T> extends AbstractBaseApplication<T> {
     }
 
     protected void initializedServerCache() {
-//        自定义磁盘512M 缓存空间
-        int cacheMaxSizeOfDisk = Double.valueOf(CacheStorage.INSTANCE().getFormatted(512, AbstractStorage.SCU.M)).intValue(); // 1G < Integer.MAX_VALUE ~ 2G
         CacheManager.getInstance().initialize(ICacheType.TYPE_LOG_SERVICE, new ICacheConfig.Builder(this)
                 .setContext(this)
                 .setAppVersion(getAppVersionCode(this))
@@ -74,6 +92,54 @@ public abstract class BaseApplication<T> extends AbstractBaseApplication<T> {
                 .setUniqueName(ICacheType.TYPE_LOG_SERVICE)
                 .setCacheGenre(new CacheGenre.SCHEDULED())  // the Scheduled Mode, otherwise is default
                 .create());
+    }
+
+    protected void initializedPersistenceCache() {
+        int version = getPackageName().hashCode();
+        FileStorage instance = FileStorage.INSTANCE();
+        File appDir = new File(instance.getExternalStorageDirectory() + File.separator
+                + IDvsType.TYPE_DOVSNIER);
+        File fileWithDownloads = new File(appDir + File.separator + IDvsType.TYPE_DOWNLOADS);
+        File fileWithSharedPrefs = new File(appDir + File.separator + IDvsType.TYPE_SHARED_PREFS);
+        //noinspection ConstantConditions
+        if (null != fileWithDownloads) {
+            if (fileWithDownloads.exists()) {
+//                file.deleteOnExit();
+            }
+            //noinspection ResultOfMethodCallIgnored
+            fileWithDownloads.mkdirs();
+//            Log.w("TAG", String.format("file is file(%s) or dir(%s) that absolute path is (%s)",
+//                    fileWithDownloads.isFile(), fileWithDownloads.isDirectory(), fileWithDownloads.getAbsolutePath()));
+        }
+        if (null != fileWithSharedPrefs) {
+            if (fileWithSharedPrefs.exists()) {
+//                file.deleteOnExit();
+            }
+            //noinspection ResultOfMethodCallIgnored
+            fileWithSharedPrefs.mkdirs();
+//            Log.w("TAG", String.format("file is file(%s) or dir(%s) that absolute path is (%s)",
+//                    fileWithSharedPrefs.isFile(), fileWithSharedPrefs.isDirectory(), fileWithSharedPrefs.getAbsolutePath()));
+        }
+        CacheManager.getInstance().initialize(IDvsType.TYPE_PERSISTENCE_DOWNLOADS,
+                new ICacheConfig.Builder(this)
+                        .setContext(this)
+                        .setCacheDirectory(fileWithDownloads)
+                        .setAppVersion(version)
+                        .setCacheMaxSizeOfDisk(cacheMaxSizeOfDisk)
+                        .setUniqueName(IDvsType.TYPE_DOWNLOADS)
+                        .setCacheGenre(new CacheGenre.SCHEDULED())  // the Scheduled Mode, otherwise is default
+                        .create());
+
+
+        CacheManager.getInstance().initialize(IDvsType.TYPE_PERSISTENCE_DVS,
+                new ICacheConfig.Builder(this)
+                        .setContext(this)
+                        .setCacheDirectory(fileWithSharedPrefs)
+                        .setAppVersion(version)
+                        .setCacheMaxSizeOfDisk(cacheMaxSizeOfDisk)
+                        .setUniqueName(IDvsType.TYPE_SHARED_PREFS)
+                        .setCacheGenre(new CacheGenre.SCHEDULED())  // the Scheduled Mode, otherwise is default
+                        .create());
     }
 
     protected void initializedCrash() {

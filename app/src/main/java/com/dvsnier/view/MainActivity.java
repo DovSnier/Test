@@ -12,10 +12,14 @@ import android.widget.TextView;
 import com.dvsnier.R;
 import com.dvsnier.adapter.MainAdapter;
 import com.dvsnier.base.flavor.activity.BaseActivity;
+import com.dvsnier.base.flavor.constant.IDvsType;
 import com.dvsnier.base.task.ITask;
 import com.dvsnier.bean.CategoryBean;
 import com.dvsnier.bean.ComponentBean;
+import com.dvsnier.cache.CacheManager;
+import com.dvsnier.cache.base.TimeUnit;
 import com.dvsnier.presenter.MainPresenter;
+import com.dvsnier.test.utils.MD5;
 import com.dvsnier.test.utils.WindowUtil;
 import com.dvsnier.viewholder.OnItemClickListener;
 import com.dvsnier.wrapper.TransferStationWrapper;
@@ -177,6 +181,15 @@ public class MainActivity extends BaseActivity<MainPresenter> implements ITask,
         if (null != getPresenter()) {
             getPresenter().request();
         }
+        onSdkInfo();
+    }
+
+    protected final void onSdkInfo() {
+        String value = String.valueOf(System.currentTimeMillis());
+        CacheManager.getInstance()
+                .putString(IDvsType.TYPE_PERSISTENCE_DVS, MD5.encode(value), value,
+                        2, TimeUnit.DAYS)
+                .commit(IDvsType.TYPE_PERSISTENCE_DVS);
     }
 
     @Override
