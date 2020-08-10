@@ -11,11 +11,17 @@ import com.dvsnier.base.flavor.crash.TestCrashHandleActivity;
 import com.dvsnier.base.flavor.sql.TestSQLActivity;
 import com.dvsnier.bean.ComponentBean;
 import com.dvsnier.constant.IAdapterType;
+import com.dvsnier.permission.OnSimpleResponsePermissionListener;
+import com.dvsnier.permission.Permission;
 import com.dvsnier.test.common.aidl.TestAIDLActivity;
 import com.dvsnier.test.common.notification.TestNotificationActivity;
 import com.dvsnier.test.common.permission.TestPermissionActivity;
 import com.dvsnier.test.common.touch.TestTouchEventActivity;
+import com.dvsnier.test.tpl.eventbus.TestEventBusActivity;
+import com.dvsnier.test.tpl.green.TestGreenDaoActivity;
 import com.dvsnier.test.tpl.image.TestImageActivity;
+import com.dvsnier.test.tpl.okhttp.TestOkhttpActivity;
+import com.dvsnier.test.tpl.speech.TestSpeechRecognitionActivity;
 import com.dvsnier.test.tpl.xutils.TestXUtilsActivity;
 import com.dvsnier.test.view.TestLogServiceActivity;
 import com.dvsnier.test.view.affinity.AffinityActivity;
@@ -32,12 +38,9 @@ import com.dvsnier.test.widget.screen.TestScreenInfoActivity;
 import com.dvsnier.test.widget.scroll.TestScrollActivity;
 import com.dvsnier.test.widget.surfaceview.TestSurfaceActivity;
 import com.dvsnier.test.widget.theme.TestThemeActivity;
-import com.dvsnier.test.tpl.eventbus.TestEventBusActivity;
-import com.dvsnier.test.tpl.green.TestGreenDaoActivity;
-import com.dvsnier.test.tpl.okhttp.TestOkhttpActivity;
-import com.dvsnier.test.tpl.speech.TestSpeechRecognitionActivity;
 import com.dvsnier.test.widget.view.TestViewGroupActivity;
 import com.dvsnier.test.widget.view.TestViewSizeActivity;
+import com.dvsnier.view.MainActivity;
 import com.orhanobut.logger.Logger;
 
 /**
@@ -225,7 +228,16 @@ public class TransferStationWrapper implements IAdapterType {
             case CommonType.TYPE_COMMON_PERMISSION:
                 intent = new Intent(getContext(), TestPermissionActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
+
+                if (null != context && context instanceof MainActivity) {
+                    ((MainActivity) context).requestPermission(new OnSimpleResponsePermissionListener() {
+                        @Override
+                        public void onPermissionCallback(Context context, boolean isGrant, Permission[] permissions) {
+                            super.onPermissionCallback(context, isGrant, permissions);
+                            startActivity(intent);
+                        }
+                    });
+                }
                 break;
             case CommonType.TYPE_COMMON_AIDL:
                 intent = new Intent(getContext(), TestAIDLActivity.class);

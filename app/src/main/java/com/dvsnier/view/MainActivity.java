@@ -1,9 +1,12 @@
 package com.dvsnier.view;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
@@ -18,6 +21,10 @@ import com.dvsnier.bean.CategoryBean;
 import com.dvsnier.bean.ComponentBean;
 import com.dvsnier.cache.CacheManager;
 import com.dvsnier.cache.base.TimeUnit;
+import com.dvsnier.permission.IOnResponsePermissionListener;
+import com.dvsnier.permission.OnSimpleResponsePermissionListener;
+import com.dvsnier.permission.Permission;
+import com.dvsnier.permission.PermissionWrapper;
 import com.dvsnier.presenter.MainPresenter;
 import com.dvsnier.test.utils.MD5;
 import com.dvsnier.test.utils.WindowUtil;
@@ -25,6 +32,7 @@ import com.dvsnier.viewholder.OnItemClickListener;
 import com.dvsnier.wrapper.TransferStationWrapper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -48,6 +56,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements ITask,
     protected List<CategoryBean> dataSet = new ArrayList<>();
     protected MainAdapter adapter;
     protected TransferStationWrapper transferStationWrapper;
+    protected PermissionWrapper permissionWrapper;
 
     @SuppressLint("ObsoleteSdkInt")
     @Override
@@ -70,6 +79,38 @@ public class MainActivity extends BaseActivity<MainPresenter> implements ITask,
         ButterKnife.bind(this);
         initView();
         initData();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (null != permissionWrapper) {
+            permissionWrapper.onDestroy();
+        }
+    }
+
+    public void requestPermission(IOnResponsePermissionListener onResponsePermissionListener) {
+        permissionWrapper.requestPermission(new String[]{
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//                Manifest.permission.CAMERA,
+                Manifest.permission.CALL_PHONE,
+                Manifest.permission.INTERNET,
+                Manifest.permission.ACCESS_WIFI_STATE,
+        }, new OnSimpleResponsePermissionListener() {
+            @Override
+            public void onPermissionCallback(Context context, boolean isGrant, Permission[] permissions) {
+                super.onPermissionCallback(context, isGrant, permissions);
+                String value = String.format("isGrant: %s , permission: %s", isGrant, Arrays.toString(permissions));
+                Log.d(TAG, value);
+                //noinspection ConditionCoveredByFurtherCondition
+                if (null != onResponsePermissionListener &&
+                        onResponsePermissionListener instanceof OnSimpleResponsePermissionListener) {
+                    ((OnSimpleResponsePermissionListener) onResponsePermissionListener)
+                            .onPermissionCallback(context, isGrant, permissions);
+                }
+            }
+        });
     }
 
     protected void hideSystemUI() {
@@ -130,6 +171,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements ITask,
     @Override
     public void initView() {
         super.initView();
+        permissionWrapper = new PermissionWrapper(this);
         menuContent.setText(String.format("%s %s", getString(R.string.app_name), "测试清单"));
         transferStationWrapper = new TransferStationWrapper(this);
 //        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, dataSet);
