@@ -1,5 +1,7 @@
 package com.dvsnier.test.common.permission.bean;
 
+import android.graphics.drawable.Drawable;
+
 import com.dvsnier.base.bean.IndexBaseBean;
 
 import java.util.Arrays;
@@ -10,9 +12,12 @@ import java.util.Arrays;
  */
 public class PermissionBean extends IndexBaseBean {
 
+    protected Drawable icon;
     protected String name;
     protected String msg;
     protected String packageName;
+    protected String versionName;
+    protected long versionCode;
     protected String permission;
     protected String[] permissions;
 
@@ -21,6 +26,14 @@ public class PermissionBean extends IndexBaseBean {
 
     public PermissionBean(int itemType) {
         super(itemType);
+    }
+
+    public Drawable getIcon() {
+        return icon;
+    }
+
+    public void setIcon(Drawable icon) {
+        this.icon = icon;
     }
 
     public String getName() {
@@ -47,6 +60,22 @@ public class PermissionBean extends IndexBaseBean {
         this.packageName = packageName;
     }
 
+    public String getVersionName() {
+        return versionName;
+    }
+
+    public void setVersionName(String versionName) {
+        this.versionName = versionName;
+    }
+
+    public long getVersionCode() {
+        return versionCode;
+    }
+
+    public void setVersionCode(long versionCode) {
+        this.versionCode = versionCode;
+    }
+
     public String getPermission() {
         return permission;
     }
@@ -66,9 +95,12 @@ public class PermissionBean extends IndexBaseBean {
     @Override
     public String toString() {
         return "PermissionBean{" +
-                "name='" + name + '\'' +
-                "msg='" + msg + '\'' +
+                "icon=" + icon +
+                ", name='" + name + '\'' +
+                ", msg='" + msg + '\'' +
                 ", packageName='" + packageName + '\'' +
+                ", versionName='" + versionName + '\'' +
+                ", versionCode=" + versionCode +
                 ", permission='" + permission + '\'' +
                 ", permissions=" + Arrays.toString(permissions) +
                 '}';

@@ -57,7 +57,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-core-ui'
         exclude group: 'com.android.support', module: 'support-fragment'
     }
-
+    implementation "com.github.bumptech.glide:glide:$rootProject.glide_version"
+    implementation "com.caverock:androidsvg:$rootProject.svg_version"
     testImplementation "junit:junit:$rootProject.junit_version"
 
     androidTestImplementation("com.android.support.test:runner:$rootProject.runner_version") {

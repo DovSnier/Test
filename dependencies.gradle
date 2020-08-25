@@ -65,6 +65,7 @@ ext {
     retrofit_version = "2.0.2"
     disklrucache_version = "2.0.2"
     glide_version = "3.7.0"
+    svg_version = "1.2.1"
     xutils_version = "3.3.42"
     greendao_version = "3.2.2"
     stetho_version = "1.5.0"

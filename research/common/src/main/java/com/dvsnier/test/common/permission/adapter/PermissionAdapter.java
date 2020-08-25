@@ -34,7 +34,7 @@ public class PermissionAdapter extends BaseRecyclerViewAdapter<PermissionBean, R
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_ITEM_DEFAULT) {
-            return new PermissionViewHolder(getContext(), R.layout.layout_common_item_one, parent);
+            return new PermissionViewHolder(getContext(), R.layout.layout_item_permission, parent);
         } else {
             // nothing to do
         }

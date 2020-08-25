@@ -52,6 +52,9 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:fadeScrollbars="true"
+        android:fadingEdge="none"
+        android:overScrollMode="never" />
 
 </LinearLayout>

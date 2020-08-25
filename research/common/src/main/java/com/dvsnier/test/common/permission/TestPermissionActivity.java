@@ -7,6 +7,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -90,18 +91,29 @@ public class TestPermissionActivity extends BaseActivity implements
         for (int i = 0; i < size; i++) {
             PackageInfo packageInfo = packageInfoList.get(i);
             PermissionBean item = new PermissionBean();
-            item.setItemType(IType.TYPE_ITEM_DEFAULT);
-            item.setPackageName(packageInfo.packageName);
-            item.setFlag(packageInfo.applicationInfo.flags);
-            if ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
-                item.setMsg("第三方应用");
-                dataSets.add(item);
-            } else {
-                if (isToggle) {
-                    item.setMsg("系统应用");
+            ApplicationInfo applicationInfo = packageInfo.applicationInfo;
+            if (null != applicationInfo) {
+                item.setIcon(applicationInfo.loadIcon(packageManager));
+                item.setName(String.valueOf(applicationInfo.loadLabel(packageManager)));
+                item.setItemType(IType.TYPE_ITEM_DEFAULT);
+                item.setPackageName(packageInfo.packageName);
+                item.setVersionName(packageInfo.versionName);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    item.setVersionCode(packageInfo.getLongVersionCode());
+                } else {
+                    item.setVersionCode(packageInfo.versionCode);
+                }
+                item.setFlag(applicationInfo.flags);
+                if ((applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
+                    item.setMsg("第三方应用");
                     dataSets.add(item);
                 } else {
-                    // nothing to do
+                    if (isToggle) {
+                        item.setMsg("系统应用");
+                        dataSets.add(item);
+                    } else {
+                        // nothing to do
+                    }
                 }
             }
         }
