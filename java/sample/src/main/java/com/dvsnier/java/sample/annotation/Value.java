@@ -1,4 +1,4 @@
-package com.dovsnier.java.sample.annotation;
+package com.dvsnier.java.sample.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

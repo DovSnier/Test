@@ -1,11 +1,11 @@
-package com.dovsnier.java.sample;
+package com.dvsnier.java.sample;
 
-import com.dovsnier.java.sample.annotation.Bean;
-import com.dovsnier.java.sample.annotation.Type;
-import com.dovsnier.java.sample.bean.BaseBean;
-import com.dovsnier.java.sample.bean.ExtBean;
-import com.dovsnier.java.sample.bean.ValueBean;
-import com.dovsnier.java.sample.cases.ReflectCase;
+import com.dvsnier.java.sample.annotation.Bean;
+import com.dvsnier.java.sample.annotation.Type;
+import com.dvsnier.java.sample.bean.BaseBean;
+import com.dvsnier.java.sample.bean.ExtBean;
+import com.dvsnier.java.sample.bean.ValueBean;
+import com.dvsnier.java.sample.cases.ReflectCase;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

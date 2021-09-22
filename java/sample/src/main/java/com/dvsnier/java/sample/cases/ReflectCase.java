@@ -1,6 +1,6 @@
-package com.dovsnier.java.sample.cases;
+package com.dvsnier.java.sample.cases;
 
-import com.dovsnier.java.sample.bean.BaseBean;
+import com.dvsnier.java.sample.bean.BaseBean;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedType;
@@ -182,7 +182,7 @@ public class ReflectCase {
         print("");
         // 3. Class.forName()
         try {
-            Class<?> clazz = Class.forName("com.dovsnier.java.sample.bean.BaseBean");
+            Class<?> clazz = Class.forName("com.dvsnier.java.sample.bean.BaseBean");
             if (null != clazz) {
                 className = clazz.getSimpleName();
             }

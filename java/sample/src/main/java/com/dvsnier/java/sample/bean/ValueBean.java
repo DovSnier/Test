@@ -1,7 +1,7 @@
-package com.dovsnier.java.sample.bean;
+package com.dvsnier.java.sample.bean;
 
-import com.dovsnier.java.sample.annotation.Bean;
-import com.dovsnier.java.sample.annotation.Type;
+import com.dvsnier.java.sample.annotation.Bean;
+import com.dvsnier.java.sample.annotation.Type;
 
 /**
  * ValueBean

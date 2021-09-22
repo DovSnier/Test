@@ -1,4 +1,4 @@
-package com.dovsnier.base;
+package com.dvsnier.base;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,4 +1,4 @@
-package com.dovsnier.base;
+package com.dvsnier.base;
 
 import org.junit.Test;
 

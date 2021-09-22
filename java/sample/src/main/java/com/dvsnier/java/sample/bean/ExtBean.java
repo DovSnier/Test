@@ -1,4 +1,4 @@
-package com.dovsnier.java.sample.bean;
+package com.dvsnier.java.sample.bean;
 
 /**
  * ExtBean
