@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="45dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="2"
+            tools:ignore="InefficientWeight">
+
+            <Button
+                android:id="@+id/btn_calculation"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="计算"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText,NestedWeights" />
+
+            <Button
+                android:id="@+id/btn_clear"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:text="清空"
+                android:textSize="14sp"
+                tools:ignore="HardcodedText,NestedWeights" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <!-- 本金 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="本金:"
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/et_principal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:background="@null"
+                    android:hint="10000 元"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:maxLines="1"
+                    android:paddingHorizontal="10dp"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <!-- 年利率 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="年利率:"
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/et_annual_interest_rate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:background="@null"
+                    android:hint="3.25%"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:maxLines="1"
+                    android:paddingHorizontal="10dp"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <!-- 月利率 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="月利率:"
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/et_month_interest_rate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:background="@null"
+                    android:hint="请填写月利率(可选项)"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:maxLines="1"
+                    android:paddingHorizontal="10dp"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <!-- 日利率 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="日利率:"
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/et_day_interest_rate"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:background="@null"
+                    android:hint="请填写日利率(可选项)"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:maxLines="1"
+                    android:paddingHorizontal="10dp"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <!-- 开始日期 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="开始日期:"
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText" />
+
+                <DatePicker
+                    android:id="@+id/dp_time_start"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:calendarViewShown="false"
+                    android:datePickerMode="spinner"
+                    android:maxDate="12/31/2170"
+                    android:minDate="01/10/1970"
+                    tools:ignore="HardcodedText"
+                    tools:targetApi="lollipop" />
+
+            </LinearLayout>
+
+            <!-- 结束日期 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="结束日期:"
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText" />
+
+
+                <DatePicker
+                    android:id="@+id/dp_time_end"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:calendarViewShown="false"
+                    android:datePickerMode="spinner"
+                    android:maxDate="12/31/2170"
+                    android:minDate="01/10/1970"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+            <!-- 利息 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="利息:"
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/et_interest"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:background="@null"
+                    android:hint="请填写利息(可选项)"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:maxLines="1"
+                    android:paddingHorizontal="10dp"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <!-- 总计 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="总计:"
+                    android:textSize="14sp"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/et_total"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:background="@null"
+                    android:hint="请填写总计(可选项)"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:maxLines="1"
+                    android:paddingHorizontal="10dp"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginVertical="15dp"
+            android:background="#EBEBEB" />
+
+        <TextView
+            android:id="@+id/tv_describe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="1.2"
+            android:padding="10dp"
+            android:text="本金, 利率, 时间, 和利息计算公式如下:\n\n 利息 = 本金 * 利率 * 时间{1 年 == 12 月 == 360 日}\n\n 年利息 = 本金 * 年利率 * 时间(年数)\n 月利息 = 本金 * 月利率 * 时间(月数)\n 日利息 = 本金 * 日利率 * 时间(天数)"
+            android:textSize="16sp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/tv_describe_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="1.2"
+            android:padding="10dp"
+            android:text="利率：是指一定时期内利息额与借贷资金额即本金的比率。利率是决定企业资金成本高低的主要因素，同时也是企业筹资、投资的决定性因素，对金融环境的研究必须注意利率现状及其变动趋势。\n是指借款、存入或借入金额(称为本金总额)中每个期间到期的利息金额与票面价值的比率。借出或借入金额的总利息取决于本金总额、利率、复利频率、借出、存入或借入的时间长度。利率是借款人需向其所借金钱所支付的代价，亦是放款人延迟其消费，借给借款人所获得的回报。利率通常以一年期利息与本金的百分比计算。\n\n利息：是资金时间价值的表现形式之一，从其形式上看，是货币所有者因为发出货币资金而从借款者手中获得的报酬;从另一方面看，它是借贷者使用货币资金必须支付的代价。 利息实质上是利润的一部分，是利润的特殊转化形式。"
+            android:textSize="14sp"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
