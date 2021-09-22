@@ -40,6 +40,7 @@ import com.dvsnier.test.widget.surfaceview.TestSurfaceActivity;
 import com.dvsnier.test.widget.theme.TestThemeActivity;
 import com.dvsnier.test.widget.view.TestViewGroupActivity;
 import com.dvsnier.test.widget.view.TestViewSizeActivity;
+import com.dvsnier.tool.interestrate.InterestRateActivity;
 import com.dvsnier.view.MainActivity;
 import com.orhanobut.logger.Logger;
 
@@ -86,6 +87,9 @@ public class TransferStationWrapper implements IAdapterType {
                 break;
             case TYPE_TPL:
                 onItemTplClick(parent, view, groupPosition, childPosition, bean);
+                break;
+            case TYPE_TOOLS:
+                onItemToolClick(parent, view, groupPosition, childPosition, bean);
                 break;
         }
     }
@@ -287,6 +291,17 @@ public class TransferStationWrapper implements IAdapterType {
                 break;
             case TplType.TYPE_TPL_EVENT_BUS:
                 intent = new Intent(getContext(), TestEventBusActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                break;
+        }
+    }
+
+    public void onItemToolClick(AdapterView<?> parent, View view, int groupPosition, int childPosition, ComponentBean bean) {
+        Intent intent;
+        switch (childPosition) {
+            case ToolType.TYPE_TOOL_ANNUALIZED_RATE:
+                intent = new Intent(getContext(), InterestRateActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
                 break;

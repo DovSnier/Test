@@ -323,5 +323,24 @@
         "flag": 0
       }
     ]
+  },
+  {
+    "id": 800,
+    "position": 7,
+    "name": "Tool",
+    "describe": "Tool",
+    "itemType": 800,
+    "checked": false,
+    "flag": 0,
+    "child": [
+      {
+        "id": 8000,
+        "position": 0,
+        "name": "利率计算",
+        "parentType": 800,
+        "itemType": 8000,
+        "flag": 0
+      }
+    ]
   }
 ]

@@ -15,6 +15,7 @@ public interface IAdapterType {
     int TYPE_BASE = 4; // base
     int TYPE_COMMON = 5; // common
     int TYPE_TPL = 6; // tpl
+    int TYPE_TOOLS = 7; // tools
 
 
     interface WidgetType extends IType {
@@ -67,5 +68,9 @@ public interface IAdapterType {
         int TYPE_TPL_SPEECH_RECOGNITION = 3;
         int TYPE_TPL_OK_HTTP = 4;
         int TYPE_TPL_EVENT_BUS = 5;
+    }
+
+    interface ToolType extends IType {
+        int TYPE_TOOL_ANNUALIZED_RATE = 0;
     }
 }

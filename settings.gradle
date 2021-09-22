@@ -13,6 +13,7 @@ include ':research:interceptor',
         ':research:service',
         ':research:provider',
         ':research:common',
+        ':research:tool',
         ':research:tpl'
 
 include ':java:sample'
