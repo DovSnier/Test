@@ -88,23 +88,35 @@ android {
     flavorDimensions "color"
 
     productFlavors {
-        alpha {
-            applicationId 'com.dvsnier.debug'
+        // Development Environment
+        dev {
+            applicationId 'com.dvsnier.dev'
             resValue "string", "app_name", "dvsnier debug"
             manifestPlaceholders = [
                     DVSNIER_VALUE: applicationId
             ]
             dimension "color"
         }
-        beta {
-            applicationId 'com.dvsnier.test'
-            resValue "string", "app_name", "dvsnier test"
+        // Feature Acceptance Test Environment
+        fat {
+            applicationId 'com.dvsnier.fat'
+            resValue "string", "app_name", "dvsnier fat"
             manifestPlaceholders = [
                     DVSNIER_VALUE: applicationId
             ]
             dimension "color"
         }
-        product {
+        // User Acceptance Test Environment
+        uat {
+            applicationId 'com.dvsnier.uat'
+            resValue "string", "app_name", "dvsnier uat"
+            manifestPlaceholders = [
+                    DVSNIER_VALUE: applicationId
+            ]
+            dimension "color"
+        }
+        // Production Environment
+        prod {
             applicationId 'com.dvsnier'
             resValue "string", "app_name", "dvsnier"
             manifestPlaceholders = [
