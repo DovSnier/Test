@@ -39,9 +39,9 @@ dependencies {
     testImplementation "junit:junit:$rootProject.junit_version"
 
     androidTestImplementation("com.android.support.test:runner:$rootProject.runner_version") {
-        transitive = false
+//        transitive = false
     }
     androidTestImplementation("com.android.support.test.espresso:espresso-core:$rootProject.espresso_core_version") {
-        transitive = false
+//        transitive = false
     }
 }
