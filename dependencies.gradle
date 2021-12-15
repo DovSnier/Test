@@ -53,7 +53,7 @@ ext {
     espresso_core_version = "3.0.2"
 
     // SDK 配置
-    greendao_gradle_plugin_version = '3.2.2'
+    greendao_gradle_plugin_version = '3.3.0'
     greendao_schema_version = 1
     base_version = "0.0.3"
     common_version = "0.0.3"
