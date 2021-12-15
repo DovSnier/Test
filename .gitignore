@@ -4,6 +4,7 @@
 *.ap_
 /build
 /captures
+node_modules/
 
 # Files for the Dalvik VM
 *.dex
@@ -18,6 +19,7 @@ gen/
 # Gradle files
 .gradle/
 build/
+Temp/
 *.txt
 *.log
 
@@ -38,6 +40,9 @@ proguard/
 .DS_Store
 out
 
+#VSCode
+.vscode/
+
 # Eclipse project files
 .classpath
 .project
@@ -46,6 +51,7 @@ out
 property.txt
 
 # the build environment
-alpha/
-beta/
-product/
+dev/
+fat/
+uat/
+prod/
