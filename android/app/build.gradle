@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle");
+applyNativeModulesAppBuildGradle(project)
 
 android {
 
@@ -30,11 +32,13 @@ android {
         packagingOptions {
             exclude "LICENSE-junit.txt"
             exclude "junit/runner/*"
-//            exclude 'META-INF/DEPENDENCIES'
+            exclude 'META-INF/DEPENDENCIES'
 //            exclude 'META-INF/NOTICE'
 //            exclude 'META-INF/LICENSE'
 //            exclude 'META-INF/NOTICE.txt'
 //            exclude 'META-INF/LICENSE.txt'
+            exclude 'migrateToAndroidx/migration.xml'
+            exclude 'META-INF/common.kotlin_module'
         }
 
         multiDexEnabled true
@@ -195,6 +199,14 @@ dependencies {
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanary_android_no_op_version"
 
 //    implementation "com.android.tools.build:gradle:$build_gradle_plugin_version"
+
+    // From node_modules maybe you need use to that npm list commands that find special version
+    implementation("com.facebook.react:react-native:$rootProject.react_native_version") {
+        exclude group: 'androidx.appcompat', module: 'appcompat'
+        exclude group: 'androidx.autofill', module: 'autofill'
+        exclude group: 'androidx.swiperefreshlayout', module: 'swiperefreshlayout'
+    }
+    implementation "org.webkit:android-jsc:$rootProject.android_jsc_version"
 
     configurations {
 //        force = true
