@@ -1,19 +1,19 @@
-include ':app'
+include ':android:app'
 
-include ':common:bean',
-        ':common:utils'
+include ':android:common:bean',
+        ':android:common:utils'
 
-include ':framework:doc',
-        ':framework:base',
-        ':framework:style'
+include ':android:framework:doc',
+        ':android:framework:base',
+        ':android:framework:style'
 
-include ':research:interceptor',
-        ':research:widget',
-        ':research:view',
-        ':research:service',
-        ':research:provider',
-        ':research:common',
-        ':research:tool',
-        ':research:tpl'
+include ':android:research:interceptor',
+        ':android:research:widget',
+        ':android:research:view',
+        ':android:research:service',
+        ':android:research:provider',
+        ':android:research:common',
+        ':android:research:tool',
+        ':android:research:tpl'
 
-include ':java:sample'
+include ':android:java:sample'
