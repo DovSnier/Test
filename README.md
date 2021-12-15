@@ -1,10 +1,11 @@
 # Test
 
-个人项目
+- [一. 项目目录图](#一-项目目录图)
+- [二. 项目依赖图](#二-项目依赖图)
 
 ## 一. 项目目录图
 
-```
+```Django
 +--- project :app
 |    +--- dir :common
 |    |     \--- project :common:bean
@@ -26,7 +27,7 @@
 
 ## 二. 项目依赖图
 
-```
+```Django
 +--- app
 |    +--- project :framework:base
 |    |     \--- project :common:utils
@@ -68,63 +69,3 @@
 (n) - Not resolved (configuration is not meant to be resolved)
 (t) - transitive dependencies and that not directly dependent
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
