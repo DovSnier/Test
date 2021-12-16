@@ -68,6 +68,7 @@ public interface IAdapterType {
         int TYPE_TPL_SPEECH_RECOGNITION = 3;
         int TYPE_TPL_OK_HTTP = 4;
         int TYPE_TPL_EVENT_BUS = 5;
+        int TYPE_TPL_REACT_NATIVE = 6;
     }
 
     interface ToolType extends IType {

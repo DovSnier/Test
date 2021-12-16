@@ -321,6 +321,14 @@
         "parentType": 700,
         "itemType": 7005,
         "flag": 0
+      },
+      {
+        "id": 7006,
+        "position": 6,
+        "name": "测试 React Native",
+        "parentType": 700,
+        "itemType": 7006,
+        "flag": 0
       }
     ]
   },

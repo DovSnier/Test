@@ -1,7 +1,9 @@
 package com.dvsnier.wrapper;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -13,6 +15,7 @@ import com.dvsnier.bean.ComponentBean;
 import com.dvsnier.constant.IAdapterType;
 import com.dvsnier.permission.OnSimpleResponsePermissionListener;
 import com.dvsnier.permission.Permission;
+import com.dvsnier.permission.PermissionWrapper;
 import com.dvsnier.test.common.aidl.TestAIDLActivity;
 import com.dvsnier.test.common.notification.TestNotificationActivity;
 import com.dvsnier.test.common.permission.TestPermissionActivity;
@@ -21,6 +24,7 @@ import com.dvsnier.test.tpl.eventbus.TestEventBusActivity;
 import com.dvsnier.test.tpl.green.TestGreenDaoActivity;
 import com.dvsnier.test.tpl.image.TestImageActivity;
 import com.dvsnier.test.tpl.okhttp.TestOkhttpActivity;
+import com.dvsnier.test.tpl.reactnative.TestReactNativeActivity;
 import com.dvsnier.test.tpl.speech.TestSpeechRecognitionActivity;
 import com.dvsnier.test.tpl.xutils.TestXUtilsActivity;
 import com.dvsnier.test.view.TestLogServiceActivity;
@@ -294,6 +298,11 @@ public class TransferStationWrapper implements IAdapterType {
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
                 break;
+            case TplType.TYPE_TPL_REACT_NATIVE:
+                intent = new Intent(getContext(), TestReactNativeActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                break;
         }
     }
 
@@ -301,9 +310,24 @@ public class TransferStationWrapper implements IAdapterType {
         Intent intent;
         switch (childPosition) {
             case ToolType.TYPE_TOOL_ANNUALIZED_RATE:
-                intent = new Intent(getContext(), InterestRateActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
+                PermissionWrapper.newInstance(context).requestPermission(
+                        Manifest.permission.SYSTEM_ALERT_WINDOW,
+                        new OnSimpleResponsePermissionListener() {
+                            @Override
+                            public void onPermissionCallback(Context context, boolean isGrant, Permission permission) {
+                                super.onPermissionCallback(context, isGrant, permission);
+                                String value = String.format("isGrant: %s , isNegatived: %s , isNegativedAndNoPresentation: %s , permission: %s"
+                                        , isGrant, permission.isNegatived(),
+                                        permission.isNegativedAndNoPresentation(), permission);
+                                Log.d(TAG, value);
+//                                Toast.makeText(context, value, Toast.LENGTH_SHORT).show();
+                                if (isGrant) {
+                                    Intent intent = new Intent(getContext(), InterestRateActivity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                                    context.startActivity(intent);
+                                }
+                            }
+                        });
                 break;
         }
     }

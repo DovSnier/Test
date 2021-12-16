@@ -60,6 +60,14 @@ dependencies {
 //        exclude group: 'com.android.support.constraint', module: 'constraint-layout-solver'
     }
 
+    // From node_modules maybe you need use to that npm list commands that find special version
+    implementation("com.facebook.react:react-native:$rootProject.react_native_version") {
+        exclude group: 'androidx.appcompat', module: 'appcompat'
+        exclude group: 'androidx.autofill', module: 'autofill'
+        exclude group: 'androidx.swiperefreshlayout', module: 'swiperefreshlayout'
+    }
+    implementation "org.webkit:android-jsc:$rootProject.android_jsc_version"
+
     testImplementation "junit:junit:$rootProject.junit_version"
 
     androidTestImplementation("com.android.support.test:runner:$rootProject.runner_version") {
