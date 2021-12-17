@@ -1,8 +1,9 @@
 package com.dvsnier.test.widget.theme;
 
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+
+import androidx.appcompat.widget.Toolbar;
 
 import com.dvsnier.base.flavor.activity.BaseActivity;
 import com.dvsnier.test.widget.R;

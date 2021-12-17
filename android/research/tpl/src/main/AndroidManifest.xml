@@ -5,6 +5,10 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
 
+        <meta-data
+            android:name="IFLYTEK_APPKEY"
+            android:value="'5cee406c'" />
+
         <activity
             android:name=".image.TestImageActivity"
             android:theme="@style/AppTheme.DefaultTheme"

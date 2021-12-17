@@ -1,6 +1,7 @@
 package com.dvsnier.bean;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
+
 import org.greenrobot.eventbus.EventBus;
 
 /**
@@ -9,18 +10,18 @@ import org.greenrobot.eventbus.EventBus;
 
 public class MessageEvent {
 
-  protected String message;
+    protected String message;
 
-  public static void post(@NonNull MessageEvent event) {
-    event.setMessage(event.getMessage() + " -> 发送完成");
-    EventBus.getDefault().post(event);
-  }
+    public static void post(@NonNull MessageEvent event) {
+        event.setMessage(event.getMessage() + " -> 发送完成");
+        EventBus.getDefault().post(event);
+    }
 
-  public String getMessage() {
-    return message;
-  }
+    public String getMessage() {
+        return message;
+    }
 
-  public void setMessage(String message) {
-    this.message = message;
-  }
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

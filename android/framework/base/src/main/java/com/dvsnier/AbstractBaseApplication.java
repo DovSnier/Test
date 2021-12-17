@@ -1,6 +1,6 @@
 package com.dvsnier;
 
-import android.support.multidex.MultiDexApplication;
+import androidx.multidex.MultiDexApplication;
 
 /**
  * AbstractBaseApplication

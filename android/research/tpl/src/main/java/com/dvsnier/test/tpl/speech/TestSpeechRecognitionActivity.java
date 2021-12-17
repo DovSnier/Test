@@ -1,5 +1,7 @@
 package com.dvsnier.test.tpl.speech;
 
+import android.Manifest;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -9,6 +11,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.dvsnier.base.flavor.activity.BaseActivity;
+import com.dvsnier.permission.OnSimpleResponsePermissionListener;
+import com.dvsnier.permission.Permission;
+import com.dvsnier.permission.PermissionWrapper;
 import com.dvsnier.test.tpl.R;
 import com.dvsnier.test.tpl.R2;
 import com.dvsnier.test.utils.JsonParser;
@@ -103,25 +108,42 @@ public class TestSpeechRecognitionActivity extends BaseActivity implements InitL
         }
         int viewId = view.getId();// 开始
         if (viewId == R.id.start) {// 如何判断一次听写结束：OnResult isLast=true 或者 onError
-            // 移动数据分析，收集开始听写事件
-            FlowerCollector.onEvent(this, "iat_recognize");
-            content.setText(null);// 清空显示内容
-            mIatResults.clear();
-            setParam();
-            if (isShowDialog) {
-                // 显示听写对话框
-                mIatDialog.setListener(this);
-                mIatDialog.show();
-            } else {
-                // 不显示听写对话框
-                ret = mIat.startListening(mRecognizerListener);
-                if (ret != ErrorCode.SUCCESS) {
-                    Toast.makeText(this, String.format("%1$s2$s", "听写失败,错误码：", ret), Toast.LENGTH_SHORT)
-                            .show();
-                } else {
-                    Toast.makeText(this, String.format("%1$s", "请开始说话…"), Toast.LENGTH_SHORT).show();
-                }
-            }
+            PermissionWrapper.newInstance(this).requestPermission(
+                    Manifest.permission.RECORD_AUDIO,
+                    new OnSimpleResponsePermissionListener() {
+                        @Override
+                        public void onPermissionCallback(Context context, boolean isGrant, Permission permission) {
+                            super.onPermissionCallback(context, isGrant, permission);
+                            String value = String.format("isGrant: %s , isNegatived: %s , isNegativedAndNoPresentation: %s , permission: %s"
+                                    , isGrant, permission.isNegatived(),
+                                    permission.isNegativedAndNoPresentation(), permission);
+                            Log.d(TAG, value);
+                            if (!isGrant) {
+                                Toast.makeText(context, "请予以授权，否则您无法进行讯飞语言听写操作。", Toast.LENGTH_SHORT).show();
+                            } else {
+                                // 移动数据分析，收集开始听写事件
+                                FlowerCollector.onEvent(TestSpeechRecognitionActivity.this, "iat_recognize");
+                                content.setText(null);// 清空显示内容
+                                mIatResults.clear();
+                                setParam();
+                                if (isShowDialog) {
+                                    // 显示听写对话框
+                                    mIatDialog.setListener(TestSpeechRecognitionActivity.this);
+                                    mIatDialog.show();
+                                } else {
+                                    // 不显示听写对话框
+                                    ret = mIat.startListening(mRecognizerListener);
+                                    if (ret != ErrorCode.SUCCESS) {
+                                        Toast.makeText(TestSpeechRecognitionActivity.this, String.format("%1$s2$s", "听写失败,错误码：", ret), Toast.LENGTH_SHORT)
+                                                .show();
+                                    } else {
+                                        Toast.makeText(TestSpeechRecognitionActivity.this, String.format("%1$s", "请开始说话…"), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }
+                        }
+                    });
+
         } else if (viewId == R.id.stop) { // 停止
             mIat.stopListening();
             Toast.makeText(this, String.format("%1$s", "停止听写"), Toast.LENGTH_SHORT).show();

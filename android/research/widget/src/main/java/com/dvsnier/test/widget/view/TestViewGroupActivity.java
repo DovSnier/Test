@@ -1,7 +1,8 @@
 package com.dvsnier.test.widget.view;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 import com.dvsnier.base.flavor.activity.BaseActivity;
 import com.dvsnier.test.widget.R;

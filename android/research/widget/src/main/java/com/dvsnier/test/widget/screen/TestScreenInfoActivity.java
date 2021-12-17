@@ -4,10 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import com.dvsnier.base.flavor.activity.BaseActivity;
 import com.dvsnier.base.task.ITask;

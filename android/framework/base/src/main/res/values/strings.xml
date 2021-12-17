@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">base</string>
     <string name="mime_type">TYPE_TEXT</string>
+    <string name="base_permission_describe">请提供存储权限，该权限不会读取您的隐私数据，只读写运行过程中必要数据，否则 App 无法使用</string>
 </resources>

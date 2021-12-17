@@ -5,13 +5,14 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.text.Spannable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
 import com.dvsnier.base.view.IView;
 

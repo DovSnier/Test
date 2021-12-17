@@ -11,11 +11,14 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.dvsnier.DvsnierApplication;
 import com.dvsnier.R;
 import com.dvsnier.adapter.MainAdapter;
 import com.dvsnier.base.flavor.activity.BaseActivity;
 import com.dvsnier.base.flavor.constant.IDvsType;
+import com.dvsnier.base.task.AbstractUIRunnable;
 import com.dvsnier.base.task.ITask;
 import com.dvsnier.bean.CategoryBean;
 import com.dvsnier.bean.ComponentBean;
@@ -82,11 +85,58 @@ public class MainActivity extends BaseActivity<MainPresenter> implements ITask,
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        inspectionRWPermissions();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         if (null != permissionWrapper) {
             permissionWrapper.onDestroy();
         }
+    }
+
+    protected void inspectionRWPermissions() {
+        String[] permissions;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            permissions = new String[]{
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+            };
+        } else {
+            permissions = new String[]{
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+            };
+        }
+        PermissionWrapper.newInstance(this).requestPermission(
+                permissions,
+                new OnSimpleResponsePermissionListener() {
+                    @Override
+                    public void onPermissionCallback(Context context, boolean isGrant, Permission[] permissions) {
+                        super.onPermissionCallback(context, isGrant, permissions);
+                        String value = String.format("isGrant: %s , permissions: %s", isGrant, Arrays.toString(permissions));
+                        Log.d(getClass().getSimpleName(), value);
+                        if (!isGrant) {
+                            Toast.makeText(context, getString(R.string.base_permission_describe), Toast.LENGTH_SHORT).show();
+                            postDelayed(new AbstractUIRunnable() {
+                                @Override
+                                public void stashRun() {
+                                    Runtime.getRuntime().exit(0);
+                                }
+                            }, 800);
+                        } else {
+                            DvsnierApplication.getInstance().initializedCache(new Runnable() {
+                                @Override
+                                public void run() {
+                                    DvsnierApplication.getInstance().onCallback();
+                                    onSdkInfo();
+                                }
+                            });
+                        }
+                    }
+                });
     }
 
     public void requestPermission(IOnResponsePermissionListener onResponsePermissionListener) {
@@ -223,7 +273,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements ITask,
         if (null != getPresenter()) {
             getPresenter().request();
         }
-        onSdkInfo();
     }
 
     protected final void onSdkInfo() {

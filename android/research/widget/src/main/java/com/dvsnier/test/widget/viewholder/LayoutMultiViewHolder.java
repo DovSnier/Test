@@ -2,7 +2,6 @@ package com.dvsnier.test.widget.viewholder;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
 import android.text.Layout;
 import android.util.TypedValue;
 import android.view.View;
@@ -11,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 
 import com.dvsnier.base.holder.BaseViewHolder;
 import com.dvsnier.test.widget.R2;

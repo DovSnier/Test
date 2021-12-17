@@ -11,7 +11,7 @@ android {
         versionCode rootProject.ext.version_base_code
         versionName rootProject.ext.version_base_name
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
     }
 
@@ -28,6 +28,8 @@ dependencies {
 
     api project(':android:common:utils')
     api project(':android:framework:style')
+
+    implementation "androidx.fragment:fragment:$rootProject.support_fragment_version"
 
 //    implementation "com.dvsnier:base:$rootProject.base_version"
     api("com.dvsnier:common:$rootProject.common_version") {
@@ -52,7 +54,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
 
-    api "com.android.support:multidex:$rootProject.support_multidex_version"
+    api "androidx.multidex:multidex:$rootProject.support_multidex_version"
 
     implementation "com.jakewharton:disklrucache:$rootProject.disklrucache_version"
     implementation("com.jakewharton:butterknife:$rootProject.butterknife_version") {
@@ -65,10 +67,10 @@ dependencies {
 
     implementation "junit:junit:$rootProject.junit_version"
 
-    androidTestImplementation("com.android.support.test:runner:$rootProject.runner_version") {
+    androidTestImplementation("androidx.test.ext:junit:$rootProject.runner_version") {
 //        transitive = false
     }
-    androidTestImplementation("com.android.support.test.espresso:espresso-core:$rootProject.espresso_core_version") {
+    androidTestImplementation("androidx.test.espresso:espresso-core:$rootProject.espresso_core_version") {
 //        transitive = false
     }
 }

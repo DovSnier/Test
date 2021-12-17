@@ -3,8 +3,6 @@ package com.dvsnier.test.widget.view;
 import android.annotation.SuppressLint;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.Layout;
 import android.text.TextUtils;
 import android.view.MotionEvent;
@@ -13,6 +11,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.dvsnier.base.flavor.activity.BaseActivity;
 import com.dvsnier.test.widget.R;

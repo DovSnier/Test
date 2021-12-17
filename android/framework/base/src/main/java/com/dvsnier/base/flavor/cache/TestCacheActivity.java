@@ -2,11 +2,12 @@ package com.dvsnier.base.flavor.cache;
 
 import android.app.ActivityManager;
 import android.os.Bundle;
-import android.support.v4.util.LruCache;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.collection.LruCache;
 
 import com.dvsnier.base.flavor.R;
 import com.dvsnier.base.flavor.R2;

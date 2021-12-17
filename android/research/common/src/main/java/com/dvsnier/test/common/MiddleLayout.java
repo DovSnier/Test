@@ -3,10 +3,11 @@ package com.dvsnier.test.common;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.Nullable;
 
 import com.dvsnier.test.utils.DebugUtil;
 

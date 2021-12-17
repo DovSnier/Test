@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">tpl</string>
     <string name="title_activity_test_okhttp">TestOkhttpActivity</string>
+    <string name="tpl_module_name">tpl_rn_app_65b0a86e</string>
+    <string name="tpl_permission_tips">请允于授权弹窗，否则您无法进行 RN 调试信息输出。</string>
 </resources>

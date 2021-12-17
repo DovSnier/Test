@@ -10,7 +10,7 @@ android {
         versionCode rootProject.ext.version_interceptor_code
         versionName rootProject.ext.version_interceptor_name
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
     }
 
@@ -32,11 +32,15 @@ dependencies {
     api project(':android:research:service')
     api project(':android:research:tpl')
     api project(':android:research:tool')
+    api project(':android:research:provider')
 
     testImplementation "junit:junit:$rootProject.junit_version"
 
-    androidTestImplementation("com.android.support.test:runner:$rootProject.runner_version") {
+    androidTestImplementation("androidx.test.ext:junit:$rootProject.runner_version") {
         exclude group: 'com.android.support', module: 'support-annotations'
+//        transitive = false
     }
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espresso_core_version"
+    androidTestImplementation("androidx.test.espresso:espresso-core:$rootProject.espresso_core_version") {
+//        transitive = false
+    }
 }

@@ -10,7 +10,7 @@ android {
         versionCode rootProject.ext.version_doc_code
         versionName rootProject.ext.version_doc_name
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
     }
 
@@ -28,10 +28,10 @@ dependencies {
 
     testImplementation "junit:junit:$rootProject.junit_version"
 
-    androidTestImplementation("com.android.support.test:runner:$rootProject.runner_version") {
+    androidTestImplementation("androidx.test.ext:junit:$rootProject.runner_version") {
 //        transitive = false
     }
-    androidTestImplementation("com.android.support.test.espresso:espresso-core:$rootProject.espresso_core_version") {
+    androidTestImplementation("androidx.test.espresso:espresso-core:$rootProject.espresso_core_version") {
 //        transitive = false
     }
 }

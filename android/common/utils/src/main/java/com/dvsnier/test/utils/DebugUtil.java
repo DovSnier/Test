@@ -1,9 +1,10 @@
 package com.dvsnier.test.utils;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.MotionEvent;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class DebugUtil {
 

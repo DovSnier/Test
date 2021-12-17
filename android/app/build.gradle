@@ -1,6 +1,4 @@
 apply plugin: 'com.android.application'
-apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle");
-applyNativeModulesAppBuildGradle(project)
 
 android {
 
@@ -92,10 +90,13 @@ android {
     flavorDimensions "color"
 
     productFlavors {
+
+        def hashCode = gitHashCode()
+
         // Development Environment
         dev {
             applicationId 'com.dvsnier.dev'
-            resValue "string", "app_name", "dvsnier debug"
+            resValue "string", "app_name", "dvsnier dev $hashCode"
             manifestPlaceholders = [
                     DVSNIER_VALUE: applicationId
             ]
@@ -104,7 +105,7 @@ android {
         // Feature Acceptance Test Environment
         fat {
             applicationId 'com.dvsnier.fat'
-            resValue "string", "app_name", "dvsnier fat"
+            resValue "string", "app_name", "dvsnier fat $hashCode"
             manifestPlaceholders = [
                     DVSNIER_VALUE: applicationId
             ]
@@ -113,7 +114,7 @@ android {
         // User Acceptance Test Environment
         uat {
             applicationId 'com.dvsnier.uat'
-            resValue "string", "app_name", "dvsnier uat"
+            resValue "string", "app_name", "dvsnier uat $hashCode"
             manifestPlaceholders = [
                     DVSNIER_VALUE: applicationId
             ]
@@ -199,14 +200,6 @@ dependencies {
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$rootProject.leakcanary_android_no_op_version"
 
 //    implementation "com.android.tools.build:gradle:$build_gradle_plugin_version"
-
-    // From node_modules maybe you need use to that npm list commands that find special version
-    implementation("com.facebook.react:react-native:$rootProject.react_native_version") {
-        exclude group: 'androidx.appcompat', module: 'appcompat'
-        exclude group: 'androidx.autofill', module: 'autofill'
-        exclude group: 'androidx.swiperefreshlayout', module: 'swiperefreshlayout'
-    }
-    implementation "org.webkit:android-jsc:$rootProject.android_jsc_version"
 
     configurations {
 //        force = true

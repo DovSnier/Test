@@ -11,7 +11,7 @@ android {
         versionCode rootProject.ext.version_service_code
         versionName rootProject.ext.version_service_name
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
     }
 
@@ -29,20 +29,20 @@ dependencies {
 
     implementation project(':android:framework:base')
 
-    implementation("com.android.support:recyclerview-v7:$rootProject.support_recyclerview_version") {
+    implementation("androidx.recyclerview:recyclerview:$rootProject.support_recyclerview_version") {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.android.support', module: 'support-compat'
         exclude group: 'com.android.support', module: 'collections'
         exclude group: 'com.android.support', module: 'support-core-ui'
     }
-    implementation("com.android.support:appcompat-v7:$rootProject.support_appcompat_version") {
+    implementation("androidx.appcompat:appcompat:$rootProject.support_appcompat_version") {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.android.support', module: 'support-core-utils'
         exclude group: 'com.android.support', module: 'support-fragment'
         exclude group: 'com.android.support', module: 'support-vector-drawable'
         exclude group: 'com.android.support', module: 'animated-vector-drawable'
     }
-    implementation "com.android.support:support-annotations:$rootProject.support_annotations_version"
+    implementation "androidx.annotation:annotation:$rootProject.support_annotations_version"
 
     implementation("com.jakewharton:butterknife:$rootProject.butterknife_version") {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -54,10 +54,10 @@ dependencies {
 
     testImplementation "junit:junit:$rootProject.junit_version"
 
-    androidTestImplementation("com.android.support.test:runner:$rootProject.runner_version") {
+    androidTestImplementation("androidx.test.ext:junit:$rootProject.runner_version") {
         transitive = false
     }
-    androidTestImplementation("com.android.support.test.espresso:espresso-core:$rootProject.espresso_core_version") {
+    androidTestImplementation("androidx.test.espresso:espresso-core:$rootProject.espresso_core_version") {
         transitive = false
     }
 }

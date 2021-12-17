@@ -2,15 +2,12 @@ package com.dvsnier;
 
 import android.app.ActivityManager;
 import android.content.Context;
-import android.support.multidex.MultiDex;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.dvsnier.cache.CacheManager;
-import com.dvsnier.cache.base.TimeUnit;
+import androidx.multidex.MultiDex;
+
 import com.dvsnier.common.AppCommonWorkObject;
-import com.dvsnier.common.impl.BaseImpl;
-import com.dvsnier.test.utils.MD5;
 import com.facebook.stetho.Stetho;
 import com.facebook.stetho.common.LogRedirector;
 import com.orhanobut.logger.AndroidLogAdapter;
@@ -38,15 +35,12 @@ public class DvsnierApplication extends BaseApplication<DvsnierApplication> {
         debug();
         if (getPackageName().equals(getProcessName(this))) {
             MultiDex.install(INSTANCE);
-            // 将“12345678”替换成您申请的APPID，申请地址：http://www.xfyun.cn
-            // 请勿在“=”与appid之间添加任何空字符或者转义符
-//        SpeechUtility.createUtility(this, SpeechConstant.APPID + "=599b97fa");
-            AppCommonWorkObject.getInstance().setBaseCallback(new BaseImpl());
+            AppCommonWorkObject.getInstance().setCallback();
 
             StringBuilder stringBuilder = new StringBuilder(String.format("the current system time: %s%s", System.currentTimeMillis(), "\n"));
             initializedCrash();
             stringBuilder.append(String.format("the load crash module(%s) that is succeed.", System.currentTimeMillis())).append("\n");
-            initializedCache();
+//            initializedCache();
             stringBuilder.append(String.format("the load cache module(%s) that is succeed.", System.currentTimeMillis())).append("\n");
             LeakCanary.install(this);
             stringBuilder.append(String.format("the load leak canary module(%s) that is succeed.", System.currentTimeMillis())).append("\n");
@@ -86,13 +80,13 @@ public class DvsnierApplication extends BaseApplication<DvsnierApplication> {
             });
             stringBuilder.append(String.format("the load stetho module(%s) that is succeed.", System.currentTimeMillis())).append("\n");
             stringBuilder.append("\n").append("the initialized succeed.").append("\n");
-            CacheManager.getInstance().putString(MD5.encode(getClass().getSimpleName() + System.currentTimeMillis()), stringBuilder.toString(), 2, TimeUnit.DAYS).commit();
+//            CacheManager.getInstance().putString(MD5.encode(getClass().getSimpleName() + System.currentTimeMillis()), stringBuilder.toString(), 2, TimeUnit.DAYS).commit();
         } else if ((getPackageName() + ":log").equals(getProcessName(this))) {
             StringBuilder stringBuilder = new StringBuilder(String.format("the current system time: %s%s", System.currentTimeMillis(), "\n"));
             initializedServerCache();
             stringBuilder.append(String.format("the load cache module(%s) that is succeed.", System.currentTimeMillis())).append("\n");
             stringBuilder.append("\n").append("the initialized succeed.").append("\n");
-            CacheManager.getInstance().putString(ICacheType.TYPE_LOG_SERVICE, MD5.encode(getClass().getSimpleName() + System.currentTimeMillis()), stringBuilder.toString(), 2, TimeUnit.DAYS).commit();
+//            CacheManager.getInstance().putString(ICacheType.TYPE_LOG_SERVICE, MD5.encode(getClass().getSimpleName() + System.currentTimeMillis()), stringBuilder.toString(), 2, TimeUnit.DAYS).commit();
         } else {
             // nothing to do
         }
@@ -128,6 +122,11 @@ public class DvsnierApplication extends BaseApplication<DvsnierApplication> {
             }
         }
         return null;
+    }
+
+    public void onCallback() {
+        // nothing to do
+        debug();
     }
 
     protected void debug() {

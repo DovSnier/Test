@@ -1,12 +1,13 @@
 package com.dvsnier.test.widget.nested;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.dvsnier.base.adapter.IAdapter;
 import com.dvsnier.base.flavor.activity.BaseActivity;

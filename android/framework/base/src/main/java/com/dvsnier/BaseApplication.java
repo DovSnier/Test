@@ -57,11 +57,15 @@ public abstract class BaseApplication<T> extends AbstractBaseApplication<T> {
         return versionName;
     }
 
-    protected void initializedCache() {
+    public void initializedCache(Runnable runnable) {
         initializedDefaultCache();
         initializedDownloadCache();
 
         initializedPersistenceCache();
+
+        if (null != runnable) {
+            runnable.run();
+        }
     }
 
     protected void initializedDefaultCache() {

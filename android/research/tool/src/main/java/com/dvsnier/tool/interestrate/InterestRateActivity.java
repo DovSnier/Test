@@ -2,13 +2,14 @@ package com.dvsnier.tool.interestrate;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
 
 import com.dvsnier.base.flavor.activity.BaseActivity;
 import com.dvsnier.tool.R;
