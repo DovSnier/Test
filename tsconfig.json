@@ -1,0 +1,16 @@
+{
+    /** 
+     * The refer to links:
+     *
+     * 1. https://www.typescriptlang.org/zh/docs/handbook/tsconfig-json.html
+     * 2. https://www.typescriptlang.org/tsconfig
+     * 3. https://github.com/tsconfig/bases/#react-native-tsconfigjson
+     * 4. http://json.schemastore.org/tsconfig
+     * 5. https://code.visualstudio.com/api/advanced-topics/tslint-eslint-migration
+     */
+    "extends": "@tsconfig/react-native/tsconfig.json",
+    "exclude": [
+        "**/android/*",
+        "**/ios/*",
+    ]
+}

@@ -1,0 +1,12 @@
+{
+    "name": "tpl_rn_app_65b0a86e",
+    "versionName": "v0.0.1",
+    "versionCode": 1,
+    "applicationType": "rn",
+    "applicationGroup": "com.dvsnier",
+    "applicationId": "65b0a86e",
+    "author": "anonym",
+    "author_email": "zhenwei-li@qq.com",
+    "description": "this is a rn app",
+    "license": "MIT"
+}

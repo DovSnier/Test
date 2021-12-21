@@ -1,0 +1,40 @@
+{
+    "name": "react_native_app",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "adb": "adb reverse tcp:8081 tcp:8081",
+        "npx_info": "npx react-native info",
+        "npx_start": "npx react-native start",
+        "npx_start_no_cache": "npx react-native start --reset-cache",
+        "npm_tsconfig_node14": "npm install --save-dev @tsconfig/node14",
+        "npm_tsconfig_react_native": "npm install --save-dev @tsconfig/react-native",
+        "npm_bptrc": "npm install --save-dev babel-plugin-transform-remove-console",
+        "npm_eslint": "npm install --save-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin",
+        "npm_tslint": "npm install --save-dev tslint",
+        "npm_typings": "npm install typings",
+        "npm_typescript": "npm install --save-dev typescript @types/jest @types/react @types/react-native @types/react-test-renderer",
+        "npm_template_with_ts": "mkdir Temp && cd Temp && npx react-native init MyAppTemplate --template react-native-template-typescript",
+        "npm_ts": "npx ts",
+        "npm_tsc": "npx tsc",
+        "npm_link_ts": "npm link typescript",
+        "npm_tslint_to_eslint": "npx tslint-to-eslint-config",
+        "yarn_start": "yarn react-native start",
+        "bundle_android_dev": "npx react-native bundle --platform android --dev true --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/",
+        "bundle_android_prod": "npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/"
+    },
+    "dependencies": {
+        "@babel/preset-env": "^7.16.5",
+        "@react-native-community/cli": "^6.3.1",
+        "react": "16.13.1",
+        "react-native": "^0.63.4",
+        "react-native-macos": "^0.63.4",
+        "typings": "^2.1.1"
+    },
+    "devDependencies": {
+        "@tsconfig/react-native": "^1.0.4",
+        "@types/react": "^17.0.37",
+        "@types/react-native": "^0.66.9",
+        "babel-plugin-transform-remove-console": "^6.9.4"
+    }
+}
