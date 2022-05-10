@@ -1,9 +1,13 @@
 # Test
 
-- [一. 项目目录图](#一-项目目录图)
-- [二. 项目依赖图](#二-项目依赖图)
+- [一. 说明](#一-说明)
+  - [1.1 项目目录图](#11-项目目录图)
+  - [1.2 项目依赖图](#12-项目依赖图)
+- [二. 安装](#二-安装)
 
-## 一. 项目目录图
+## 一. 说明
+
+### 1.1 项目目录图
 
 ```Django
 +--- project :app
@@ -25,7 +29,7 @@
 
 ```
 
-## 二. 项目依赖图
+### 1.2 项目依赖图
 
 ```Django
 +--- app
@@ -68,4 +72,12 @@
 (*) - dependencies omitted (listed previously)
 (n) - Not resolved (configuration is not meant to be resolved)
 (t) - transitive dependencies and that not directly dependent
+```
+
+## 二. 安装
+
+运行APP 之前需要执行如下命令:
+
+```bash
+$ npm install .
 ```
